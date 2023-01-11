@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Then
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -13,10 +14,34 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: windowScene)
+        
+        let homeVC = UINavigationController(rootViewController:HomeViewController())
+        homeVC.tabBarItem.image = UIImage(systemName: "house")
+        homeVC.title = "홈"
+        
+        let studyVC =  UINavigationController(rootViewController:StudyViewController())
+        studyVC.tabBarItem.image = UIImage(systemName: "square.grid.2x2")
+        studyVC.title = "스터디"
+        
+        let myPageVC = UINavigationController(rootViewController:MyPageViewController())
+        myPageVC.tabBarItem.image = UIImage(systemName: "person.crop.circle")
+        myPageVC.title = "마이페이지"
+        
+        let tabbar = UITabBarController().then {
+            $0.tabBar.backgroundColor = .white
+            $0.viewControllers = [homeVC, studyVC, myPageVC]
+            $0.tabBar.tintColor = .mainColor
+            $0.tabBar.unselectedItemTintColor = .darkGray
+            $0.tabBar.layer.shadowColor = UIColor.lightGray.cgColor
+            $0.tabBar.layer.shadowOpacity = 1.0
+            $0.tabBar.layer.shadowOffset = .zero
+            $0.tabBar.clipsToBounds = false
+        }
+        
+        window?.rootViewController = tabbar
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
