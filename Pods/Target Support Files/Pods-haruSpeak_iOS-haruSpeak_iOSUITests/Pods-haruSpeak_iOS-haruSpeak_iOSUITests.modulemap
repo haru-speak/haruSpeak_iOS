@@ -1,0 +1,6 @@
+framework module Pods_haruSpeak_iOS_haruSpeak_iOSUITests {
+  umbrella header "Pods-haruSpeak_iOS-haruSpeak_iOSUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
