@@ -61,10 +61,10 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     let line = UIImageView().then{
         $0.image = UIImage(named: "line")?.withRenderingMode(.alwaysOriginal)
     }
-//    let messageCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
-//        $0.register(FeedCell.self, forCellWithReuseIdentifier: FeedCell.identifier)
-//        $0.backgroundColor = .white
-//    }
+    private let recordCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+        $0.register(RecordCell.self, forCellWithReuseIdentifier: RecordCell.identifier)
+        $0.backgroundColor = .systemGray6
+    }
     
 
     
@@ -74,6 +74,10 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         super.viewDidLoad()
         self.view.backgroundColor = .systemGray6
         
+        self.recordCollectionView.delegate = self
+        self.recordCollectionView.dataSource = self
+        
+        
         setupView()
         setupLayout()
         addTarget()
@@ -81,7 +85,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     }
 
 //MARK: - CalendarUI
-    func setCalendarUI(){
+    private func setCalendarUI(){
         self.calendar.delegate = self
         self.calendar.dataSource = self
         
@@ -121,7 +125,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     
     
 //MARK: - addSubView
-    func setupView(){
+    private func setupView(){
         self.view.addSubview(self.topView)
         self.topView.addSubview(self.date)
         self.topView.addSubview(self.alarm)
@@ -133,12 +137,12 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         self.calendarView.backgroundColor = .clear
         self.calendarView.addSubview(self.calendar)
         self.topView.addSubview(self.line)
-//        self.view.addSubview(self.messageCollectionView)
+        self.view.addSubview(self.recordCollectionView)
     }
         
     
 //MARK: - Layout
-    func setupLayout(){
+    private func setupLayout(){
         self.topView.snp.makeConstraints{
             $0.top.trailing.leading.equalToSuperview().offset(0)
             $0.height.equalTo(320)
@@ -178,14 +182,18 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             $0.centerX.equalToSuperview()
             $0.bottom.equalTo(self.topView.snp.bottom).offset(-11)
         }
-
+        self.recordCollectionView.snp.makeConstraints {
+            $0.top.equalTo(self.topView.snp.bottom).offset(30)
+            $0.bottom.trailing.leading.equalToSuperview()
+            
+        }
         
     }
         
     
     
 //MARK: - AddTarget
-    func addTarget(){
+    private func addTarget(){
         
     }
     
@@ -198,4 +206,37 @@ extension UIView {
         layer.cornerRadius = cornerRadius
         layer.maskedCorners = CACornerMask(arrayLiteral: maskedCorners)
     }
+}
+
+
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecordCell.identifier, for: indexPath) as! RecordCell
+        return cell
+    }
+   
+}
+
+extension HomeViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: self.view.frame.width , height: 70)
+    }
+    
 }
