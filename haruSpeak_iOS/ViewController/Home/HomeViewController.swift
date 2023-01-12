@@ -52,6 +52,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     let englishMessage = UILabel().then{
         $0.font = UIFont(name:"appleSDGothicNeo", size: 16)
         $0.text = "What's your favorite movie?"
+        $0.textColor = .gray
     }
     let tabbar = CustomTabbar()
     let calendarView = UIView().then{_ in
@@ -183,7 +184,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             $0.bottom.equalTo(self.topView.snp.bottom).offset(-11)
         }
         self.recordCollectionView.snp.makeConstraints {
-            $0.top.equalTo(self.topView.snp.bottom).offset(30)
+            $0.top.equalTo(self.topView.snp.bottom).offset(10)
             $0.bottom.trailing.leading.equalToSuperview()
             
         }
