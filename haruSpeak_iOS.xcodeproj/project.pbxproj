@@ -11,6 +11,7 @@
 		A1ECF52D7F2B9619C0BD5DCA /* Pods_haruSpeak_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFC49101112B419E65F52532 /* Pods_haruSpeak_iOS.framework */; };
 		E255F8C5D56021B7F5E5848B /* Pods_haruSpeak_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69211967B5E3367D949CA34A /* Pods_haruSpeak_iOSTests.framework */; };
 		E51CE8BD296F77B500ADB07B /* CustomTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51CE8BC296F77B500ADB07B /* CustomTabbar.swift */; };
+		E51CE8BF296FBED100ADB07B /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51CE8BE296FBED100ADB07B /* RecordCell.swift */; };
 		E5862C5D296ED0C900095439 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5862C5C296ED0C900095439 /* AppDelegate.swift */; };
 		E5862C5F296ED0C900095439 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5862C5E296ED0C900095439 /* SceneDelegate.swift */; };
 		E5862C61296ED0C900095439 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5862C60296ED0C900095439 /* ViewController.swift */; };
@@ -58,6 +59,7 @@
 		BACA4D97B5C12EA35396E86F /* Pods-haruSpeak_iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-haruSpeak_iOSTests.debug.xcconfig"; path = "Target Support Files/Pods-haruSpeak_iOSTests/Pods-haruSpeak_iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DFC49101112B419E65F52532 /* Pods_haruSpeak_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_haruSpeak_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E51CE8BC296F77B500ADB07B /* CustomTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabbar.swift; sourceTree = "<group>"; };
+		E51CE8BE296FBED100ADB07B /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
 		E5862C59296ED0C900095439 /* haruSpeak_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = haruSpeak_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5862C5C296ED0C900095439 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5862C5E296ED0C900095439 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 			isa = PBXGroup;
 			children = (
 				E51CE8BC296F77B500ADB07B /* CustomTabbar.swift */,
+				E51CE8BE296FBED100ADB07B /* RecordCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -587,6 +590,7 @@
 				E5E984BB296ED9A900E5DE83 /* TempService.swift in Sources */,
 				E5E984B8296ED95D00E5DE83 /* UIFont+.swift in Sources */,
 				E5E984B6296ED95300E5DE83 /* UIColor+.swift in Sources */,
+				E51CE8BF296FBED100ADB07B /* RecordCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
