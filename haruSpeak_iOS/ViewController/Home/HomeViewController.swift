@@ -11,7 +11,7 @@ import SnapKit
 import Then
 import FSCalendar
 
-class HomeViewController: UIViewController{
+class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance{
     
 //MARK: - Properties
     let topView = UIView().then{
@@ -82,21 +82,35 @@ class HomeViewController: UIViewController{
 
 //MARK: - CalendarUI
     func setCalendarUI(){
+        self.calendar.delegate = self
+        self.calendar.dataSource = self
         
-        calendar.scope = .week
+        self.calendar.locale = Locale(identifier: "ko_KR")
+        
+        // 상단 요일을 영어로 변경
+        self.calendar.calendarWeekdayView.weekdayLabels[0].text = "S"
+        self.calendar.calendarWeekdayView.weekdayLabels[1].text = "M"
+        self.calendar.calendarWeekdayView.weekdayLabels[2].text = "T"
+        self.calendar.calendarWeekdayView.weekdayLabels[3].text = "W"
+        self.calendar.calendarWeekdayView.weekdayLabels[4].text = "T"
+        self.calendar.calendarWeekdayView.weekdayLabels[5].text = "F"
+        self.calendar.calendarWeekdayView.weekdayLabels[6].text = "S"
+        
         calendar.appearance.caseOptions = FSCalendarCaseOptions.weekdayUsesSingleUpperCase
         
-        //Header
+        calendar.scope = .week
+        
+        //Header (늘릴때 필요?)
         calendar.headerHeight = 0
-        calendar.appearance.headerDateFormat = "YYYY년 M월"
+        calendar.appearance.headerDateFormat = "M월"
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0
         calendar.appearance.headerTitleFont = UIFont.appleSDGothicNeo(size: 16, family: .Bold)
         calendar.appearance.headerTitleColor = .black
         
         
         calendar.appearance.weekdayFont = UIFont.appleSDGothicNeo(size: 12)
-        calendar.appearance.weekdayTextColor = .mainColor
-        calendar.appearance.todayColor = UIColor.systemGray
+        calendar.appearance.weekdayTextColor = .lightGray
+        calendar.appearance.todayColor = UIColor.lightGray
         calendar.appearance.selectionColor = UIColor.mainColor
     }
     
