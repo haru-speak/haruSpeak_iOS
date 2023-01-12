@@ -17,7 +17,7 @@ enum topTabBarItem {
 
 final class CustomTabbar: UIView {
     //MARK: - Properties
-    private var selectedItem: topTabBarItem = .myLog
+    var selectedItem: topTabBarItem = .myLog
     
     private let myLogButton = UIButton(type: .system).then {
         $0.setTitle("my log", for: .normal)
@@ -100,6 +100,8 @@ final class CustomTabbar: UIView {
         self.allButton.titleLabel?.font = .appleSDGothicNeo(size: 14)
         
         self.selectedItem = .myLog
+        
+        
     }
     
     private func highlightmyMate() {

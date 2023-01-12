@@ -70,7 +70,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         $0.register(RecordCell.self, forCellWithReuseIdentifier: RecordCell.identifier)
         $0.backgroundColor = .systemGray6
     }
-    
+
     
     
 //MARK: - LifeCycle
@@ -141,7 +141,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     @objc func tap(_ sender: Any) {
         print("Record Screen Open")
     }
-    
+
     
     
 //MARK: - addSubView
@@ -204,7 +204,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             $0.bottom.equalTo(self.topView.snp.bottom).offset(-11)
         }
         self.recordCollectionView.snp.makeConstraints {
-            $0.top.equalTo(self.topView.snp.bottom).offset(10)
+            $0.top.equalTo(self.topView.snp.bottom).offset(20)
             $0.bottom.trailing.leading.equalToSuperview()
         }
 
@@ -229,6 +229,7 @@ extension UIView {
         layer.maskedCorners = CACornerMask(arrayLiteral: maskedCorners)
     }
 }
+
 
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
