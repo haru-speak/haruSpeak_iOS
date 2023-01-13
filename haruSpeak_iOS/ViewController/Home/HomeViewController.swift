@@ -33,7 +33,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         $0.text = "12월 8일"
         $0.textColor = .lightGray
     }
-    private let alarm = UIImageView().then{
+    private let alarmButton = UIImageView().then{
         $0.image = UIImage(named: "alarm")?.withRenderingMode(.alwaysOriginal)
     }
     private let message = UILabel().then{
@@ -70,6 +70,8 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         $0.register(RecordCell.self, forCellWithReuseIdentifier: RecordCell.identifier)
         $0.backgroundColor = .systemGray6
     }
+    
+    var collectionViewindex = 0
 
     
     
@@ -141,14 +143,19 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     @objc func tap(_ sender: Any) {
         print("Record Screen Open")
     }
-
+    @objc func didClickAlarm(sender: UITapGestureRecognizer) {
+        print("didClickAlarm")
+    }
+    @objc func didClickAnnouncement(sender: UITapGestureRecognizer) {
+        print("didClickAnnouncement")
+    }
     
     
 //MARK: - addSubView
     private func setupView(){
         self.view.addSubview(self.topView)
         self.topView.addSubview(self.date)
-        self.topView.addSubview(self.alarm)
+        self.topView.addSubview(self.alarmButton)
         self.topView.addSubview(self.message)
         self.topView.addSubview(self.announcementButton)
         self.topView.addSubview(self.englishMessage)
@@ -172,7 +179,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             $0.top.equalTo(self.topView.snp.top).offset(54)
             $0.leading.equalTo(self.topView.snp.leading).offset(31)
         }
-        self.alarm.snp.makeConstraints{
+        self.alarmButton.snp.makeConstraints{
             $0.top.equalTo(self.topView.snp.top).offset(55)
             $0.trailing.equalTo(self.topView.snp.trailing).offset(-29)
         }
@@ -216,11 +223,18 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     
 //MARK: - AddTarget
     private func addTarget(){
+        let AlarmBtn = UITapGestureRecognizer(target: self, action: #selector(didClickAlarm))
+        alarmButton.isUserInteractionEnabled = true
+        alarmButton.addGestureRecognizer(AlarmBtn)
         
+        let AnnouncementBtn = UITapGestureRecognizer(target: self, action: #selector(didClickAnnouncement))
+        announcementButton.isUserInteractionEnabled = true
+        announcementButton.addGestureRecognizer(AnnouncementBtn)
     }
     
 }
 
+//MARK: - Extension
 //테두리 Extension
 extension UIView {
     func roundCorners(cornerRadius: CGFloat, maskedCorners: CACornerMask) {
@@ -231,7 +245,7 @@ extension UIView {
 }
 
 
-
+//CollectionVIew
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -244,6 +258,13 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecordCell.identifier, for: indexPath) as! RecordCell
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        collectionViewindex = indexPath.row
+        let VC = ClickRecordViewController()
+        VC.modalPresentationStyle = .overCurrentContext
+        present(VC, animated: false)
     }
    
 }
