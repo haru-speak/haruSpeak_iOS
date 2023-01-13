@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		68BD8E022971B52C00939DFB /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E012971B52C00939DFB /* AuthenticationViewController.swift */; };
+		68BD8E052971B80400939DFB /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E042971B80400939DFB /* RecordViewController.swift */; };
 		8C30D8B79FC345A04F0C9D3C /* Pods_haruSpeak_iOS_haruSpeak_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CED103FD6A92F4325BBDEE6 /* Pods_haruSpeak_iOS_haruSpeak_iOSUITests.framework */; };
 		A1ECF52D7F2B9619C0BD5DCA /* Pods_haruSpeak_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFC49101112B419E65F52532 /* Pods_haruSpeak_iOS.framework */; };
 		E255F8C5D56021B7F5E5848B /* Pods_haruSpeak_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69211967B5E3367D949CA34A /* Pods_haruSpeak_iOSTests.framework */; };
@@ -54,6 +55,7 @@
 		20CF64B5BEE330CC56697D1A /* Pods-haruSpeak_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-haruSpeak_iOS.debug.xcconfig"; path = "Target Support Files/Pods-haruSpeak_iOS/Pods-haruSpeak_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		5CED103FD6A92F4325BBDEE6 /* Pods_haruSpeak_iOS_haruSpeak_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_haruSpeak_iOS_haruSpeak_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68BD8E012971B52C00939DFB /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		68BD8E042971B80400939DFB /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		69211967B5E3367D949CA34A /* Pods_haruSpeak_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_haruSpeak_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77AA8A0B5111D220ACA4BB9D /* Pods-haruSpeak_iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-haruSpeak_iOSTests.release.xcconfig"; path = "Target Support Files/Pods-haruSpeak_iOSTests/Pods-haruSpeak_iOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		8A6B465F8597583EE4AAAE4B /* Pods-haruSpeak_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-haruSpeak_iOS.release.xcconfig"; path = "Target Support Files/Pods-haruSpeak_iOS/Pods-haruSpeak_iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -122,6 +124,14 @@
 				68BD8E012971B52C00939DFB /* AuthenticationViewController.swift */,
 			);
 			path = Authentication;
+			sourceTree = "<group>";
+		};
+		68BD8E032971B7F300939DFB /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				68BD8E042971B80400939DFB /* RecordViewController.swift */,
+			);
+			path = Record;
 			sourceTree = "<group>";
 		};
 		68F01573297045B1003BB048 /* Authentication */ = {
@@ -272,9 +282,9 @@
 		E5E984BF296EDDC000E5DE83 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				68BD8E032971B7F300939DFB /* Record */,
 				68BD8DFF2971B50200939DFB /* Authentication */,
 				E5E984C1296EDDF500E5DE83 /* Home */,
-				E5E984C4296EDE4700E5DE83 /* Record */,
 				E5E984C2296EDDFC00E5DE83 /* Study */,
 				E5E984C3296EDE1E00E5DE83 /* MyPage */,
 			);
@@ -303,13 +313,6 @@
 				E5E984DD296EE2BA00E5DE83 /* MyPageViewController.swift */,
 			);
 			path = MyPage;
-			sourceTree = "<group>";
-		};
-		E5E984C4296EDE4700E5DE83 /* Record */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Record;
 			sourceTree = "<group>";
 		};
 		E5E984C5296EDEE400E5DE83 /* MyPage */ = {
@@ -593,6 +596,7 @@
 				E5E984DA296EE2A300E5DE83 /* HomeViewController.swift in Sources */,
 				E5E984BB296ED9A900E5DE83 /* TempService.swift in Sources */,
 				E5E984B8296ED95D00E5DE83 /* UIFont+.swift in Sources */,
+				68BD8E052971B80400939DFB /* RecordViewController.swift in Sources */,
 				E5E984B6296ED95300E5DE83 /* UIColor+.swift in Sources */,
 				E51CE8BF296FBED100ADB07B /* RecordCell.swift in Sources */,
 			);

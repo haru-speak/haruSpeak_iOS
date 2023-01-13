@@ -107,7 +107,6 @@ class AuthenticationViewController: UIViewController{
         self.haruSpeakLogo.snp.makeConstraints{
             $0.centerX.equalToSuperview()
             $0.top.equalTo(self.view.snp.top).offset(55)
-            $0.top.equalTo(self.view.safeAreaLayoutGuide)
             $0.width.equalTo(129)
             $0.height.equalTo(30)
             
