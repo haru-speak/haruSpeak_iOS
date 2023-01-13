@@ -70,6 +70,8 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         $0.register(RecordCell.self, forCellWithReuseIdentifier: RecordCell.identifier)
         $0.backgroundColor = .systemGray6
     }
+    
+    var collectionViewindex = 0
 
     
     
@@ -259,7 +261,10 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        print(indexPath.row)
+        collectionViewindex = indexPath.row
+        let VC = ClickRecordViewController()
+        VC.modalPresentationStyle = .overCurrentContext
+        present(VC, animated: false)
     }
    
 }
