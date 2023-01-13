@@ -25,7 +25,6 @@ class ClickRecordViewController: UIViewController{
     }
     let backButton = UIButton().then{
         $0.setImage(UIImage(systemName: "xmark")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        $0.
     }
     
     let testLabel = UILabel().then{
