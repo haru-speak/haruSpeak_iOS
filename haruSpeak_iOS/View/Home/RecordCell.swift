@@ -38,12 +38,12 @@ final class RecordCell: UICollectionViewCell {
         $0.textColor = .lightGray
     }
     let heart = UIImageView().then{
-        $0.image = UIImage(named: "heart.fill")?.withRenderingMode(.alwaysOriginal)
+        $0.image = UIImage(named: "heart")?.withRenderingMode(.alwaysOriginal)
     }
 //MARK: - ButtonArray
     let playButtonArray = ["play","pause"]
     var playindex = 0
-    let heartButtonArray = ["heart.fill","heart"]
+    let heartButtonArray = ["heart","heart.fill"]
     var heartindex = 0
     
     
@@ -62,10 +62,21 @@ final class RecordCell: UICollectionViewCell {
     @objc func didClickPlay(sender: UITapGestureRecognizer) {
         self.playindex = (self.playindex >= self.playButtonArray.count-1) ? 0 : self.playindex+1
         self.playButton.image = UIImage(named:playButtonArray[playindex])
+        if playindex == 0{
+            print("clickPause")
+        }else{
+            print("clickPlay")
+        }
+        
         }
     @objc func didClickheart(sender: UITapGestureRecognizer) {
         self.heartindex = (self.heartindex >= self.heartButtonArray.count-1) ? 0 : self.heartindex+1
         self.heart.image = UIImage(named:heartButtonArray[heartindex])
+        if self.heartindex == 0{
+            print("clickUnlike")
+        }else{
+            print("clickLike")
+        }
         }
     
     //MARK: - addSubView
