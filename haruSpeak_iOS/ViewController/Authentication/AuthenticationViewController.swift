@@ -107,6 +107,11 @@ class AuthenticationViewController: UIViewController{
 
         // If sign in succeeded, display the app's main content View.
     }
+    
+    @objc func joinMembershipButtonTapped(){
+        self.navigationController?.pushViewController(MembershipViewController(), animated: true)
+        self.navigationController?.navigationBar.isHidden = true
+    }
         
     
     //MARK: - addSubView
@@ -190,6 +195,7 @@ class AuthenticationViewController: UIViewController{
     private func addTarget(){
         self.emailLogin.addTarget(self, action: #selector(self.emailLoginButtonTapped), for: .touchUpInside)
         self.GoogleLogin.addTarget(self, action: #selector(self.googleLoginButtonTapped), for: .touchUpInside)
+        self.joinMembership.addTarget(self, action: #selector(self.joinMembershipButtonTapped), for: .touchUpInside)
     }
     
     

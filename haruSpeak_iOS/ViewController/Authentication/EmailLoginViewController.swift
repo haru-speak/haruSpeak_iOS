@@ -63,6 +63,7 @@ class EmailLoginViewController: UIViewController{
         $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Thin", size: 13)
         $0.setTitleColor(.gray, for: .normal)
     }
+    
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +76,10 @@ class EmailLoginViewController: UIViewController{
     //MARK: - Selector
     @objc func arrowLeftButtonTapped(){
         self.navigationController?.pushViewController(AuthenticationViewController(), animated: true)
+    }
+    @objc func joinMembershipButtonTapped(){
+        self.navigationController?.pushViewController(MembershipViewController(), animated: true)
+        self.navigationController?.navigationBar.isHidden = true
     }
 
         
@@ -157,6 +162,7 @@ class EmailLoginViewController: UIViewController{
 //MARK: - AddTarget
     private func addTarget(){
         self.arrowLeft.addTarget(self, action: #selector(self.arrowLeftButtonTapped), for: .touchUpInside)
+        self.joinMembership.addTarget(self, action: #selector(self.joinMembershipButtonTapped), for: .touchUpInside)
     }
  
 }
