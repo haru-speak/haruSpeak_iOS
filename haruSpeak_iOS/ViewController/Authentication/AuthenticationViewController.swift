@@ -81,6 +81,11 @@ class AuthenticationViewController: UIViewController{
         
     }
     
+    //MARK: - Selector
+
+        
+       
+    
     //MARK: - addSubView
         private func setupView(){
             self.view.addSubview(self.arrowLeft)
@@ -155,6 +160,11 @@ class AuthenticationViewController: UIViewController{
             $0.centerX.equalToSuperview()
             $0.top.equalTo(self.googleLogin.snp.bottom).offset(19)
         }
+        
+    }
+    
+//MARK: - AddTarget
+    private func addTarget(){
         
     }
     
