@@ -9,6 +9,8 @@ target 'haruSpeak_iOS' do
 	pod 'SnapKit', '~> 5.0.0'
 	pod 'Then'
 	pod 'FSCalendar'
+	pod 'MaterialComponents/Buttons'
+	pod 'XLPagerTabStrip', '~> 9.0'
   target 'haruSpeak_iOSTests' do
     inherit! :search_paths
     # Pods for testing
