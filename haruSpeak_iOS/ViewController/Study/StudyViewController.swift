@@ -30,7 +30,7 @@ class StudyViewController: UIViewController{
         $0.image = UIImage(named: "magnifier")?.withRenderingMode(.alwaysOriginal)
     }
     private let tabbar = StudyCustomTabbar()
-    
+
     lazy var studyCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         $0.register(TopViewCollectionViewCell.self, forCellWithReuseIdentifier: TopViewCollectionViewCell.identifier)
         $0.backgroundColor = .clear
@@ -39,6 +39,23 @@ class StudyViewController: UIViewController{
     }
     private var previousOffset: CGFloat = 0
     private var currentPage: Int = 0
+    
+    //Bottom View
+    let scrollView = UIScrollView().then{
+        $0.backgroundColor = .mainColor
+    }
+    
+    private let blueView = UIView().then{
+        $0.backgroundColor = .mainColor
+    }
+    let bottomView = UIView().then{
+        $0.backgroundColor = .white
+    }
+    let testView = UIView().then{
+        $0.backgroundColor = .black
+    }
+    
+    
     
     
     //MARK: - LifeCycle
@@ -88,7 +105,12 @@ class StudyViewController: UIViewController{
         topView.addSubview(self.chatButton)
         topView.addSubview(self.searchButton)
         topView.addSubview(self.tabbar)
-        self.view.addSubview(self.studyCollectionView)
+        self.view.addSubview(self.scrollView)
+        scrollView.addSubview(self.bottomView)
+        bottomView.addSubview(self.blueView)
+        bottomView.addSubview(self.studyCollectionView)
+        bottomView.addSubview(self.testView)
+        
         
     }
     
@@ -96,7 +118,7 @@ class StudyViewController: UIViewController{
     private func setupLayout(){
         self.topView.snp.makeConstraints{
             $0.top.leading.trailing.equalToSuperview()
-            $0.size.height.equalTo(187)
+            $0.size.height.equalTo(152)
         }
         self.searchView.snp.makeConstraints{
             $0.top.equalTo(self.topView.snp.top).offset(55)
@@ -121,12 +143,31 @@ class StudyViewController: UIViewController{
             $0.width.equalToSuperview().dividedBy(2)
             $0.leading.equalTo(self.topView.snp.leading).offset(30)
         }
+        self.scrollView.snp.makeConstraints{
+            $0.leading.trailing.bottom.equalToSuperview().offset(0)
+            $0.top.equalTo(self.topView.snp.bottom).offset(0)
+        }
+        self.bottomView.snp.makeConstraints{
+            $0.width.equalToSuperview()
+            $0.centerX.top.bottom.equalToSuperview()
+        }
+        self.blueView.snp.makeConstraints {
+            $0.top.leading.trailing.equalTo(self.bottomView)
+            $0.size.height.equalTo(35)
+        }
         self.studyCollectionView.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(160)
-            $0.leading.equalToSuperview().offset(0)
-            $0.trailing.equalToSuperview().offset(-16)
+            $0.top.equalTo(self.bottomView.snp.top).offset(0)
+            $0.leading.equalTo(self.bottomView.snp.leading).offset(0)
+            $0.trailing.equalTo(self.bottomView.snp.trailing).offset(-16)
             $0.size.height.equalTo(227)
         }
+        self.testView.snp.makeConstraints{
+            $0.size.height.equalTo(800)
+            $0.bottom.equalToSuperview()
+            $0.top.equalTo(self.studyCollectionView.snp.bottom).offset(0)
+            $0.leading.trailing.equalToSuperview()
+        }
+
         
     }
     
