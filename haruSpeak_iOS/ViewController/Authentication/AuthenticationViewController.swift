@@ -9,11 +9,15 @@ import Foundation
 import UIKit
 import SnapKit
 import Then
+import GoogleSignIn
 
 class AuthenticationViewController: UIViewController{
+    
+    
     //MARK: - Properties
-    let arrowLeft = UIImageView().then{
-        $0.image = UIImage(named: "arrowLeft")?.withRenderingMode(.alwaysOriginal)
+    let arrowLeft = UIButton(type: .system).then{
+        $0.setTitle("arrowLeft", for: .normal)
+        $0.setImage(UIImage(named: "arrowLeft")?.withRenderingMode(.alwaysOriginal), for: .normal)
     }
     let haruSpeakLogo = UIView().then{
         $0.backgroundColor = .systemGray6
@@ -57,7 +61,7 @@ class AuthenticationViewController: UIViewController{
         $0.backgroundColor = .systemGreen
         $0.tag = 0
     }
-    let googleLogin = UIButton(type: .system).then{
+    let GoogleLogin = UIButton(type: .system).then{
         $0.setTitle("구글 계정으로 진행", for: .normal)
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo", size: 16)
@@ -66,10 +70,10 @@ class AuthenticationViewController: UIViewController{
         $0.layer.borderColor = UIColor.systemGray4.cgColor
         $0.tag = 0
     }
-    let joinMembership = UILabel().then{
-        $0.font = UIFont(name:"appleSDGothicNeo-Thin", size: 13)
-        $0.text = "아직 계정이 없나요? 회원가입 하기"
-        $0.textColor = .gray
+    let joinMembership = UIButton(type: .system).then{
+        $0.setTitle("아직 계정이 없나요? 회원가입 하기", for: .normal)
+        $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Thin", size: 13)
+        $0.setTitleColor(.gray, for: .normal)
     }
     
     //MARK: - LifeCycle
@@ -78,13 +82,37 @@ class AuthenticationViewController: UIViewController{
         view.backgroundColor = .white
         setupView()
         setupLayout()
+        addTarget()
         
     }
     
     //MARK: - Selector
+    @objc func emailLoginButtonTapped(){
+        self.navigationController?.pushViewController(EmailLoginViewController(), animated: true)
+        self.navigationController?.navigationBar.isHidden = true
+        }
+    
+    @objc func googleLoginButtonTapped(){
+        GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
+        guard error == nil else { return }
+        guard let signInResult = signInResult else { return }
 
+        let user = signInResult.user
+        let emailAddress = user.profile?.email
+        let fullName = user.profile?.name
+        print(user)
+        print(emailAddress)
+        print(fullName)
+        }
+
+        // If sign in succeeded, display the app's main content View.
+    }
+    
+    @objc func joinMembershipButtonTapped(){
+        self.navigationController?.pushViewController(MembershipViewController(), animated: true)
+        self.navigationController?.navigationBar.isHidden = true
+    }
         
-       
     
     //MARK: - addSubView
         private func setupView(){
@@ -95,7 +123,7 @@ class AuthenticationViewController: UIViewController{
             self.view.addSubview(self.KakaoTalkLogin)
             self.view.addSubview(self.AppleLogin)
             self.view.addSubview(self.NaverLogin)
-            self.view.addSubview(self.googleLogin)
+            self.view.addSubview(self.GoogleLogin)
             self.view.addSubview(self.joinMembership)
 
 
@@ -149,7 +177,7 @@ class AuthenticationViewController: UIViewController{
             $0.width.equalTo(333)
             $0.height.equalTo(45)
         }
-        self.googleLogin.snp.makeConstraints{
+        self.GoogleLogin.snp.makeConstraints{
             $0.centerX.equalToSuperview()
             $0.top.equalTo(self.NaverLogin.snp.bottom).offset(15)
             $0.width.equalTo(333)
@@ -158,14 +186,17 @@ class AuthenticationViewController: UIViewController{
         
         self.joinMembership.snp.makeConstraints{
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(self.googleLogin.snp.bottom).offset(19)
+            $0.top.equalTo(self.GoogleLogin.snp.bottom).offset(19)
         }
         
     }
     
 //MARK: - AddTarget
     private func addTarget(){
-        
+        self.emailLogin.addTarget(self, action: #selector(self.emailLoginButtonTapped), for: .touchUpInside)
+        self.GoogleLogin.addTarget(self, action: #selector(self.googleLoginButtonTapped), for: .touchUpInside)
+        self.joinMembership.addTarget(self, action: #selector(self.joinMembershipButtonTapped), for: .touchUpInside)
     }
+    
     
 }
