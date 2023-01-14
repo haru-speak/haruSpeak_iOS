@@ -12,8 +12,10 @@ import Then
 
 class AuthenticationViewController: UIViewController{
     //MARK: - Properties
-    let arrowLeft = UIImageView().then{
-        $0.image = UIImage(named: "arrowLeft")?.withRenderingMode(.alwaysOriginal)
+    let arrowLeft = UIButton(type: .system).then{
+        $0.setTitle("", for: .normal)
+        $0.setImage(UIImage(named: "arrowLeft")! as UIImage, for: .normal)
+        $0.tintColor = .black
     }
     let haruSpeakLogo = UIView().then{
         $0.backgroundColor = .systemGray6
@@ -66,10 +68,10 @@ class AuthenticationViewController: UIViewController{
         $0.layer.borderColor = UIColor.systemGray4.cgColor
         $0.tag = 0
     }
-    let joinMembership = UILabel().then{
-        $0.font = UIFont(name:"appleSDGothicNeo-Thin", size: 13)
-        $0.text = "아직 계정이 없나요? 회원가입 하기"
-        $0.textColor = .gray
+    let joinMembership = UIButton(type: .system).then{
+        $0.setTitle("아직 계정이 없나요? 회원가입 하기", for: .normal)
+        $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Thin", size: 13)
+        $0.setTitleColor(.gray, for: .normal)
     }
     
     //MARK: - LifeCycle
@@ -165,7 +167,6 @@ class AuthenticationViewController: UIViewController{
     
 //MARK: - AddTarget
     private func addTarget(){
-        
     }
     
 }
