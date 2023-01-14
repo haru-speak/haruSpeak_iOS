@@ -22,21 +22,21 @@ final class CustomTabbar: UIView {
     private let myLogButton = UIButton(type: .system).then {
         $0.setTitle("my log", for: .normal)
         $0.setTitleColor(.black, for: .normal)
-        $0.titleLabel?.font = .appleSDGothicNeo(size: 15)
+        $0.titleLabel?.font = .appleSDGothicNeo(size: 14)
         $0.tag = 0
     }
     
     private let myMateButton = UIButton(type: .system).then {
         $0.setTitle("my mate", for: .normal)
         $0.setTitleColor(.lightGray, for: .normal)
-        $0.titleLabel?.font = UIFont.appleSDGothicNeo(size: 15)
+        $0.titleLabel?.font = UIFont.appleSDGothicNeo(size: 14)
         $0.tag = 1
     }
     
     private let allButton = UIButton(type: .system).then {
         $0.setTitle("all", for: .normal)
         $0.setTitleColor(.lightGray, for: .normal)
-        $0.titleLabel?.font = UIFont.appleSDGothicNeo(size: 15)
+        $0.titleLabel?.font = UIFont.appleSDGothicNeo(size: 14)
         $0.tag = 2
     }
     
