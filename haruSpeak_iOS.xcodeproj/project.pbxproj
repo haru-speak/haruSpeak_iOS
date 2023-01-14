@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		68BD8E022971B52C00939DFB /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E012971B52C00939DFB /* AuthenticationViewController.swift */; };
 		68BD8E052971B80400939DFB /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E042971B80400939DFB /* RecordViewController.swift */; };
 		68BD8E0929726E0A00939DFB /* EmailLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E0829726E0A00939DFB /* EmailLoginViewController.swift */; };
+		68BD8E0A2972CF9C00939DFB /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E012971B52C00939DFB /* AuthenticationViewController.swift */; };
 		8C30D8B79FC345A04F0C9D3C /* Pods_haruSpeak_iOS_haruSpeak_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CED103FD6A92F4325BBDEE6 /* Pods_haruSpeak_iOS_haruSpeak_iOSUITests.framework */; };
 		A1ECF52D7F2B9619C0BD5DCA /* Pods_haruSpeak_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFC49101112B419E65F52532 /* Pods_haruSpeak_iOS.framework */; };
 		E255F8C5D56021B7F5E5848B /* Pods_haruSpeak_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69211967B5E3367D949CA34A /* Pods_haruSpeak_iOSTests.framework */; };
@@ -594,12 +594,12 @@
 				E5862C61296ED0C900095439 /* ViewController.swift in Sources */,
 				E5862C5D296ED0C900095439 /* AppDelegate.swift in Sources */,
 				E5862C5F296ED0C900095439 /* SceneDelegate.swift in Sources */,
-				68BD8E022971B52C00939DFB /* AuthenticationViewController.swift in Sources */,
 				E5E984DE296EE2BA00E5DE83 /* MyPageViewController.swift in Sources */,
 				68BD8E0929726E0A00939DFB /* EmailLoginViewController.swift in Sources */,
 				E5E984DA296EE2A300E5DE83 /* HomeViewController.swift in Sources */,
 				E5E984BB296ED9A900E5DE83 /* TempService.swift in Sources */,
 				E5E984B8296ED95D00E5DE83 /* UIFont+.swift in Sources */,
+				68BD8E0A2972CF9C00939DFB /* AuthenticationViewController.swift in Sources */,
 				68BD8E052971B80400939DFB /* RecordViewController.swift in Sources */,
 				E5E984B6296ED95300E5DE83 /* UIColor+.swift in Sources */,
 				E51CE8BF296FBED100ADB07B /* RecordCell.swift in Sources */,
