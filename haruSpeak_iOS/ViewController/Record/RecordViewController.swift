@@ -12,8 +12,9 @@ import Then
 
 class RecordViewController: UIViewController{
     //MARK: - Properties
-    let arrowLeft = UIImageView().then{
-        $0.image = UIImage(named: "arrowLeft")?.withRenderingMode(.alwaysOriginal)
+    let arrowLeft = UIButton().then{
+        $0.setTitle("arrowLeft", for: .normal)
+        $0.setImage(UIImage(named: "arrowLeft")?.withRenderingMode(.alwaysOriginal), for: .normal)
     }
     let date = UILabel().then{
         $0.font = UIFont(name:"appleSDGothicNeo", size: 16)

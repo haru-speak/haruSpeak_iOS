@@ -13,9 +13,9 @@ import Then
 class EmailLoginViewController: UIViewController{
     //MARK: - Properties
     let arrowLeft = UIButton(type: .system).then{
-        $0.setTitle("", for: .normal)
-        $0.setImage(UIImage(named: "arrowLeft")! as UIImage, for: .normal)
-        $0.tintColor = .black
+        $0.setTitle("arrowLeft", for: .normal)
+        $0.setImage(UIImage(named: "arrowLeft")?.withRenderingMode(.alwaysOriginal), for: .normal)
+
     }
     let haruSpeakLogo = UIView().then{
         $0.backgroundColor = .systemGray6
@@ -28,11 +28,13 @@ class EmailLoginViewController: UIViewController{
     }
     let emailTextField = UITextField().then{
         $0.backgroundColor = .systemGray6
+        $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
         $0.placeholder = " 이메일"
         $0.layer.cornerRadius = 7
     }
     let passwordTextField = UITextField().then{
         $0.backgroundColor = .systemGray6
+        $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
         $0.placeholder = " 비밀번호"
         $0.layer.cornerRadius = 7
     }
@@ -67,10 +69,13 @@ class EmailLoginViewController: UIViewController{
         view.backgroundColor = .white
         setupView()
         setupLayout()
-        
+        addTarget()
     }
     
     //MARK: - Selector
+    @objc func arrowLeftButtonTapped(){
+        self.navigationController?.pushViewController(AuthenticationViewController(), animated: true)
+    }
 
         
        
@@ -151,6 +156,7 @@ class EmailLoginViewController: UIViewController{
     
 //MARK: - AddTarget
     private func addTarget(){
+        self.arrowLeft.addTarget(self, action: #selector(self.arrowLeftButtonTapped), for: .touchUpInside)
     }
  
 }

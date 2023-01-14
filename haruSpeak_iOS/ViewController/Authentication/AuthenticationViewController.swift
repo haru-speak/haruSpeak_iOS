@@ -13,9 +13,8 @@ import Then
 class AuthenticationViewController: UIViewController{
     //MARK: - Properties
     let arrowLeft = UIButton(type: .system).then{
-        $0.setTitle("", for: .normal)
-        $0.setImage(UIImage(named: "arrowLeft")! as UIImage, for: .normal)
-        $0.tintColor = .black
+        $0.setTitle("arrowLeft", for: .normal)
+        $0.setImage(UIImage(named: "arrowLeft")?.withRenderingMode(.alwaysOriginal), for: .normal)
     }
     let haruSpeakLogo = UIView().then{
         $0.backgroundColor = .systemGray6
@@ -80,12 +79,15 @@ class AuthenticationViewController: UIViewController{
         view.backgroundColor = .white
         setupView()
         setupLayout()
+        addTarget()
         
     }
     
     //MARK: - Selector
-
-        
+    @objc func emailLoginButtonTapped(){
+        self.navigationController?.pushViewController(EmailLoginViewController(), animated: true)
+        self.navigationController?.navigationBar.isHidden = true
+        }
        
     
     //MARK: - addSubView
@@ -167,6 +169,7 @@ class AuthenticationViewController: UIViewController{
     
 //MARK: - AddTarget
     private func addTarget(){
+        self.emailLogin.addTarget(self, action: #selector(self.emailLoginButtonTapped), for: .touchUpInside)
     }
     
 }
