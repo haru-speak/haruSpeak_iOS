@@ -10,11 +10,13 @@ import UIKit
 import SnapKit
 import Then
 import FSCalendar
+import MaterialComponents.MaterialButtons
 
 class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance{
     
 //MARK: - Properties
-    let topView = UIView().then{
+    // TOPVIEW START
+    private let topView = UIView().then{
         $0.roundCorners(cornerRadius: 30, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner])
         $0.backgroundColor = .white
         
@@ -26,15 +28,15 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         $0.layer.shadowRadius = 1.0
     }
     
-    let date = UILabel().then{
+    private let date = UILabel().then{
         $0.font = UIFont(name:"appleSDGothicNeo", size: 16)
         $0.text = "12월 8일"
         $0.textColor = .lightGray
     }
-    let alarm = UIImageView().then{
+    private let alarmButton = UIImageView().then{
         $0.image = UIImage(named: "alarm")?.withRenderingMode(.alwaysOriginal)
     }
-    let message = UILabel().then{
+    private let message = UILabel().then{
         $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 22)
         $0.text = "승연님, \n어떤 영화를 가장 좋아하세요?"
         $0.numberOfLines = 0
@@ -46,26 +48,30 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attrString.length))
         $0.attributedText = attrString
     }
-    let announcementButton = UIImageView().then{
+    private let announcementButton = UIImageView().then{
         $0.image = UIImage(named: "announcement")?.withRenderingMode(.alwaysOriginal)
     }
-    let englishMessage = UILabel().then{
+    private let englishMessage = UILabel().then{
         $0.font = UIFont(name:"appleSDGothicNeo", size: 16)
         $0.text = "What's your favorite movie?"
+        $0.textColor = .gray
     }
-    let tabbar = CustomTabbar()
-    let calendarView = UIView().then{_ in
+    private let tabbar = CustomTabbar()
+    private let calendarView = UIView().then{_ in
         
     }
-    let calendar = FSCalendar(frame: CGRect(x: 15, y: 20, width: 350, height: 300))
-    let line = UIImageView().then{
+    private let calendar = FSCalendar(frame: CGRect(x: 15, y: 20, width: 350, height: 300))
+    private let line = UIImageView().then{
         $0.image = UIImage(named: "line")?.withRenderingMode(.alwaysOriginal)
     }
+    // TOPVIEW END
+    
     private let recordCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         $0.register(RecordCell.self, forCellWithReuseIdentifier: RecordCell.identifier)
         $0.backgroundColor = .systemGray6
     }
     
+    var collectionViewindex = 0
 
     
     
@@ -82,6 +88,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         setupLayout()
         addTarget()
         setCalendarUI()
+        setFloatingButton()
     }
 
 //MARK: - CalendarUI
@@ -117,18 +124,38 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         calendar.appearance.todayColor = UIColor.lightGray
         calendar.appearance.selectionColor = UIColor.mainColor
     }
-    
+//MARK: - FloatingButton
+    func setFloatingButton() {
+            let floatingButton = MDCFloatingButton()
+            let image = UIImage(systemName: "plus")
+            floatingButton.sizeToFit()
+            floatingButton.translatesAutoresizingMaskIntoConstraints = false
+            floatingButton.setImage(image, for: .normal)
+            floatingButton.setImageTintColor(.white, for: .normal)
+            floatingButton.backgroundColor = .mainColor
+            floatingButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
+            view.addSubview(floatingButton)
+            view.addConstraint(NSLayoutConstraint(item: floatingButton, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: -100))
+            view.addConstraint(NSLayoutConstraint(item: floatingButton, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1.0, constant: -32))
+        }
     
 //MARK: - Selector
-
-    
+    @objc func tap(_ sender: Any) {
+        print("Record Screen Open")
+    }
+    @objc func didClickAlarm(sender: UITapGestureRecognizer) {
+        print("didClickAlarm")
+    }
+    @objc func didClickAnnouncement(sender: UITapGestureRecognizer) {
+        print("didClickAnnouncement")
+    }
     
     
 //MARK: - addSubView
     private func setupView(){
         self.view.addSubview(self.topView)
         self.topView.addSubview(self.date)
-        self.topView.addSubview(self.alarm)
+        self.topView.addSubview(self.alarmButton)
         self.topView.addSubview(self.message)
         self.topView.addSubview(self.announcementButton)
         self.topView.addSubview(self.englishMessage)
@@ -138,6 +165,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         self.calendarView.addSubview(self.calendar)
         self.topView.addSubview(self.line)
         self.view.addSubview(self.recordCollectionView)
+
     }
         
     
@@ -151,7 +179,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             $0.top.equalTo(self.topView.snp.top).offset(54)
             $0.leading.equalTo(self.topView.snp.leading).offset(31)
         }
-        self.alarm.snp.makeConstraints{
+        self.alarmButton.snp.makeConstraints{
             $0.top.equalTo(self.topView.snp.top).offset(55)
             $0.trailing.equalTo(self.topView.snp.trailing).offset(-29)
         }
@@ -183,10 +211,11 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             $0.bottom.equalTo(self.topView.snp.bottom).offset(-11)
         }
         self.recordCollectionView.snp.makeConstraints {
-            $0.top.equalTo(self.topView.snp.bottom).offset(30)
+            $0.top.equalTo(self.topView.snp.bottom).offset(20)
             $0.bottom.trailing.leading.equalToSuperview()
-            
         }
+
+        
         
     }
         
@@ -194,11 +223,18 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     
 //MARK: - AddTarget
     private func addTarget(){
+        let AlarmBtn = UITapGestureRecognizer(target: self, action: #selector(didClickAlarm))
+        alarmButton.isUserInteractionEnabled = true
+        alarmButton.addGestureRecognizer(AlarmBtn)
         
+        let AnnouncementBtn = UITapGestureRecognizer(target: self, action: #selector(didClickAnnouncement))
+        announcementButton.isUserInteractionEnabled = true
+        announcementButton.addGestureRecognizer(AnnouncementBtn)
     }
     
 }
 
+//MARK: - Extension
 //테두리 Extension
 extension UIView {
     func roundCorners(cornerRadius: CGFloat, maskedCorners: CACornerMask) {
@@ -209,6 +245,7 @@ extension UIView {
 }
 
 
+//CollectionVIew
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -221,6 +258,13 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecordCell.identifier, for: indexPath) as! RecordCell
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        collectionViewindex = indexPath.row
+        let VC = ClickRecordViewController()
+        VC.modalPresentationStyle = .overCurrentContext
+        present(VC, animated: false)
     }
    
 }

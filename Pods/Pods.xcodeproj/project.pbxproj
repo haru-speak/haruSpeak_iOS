@@ -484,6 +484,7 @@
 
 /* Begin PBXContainerItemProxy section */
 		0BD655D6DB43142E12900B02271680E5 /* PBXContainerItemProxy */ = {
+
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -491,6 +492,7 @@
 			remoteInfo = MDFTextAccessibility;
 		};
 		0DC7383A9E021FDCAF4415A5E4EC94E1 /* PBXContainerItemProxy */ = {
+
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -547,6 +549,7 @@
 			remoteInfo = "XLPagerTabStrip-XLPagerTabStrip";
 		};
 		382FA2DF6EF407EA1F99635184923A96 /* PBXContainerItemProxy */ = {
+
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -568,6 +571,7 @@
 			remoteInfo = GTMAppAuth;
 		};
 		41C698AE23FCD18B32EC45D65464EBA3 /* PBXContainerItemProxy */ = {
+
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -610,11 +614,19 @@
 			remoteInfo = MaterialComponents;
 		};
 		767FFF855AA7BF5B2CB7C14662ABA0DB /* PBXContainerItemProxy */ = {
+
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C17AEFC79E770A2906EFAAB1A3757406;
-			remoteInfo = Then;
+			remoteGlobalIDString = 19622742EBA51E823D6DAE3F8CDBFAD4;
+			remoteInfo = SnapKit;
+		};
+		FAC1E2B1C004124DD67745ED92121991 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55A01F8E987A6E2F7F0ED141A1ECA406;
+			remoteInfo = MDFInternationalization;
 		};
 		828C2C5D4FE137E7CA354628EFBA8C0B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1014,9 +1026,11 @@
 		887854B299E757106B298D3D698AF5FB /* Pods-haruSpeak_iOSTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-haruSpeak_iOSTests-Info.plist"; sourceTree = "<group>"; };
 		887F7A104B01D00A133DF82EBC8BF7AD /* MDCRippleView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCRippleView.m; path = components/Ripple/src/MDCRippleView.m; sourceTree = "<group>"; };
 		893FB8756E5A761403E00B8344F6DD0D /* ConstraintLayoutSupportDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutSupportDSL.swift; path = Source/ConstraintLayoutSupportDSL.swift; sourceTree = "<group>"; };
+
 		89D3AE4A2AC2E9FB3F8736CF94C5E803 /* Pods-haruSpeak_iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-haruSpeak_iOS-umbrella.h"; sourceTree = "<group>"; };
 		8A8B686B1A8A000F89DB8BD0188DB83E /* MDFImageCalculations.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDFImageCalculations.m; path = src/private/MDFImageCalculations.m; sourceTree = "<group>"; };
 		8B736133196D857709264A4404B744F1 /* Pods-haruSpeak_iOS-haruSpeak_iOSUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-haruSpeak_iOS-haruSpeak_iOSUITests-dummy.m"; sourceTree = "<group>"; };
+
 		8C0BFD12672F24FF21E0C35EC315EF02 /* MDCFloatingButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCFloatingButton.m; path = components/Buttons/src/MDCFloatingButton.m; sourceTree = "<group>"; };
 		8CAC79F2E5D912F35AFA51D2B08A483B /* UIColor+MaterialBlending.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+MaterialBlending.h"; path = "components/private/Color/src/UIColor+MaterialBlending.h"; sourceTree = "<group>"; };
 		8CFD61618D2093F515F40AA65EF4E3F6 /* AppAuth-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AppAuth-prefix.pch"; sourceTree = "<group>"; };
@@ -1031,8 +1045,11 @@
 		943D18238E8CE8CF7E407C1FD58BF44B /* GIDAppAuthFetcherAuthorizationWithEMMSupport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GIDAppAuthFetcherAuthorizationWithEMMSupport.h; path = GoogleSignIn/Sources/GIDAppAuthFetcherAuthorizationWithEMMSupport.h; sourceTree = "<group>"; };
 		95209B8BB966524BC76543F99C75F5FE /* FSCalendar */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FSCalendar; path = FSCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95308E18DF4941319A237C1D13445DEA /* FSCalendarCollectionView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FSCalendarCollectionView.h; path = FSCalendar/FSCalendarCollectionView.h; sourceTree = "<group>"; };
+
 		972FCC051AB390A10DDE092265C67A98 /* Pods-haruSpeak_iOS-haruSpeak_iOSUITests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-haruSpeak_iOS-haruSpeak_iOSUITests"; path = Pods_haruSpeak_iOS_haruSpeak_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9758957AA8F6DFF1F519CA6594EF3AF7 /* MDFTextAccessibility-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MDFTextAccessibility-dummy.m"; sourceTree = "<group>"; };
 		979486118B3E90C08386079D57962701 /* SnapKit */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SnapKit; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+
 		9796B6717CC2D10B2335C2ACF72FBF5D /* OIDTokenResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDTokenResponse.h; path = Source/AppAuthCore/OIDTokenResponse.h; sourceTree = "<group>"; };
 		97AA515C8665FA415BB06E022BAD538D /* MDFInternationalization-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MDFInternationalization-prefix.pch"; sourceTree = "<group>"; };
 		97F52C492760DF7032516644CA5AE476 /* GIDSignInResult.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GIDSignInResult.h; path = GoogleSignIn/Sources/Public/GoogleSignIn/GIDSignInResult.h; sourceTree = "<group>"; };
@@ -1268,6 +1285,7 @@
 		FE76107E8F386B35ABFF6BE073E35BBE /* pt.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = pt.lproj; path = GoogleSignIn/Sources/Strings/pt.lproj; sourceTree = "<group>"; };
 		FE7C13165FD9A8F46D44476E4E8374E6 /* MDCCornerTreatment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCCornerTreatment.h; path = components/Shapes/src/MDCCornerTreatment.h; sourceTree = "<group>"; };
 		FE99CB65556B9F7B3ED7445CCD5FD78D /* AppAuth.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AppAuth.release.xcconfig; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1308,6 +1326,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1336,6 +1355,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+
 		91EE8E996F047DF1A3B868AA79180916 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1369,6 +1389,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+
 		D37776EE31012C0DC3ACACC053C3D870 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1405,6 +1426,7 @@
 			files = (
 				BCB86DBF7329CEAD081489872DEF9BFE /* Foundation.framework in Frameworks */,
 				C47D789205EACBF6298949D8BA4FF919 /* Security.framework in Frameworks */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1412,6 +1434,7 @@
 
 /* Begin PBXGroup section */
 		001311788287FFAA8F07CA4C3104A0AF /* MaterialComponents */ = {
+
 			isa = PBXGroup;
 			children = (
 				0DC3692B9F2A16DE007A8FE61EAFA8C8 /* AnimationTiming */,
@@ -1467,6 +1490,7 @@
 				7C4D0D41D307FBF94232912C8185E750 /* ButtonCell.xib */,
 			);
 			name = Resources;
+
 			sourceTree = "<group>";
 		};
 		09C0F8CDAAB205809A006D01D9EFAA15 /* Resources */ = {
@@ -1524,11 +1548,13 @@
 				6373AAD3FF8EE34D231FEF19D25433DB /* MaterialMath.h */,
 				3E1B95B6D293F99DF424081375D0DAE8 /* MaterialMathDummy.m */,
 				4309FF4B2852AFFF92E76CCFED26DA8A /* MDCMath.h */,
+
 			);
 			name = Math;
 			sourceTree = "<group>";
 		};
 		0DC3692B9F2A16DE007A8FE61EAFA8C8 /* AnimationTiming */ = {
+
 			isa = PBXGroup;
 			children = (
 				F5160E75BF28F3F06C20A2F33EFEDA3C /* CAMediaTimingFunction+MDCAnimationTiming.h */,
@@ -1563,6 +1589,7 @@
 				0ED14C0E5A1822AC3C74F155061FD5A4 /* SnapKit.debug.xcconfig */,
 				DAE505E3457946788166CEA331433EB2 /* SnapKit.release.xcconfig */,
 			);
+
 			name = "Support Files";
 			path = "../Target Support Files/SnapKit";
 			sourceTree = "<group>";
@@ -1617,6 +1644,7 @@
 				099D960E1B2E02D01708D76587DF01BD /* Resources */,
 				AE688F1156D3C26BAC70D78E63F17570 /* Support Files */,
 			);
+
 			name = XLPagerTabStrip;
 			path = XLPagerTabStrip;
 			sourceTree = "<group>";
@@ -1627,11 +1655,13 @@
 				BA4B7D4F7842F3B44B2FE435B7E7FB91 /* MaterialShadowElevations.h */,
 				D93A47758CF16E59967798AE4673AA3D /* MaterialShadowElevationsDummy.m */,
 				CC9C40C50D0DE97ECEF0F8B39109AE86 /* MDCShadowElevations.h */,
+
 			);
 			name = ShadowElevations;
 			sourceTree = "<group>";
 		};
 		3A6564BF82FB5329A898635600A4212B /* Ink */ = {
+
 			isa = PBXGroup;
 			children = (
 				C44D8EC68B09CBEA510BED3FC6EA2B15 /* MaterialInk.h */,
@@ -1667,6 +1697,7 @@
 				89D3AE4A2AC2E9FB3F8736CF94C5E803 /* Pods-haruSpeak_iOS-umbrella.h */,
 				2978B6DA359C82652978BC0E458DC2BE /* Pods-haruSpeak_iOS.debug.xcconfig */,
 				35E0B659172031D6862D7283565573B0 /* Pods-haruSpeak_iOS.release.xcconfig */,
+
 			);
 			name = "Pods-haruSpeak_iOS";
 			path = "Target Support Files/Pods-haruSpeak_iOS";
@@ -1682,6 +1713,7 @@
 				6E3C7AAC235B90154E3040F46D12D57B /* AppAuth-umbrella.h */,
 				18F41E8823C4C02B10AF4B8ECC652578 /* AppAuth.debug.xcconfig */,
 				FE99CB65556B9F7B3ED7445CCD5FD78D /* AppAuth.release.xcconfig */,
+
 			);
 			name = "Support Files";
 			path = "../Target Support Files/AppAuth";
@@ -1697,6 +1729,7 @@
 				DB49FD1460CEDE540DBD460000188F6C /* GoogleSignIn.debug.xcconfig */,
 				61AFC98C0D30812FAE45AEAA8F482A28 /* GoogleSignIn.release.xcconfig */,
 				BE455F52D7162848C1875F8BA71E5500 /* ResourceBundle-GoogleSignIn-GoogleSignIn-Info.plist */,
+
 			);
 			name = "Support Files";
 			path = "../Target Support Files/GoogleSignIn";
@@ -1757,6 +1790,7 @@
 				0038AEF82D989F7ABAA61F27CCC00E97 /* Typealiases.swift */,
 				63A2ED385A6CB3C9DFEF4C659EEA9BBD /* UILayoutSupport+Extensions.swift */,
 				1BE2A39312DD4462981F4A5C34960696 /* Support Files */,
+
 			);
 			name = SnapKit;
 			path = SnapKit;
@@ -1807,6 +1841,7 @@
 			children = (
 				B19158824CDDA19E8355288035FA0885 /* Core */,
 				F3DDAA1A29E002D7DC11CE3D1EB6C3D6 /* Support Files */,
+
 			);
 			name = GTMSessionFetcher;
 			path = GTMSessionFetcher;
@@ -1847,6 +1882,7 @@
 				8643D6165C6FC434B35F371F5282DBA0 /* Pods-haruSpeak_iOS-haruSpeak_iOSUITests-umbrella.h */,
 				02A13E9E06D067186671C6F1FECD9F20 /* Pods-haruSpeak_iOS-haruSpeak_iOSUITests.debug.xcconfig */,
 				5A15409D62CC414DBC3F45B4571E38BB /* Pods-haruSpeak_iOS-haruSpeak_iOSUITests.release.xcconfig */,
+
 			);
 			name = "Pods-haruSpeak_iOS-haruSpeak_iOSUITests";
 			path = "Target Support Files/Pods-haruSpeak_iOS-haruSpeak_iOSUITests";
@@ -2061,6 +2097,7 @@
 				39EA684D26B75B4840FFB3AB2F3829DD /* OIDURLQueryComponent.m */,
 				40D43F1222430EC217121A29E14AE749 /* OIDURLSessionProvider.h */,
 				055F2ED0291DFBC264856356DF417A86 /* OIDURLSessionProvider.m */,
+
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -2102,6 +2139,7 @@
 				1830482D837FA6C9E7B1A960F1236A90 /* MaterialComponents-umbrella.h */,
 				600E60F5CABF5CFDA812556392E83E8A /* MaterialComponents.debug.xcconfig */,
 				AF913A578E134008BD8A4F80BD9C2F61 /* MaterialComponents.release.xcconfig */,
+
 			);
 			name = "Support Files";
 			path = "../Target Support Files/MaterialComponents";
@@ -2118,6 +2156,7 @@
 				FCF8F6E423DCF1717E6EEEBBC5BFB0E1 /* SafariServices.framework */,
 				2D601CAECEF5AAD111B345A949F5690F /* Security.framework */,
 				7E9DD8DBAC40704D30DCA4CEECD50485 /* UIKit.framework */,
+
 			);
 			name = iOS;
 			sourceTree = "<group>";
@@ -2158,6 +2197,7 @@
 				2ADA4BC1812B29C26E9A87278161C006 /* MDCSlantedRectShapeGenerator.m */,
 				EA758A78AEEEFF572FB34A779AAE5DB6 /* MDCTriangleEdgeTreatment.h */,
 				51EA6BBCD192A33BBEC740D8DE81E80B /* MDCTriangleEdgeTreatment.m */,
+
 			);
 			name = ShapeLibrary;
 			sourceTree = "<group>";
@@ -2175,6 +2215,7 @@
 				712CF5B28FF773CEA83946CE8175BB18 /* GTMOAuth2KeychainCompatibility.h */,
 				298CF1C0DC27F2BB53473A04D7EC29CE /* GTMOAuth2KeychainCompatibility.m */,
 				BC01F768A091FC8AA058397687B84368 /* Support Files */,
+
 			);
 			name = GTMAppAuth;
 			path = GTMAppAuth;
@@ -2231,6 +2272,7 @@
 				105EF3B6F2B3196237B175FAF3E8E9AE /* GTMAppAuth-umbrella.h */,
 				23A0DF8B7F7DE4390BB4EF6BF0772BD4 /* GTMAppAuth.debug.xcconfig */,
 				33D6B2D93EBCC4141D6AEB5A6CA73C3A /* GTMAppAuth.release.xcconfig */,
+
 			);
 			name = "Support Files";
 			path = "../Target Support Files/GTMAppAuth";
@@ -2520,6 +2562,7 @@
 		};
 		21DAE4FF14902DFE0DDEBEBCEB6074E9 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
+
 			buildActionMask = 2147483647;
 			files = (
 				A0ADE174C817D317A1F11BCDD48F4108 /* GTMAppAuth.h in Headers */,
@@ -2541,6 +2584,7 @@
 		};
 		283F66161952BCC65E708C095C437A15 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
+
 			buildActionMask = 2147483647;
 			files = (
 				023569941EF2F377A6F87A87062B479A /* MDFColorCalculations.h in Headers */,
@@ -2562,6 +2606,7 @@
 		};
 		6A580A63AF4C377C0A5656869023B866 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
+
 			buildActionMask = 2147483647;
 			files = (
 				5BD985E4671C5879F20406153E3E574C /* AppAuth.h in Headers */,
@@ -3893,8 +3938,8 @@
 		0ECC13D7EDD735117F6C2E49D2CD3D43 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2978B6DA359C82652978BC0E458DC2BE /* Pods-haruSpeak_iOS.debug.xcconfig */;
+
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -3904,23 +3949,57 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-haruSpeak_iOS/Pods-haruSpeak_iOS-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/MaterialComponents/MaterialComponents-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MaterialComponents/MaterialComponents-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-haruSpeak_iOS/Pods-haruSpeak_iOS.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				MODULEMAP_FILE = "Target Support Files/MaterialComponents/MaterialComponents.modulemap";
+				PRODUCT_MODULE_NAME = MaterialComponents;
+				PRODUCT_NAME = MaterialComponents;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		082649ABF65D30C0B8732BDDADE9DC4C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CCA3DCDD76454418C07C7B4F942B5BAA /* MDFInternationalization.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/MDFInternationalization/MDFInternationalization-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MDFInternationalization/MDFInternationalization-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/MDFInternationalization/MDFInternationalization.modulemap";
+				PRODUCT_MODULE_NAME = MDFInternationalization;
+				PRODUCT_NAME = MDFInternationalization;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -4171,9 +4250,8 @@
 		548E1F6F74809CDC75999DA47159562B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 02A13E9E06D067186671C6F1FECD9F20 /* Pods-haruSpeak_iOS-haruSpeak_iOSUITests.debug.xcconfig */;
+
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -4182,23 +4260,22 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-haruSpeak_iOS-haruSpeak_iOSUITests/Pods-haruSpeak_iOS-haruSpeak_iOSUITests-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/XLPagerTabStrip/XLPagerTabStrip-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/XLPagerTabStrip/XLPagerTabStrip-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-haruSpeak_iOS-haruSpeak_iOSUITests/Pods-haruSpeak_iOS-haruSpeak_iOSUITests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				MODULEMAP_FILE = "Target Support Files/XLPagerTabStrip/XLPagerTabStrip.modulemap";
+				PRODUCT_MODULE_NAME = XLPagerTabStrip;
+				PRODUCT_NAME = XLPagerTabStrip;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -4576,6 +4653,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3149698D08BB987B1E10C120D73BA846 /* FSCalendar.release.xcconfig */;
 			buildSettings = {
+
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -4588,6 +4666,7 @@
 				INFOPLIST_FILE = "Target Support Files/FSCalendar/FSCalendar-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4596,6 +4675,7 @@
 				MODULEMAP_FILE = "Target Support Files/FSCalendar/FSCalendar.modulemap";
 				PRODUCT_MODULE_NAME = FSCalendar;
 				PRODUCT_NAME = FSCalendar;
+
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
@@ -4610,6 +4690,7 @@
 		A2E59AE2DABA2794E4EC62B9981FF842 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A2DBA51083F698D1B7C8BA09CD01614B /* MDFTextAccessibility.release.xcconfig */;
+
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -4645,6 +4726,7 @@
 		ACC628E3E41F703E9390BEECA9E86A9E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 23A0DF8B7F7DE4390BB4EF6BF0772BD4 /* GTMAppAuth.debug.xcconfig */;
+
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -4677,6 +4759,7 @@
 			name = Debug;
 		};
 		B25E0C556C8E3FF9875929F897404A56 /* Release */ = {
+
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5A15409D62CC414DBC3F45B4571E38BB /* Pods-haruSpeak_iOS-haruSpeak_iOSUITests.release.xcconfig */;
 			buildSettings = {
@@ -4717,6 +4800,7 @@
 		C787002FA4C4FE6BC561E4294D831DFB /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FE99CB65556B9F7B3ED7445CCD5FD78D /* AppAuth.release.xcconfig */;
+
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -4752,6 +4836,7 @@
 		CA725B7B45F9402C4C6513850C1A8F94 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7E6CA971E4A27D830B262615A0308408 /* GTMSessionFetcher.debug.xcconfig */;
+
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -4783,9 +4868,45 @@
 			};
 			name = Debug;
 		};
+		A2E59AE2DABA2794E4EC62B9981FF842 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C55644F5AC293CC4A123865B25FC521 /* MDFTextAccessibility.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/MDFTextAccessibility/MDFTextAccessibility-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MDFTextAccessibility/MDFTextAccessibility-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/MDFTextAccessibility/MDFTextAccessibility.modulemap";
+				PRODUCT_MODULE_NAME = MDFTextAccessibility;
+				PRODUCT_NAME = MDFTextAccessibility;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		CB8A79F7382B0A1227C38D59E7968EEA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0ED14C0E5A1822AC3C74F155061FD5A4 /* SnapKit.debug.xcconfig */;
+
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -4818,9 +4939,26 @@
 			};
 			name = Debug;
 		};
+		D319C860803D16E1745632DA8D475A63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0B8DBBAD2A93DCD1496009538D3D5791 /* XLPagerTabStrip.debug.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/XLPagerTabStrip";
+				IBSC_MODULE = XLPagerTabStrip;
+				INFOPLIST_FILE = "Target Support Files/XLPagerTabStrip/ResourceBundle-XLPagerTabStrip-XLPagerTabStrip-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				PRODUCT_NAME = XLPagerTabStrip;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
 		DFFD31690F9CC8449FD1F803388E1D46 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DAE505E3457946788166CEA331433EB2 /* SnapKit.release.xcconfig */;
+
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -4847,6 +4985,44 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E887897C4D5C318748398232A5DEA881 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5A15409D62CC414DBC3F45B4571E38BB /* Pods-haruSpeak_iOS-haruSpeak_iOSUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-haruSpeak_iOS-haruSpeak_iOSUITests/Pods-haruSpeak_iOS-haruSpeak_iOSUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-haruSpeak_iOS-haruSpeak_iOSUITests/Pods-haruSpeak_iOS-haruSpeak_iOSUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -4895,6 +5071,7 @@
 		F1A3D2A4AB6EAB9F0503E49A9B3E69F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9E9189521B01B06B2D8E06A3FD04E105 /* XLPagerTabStrip.debug.xcconfig */;
+
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -4930,6 +5107,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 33D6B2D93EBCC4141D6AEB5A6CA73C3A /* GTMAppAuth.release.xcconfig */;
 			buildSettings = {
+
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -4942,6 +5120,7 @@
 				INFOPLIST_FILE = "Target Support Files/GTMAppAuth/GTMAppAuth-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4960,6 +5139,7 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+
 		};
 /* End XCBuildConfiguration section */
 
@@ -4973,6 +5153,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+
 		29235CC975477CF0AE111D8533A857C9 /* Build configuration list for PBXNativeTarget "MDFInternationalization" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -5009,6 +5190,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+
 		44C9DF07DE817F8F0612E562C65FC75E /* Build configuration list for PBXNativeTarget "Pods-haruSpeak_iOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -5057,6 +5239,7 @@
 		868197A4EC1EC17DD1687EE9A7768605 /* Build configuration list for PBXNativeTarget "MaterialComponents" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
+
 				0576FC6BA8D4D438AF2E128914865283 /* Debug */,
 				7EEBCF268F628351DC265E4B88E6AEA5 /* Release */,
 			);
@@ -5077,6 +5260,7 @@
 			buildConfigurations = (
 				3116465253E5D2735E81E263946C254A /* Debug */,
 				C787002FA4C4FE6BC561E4294D831DFB /* Release */,
+
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -5090,6 +5274,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+
 		CB462C476AF3C11BCDEAFF522291C9B1 /* Build configuration list for PBXNativeTarget "GTMSessionFetcher" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -5104,6 +5289,7 @@
 			buildConfigurations = (
 				0ECC13D7EDD735117F6C2E49D2CD3D43 /* Debug */,
 				025EA2B5AEBF9003EBDBD2635E845663 /* Release */,
+
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -5113,6 +5299,7 @@
 			buildConfigurations = (
 				5CA0DF9E981B8FEA7F0E9A5D37503B13 /* Debug */,
 				A2E59AE2DABA2794E4EC62B9981FF842 /* Release */,
+
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

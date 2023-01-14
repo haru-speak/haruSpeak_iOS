@@ -8,11 +8,11 @@
 import UIKit
 
 final class RecordCell: UICollectionViewCell {
-    //MARK: - Properties
+//MARK: - Properties
     static let identifier = "RecordCell"
     
-    let playButton = UIButton(type: .system).then{
-        $0.setImage(UIImage(named: "play")?.withRenderingMode(.alwaysOriginal), for: .normal)
+    let playButton = UIImageView().then{
+        $0.image = UIImage(named: "play")?.withRenderingMode(.alwaysOriginal)
     }
     let title = UILabel().then{
         $0.text = "Nothing beats \"AboutTime\""
@@ -38,9 +38,16 @@ final class RecordCell: UICollectionViewCell {
         $0.textColor = .lightGray
     }
     let heart = UIImageView().then{
-        $0.image = UIImage(named: "heart.fill")?.withRenderingMode(.alwaysOriginal)
+        $0.image = UIImage(named: "heart")?.withRenderingMode(.alwaysOriginal)
     }
+//MARK: - ButtonArray
+    let playButtonArray = ["play","pause"]
+    var playindex = 0
+    let heartButtonArray = ["heart","heart.fill"]
+    var heartindex = 0
     
+    
+//MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupView()
@@ -52,7 +59,25 @@ final class RecordCell: UICollectionViewCell {
     }
     
     //MARK: - Selector
-    
+    @objc func didClickPlay(sender: UITapGestureRecognizer) {
+        self.playindex = (self.playindex >= self.playButtonArray.count-1) ? 0 : self.playindex+1
+        self.playButton.image = UIImage(named:playButtonArray[playindex])
+        if playindex == 0{
+            print("clickPause")
+        }else{
+            print("clickPlay")
+        }
+        
+        }
+    @objc func didClickheart(sender: UITapGestureRecognizer) {
+        self.heartindex = (self.heartindex >= self.heartButtonArray.count-1) ? 0 : self.heartindex+1
+        self.heart.image = UIImage(named:heartButtonArray[heartindex])
+        if self.heartindex == 0{
+            print("clickUnlike")
+        }else{
+            print("clickLike")
+        }
+        }
     
     //MARK: - addSubView
     private func setupView(){
@@ -108,10 +133,16 @@ final class RecordCell: UICollectionViewCell {
         
     }
     
-    
-    
     //MARK: - AddTarget
     private func addTarget(){
+        let playBtn = UITapGestureRecognizer(target: self, action: #selector(didClickPlay))
+        playButton.isUserInteractionEnabled = true
+        playButton.addGestureRecognizer(playBtn)
         
+        let heartBtn = UITapGestureRecognizer(target: self, action: #selector(didClickheart))
+        heart.isUserInteractionEnabled = true
+        heart.addGestureRecognizer(heartBtn)
+        
+        }
     }
-}
+
