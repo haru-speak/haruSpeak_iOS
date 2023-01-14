@@ -20,15 +20,15 @@ final class StudyCustomTabbar: UIView {
     
     private let myStudyButton = UIButton(type: .system).then {
         $0.setTitle("내 스터디", for: .normal)
-        $0.setTitleColor(.black, for: .normal)
-        $0.titleLabel?.font = .appleSDGothicNeo(size: 14, family: .Bold)
+        $0.setTitleColor(.white, for: .normal)
+        $0.titleLabel?.font = .appleSDGothicNeo(size: 20, family: .Bold)
         $0.tag = 0
     }
     
     private let searchButton = UIButton(type: .system).then {
         $0.setTitle("둘러보기", for: .normal)
-        $0.setTitleColor(.black, for: .normal)
-        $0.titleLabel?.font = UIFont.appleSDGothicNeo(size: 14)
+        $0.setTitleColor(.lightGray, for: .normal)
+        $0.titleLabel?.font = UIFont.appleSDGothicNeo(size: 20)
         $0.tag = 1
     }
     
@@ -50,7 +50,7 @@ final class StudyCustomTabbar: UIView {
     override func layoutSubviews() {
         if self.lineLayer == nil {
             _ = CALayer().then {
-                $0.backgroundColor = UIColor.black.cgColor
+                $0.backgroundColor = UIColor.mainColor.cgColor
                 self.layer.addSublayer($0)
                 self.lineLayer = $0
                 $0.frame = CGRect(x: 0,
@@ -62,7 +62,7 @@ final class StudyCustomTabbar: UIView {
         
         if self.indicatorLayer == nil {
             _ = CALayer().then {
-                $0.backgroundColor = UIColor.black.cgColor
+                $0.backgroundColor = UIColor.white.cgColor
                 self.layer.addSublayer($0)
                 self.indicatorLayer = $0
                 $0.frame = CGRect(x: 0,
@@ -82,11 +82,11 @@ final class StudyCustomTabbar: UIView {
                                               height: 2)
         }
         
-        self.myStudyButton.setTitleColor(.black, for: .normal)
-        self.myStudyButton.titleLabel?.font = .appleSDGothicNeo(size: 14, family: .Bold)
+        self.myStudyButton.setTitleColor(.lightGray, for: .normal)
+        self.myStudyButton.titleLabel?.font = .appleSDGothicNeo(size: 20, family: .Bold)
         
         self.searchButton.setTitleColor(.white, for: .normal)
-        self.searchButton.titleLabel?.font = .appleSDGothicNeo(size: 14)
+        self.searchButton.titleLabel?.font = .appleSDGothicNeo(size: 20, family: .Bold)
         
         self.selectedItem = .myStudy
     }
@@ -100,10 +100,10 @@ final class StudyCustomTabbar: UIView {
         }
         
         self.myStudyButton.setTitleColor(.white, for: .normal)
-        self.myStudyButton.titleLabel?.font = .appleSDGothicNeo(size: 14)
+        self.myStudyButton.titleLabel?.font = .appleSDGothicNeo(size: 20, family: .Bold)
         
-        self.searchButton.setTitleColor(.black, for: .normal)
-        self.searchButton.titleLabel?.font = .appleSDGothicNeo(size: 14, family: .Bold)
+        self.searchButton.setTitleColor(.lightGray, for: .normal)
+        self.searchButton.titleLabel?.font = .appleSDGothicNeo(size: 20, family: .Bold)
         
         self.selectedItem = .search
     }
@@ -111,8 +111,8 @@ final class StudyCustomTabbar: UIView {
     //MARK: - Selector
     @objc private func didClickTopTabBar(_ button: UIButton) {
         switch button.tag {
-        case 0: self.highlightMyStudy()
-        case 1: self.highlightSearch()
+        case 0: self.highlightSearch()
+        case 1: self.highlightMyStudy()
         default: break
         }
     }

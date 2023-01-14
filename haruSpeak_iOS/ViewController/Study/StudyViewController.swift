@@ -66,8 +66,8 @@ class StudyViewController: UIViewController{
         self.searchView.snp.makeConstraints{
             $0.top.equalTo(self.topView.snp.top).offset(55)
             $0.leading.equalTo(self.topView.snp.leading).offset(16)
-            $0.size.height.equalTo(14)
-            $0.size.width.equalTo(110)
+            $0.height.equalTo(24)
+            $0.width.equalToSuperview().dividedBy(3)
         }
         self.addFileButton.snp.makeConstraints{
             $0.top.equalTo(self.topView.snp.top).offset(55)
@@ -82,9 +82,9 @@ class StudyViewController: UIViewController{
             $0.trailing.equalTo(self.topView.snp.trailing).offset(-20)
         }
         self.tabbar.snp.makeConstraints{
-            $0.top.equalTo(self.searchView.snp.bottom).offset(16)
+            $0.top.equalTo(self.searchView.snp.bottom).offset(24)
+            $0.width.equalToSuperview().dividedBy(2)
             $0.leading.equalTo(self.topView.snp.leading).offset(30)
-            $0.trailing.equalTo(self.topView.snp.trailing).offset(30)
         }
 
         
