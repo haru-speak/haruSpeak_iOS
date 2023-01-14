@@ -52,12 +52,14 @@ PODS:
   - MDFTextAccessibility (2.0.1)
   - SnapKit (5.0.1)
   - Then (3.0.0)
+  - XLPagerTabStrip (9.0.0)
 
 DEPENDENCIES:
   - FSCalendar
   - MaterialComponents/Buttons
   - SnapKit (~> 5.0.0)
   - Then
+  - XLPagerTabStrip (~> 9.0)
 
 SPEC REPOS:
   trunk:
@@ -67,6 +69,7 @@ SPEC REPOS:
     - MDFTextAccessibility
     - SnapKit
     - Then
+    - XLPagerTabStrip
 
 SPEC CHECKSUMS:
   FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
@@ -75,7 +78,8 @@ SPEC CHECKSUMS:
   MDFTextAccessibility: f4bb4cc2194286651b59a215fdeaa0e05dc90ba5
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
+  XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
 
-PODFILE CHECKSUM: f3a0657cd7a4fd05ade54fa170376d44a19e4d70
+PODFILE CHECKSUM: 25d4fe91edc8b43ff7001648303c5d9d52e1a67c
 
 COCOAPODS: 1.11.3

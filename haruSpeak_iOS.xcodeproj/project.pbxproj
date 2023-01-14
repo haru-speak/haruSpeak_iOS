@@ -13,6 +13,7 @@
 		E51CE8BD296F77B500ADB07B /* CustomTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51CE8BC296F77B500ADB07B /* CustomTabbar.swift */; };
 		E51CE8BF296FBED100ADB07B /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51CE8BE296FBED100ADB07B /* RecordCell.swift */; };
 		E51CE8C92971038A00ADB07B /* ClickRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51CE8C82971038A00ADB07B /* ClickRecordViewController.swift */; };
+		E537182A297151DB00CD95F5 /* StudyCustomTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5371829297151DB00CD95F5 /* StudyCustomTabbar.swift */; };
 		E5862C5D296ED0C900095439 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5862C5C296ED0C900095439 /* AppDelegate.swift */; };
 		E5862C5F296ED0C900095439 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5862C5E296ED0C900095439 /* SceneDelegate.swift */; };
 		E5862C61296ED0C900095439 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5862C60296ED0C900095439 /* ViewController.swift */; };
@@ -62,6 +63,7 @@
 		E51CE8BC296F77B500ADB07B /* CustomTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabbar.swift; sourceTree = "<group>"; };
 		E51CE8BE296FBED100ADB07B /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
 		E51CE8C82971038A00ADB07B /* ClickRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickRecordViewController.swift; sourceTree = "<group>"; };
+		E5371829297151DB00CD95F5 /* StudyCustomTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyCustomTabbar.swift; sourceTree = "<group>"; };
 		E5862C59296ED0C900095439 /* haruSpeak_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = haruSpeak_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5862C5C296ED0C900095439 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5862C5E296ED0C900095439 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 		E5E984C6296EDEEC00E5DE83 /* Study */ = {
 			isa = PBXGroup;
 			children = (
+				E5371829297151DB00CD95F5 /* StudyCustomTabbar.swift */,
 			);
 			path = Study;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E51CE8BD296F77B500ADB07B /* CustomTabbar.swift in Sources */,
+				E537182A297151DB00CD95F5 /* StudyCustomTabbar.swift in Sources */,
 				E5E984DC296EE2AF00E5DE83 /* StudyViewController.swift in Sources */,
 				E5862C67296ED0C900095439 /* haruSpeak_iOS.xcdatamodeld in Sources */,
 				E5E984BD296ED9B500E5DE83 /* TempModel.swift in Sources */,
