@@ -10,6 +10,9 @@ import UIKit
 import SnapKit
 import Then
 import GoogleSignIn
+import KakaoSDKAuth
+import KakaoSDKUser
+import KakaoSDKCommon
 
 class AuthenticationViewController: UIViewController{
     
@@ -34,7 +37,7 @@ class AuthenticationViewController: UIViewController{
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
         $0.layer.cornerRadius = 22.5
-        $0.backgroundColor = .systemBlue
+        $0.backgroundColor = .mainColor
         $0.tag = 0
     }
     let KakaoTalkLogin = UIButton(type: .system).then{
@@ -42,7 +45,7 @@ class AuthenticationViewController: UIViewController{
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo", size: 16)
         $0.layer.cornerRadius = 22.5
-        $0.backgroundColor = .yellow
+        $0.backgroundColor = .KakaoColor
         $0.tag = 0
     }
     let AppleLogin = UIButton(type: .system).then{
@@ -58,7 +61,7 @@ class AuthenticationViewController: UIViewController{
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo", size: 16)
         $0.layer.cornerRadius = 22.5
-        $0.backgroundColor = .systemGreen
+        $0.backgroundColor = .NaverColor
         $0.tag = 0
     }
     let GoogleLogin = UIButton(type: .system).then{
@@ -107,6 +110,39 @@ class AuthenticationViewController: UIViewController{
 
         // If sign in succeeded, display the app's main content View.
     }
+    
+    @objc func kakaoLoginButtonTapped(){
+        // isKakaoTalkLoginAvailable() : 카톡 설치 되어있으면 true
+        if (UserApi.isKakaoTalkLoginAvailable()) {
+            
+            //카톡 설치되어있으면 -> 카톡으로 로그인
+            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
+                if let error = error {
+                    print(error)
+                } else {
+                    print("카카오 톡으로 로그인 성공")
+                    
+                    _ = oauthToken
+                    /// 로그인 관련 메소드 추가
+                }
+            }
+        } else {
+
+            // 카톡 없으면 -> 계정으로 로그인
+            UserApi.shared.loginWithKakaoAccount { (oauthToken, error) in
+                if let error = error {
+                    print(error)
+                } else {
+                    print("카카오 계정으로 로그인 성공")
+                    
+                    _ = oauthToken
+                    // 관련 메소드 추가
+                }
+            }
+        }
+    }
+    
+    
     
     @objc func joinMembershipButtonTapped(){
         self.navigationController?.pushViewController(MembershipViewController(), animated: true)
@@ -195,6 +231,7 @@ class AuthenticationViewController: UIViewController{
     private func addTarget(){
         self.emailLogin.addTarget(self, action: #selector(self.emailLoginButtonTapped), for: .touchUpInside)
         self.GoogleLogin.addTarget(self, action: #selector(self.googleLoginButtonTapped), for: .touchUpInside)
+        self.KakaoTalkLogin.addTarget(self, action: #selector(self.kakaoLoginButtonTapped), for: .touchUpInside)
         self.joinMembership.addTarget(self, action: #selector(self.joinMembershipButtonTapped), for: .touchUpInside)
     }
     
