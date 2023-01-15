@@ -34,7 +34,7 @@ class AuthenticationViewController: UIViewController{
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
         $0.layer.cornerRadius = 22.5
-        $0.backgroundColor = .systemBlue
+        $0.backgroundColor = .mainColor
         $0.tag = 0
     }
     let KakaoTalkLogin = UIButton(type: .system).then{
@@ -42,7 +42,7 @@ class AuthenticationViewController: UIViewController{
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo", size: 16)
         $0.layer.cornerRadius = 22.5
-        $0.backgroundColor = .yellow
+        $0.backgroundColor = .KakaoColor
         $0.tag = 0
     }
     let AppleLogin = UIButton(type: .system).then{
@@ -58,7 +58,7 @@ class AuthenticationViewController: UIViewController{
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo", size: 16)
         $0.layer.cornerRadius = 22.5
-        $0.backgroundColor = .systemGreen
+        $0.backgroundColor = .NaverColor
         $0.tag = 0
     }
     let GoogleLogin = UIButton(type: .system).then{

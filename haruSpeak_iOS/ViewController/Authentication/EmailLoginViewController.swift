@@ -44,7 +44,7 @@ class EmailLoginViewController: UIViewController{
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
         $0.layer.cornerRadius = 7
-        $0.backgroundColor = .systemBlue
+        $0.backgroundColor = .mainColor
         $0.tag = 0
     }
     let joinMembership = UIButton(type: .system).then{
