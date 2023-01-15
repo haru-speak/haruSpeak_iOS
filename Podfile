@@ -12,6 +12,9 @@ target 'haruSpeak_iOS' do
 	pod 'MaterialComponents/Buttons'
 	pod 'XLPagerTabStrip', '~> 9.0'
 	pod 'GoogleSignIn'
+	pod 'KakaoSDKAuth'
+	pod 'KakaoSDKUser'
+
   target 'haruSpeak_iOSTests' do
     inherit! :search_paths
     # Pods for testing
