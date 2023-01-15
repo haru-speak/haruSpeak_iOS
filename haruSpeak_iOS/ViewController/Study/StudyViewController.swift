@@ -52,7 +52,7 @@ class StudyViewController: UIViewController{
         $0.backgroundColor = .white
     }
     let testView = MyStudyBottomView()
-    
+
     
     
     
@@ -108,7 +108,6 @@ class StudyViewController: UIViewController{
         bottomView.addSubview(self.blueView)
         bottomView.addSubview(self.studyCollectionView)
         bottomView.addSubview(self.testView)
-        
         
     }
     
