@@ -9,4 +9,6 @@ import UIKit
 
 extension UIColor {
     class var mainColor: UIColor { return UIColor(named: "main") ?? UIColor() }
+    class var KakaoColor: UIColor { return UIColor(named: "Kakao") ?? UIColor()}
+    class var NaverColor: UIColor { return UIColor(named: "Naver") ?? UIColor()}
 }
