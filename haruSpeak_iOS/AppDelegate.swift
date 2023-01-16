@@ -10,6 +10,7 @@ import CoreData
 import GoogleSignIn
 import KakaoSDKCommon
 import KakaoSDKAuth
+import AuthenticationServices
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -19,7 +20,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
     
         KakaoSDK.initSDK(appKey: "${NATIVE_APP_KEY}")
-        
+        //MARK: ForAppleLogin
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+                //forUserID = userIdentifier
+                appleIDProvider.getCredentialState(forUserID: "001281.9301aaa1f617423c9c7a64b671b6eb84.0758") { (credentialState, error) in
+                    switch credentialState {
+                    case .authorized:
+                        // The Apple ID credential is valid.
+                        print("해당 ID는 연동되어있습니다.")
+                    case .revoked:
+                        // The Apple ID credential is either revoked or was not found, so show the sign-in UI.
+                        print("해당 ID는 연동되어있지않습니다.")
+                    case .notFound:
+                        // The Apple ID credential is either was not found, so show the sign-in UI.
+                        print("해당 ID를 찾을 수 없습니다.")
+                    default:
+                        break
+                    }
+                }
+                //앱 실행 중 강제로 연결 취소 시
+                NotificationCenter.default.addObserver(forName: ASAuthorizationAppleIDProvider.credentialRevokedNotification, object: nil, queue: nil) { (Notification) in
+                    print("Revoked Notification")
+                    // 로그인 페이지로 이동
+                }
         return true
     }
 

@@ -65,6 +65,7 @@
 		68BD8E042971B80400939DFB /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		68BD8E0D2972F30B00939DFB /* MembershipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipViewController.swift; sourceTree = "<group>"; };
 		68BD8E0F2972F33800939DFB /* EmailLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginViewController.swift; sourceTree = "<group>"; };
+		68BD8E132974FC5D00939DFB /* haruSpeak_iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = haruSpeak_iOS.entitlements; sourceTree = "<group>"; };
 		69211967B5E3367D949CA34A /* Pods_haruSpeak_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_haruSpeak_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77AA8A0B5111D220ACA4BB9D /* Pods-haruSpeak_iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-haruSpeak_iOSTests.release.xcconfig"; path = "Target Support Files/Pods-haruSpeak_iOSTests/Pods-haruSpeak_iOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		8A6B465F8597583EE4AAAE4B /* Pods-haruSpeak_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-haruSpeak_iOS.release.xcconfig"; path = "Target Support Files/Pods-haruSpeak_iOS/Pods-haruSpeak_iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -205,6 +206,7 @@
 		E5862C5B296ED0C900095439 /* haruSpeak_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				68BD8E132974FC5D00939DFB /* haruSpeak_iOS.entitlements */,
 				E5E984B0296ED8DB00E5DE83 /* Resource */,
 				E5E984B1296ED8EC00E5DE83 /* Services */,
 				E5E984B3296ED92C00E5DE83 /* Utilities */,
@@ -802,6 +804,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = haruSpeak_iOS/haruSpeak_iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6CNX5P6BQG;
@@ -831,6 +834,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = haruSpeak_iOS/haruSpeak_iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6CNX5P6BQG;
