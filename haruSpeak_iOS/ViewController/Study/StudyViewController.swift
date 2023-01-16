@@ -159,7 +159,7 @@ class StudyViewController: UIViewController{
             $0.size.height.equalTo(227)
         }
         self.testView.snp.makeConstraints{
-            $0.size.height.equalTo(800)
+            $0.size.height.equalTo(700)
             $0.bottom.equalToSuperview()
             $0.top.equalTo(self.studyCollectionView.snp.bottom).offset(10)
             $0.leading.trailing.equalToSuperview()

@@ -40,11 +40,15 @@ final class RecordCell: UICollectionViewCell {
     let heart = UIImageView().then{
         $0.image = UIImage(named: "heart")?.withRenderingMode(.alwaysOriginal)
     }
+    let line = UIView().then{
+        $0.backgroundColor = UIColor.lightGray
+    }
 //MARK: - ButtonArray
     let playButtonArray = ["play","pause"]
     var playindex = 0
     let heartButtonArray = ["heart","heart.fill"]
     var heartindex = 0
+    
     
     
 //MARK: - Init
@@ -89,6 +93,7 @@ final class RecordCell: UICollectionViewCell {
         view1.addSubview(self.comment)
         view1.addSubview(self.commentLabel)
         self.addSubview(self.heart)
+        self.addSubview(self.line)
     }
     
     //MARK: - layout
@@ -128,6 +133,13 @@ final class RecordCell: UICollectionViewCell {
         self.heart.snp.makeConstraints{
             $0.trailing.equalToSuperview().offset(-33)
             $0.top.equalToSuperview().offset(20)
+        }
+        
+        self.line.snp.makeConstraints{
+            $0.bottom.equalToSuperview().offset(0)
+            $0.size.height.equalTo(1)
+            $0.leading.equalToSuperview().offset(13)
+            $0.trailing.equalToSuperview().offset(-13)
         }
         
         

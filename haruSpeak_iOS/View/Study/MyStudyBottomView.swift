@@ -50,6 +50,21 @@ final class MyStudyBottomView: UIView{
         $0.layer.shadowOpacity = 0.3
         $0.layer.shadowRadius = 1.0
     }
+    
+    let thisWeekObjectiveLabel = UILabel().then{
+        $0.text = "승연님의 이번주 목표 달성량"
+        $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 20)
+    }
+    let thisWeekObjectiveView = UIView().then{
+        $0.backgroundColor = .white
+        $0.layer.borderColor = UIColor.mainColor.cgColor
+        $0.layer.borderWidth = 1
+        $0.roundCorners(cornerRadius: 20, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
+    }
+    let thisWeekResultLabel = UILabel().then{
+        $0.text = "참여 중인 스터디의 모든 과제를 완료했습니다!"
+        $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 13)
+    }
 
     //MARK: - Init
     override init(frame: CGRect) {
@@ -62,11 +77,17 @@ final class MyStudyBottomView: UIView{
         let attributedStr = NSMutableAttributedString(string: titleLabel.text!)
         attributedStr.addAttribute(.foregroundColor, value: UIColor.mainColor, range: (titleLabel.text! as NSString).range(of: "해야할 과제가"))
         titleLabel.attributedText = attributedStr
+        
+        let attributedStr1 = NSMutableAttributedString(string: thisWeekObjectiveLabel.text!)
+        attributedStr1.addAttribute(.foregroundColor, value: UIColor.mainColor, range: (thisWeekObjectiveLabel.text! as NSString).range(of: "이번주 목표 달성량"))
+        thisWeekObjectiveLabel.attributedText = attributedStr1
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    //MARK: - 
     
     
     //MARK: - Selector
@@ -79,6 +100,9 @@ final class MyStudyBottomView: UIView{
         self.addSubview(self.assignmentView2)
         self.addSubview(self.assignmentView3)
         self.addSubview(self.assignmentMoreButtonLabel)
+        self.addSubview(self.thisWeekObjectiveLabel)
+        self.addSubview(self.thisWeekObjectiveView)
+        self.addSubview(self.thisWeekResultLabel)
     }
     
     //MARK: - Layout
@@ -108,6 +132,22 @@ final class MyStudyBottomView: UIView{
             $0.leading.equalToSuperview().offset(109)
             $0.size.height.equalTo(42)
         }
+        self.thisWeekObjectiveLabel.snp.makeConstraints{
+            $0.top.equalTo(self.assignmentMoreButtonLabel.snp.bottom).offset(46)
+            $0.leading.equalToSuperview().offset(34)
+        }
+        self.thisWeekObjectiveView.snp.makeConstraints{
+            $0.top.equalTo(self.thisWeekObjectiveLabel.snp.bottom).offset(10)
+            $0.centerX.equalToSuperview()
+            $0.leading.equalToSuperview().offset(30)
+            $0.trailing.equalToSuperview().offset(-30)
+            $0.size.height.equalTo(209)
+        }
+        self.thisWeekResultLabel.snp.makeConstraints{
+            $0.top.equalTo(self.thisWeekObjectiveView.snp.top).offset(8)
+            $0.leading.equalTo(self.thisWeekObjectiveView.snp.leading).offset(17)
+        }
+        
     }
     
     
