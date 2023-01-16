@@ -31,6 +31,7 @@
 		E5862C83296ED0CB00095439 /* haruSpeak_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5862C82296ED0CB00095439 /* haruSpeak_iOSUITestsLaunchTests.swift */; };
 		E59D36242974016E00A012C4 /* MyStudyBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59D36232974016E00A012C4 /* MyStudyBottomView.swift */; };
 		E59D362629742C3B00A012C4 /* AssignmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59D362529742C3B00A012C4 /* AssignmentView.swift */; };
+		E59D3628297583D200A012C4 /* SearchStudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59D3627297583D200A012C4 /* SearchStudyViewController.swift */; };
 		E5E984B6296ED95300E5DE83 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E984B5296ED95300E5DE83 /* UIColor+.swift */; };
 		E5E984B8296ED95D00E5DE83 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E984B7296ED95D00E5DE83 /* UIFont+.swift */; };
 		E5E984BB296ED9A900E5DE83 /* TempService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E984BA296ED9A900E5DE83 /* TempService.swift */; };
@@ -93,6 +94,7 @@
 		E5862C82296ED0CB00095439 /* haruSpeak_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = haruSpeak_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E59D36232974016E00A012C4 /* MyStudyBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStudyBottomView.swift; sourceTree = "<group>"; };
 		E59D362529742C3B00A012C4 /* AssignmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentView.swift; sourceTree = "<group>"; };
+		E59D3627297583D200A012C4 /* SearchStudyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStudyViewController.swift; sourceTree = "<group>"; };
 		E5E984B5296ED95300E5DE83 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		E5E984B7296ED95D00E5DE83 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		E5E984BA296ED9A900E5DE83 /* TempService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempService.swift; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				E5E984DB296EE2AF00E5DE83 /* StudyViewController.swift */,
+				E59D3627297583D200A012C4 /* SearchStudyViewController.swift */,
 			);
 			path = Study;
 			sourceTree = "<group>";
@@ -614,6 +617,7 @@
 				68BD8E0E2972F30B00939DFB /* MembershipViewController.swift in Sources */,
 				68BD8E102972F33800939DFB /* EmailLoginViewController.swift in Sources */,
 				E5E984BD296ED9B500E5DE83 /* TempModel.swift in Sources */,
+				E59D3628297583D200A012C4 /* SearchStudyViewController.swift in Sources */,
 				E5862C61296ED0C900095439 /* ViewController.swift in Sources */,
 				E5862C5D296ED0C900095439 /* AppDelegate.swift in Sources */,
 				E5862C5F296ED0C900095439 /* SceneDelegate.swift in Sources */,
