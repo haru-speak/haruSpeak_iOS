@@ -76,6 +76,7 @@ PODS:
     - MDFTextAccessibility
   - MDFInternationalization (3.0.0)
   - MDFTextAccessibility (2.0.1)
+  - naveridlogin-sdk-ios (4.1.5)
   - SnapKit (5.0.1)
   - Then (3.0.0)
   - XLPagerTabStrip (9.0.0)
@@ -86,6 +87,7 @@ DEPENDENCIES:
   - KakaoSDKAuth
   - KakaoSDKUser
   - MaterialComponents/Buttons
+  - naveridlogin-sdk-ios
   - SnapKit (~> 5.0.0)
   - Then
   - XLPagerTabStrip (~> 9.0)
@@ -104,6 +106,7 @@ SPEC REPOS:
     - MaterialComponents
     - MDFInternationalization
     - MDFTextAccessibility
+    - naveridlogin-sdk-ios
     - SnapKit
     - Then
     - XLPagerTabStrip
@@ -121,10 +124,11 @@ SPEC CHECKSUMS:
   MaterialComponents: 1a9b2d9d45b1601ae544de85089adc4c464306d4
   MDFInternationalization: d697c55307816222a55685c4ccb1044ffb030c12
   MDFTextAccessibility: f4bb4cc2194286651b59a215fdeaa0e05dc90ba5
+  naveridlogin-sdk-ios: 4351fe7162cd6b8b6dbb37bd7cc205304fa1d889
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
 
-PODFILE CHECKSUM: 11178715f898e5a3823a0881585b22ce21aa1085
+PODFILE CHECKSUM: 7afe834e096078426f9bd967a8ce177bef23528e
 
 COCOAPODS: 1.11.3

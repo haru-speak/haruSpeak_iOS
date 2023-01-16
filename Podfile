@@ -14,6 +14,7 @@ target 'haruSpeak_iOS' do
 	pod 'GoogleSignIn'
 	pod 'KakaoSDKAuth'
 	pod 'KakaoSDKUser'
+	pod 'naveridlogin-sdk-ios'
 
   target 'haruSpeak_iOSTests' do
     inherit! :search_paths
