@@ -567,6 +567,7 @@
 		FEFC55BE8E0DE9F7C8038B6C1B186B87 /* UIView+MDCTimingFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 675368B0638709E49AE90D01B185C34B /* UIView+MDCTimingFunction.m */; };
 		FF305344EB9FD3AB37C8D9F2879D4FAF /* tr.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 750BB052C5D85FE3F7148824C993FE41 /* tr.lproj */; };
 		FF40CFC5A1F2335697BD443A99985CAC /* MDCRippleTouchController.h in Headers */ = {isa = PBXBuildFile; fileRef = 66B2CC7741B3B256CDD04314E3C1A1A2 /* MDCRippleTouchController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -893,6 +894,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+
 		00029DAC2124E2F8D9DDFB7FBE43AE64 /* FSCalendarCollectionView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FSCalendarCollectionView.h; path = FSCalendar/FSCalendarCollectionView.h; sourceTree = "<group>"; };
 		00392FC55A972D0B176369BAEE0F888F /* ButtonBarViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ButtonBarViewCell.swift; path = Sources/ButtonBarViewCell.swift; sourceTree = "<group>"; };
 		0040A69987A7F4521C4A16F984C3A5D8 /* OIDURLQueryComponent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDURLQueryComponent.m; path = Source/AppAuthCore/OIDURLQueryComponent.m; sourceTree = "<group>"; };
@@ -1060,6 +1062,7 @@
 		3E9DEB125975ADFB7245C030653A96A6 /* MDCFontTraits.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCFontTraits.h; path = components/Typography/src/private/MDCFontTraits.h; sourceTree = "<group>"; };
 		3E9FE0B0B9D4D564374C731F2740808C /* AppAuth.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = AppAuth.modulemap; sourceTree = "<group>"; };
 		3F37498B76DC79DEB579D3FDB4FD124F /* Pods-haruSpeak_iOSTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-haruSpeak_iOSTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+
 		3F93B805DB7D8BDC7BE97399B318C497 /* Then.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Then.release.xcconfig; sourceTree = "<group>"; };
 		3FB4D821BF4F45F5894CB86FD7D81D42 /* MaterialRipple.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MaterialRipple.h; path = components/Ripple/src/MaterialRipple.h; sourceTree = "<group>"; };
 		3FD1B4C1246D643E9476438C28048FA8 /* AppAuth */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AppAuth; path = AppAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1069,6 +1072,7 @@
 		4142FBF91AA6AE461C457A1413809BA0 /* MDCShapedShadowLayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCShapedShadowLayer.m; path = components/Shapes/src/MDCShapedShadowLayer.m; sourceTree = "<group>"; };
 		4176651DC19E2048AE330A54FD027BF5 /* FSCalendarHeaderView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FSCalendarHeaderView.m; path = FSCalendar/FSCalendarHeaderView.m; sourceTree = "<group>"; };
 		41A904D621628FB20ECDA63E62B7F824 /* OIDDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDDefines.h; path = Source/AppAuthCore/OIDDefines.h; sourceTree = "<group>"; };
+
 		41D7E402A854BED4027660C48513C819 /* Pods-haruSpeak_iOS-haruSpeak_iOSUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-haruSpeak_iOS-haruSpeak_iOSUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		41E1590F15DB7B94557EF07356E8DA68 /* OIDAuthorizationResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDAuthorizationResponse.h; path = Source/AppAuthCore/OIDAuthorizationResponse.h; sourceTree = "<group>"; };
 		41E844CEBB2B949E71CDB06EF709CF63 /* OIDServiceConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDServiceConfiguration.m; path = Source/AppAuthCore/OIDServiceConfiguration.m; sourceTree = "<group>"; };
@@ -1081,6 +1085,7 @@
 		45A46B8E940AE7A8CBCD89CCED2326A0 /* SdkCoder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SdkCoder.swift; path = sources/KakaoSDKCommon/common/common/SdkCoder.swift; sourceTree = "<group>"; };
 		46C1E288A44E3BD9E7FB04DA2915A257 /* OIDExternalUserAgentRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDExternalUserAgentRequest.h; path = Source/AppAuthCore/OIDExternalUserAgentRequest.h; sourceTree = "<group>"; };
 		46D459BC5F037CDE86645FB90FF4528C /* Pods-haruSpeak_iOSTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-haruSpeak_iOSTests-umbrella.h"; sourceTree = "<group>"; };
+
 		474A987F8687033487746256B7F6B104 /* OIDEndSessionResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDEndSessionResponse.h; path = Source/AppAuthCore/OIDEndSessionResponse.h; sourceTree = "<group>"; };
 		474FFBFFCFE04347DB6C8D7909949188 /* UIView+MaterialElevationResponding.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+MaterialElevationResponding.h"; path = "components/Elevation/src/UIView+MaterialElevationResponding.h"; sourceTree = "<group>"; };
 		47E765F140981C9D2A728DDC7DD6CE6E /* GTMAppAuthFetcherAuthorization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMAppAuthFetcherAuthorization.h; path = GTMAppAuth/Sources/Public/GTMAppAuth/GTMAppAuthFetcherAuthorization.h; sourceTree = "<group>"; };
@@ -1111,9 +1116,11 @@
 		58BCDEA66610774FA05AC9CC046A4C2F /* google@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "google@2x.png"; path = "GoogleSignIn/Sources/Resources/google@2x.png"; sourceTree = "<group>"; };
 		58EB74753A10263094BE0EC951FBABDE /* ApiRequestAdapter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ApiRequestAdapter.swift; path = sources/KakaoSDKCommon/network/ApiRequestAdapter.swift; sourceTree = "<group>"; };
 		59231F736F10EA348D4C65E56A18321C /* ConstraintLayoutSupportDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutSupportDSL.swift; path = Source/ConstraintLayoutSupportDSL.swift; sourceTree = "<group>"; };
+
 		5A15409D62CC414DBC3F45B4571E38BB /* Pods-haruSpeak_iOS-haruSpeak_iOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-haruSpeak_iOS-haruSpeak_iOSUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5A9F0E85AFDB2098B7554BE165D3701E /* Then.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Then.swift; path = Sources/Then/Then.swift; sourceTree = "<group>"; };
 		5ABA15D80E3A519040CAD040EFC16E2D /* Pods-haruSpeak_iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-haruSpeak_iOS.modulemap"; sourceTree = "<group>"; };
+
 		5B8C25E1CC266C653620DCE0A8282E4E /* GIDEMMErrorHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GIDEMMErrorHandler.m; path = GoogleSignIn/Sources/GIDEMMErrorHandler.m; sourceTree = "<group>"; };
 		5BF21871BB102F375ECBE858E3584374 /* NSArray+MDFUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+MDFUtils.m"; path = "src/private/NSArray+MDFUtils.m"; sourceTree = "<group>"; };
 		5C5667DDDE3EFD0118FFB4EF306BC303 /* GIDSignInButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GIDSignInButton.m; path = GoogleSignIn/Sources/GIDSignInButton.m; sourceTree = "<group>"; };
@@ -1230,6 +1237,7 @@
 		87A4FBD01F9A2C212D9A4BAC217AE807 /* PagerTabStripBehaviour.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PagerTabStripBehaviour.swift; path = Sources/PagerTabStripBehaviour.swift; sourceTree = "<group>"; };
 		88072C961CDE69E28F03B6BC6450F933 /* OIDExternalUserAgentSession.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDExternalUserAgentSession.h; path = Source/AppAuthCore/OIDExternalUserAgentSession.h; sourceTree = "<group>"; };
 		882438DD76AF0A24C49202CEEAF467E3 /* MDCFloatingButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCFloatingButton.h; path = components/Buttons/src/MDCFloatingButton.h; sourceTree = "<group>"; };
+
 		887854B299E757106B298D3D698AF5FB /* Pods-haruSpeak_iOSTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-haruSpeak_iOSTests-Info.plist"; sourceTree = "<group>"; };
 		88CF118D458C0E795ABF8680365193DA /* MDCFloatingButtonModeAnimatorDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCFloatingButtonModeAnimatorDelegate.h; path = components/Buttons/src/private/MDCFloatingButtonModeAnimatorDelegate.h; sourceTree = "<group>"; };
 		8905D3A677253639B9F1800361D041EB /* FSCalendarDelegationFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FSCalendarDelegationFactory.m; path = FSCalendar/FSCalendarDelegationFactory.m; sourceTree = "<group>"; };
@@ -1271,6 +1279,7 @@
 		99C0831FBD677C94FC1DC8CA77213BA1 /* fi.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = fi.lproj; path = GoogleSignIn/Sources/Strings/fi.lproj; sourceTree = "<group>"; };
 		99E9FF867F13781B602F7C43A6F8FE7C /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
 		9A2AC0B8BAC6EF061EBC28825653DF99 /* MDFInternationalization */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MDFInternationalization; path = MDFInternationalization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+
 		9A44A48BA2F9D8B04AF1BAA2DE49D0C9 /* GIDToken_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GIDToken_Private.h; path = GoogleSignIn/Sources/GIDToken_Private.h; sourceTree = "<group>"; };
 		9A738D650010A4E79B0A01685ADFAF58 /* OIDAuthState+IOS.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "OIDAuthState+IOS.h"; path = "Source/AppAuth/iOS/OIDAuthState+IOS.h"; sourceTree = "<group>"; };
 		9AF3FB5BE031FCAF1DE0D05C867B7DF6 /* Constraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constraint.swift; path = Source/Constraint.swift; sourceTree = "<group>"; };
@@ -1287,6 +1296,7 @@
 		9DD9CF9E9084BCFE97C33AE76AC7C164 /* HTTPHeaders.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HTTPHeaders.swift; path = Source/HTTPHeaders.swift; sourceTree = "<group>"; };
 		9E7948D9A5458C6D31A024E8541DD508 /* FSCalendar.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FSCalendar.modulemap; sourceTree = "<group>"; };
 		9E9EF8677FD40D29506818DFD133BC9E /* XLPagerTabStrip.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = XLPagerTabStrip.debug.xcconfig; sourceTree = "<group>"; };
+
 		9EAF0C91476642B7BDEEC8AA507BA084 /* Pods-haruSpeak_iOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-haruSpeak_iOS-acknowledgements.markdown"; sourceTree = "<group>"; };
 		9ED38B1A6ED24EB2E63EA640CFD8056F /* SnapKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SnapKit-umbrella.h"; sourceTree = "<group>"; };
 		9F453801F27585052F413F613C847DB2 /* KakaoSDKAuth */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = KakaoSDKAuth; path = KakaoSDKAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1303,6 +1313,7 @@
 		A3EA8E7E1E188620ADF668536A6061DD /* RetryPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RetryPolicy.swift; path = Source/RetryPolicy.swift; sourceTree = "<group>"; };
 		A46D1B675EF78005109DA86BB7D3354E /* MDCRippleViewDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCRippleViewDelegate.h; path = components/Ripple/src/MDCRippleViewDelegate.h; sourceTree = "<group>"; };
 		A4CD727B56280D0345749B1ED7D865A7 /* Pods-haruSpeak_iOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-haruSpeak_iOS-Info.plist"; sourceTree = "<group>"; };
+
 		A4DED6AC7DB0AFC7A791DE8E8D0B5600 /* GIDGoogleUser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GIDGoogleUser.m; path = GoogleSignIn/Sources/GIDGoogleUser.m; sourceTree = "<group>"; };
 		A5587DE93460FAE6B2D44ECEA8BF5431 /* FSCalendarStickyHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FSCalendarStickyHeader.h; path = FSCalendar/FSCalendarStickyHeader.h; sourceTree = "<group>"; };
 		A5FFAB228EA9ED5176036B88E8BB98C7 /* UIFont+MaterialTypography.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIFont+MaterialTypography.h"; path = "components/Typography/src/UIFont+MaterialTypography.h"; sourceTree = "<group>"; };
@@ -1370,6 +1381,7 @@
 		C212FA44B4F368A24D0A8487E2343DD6 /* AppAuth-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "AppAuth-Info.plist"; sourceTree = "<group>"; };
 		C292977829C0187EBF8C3D1F2664C8F2 /* nl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = nl.lproj; path = GoogleSignIn/Sources/Strings/nl.lproj; sourceTree = "<group>"; };
 		C29A233205DE64DBB09AE6791F400FD4 /* GIDSignInResult_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GIDSignInResult_Private.h; path = GoogleSignIn/Sources/GIDSignInResult_Private.h; sourceTree = "<group>"; };
+
 		C2CA00DD70DB01A8985624D9C17E3F7A /* Pods-haruSpeak_iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-haruSpeak_iOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		C30F4958265CD448544BF012AC48503F /* MDCFloatingButtonModeAnimator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCFloatingButtonModeAnimator.m; path = components/Buttons/src/private/MDCFloatingButtonModeAnimator.m; sourceTree = "<group>"; };
 		C3C37438CFB45F3777F6A4B829D7890F /* MDCLegacyInkLayerDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCLegacyInkLayerDelegate.h; path = components/Ink/src/private/MDCLegacyInkLayerDelegate.h; sourceTree = "<group>"; };
@@ -1384,6 +1396,7 @@
 		C598F640B58A157AE56746A9A5309C98 /* GoogleSignIn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleSignIn.release.xcconfig; sourceTree = "<group>"; };
 		C5ED2479A1B5DD142D52710A4498D8E3 /* GTMSessionFetcherLogging.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTMSessionFetcherLogging.m; path = Sources/Core/GTMSessionFetcherLogging.m; sourceTree = "<group>"; };
 		C689D7A89648DD90C6D0A0A2AED29BEF /* Pods-haruSpeak_iOS-haruSpeak_iOSUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-haruSpeak_iOS-haruSpeak_iOSUITests-Info.plist"; sourceTree = "<group>"; };
+
 		C837A2E43554DBCF65F1B15845B3C9CC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		C877B2D9C9566E7FEE6E6B306DCB4076 /* GTMSessionFetcherService+Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GTMSessionFetcherService+Internal.h"; path = "Sources/Core/GTMSessionFetcherService+Internal.h"; sourceTree = "<group>"; };
 		C8C39CF225C781FA5D87002FD1D85E8C /* ConstraintDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDSL.swift; path = Source/ConstraintDSL.swift; sourceTree = "<group>"; };
@@ -1539,6 +1552,7 @@
 		FEC0EBAADF6690734E6E25A7770C3928 /* GIDConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GIDConfiguration.h; path = GoogleSignIn/Sources/Public/GoogleSignIn/GIDConfiguration.h; sourceTree = "<group>"; };
 		FED079442AA388473E3242E3E7633337 /* ConstraintLayoutGuideDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutGuideDSL.swift; path = Source/ConstraintLayoutGuideDSL.swift; sourceTree = "<group>"; };
 		FEE98A93D5CC9D7A124FF0BD741E919D /* KakaoSDKUser-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "KakaoSDKUser-dummy.m"; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1726,8 +1740,10 @@
 				5C7F43C9C34B14C9429AECA482D1BC93 /* AppAuth.debug.xcconfig */,
 				D89D67BCF49D3171380CBC04D090EED5 /* AppAuth.release.xcconfig */,
 			);
+
 			name = "Support Files";
 			path = "../Target Support Files/AppAuth";
+
 			sourceTree = "<group>";
 		};
 		024E77C6182D6A11EAB5F3C347A6144F /* Support Files */ = {
@@ -1741,8 +1757,10 @@
 				61DC6D703F249DF461ED513F5E76BB0D /* KakaoSDKAuth.debug.xcconfig */,
 				79D0A32D4DB2BAAA63BD1242D2C02A2A /* KakaoSDKAuth.release.xcconfig */,
 			);
+
 			name = "Support Files";
 			path = "../Target Support Files/KakaoSDKAuth";
+
 			sourceTree = "<group>";
 		};
 		044047A55746057FF68F972DC911B80C /* AppAuth */ = {
@@ -1902,7 +1920,9 @@
 				8B68D5FDFD3F15989A8396E35808A07C /* MDCShadowLayer.h */,
 				9C92A5C498E59E77AFBEC7CBC745EDE8 /* MDCShadowLayer.m */,
 			);
+
 			name = ShadowLayer;
+
 			sourceTree = "<group>";
 		};
 		29A33F44E371A437DC047BA7ABB073BA /* Pods */ = {
@@ -2032,6 +2052,7 @@
 		42F69B3C70A9E618412A4DA1A76B02DB /* Alamofire */ = {
 			isa = PBXGroup;
 			children = (
+
 				63088DAD4BC2CBAA0FDAE2A11C908CC8 /* AFError.swift */,
 				015ACB000650AD59C3C5735C0FCA93DD /* Alamofire.swift */,
 				695EFC230BB285AA602DD3C091D8A371 /* AlamofireExtended.swift */,
@@ -2072,6 +2093,7 @@
 			);
 			name = Alamofire;
 			path = Alamofire;
+
 			sourceTree = "<group>";
 		};
 		435135F9366182446E8892F7DCFC7549 /* Core */ = {
@@ -2133,7 +2155,9 @@
 				EFCE4C6E4FBA471A7C767C5617A44FF6 /* OIDURLSessionProvider.h */,
 				D749F05D431AFA66310BCB92A7327C6C /* OIDURLSessionProvider.m */,
 			);
+
 			name = Core;
+
 			sourceTree = "<group>";
 		};
 		4407EF12AB034598C25B688E475F4DB4 /* Support Files */ = {
@@ -2147,8 +2171,10 @@
 				72FD9864E4FF67E92E02856A8ED6D889 /* MDFTextAccessibility.debug.xcconfig */,
 				615ED4D45F9F8033BD53B434E24DE3A4 /* MDFTextAccessibility.release.xcconfig */,
 			);
+
 			name = "Support Files";
 			path = "../Target Support Files/MDFTextAccessibility";
+
 			sourceTree = "<group>";
 		};
 		4627026C6C76CFC53EE2ED8F50243D68 /* GTMAppAuth */ = {
@@ -2266,7 +2292,9 @@
 				540BAF2957F6DB887D509C25423F3ED4 /* Security.framework */,
 				AC0F24375F8F6DCFDE6C346582C499DF /* UIKit.framework */,
 			);
+
 			name = iOS;
+
 			sourceTree = "<group>";
 		};
 		5055226508516733A4AD8DD20D2C44F1 /* Network */ = {
@@ -2316,13 +2344,13 @@
 				5BF21871BB102F375ECBE858E3584374 /* NSArray+MDFUtils.m */,
 				4407EF12AB034598C25B688E475F4DB4 /* Support Files */,
 			);
-			name = MDFTextAccessibility;
 			path = MDFTextAccessibility;
 			sourceTree = "<group>";
 		};
 		5F5E11AC6390A6D4E6B5992FA65243E8 /* Ripple */ = {
 			isa = PBXGroup;
 			children = (
+
 				3FB4D821BF4F45F5894CB86FD7D81D42 /* MaterialRipple.h */,
 				E80EE15F7B8D45A323848725321CDE32 /* MDCRippleLayer.h */,
 				1715D95D0046A4A8E82795CC562FD52E /* MDCRippleLayer.m */,
@@ -2335,6 +2363,7 @@
 				A46D1B675EF78005109DA86BB7D3354E /* MDCRippleViewDelegate.h */,
 				3B9EC573E1F0AEDB936FC389A3012862 /* MDCStatefulRippleView.h */,
 				DACF9E84C7C560FACA565E57B12BBE2D /* MDCStatefulRippleView.m */,
+
 			);
 			name = Ripple;
 			sourceTree = "<group>";
@@ -2551,6 +2580,7 @@
 				F177C59282D77CA7CD863FCDFFB9E8E5 /* Resources */,
 				EDD97F09EBE3A027B9168B2803E9A18C /* Support Files */,
 			);
+
 			name = GoogleSignIn;
 			path = GoogleSignIn;
 			sourceTree = "<group>";
@@ -2576,6 +2606,7 @@
 			);
 			name = KakaoSDKCommon;
 			path = KakaoSDKCommon;
+
 			sourceTree = "<group>";
 		};
 		B05A6C5233CBCDA9C8419C48D166C037 /* Pods-haruSpeak_iOSTests */ = {
@@ -2671,8 +2702,10 @@
 				379593427E6ECD2A8A46843298EB85B5 /* SnapKit.debug.xcconfig */,
 				95F982C3815D40729554CB1635B703A3 /* SnapKit.release.xcconfig */,
 			);
+
 			name = "Support Files";
 			path = "../Target Support Files/SnapKit";
+
 			sourceTree = "<group>";
 		};
 		C705A4EED53D6E02BFBD2DEAD8A40D98 /* Support Files */ = {
@@ -2699,6 +2732,7 @@
 				09BF3F992AB737153C1B34801CDDC414 /* Products */,
 				F5789ADBBDAE3DAAB8DEF6F2A7DCFF8D /* Targets Support Files */,
 			);
+
 			sourceTree = "<group>";
 		};
 		D194BC082B0D61F6FB9305D8DDAC0AAA /* GTMSessionFetcher */ = {
@@ -3400,7 +3434,7 @@
 			);
 			name = AppAuth;
 			productName = AppAuth;
-			productReference = 3FD1B4C1246D643E9476438C28048FA8 /* AppAuth */;
+			productReference = 3FD1B4C1246D643E9476438C28048FA8 /* AppAuth.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		7DFA91ED3A3D0BC020C3C843A3D1EB38 /* GoogleSignIn-GoogleSignIn */ = {
@@ -3417,7 +3451,7 @@
 			);
 			name = "GoogleSignIn-GoogleSignIn";
 			productName = GoogleSignIn;
-			productReference = E5BA41B7F2E1FE47F9ABCAC27C9E4281 /* GoogleSignIn-GoogleSignIn */;
+			productReference = E5BA41B7F2E1FE47F9ABCAC27C9E4281 /* GoogleSignIn.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		83CA882AD877ED964BDF66235E416BC1 /* KakaoSDKAuth */ = {
@@ -3456,7 +3490,7 @@
 			);
 			name = GTMAppAuth;
 			productName = GTMAppAuth;
-			productReference = 6FD122EA0AB9AB2A8FFA5F676C795DF0 /* GTMAppAuth */;
+			productReference = 6FD122EA0AB9AB2A8FFA5F676C795DF0 /* GTMAppAuth.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		8ED7FEDEE11ADC68F670C7FF82ECC803 /* Pods-haruSpeak_iOSTests */ = {
@@ -3553,7 +3587,7 @@
 			);
 			name = GoogleSignIn;
 			productName = GoogleSignIn;
-			productReference = FD56AB51475BC5F592781EE2692D1412 /* GoogleSignIn */;
+			productReference = FD56AB51475BC5F592781EE2692D1412 /* GoogleSignIn.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		D676E21115185671D7258A56944ABE98 /* GTMSessionFetcher */ = {
@@ -3571,7 +3605,7 @@
 			);
 			name = GTMSessionFetcher;
 			productName = GTMSessionFetcher;
-			productReference = C1998E0D8085221AD87F89B614C10E52 /* GTMSessionFetcher */;
+			productReference = C1998E0D8085221AD87F89B614C10E52 /* GTMSessionFetcher.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		DC5C3A7662FFA04D04D29F4657D032CE /* XLPagerTabStrip */ = {
@@ -3746,6 +3780,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+
 				59DB701796427D075BAFE0A8E1654F53 /* ar.lproj in Resources */,
 				1C873805788F06D8D1F87F6EB5C841ED /* ca.lproj in Resources */,
 				525310E40848098100790CE454E6AD2C /* cs.lproj in Resources */,
@@ -3788,6 +3823,7 @@
 				D9634F6A589171B4746D2FF1112F04B1 /* vi.lproj in Resources */,
 				BAAF0C787F9ECC7E5E252D7B04A1A425 /* zh_CN.lproj in Resources */,
 				33365AC57B243FBDD1F067797D161DCA /* zh_TW.lproj in Resources */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
