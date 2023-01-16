@@ -13,6 +13,9 @@ import GoogleSignIn
 import KakaoSDKAuth
 import KakaoSDKUser
 import KakaoSDKCommon
+import AuthenticationServices
+import NaverThirdPartyLogin
+import Alamofire
 
 class AuthenticationViewController: UIViewController{
     
@@ -43,7 +46,7 @@ class AuthenticationViewController: UIViewController{
     let KakaoTalkLogin = UIButton(type: .system).then{
         $0.setTitle("카카오톡으로 진행", for: .normal)
         $0.setTitleColor(.black, for: .normal)
-        $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo", size: 16)
+        $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
         $0.layer.cornerRadius = 22.5
         $0.backgroundColor = .KakaoColor
         $0.tag = 0
@@ -51,7 +54,7 @@ class AuthenticationViewController: UIViewController{
     let AppleLogin = UIButton(type: .system).then{
         $0.setTitle("Apple로 계속하기", for: .normal)
         $0.setTitleColor(.white, for: .normal)
-        $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo", size: 16)
+        $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
         $0.layer.cornerRadius = 22.5
         $0.backgroundColor = .black
         $0.tag = 0
@@ -59,7 +62,7 @@ class AuthenticationViewController: UIViewController{
     let NaverLogin = UIButton(type: .system).then{
         $0.setTitle("Naver로 진행", for: .normal)
         $0.setTitleColor(.white, for: .normal)
-        $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo", size: 16)
+        $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
         $0.layer.cornerRadius = 22.5
         $0.backgroundColor = .NaverColor
         $0.tag = 0
@@ -67,7 +70,7 @@ class AuthenticationViewController: UIViewController{
     let GoogleLogin = UIButton(type: .system).then{
         $0.setTitle("구글 계정으로 진행", for: .normal)
         $0.setTitleColor(.black, for: .normal)
-        $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo", size: 16)
+        $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
         $0.layer.cornerRadius = 22.5
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.systemGray4.cgColor
@@ -78,11 +81,13 @@ class AuthenticationViewController: UIViewController{
         $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Thin", size: 13)
         $0.setTitleColor(.gray, for: .normal)
     }
+    let naverLoginInstance = NaverThirdPartyLoginConnection.getSharedInstance()
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        naverLoginInstance?.delegate = self
         setupView()
         setupLayout()
         addTarget()
@@ -141,6 +146,73 @@ class AuthenticationViewController: UIViewController{
             }
         }
     }
+    
+    @objc func appleLoginButtonTapped(){
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+                let request = appleIDProvider.createRequest()
+                request.requestedScopes = [.fullName, .email]
+                
+                let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+                authorizationController.delegate = self
+                authorizationController.presentationContextProvider = self
+                authorizationController.performRequests()
+    }
+    
+    @objc func naverLoginButtonTapped(){
+        naverLoginInstance?.requestThirdPartyLogin()
+    }
+    
+    func naverLoginPaser() {
+              guard let accessToken = naverLoginInstance?.isValidAccessTokenExpireTimeNow() else { return }
+              
+              if !accessToken {
+                return
+              }
+              
+              guard let tokenType = naverLoginInstance?.tokenType else { return }
+              guard let accessToken = naverLoginInstance?.accessToken else { return }
+                
+              let requestUrl = "https://openapi.naver.com/v1/nid/me"
+              let url = URL(string: requestUrl)!
+              
+              let authorization = "\(tokenType) \(accessToken)"
+              
+              let req = AF.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization": authorization])
+              
+              req.responseJSON { response in
+                
+                guard let body = response.value as? [String: Any] else { return }
+                  
+                  if let resultCode = body["message"] as? String{
+                      if resultCode.trimmingCharacters(in: .whitespaces) == "success"{
+                          let resultJson = body["response"] as! [String: Any]
+                          
+                          let name = resultJson["name"] as? String ?? ""
+                          let id = resultJson["id"] as? String ?? ""
+                          let phone = resultJson["mobile"] as! String
+                          let gender = resultJson["gender"] as? String ?? ""
+                          let birthyear = resultJson["birthyear"] as? String ?? ""
+                          let birthday = resultJson["birthday"] as? String ?? ""
+                          let profile = resultJson["profile_image"] as? String ?? ""
+                          let email = resultJson["email"] as? String ?? ""
+                          let nickName = resultJson["nickname"] as? String ?? ""
+
+                          print("네이버 로그인 이름 ",name)
+                          print("네이버 로그인 아이디 ",id)
+                          print("네이버 로그인 핸드폰 ",phone)
+                          print("네이버 로그인 성별 ",gender)
+                          print("네이버 로그인 생년 ",birthyear)
+                          print("네이버 로그인 생일 ",birthday)
+                          print("네이버 로그인 프로필사진 ",profile)
+                          print("네이버 로그인 이메일 ",email)
+                          print("네이버 로그인 닉네임 ",nickName)
+                      }
+                      else{
+                          //실패
+                      }
+                  }
+              }
+        }
     
     
     
@@ -232,8 +304,64 @@ class AuthenticationViewController: UIViewController{
         self.emailLogin.addTarget(self, action: #selector(self.emailLoginButtonTapped), for: .touchUpInside)
         self.GoogleLogin.addTarget(self, action: #selector(self.googleLoginButtonTapped), for: .touchUpInside)
         self.KakaoTalkLogin.addTarget(self, action: #selector(self.kakaoLoginButtonTapped), for: .touchUpInside)
+        self.AppleLogin.addTarget(self, action: #selector(self.appleLoginButtonTapped), for: .touchUpInside)
+        self.NaverLogin.addTarget(self, action: #selector(self.naverLoginButtonTapped), for: .touchUpInside)
         self.joinMembership.addTarget(self, action: #selector(self.joinMembershipButtonTapped), for: .touchUpInside)
     }
     
+}
+
+//MARK: - Extension
+extension AuthenticationViewController: ASAuthorizationControllerPresentationContextProviding, ASAuthorizationControllerDelegate{
     
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window!
+    }
+    
+    // Apple ID 연동 성공 시
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        switch authorization.credential {
+            // Apple ID
+        case let appleIDCredential as ASAuthorizationAppleIDCredential:
+            
+            // 계정 정보 가져오기
+            let userIdentifier = appleIDCredential.user
+            let fullName = appleIDCredential.fullName
+            let email = appleIDCredential.email
+            let idToken = appleIDCredential.identityToken!
+            let tokeStr = String(data: idToken, encoding: .utf8)
+         
+            print("User ID : \(userIdentifier)")
+            print("User Email : \(email ?? "")")
+            print("User Name : \((fullName?.givenName ?? "") + (fullName?.familyName ?? ""))")
+            print("token : \(String(describing: tokeStr))")
+            
+        default:
+            break
+        }
+    }
+    
+    // Apple ID 연동 실패 시
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        // Handle error.
+    }
+}
+
+extension AuthenticationViewController : NaverThirdPartyLoginConnectionDelegate{
+    func oauth20ConnectionDidFinishRequestACTokenWithAuthCode() {
+        print("네이버 로그인 성공")
+        self.naverLoginPaser()
+    }
+    
+    func oauth20ConnectionDidFinishRequestACTokenWithRefreshToken() {
+        print("네이버 토큰\(naverLoginInstance?.accessToken)")
+    }
+    
+    func oauth20ConnectionDidFinishDeleteToken() {
+        print("네이버 로그아웃")
+    }
+    
+    func oauth20Connection(_ oauthConnection: NaverThirdPartyLoginConnection!, didFailWithError error: Error!) {
+        print("에러 = \(error.localizedDescription)")
+    }
 }

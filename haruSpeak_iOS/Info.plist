@@ -24,9 +24,24 @@
 				<string>kakao8993fe3ef733e01759a788f5e63200ba</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>naverLogin</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>naverSchemes</string>
+			</array>
+		</dict>
 	</array>
 	<key>GIDClientID</key>
 	<string>795436124010-3dbce8b9tv7f6ev3j5a3rjdt8oibltt4.apps.googleusercontent.com</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>naversearchthirdlogin</string>
+		<string>naversearchapp</string>
+	</array>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AppleSDGothicNeo-Bold.ttf</string>
