@@ -45,7 +45,7 @@ class EmailLoginViewController: UIViewController{
         $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
         $0.layer.cornerRadius = 7
         $0.backgroundColor = .mainColor
-        $0.tag = 0
+
     }
     let joinMembership = UIButton(type: .system).then{
         $0.setTitle("아직 계정이 없나요? 회원가입 하기", for: .normal)
@@ -79,6 +79,10 @@ class EmailLoginViewController: UIViewController{
     }
     @objc func joinMembershipButtonTapped(){
         self.navigationController?.pushViewController(MembershipViewController(), animated: true)
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    @objc func loginButtonTapped(){
+        self.navigationController?.pushViewController(HomeViewController(), animated: true)
         self.navigationController?.navigationBar.isHidden = true
     }
 
@@ -163,6 +167,7 @@ class EmailLoginViewController: UIViewController{
     private func addTarget(){
         self.arrowLeft.addTarget(self, action: #selector(self.arrowLeftButtonTapped), for: .touchUpInside)
         self.joinMembership.addTarget(self, action: #selector(self.joinMembershipButtonTapped), for: .touchUpInside)
+        self.emailLoginButton.addTarget(self, action: #selector(self.loginButtonTapped), for: .touchUpInside)
     }
  
 }

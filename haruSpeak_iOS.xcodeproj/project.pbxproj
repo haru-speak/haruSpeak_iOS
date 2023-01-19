@@ -11,6 +11,8 @@
 		68BD8E052971B80400939DFB /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E042971B80400939DFB /* RecordViewController.swift */; };
 		68BD8E0E2972F30B00939DFB /* MembershipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E0D2972F30B00939DFB /* MembershipViewController.swift */; };
 		68BD8E102972F33800939DFB /* EmailLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E0F2972F33800939DFB /* EmailLoginViewController.swift */; };
+		68BD8E162975BD1100939DFB /* RecordingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E152975BD1100939DFB /* RecordingButton.swift */; };
+		68BD8E1A2977D9BC00939DFB /* MSDoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E192977D9BC00939DFB /* MSDoneViewController.swift */; };
 		8C30D8B79FC345A04F0C9D3C /* Pods_haruSpeak_iOS_haruSpeak_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CED103FD6A92F4325BBDEE6 /* Pods_haruSpeak_iOS_haruSpeak_iOSUITests.framework */; };
 		A1ECF52D7F2B9619C0BD5DCA /* Pods_haruSpeak_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFC49101112B419E65F52532 /* Pods_haruSpeak_iOS.framework */; };
 		E255F8C5D56021B7F5E5848B /* Pods_haruSpeak_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69211967B5E3367D949CA34A /* Pods_haruSpeak_iOSTests.framework */; };
@@ -66,6 +68,8 @@
 		68BD8E0D2972F30B00939DFB /* MembershipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipViewController.swift; sourceTree = "<group>"; };
 		68BD8E0F2972F33800939DFB /* EmailLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginViewController.swift; sourceTree = "<group>"; };
 		68BD8E132974FC5D00939DFB /* haruSpeak_iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = haruSpeak_iOS.entitlements; sourceTree = "<group>"; };
+		68BD8E152975BD1100939DFB /* RecordingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingButton.swift; sourceTree = "<group>"; };
+		68BD8E192977D9BC00939DFB /* MSDoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSDoneViewController.swift; sourceTree = "<group>"; };
 		69211967B5E3367D949CA34A /* Pods_haruSpeak_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_haruSpeak_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77AA8A0B5111D220ACA4BB9D /* Pods-haruSpeak_iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-haruSpeak_iOSTests.release.xcconfig"; path = "Target Support Files/Pods-haruSpeak_iOSTests/Pods-haruSpeak_iOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		8A6B465F8597583EE4AAAE4B /* Pods-haruSpeak_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-haruSpeak_iOS.release.xcconfig"; path = "Target Support Files/Pods-haruSpeak_iOS/Pods-haruSpeak_iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -139,6 +143,7 @@
 				68BD8E012971B52C00939DFB /* AuthenticationViewController.swift */,
 				68BD8E0F2972F33800939DFB /* EmailLoginViewController.swift */,
 				68BD8E0D2972F30B00939DFB /* MembershipViewController.swift */,
+				68BD8E192977D9BC00939DFB /* MSDoneViewController.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -151,11 +156,12 @@
 			path = Record;
 			sourceTree = "<group>";
 		};
-		68F01573297045B1003BB048 /* Authentication */ = {
+		68BD8E142975BCE600939DFB /* Record */ = {
 			isa = PBXGroup;
 			children = (
+				68BD8E152975BD1100939DFB /* RecordingButton.swift */,
 			);
-			path = Authentication;
+			path = Record;
 			sourceTree = "<group>";
 		};
 		8940E27EFA539E8525631D8A /* Frameworks */ = {
@@ -288,9 +294,8 @@
 		E5E984BE296ED9B900E5DE83 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				68F01573297045B1003BB048 /* Authentication */,
+				68BD8E142975BCE600939DFB /* Record */,
 				E5E984C8296EDEF900E5DE83 /* Home */,
-				E5E984C7296EDEF200E5DE83 /* Record */,
 				E5E984C6296EDEEC00E5DE83 /* Study */,
 				E5E984C5296EDEE400E5DE83 /* MyPage */,
 			);
@@ -350,13 +355,6 @@
 				E59D362529742C3B00A012C4 /* AssignmentView.swift */,
 			);
 			path = Study;
-			sourceTree = "<group>";
-		};
-		E5E984C7296EDEF200E5DE83 /* Record */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Record;
 			sourceTree = "<group>";
 		};
 		E5E984C8296EDEF900E5DE83 /* Home */ = {
@@ -613,6 +611,8 @@
 				E5862C67296ED0C900095439 /* haruSpeak_iOS.xcdatamodeld in Sources */,
 				68BD8E0E2972F30B00939DFB /* MembershipViewController.swift in Sources */,
 				68BD8E102972F33800939DFB /* EmailLoginViewController.swift in Sources */,
+				68BD8E1A2977D9BC00939DFB /* MSDoneViewController.swift in Sources */,
+				68BD8E162975BD1100939DFB /* RecordingButton.swift in Sources */,
 				E5E984BD296ED9B500E5DE83 /* TempModel.swift in Sources */,
 				E5862C61296ED0C900095439 /* ViewController.swift in Sources */,
 				E5862C5D296ED0C900095439 /* AppDelegate.swift in Sources */,
