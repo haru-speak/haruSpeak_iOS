@@ -276,7 +276,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
 //        lineView.isUserInteractionEnabled = true
 //        lineView.addGestureRecognizer(CalendarDrag)
 //
-//    }
+    }
     
 
 }
