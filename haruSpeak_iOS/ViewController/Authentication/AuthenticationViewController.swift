@@ -25,12 +25,8 @@ class AuthenticationViewController: UIViewController{
         $0.setTitle("arrowLeft", for: .normal)
         $0.setImage(UIImage(named: "arrowLeft")?.withRenderingMode(.alwaysOriginal), for: .normal)
     }
-    let haruSpeakLogo = UIView().then{
-        $0.backgroundColor = .systemGray6
-        $0.layer.cornerRadius = 7
-    }
     let loginText = UILabel().then{
-        $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 24)
+        $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
         $0.text = "로그인"
         $0.textColor = .black
     }
@@ -41,15 +37,13 @@ class AuthenticationViewController: UIViewController{
         $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
         $0.layer.cornerRadius = 22.5
         $0.backgroundColor = .mainColor
-        $0.tag = 0
     }
     let KakaoTalkLogin = UIButton(type: .system).then{
-        $0.setTitle("카카오톡으로 진행", for: .normal)
+        $0.setTitle("카카오톡으로 계속하기", for: .normal)
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
         $0.layer.cornerRadius = 22.5
         $0.backgroundColor = .KakaoColor
-        $0.tag = 0
     }
     let AppleLogin = UIButton(type: .system).then{
         $0.setTitle("Apple로 계속하기", for: .normal)
@@ -57,24 +51,21 @@ class AuthenticationViewController: UIViewController{
         $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
         $0.layer.cornerRadius = 22.5
         $0.backgroundColor = .black
-        $0.tag = 0
     }
     let NaverLogin = UIButton(type: .system).then{
-        $0.setTitle("Naver로 진행", for: .normal)
+        $0.setTitle("Naver로 계속하기", for: .normal)
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
         $0.layer.cornerRadius = 22.5
         $0.backgroundColor = .NaverColor
-        $0.tag = 0
     }
     let GoogleLogin = UIButton(type: .system).then{
-        $0.setTitle("구글 계정으로 진행", for: .normal)
+        $0.setTitle("구글 계정으로 계속하기", for: .normal)
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
         $0.layer.cornerRadius = 22.5
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.systemGray4.cgColor
-        $0.tag = 0
     }
     let joinMembership = UIButton(type: .system).then{
         $0.setTitle("아직 계정이 없나요? 회원가입 하기", for: .normal)
@@ -225,7 +216,6 @@ class AuthenticationViewController: UIViewController{
     //MARK: - addSubView
         private func setupView(){
             self.view.addSubview(self.arrowLeft)
-            self.view.addSubview(self.haruSpeakLogo)
             self.view.addSubview(self.loginText)
             self.view.addSubview(self.emailLogin)
             self.view.addSubview(self.KakaoTalkLogin)
@@ -245,22 +235,16 @@ class AuthenticationViewController: UIViewController{
             $0.width.equalTo(28)
             $0.height.equalTo(28)
         }
-        self.haruSpeakLogo.snp.makeConstraints{
-            $0.centerX.equalToSuperview()
-            $0.top.equalTo(self.view.snp.top).offset(55)
-            $0.width.equalTo(129)
-            $0.height.equalTo(30)
-            
-        }
-            
         self.loginText.snp.makeConstraints{
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(self.view.snp.top).offset(189)
+            $0.top.equalTo(self.view.snp.top).offset(61)
+            
         }
+            
         
         self.emailLogin.snp.makeConstraints{
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(self.loginText.snp.bottom).offset(62)
+            $0.top.equalTo(self.view.snp.top).offset(255)
             $0.width.equalTo(333)
             $0.height.equalTo(45)
         }
@@ -311,7 +295,7 @@ class AuthenticationViewController: UIViewController{
     
 }
 
-//MARK: - Extension
+//MARK: - Extension Apple
 extension AuthenticationViewController: ASAuthorizationControllerPresentationContextProviding, ASAuthorizationControllerDelegate{
     
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
@@ -347,6 +331,7 @@ extension AuthenticationViewController: ASAuthorizationControllerPresentationCon
     }
 }
 
+//MARK: - Extension Naver
 extension AuthenticationViewController : NaverThirdPartyLoginConnectionDelegate{
     func oauth20ConnectionDidFinishRequestACTokenWithAuthCode() {
         print("네이버 로그인 성공")
