@@ -66,6 +66,8 @@ class StudyViewController: UIViewController{
         setupLayout()
         addTarget()
         setupCollectionView()
+        
+        self.navigationController?.navigationBar.isHidden = true;
     }
     
     //MARK: - SetupCollectionView
@@ -93,6 +95,12 @@ class StudyViewController: UIViewController{
     
     //MARK: - Selector
     
+    @objc func didClickSearch(sender: UITapGestureRecognizer) {
+        let VC = SearchStudyViewController()
+        VC.modalPresentationStyle = .overFullScreen
+        present(VC, animated: true)
+        print("didClickSearch")
+    }
     
     
     //MARK: - AddSubview
@@ -171,7 +179,9 @@ class StudyViewController: UIViewController{
     
     //MARK: - AddTarget
     private func addTarget(){
-        
+        let SearchBtn = UITapGestureRecognizer(target: self, action: #selector(didClickSearch))
+        searchButton.isUserInteractionEnabled = true
+        searchButton.addGestureRecognizer(SearchBtn)
     }
     
     

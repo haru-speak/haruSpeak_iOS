@@ -83,6 +83,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         self.recordCollectionView.delegate = self
         self.recordCollectionView.dataSource = self
         
+        self.navigationController?.navigationBar.isHidden = true;
         
         setupView()
         setupLayout()
