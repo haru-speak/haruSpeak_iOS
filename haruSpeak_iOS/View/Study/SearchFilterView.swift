@@ -39,7 +39,10 @@ class SearchFilterView : UIView{
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Selector
+
     
+    //MARK: - AddSubview
     private func addSubView(){
         self.addSubview(self.filterLabel)
         self.addSubview(self.arrowImg)
@@ -63,7 +66,7 @@ class SearchFilterView : UIView{
         
     }
     private func addTarget(){
-        
+
     }
     
 }
