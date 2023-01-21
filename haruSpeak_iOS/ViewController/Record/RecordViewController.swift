@@ -181,7 +181,9 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         print("done")
     }
     @objc func nextTapped(){
-        print("next")
+        let VC = SaveViewController()
+        VC.modalPresentationStyle = .overCurrentContext
+        present(VC, animated: false)
     }
     
     //MARK: - For STT
