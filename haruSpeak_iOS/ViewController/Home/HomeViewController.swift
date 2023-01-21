@@ -148,6 +148,11 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
 //MARK: - Selector
     @objc func tap(_ sender: Any) {
         print("Record Screen Open")
+        //testcode start
+        let VC = PlaylistViewController()
+        VC.modalPresentationStyle = .fullScreen
+        present(VC, animated: true)
+        //testcode finish
     }
     @objc func didClickAlarm(sender: UITapGestureRecognizer) {
         print("didClickAlarm")

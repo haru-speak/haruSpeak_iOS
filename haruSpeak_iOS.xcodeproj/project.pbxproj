@@ -109,6 +109,7 @@
 		E5E984DD296EE2BA00E5DE83 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		E5FD566529790E0A0088DDAF /* SearchFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterView.swift; sourceTree = "<group>"; };
 		E5FD5667297A2A640088DDAF /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
+		E5FD566A297C29590088DDAF /* AppleSDGothicNeo-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AppleSDGothicNeo-Semibold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				E5E984D6296EE1CE00E5DE83 /* AppleSDGothicNeo-Bold.ttf */,
+				E5FD566A297C29590088DDAF /* AppleSDGothicNeo-Semibold.ttf */,
 				E5E984D7296EE1CE00E5DE83 /* AppleSDGothicNeo-Regular.ttf */,
 				E5E984D8296EE1CE00E5DE83 /* AppleSDGothicNeo-Thin.ttf */,
 				E5862C68296ED0CA00095439 /* Assets.xcassets */,
