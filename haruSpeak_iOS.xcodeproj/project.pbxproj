@@ -806,6 +806,8 @@
 				DEVELOPMENT_TEAM = 6CNX5P6BQG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = haruSpeak_iOS/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "영어 말하기 발음 확인을 위해 진행합니다";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "영어 말하기 발음 분석을 위해 녹음을 진행합니다";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -836,6 +838,8 @@
 				DEVELOPMENT_TEAM = 6CNX5P6BQG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = haruSpeak_iOS/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "영어 말하기 발음 확인을 위해 진행합니다";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "영어 말하기 발음 분석을 위해 녹음을 진행합니다";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
