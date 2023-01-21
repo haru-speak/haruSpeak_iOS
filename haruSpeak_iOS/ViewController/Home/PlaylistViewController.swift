@@ -21,23 +21,28 @@ class PlaylistViewController: UIViewController{
     }
     let mainScrollView = UIScrollView()
     let totalView = UIView().then{
-        $0.backgroundColor = .black
+        $0.backgroundColor = .white
     }
 // TOPVIEW
     let topView = UIView().then{
-        $0.backgroundColor = .black
+        $0.backgroundColor = .white
     }
     let profileImage = UIImageView().then{
         $0.backgroundColor = .lightGray
     }
     let nameLabel = UILabel().then{
         $0.text = "무유"
+        $0.font = UIFont(name:"appleSDGothicNeo-Regular", size: 13)
     }
     let dateLabel = UILabel().then{
         $0.text = "01/10 22:00"
+        $0.font = UIFont(name:"appleSDGothicNeo-Regular", size: 13)
+        $0.textColor = .lightGray
     }
     let playlistTitle = UILabel().then{
         $0.text = "Nothing beats \"About time\""
+        $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 20)
+        $0.numberOfLines = 1
     }
     let lyricsScrollView = UIScrollView()
     let lyricsView = UIView().then{
@@ -45,30 +50,41 @@ class PlaylistViewController: UIViewController{
     }
     let lyricsLabel = UILabel().then{
         $0.text = "My room is tiny. \n When I say tiny… I mean, really tiny. \nMy room is tiny.\nWhen I say tiny… I mean, really tiny.\nMy room is tiny.\n When I say tiny… I mean, really tiny. \nMy room is tiny.\nWhen I say tiny… I mean, really tiny.\nMy room is tiny.\n When I say tiny… I mean, really tiny. \nMy room is tiny.\nWhen I say tiny… I mean, really tiny.\nMy room is tiny.\n When I say tiny… I mean, really tiny. \nMy room is tiny.\nWhen I say tiny… I mean, really tiny.\nMy room is tiny."
+        $0.numberOfLines = 0
     }
     let playlistProgressbar = UIProgressView()
     let playtimeStart = UILabel().then{
         $0.text = "00:00"
+        $0.font = UIFont(name:"appleSDGothicNeo-Regular", size: 13)
+        $0.textColor = .lightGray
     }
     let playtimeEnd = UILabel().then{
         $0.text = "00:19"
+        $0.font = UIFont(name:"appleSDGothicNeo-Regular", size: 13)
+        $0.textColor = .lightGray
     }
     let commentImage = UIImageView().then{
         $0.image = UIImage(named: "chatblue")?.withRenderingMode(.alwaysOriginal)
     }
     let commentCount = UILabel().then{
         $0.text = "3"
+        $0.font = UIFont(name:"appleSDGothicNeo-Regular", size: 13)
+        $0.textColor = .lightGray
     }
     let playButton = UIImageView().then{
-        $0.image = UIImage(named: "playbutton")?.withRenderingMode(.alwaysOriginal)
+        $0.image = UIImage(named: "play")?.withRenderingMode(.alwaysOriginal)
     }
     let heartImage = UIImageView().then{
         $0.image = UIImage(named: "heart")?.withRenderingMode(.alwaysOriginal)
     }
     let heartCount = UILabel().then{
-        $0.text = "3"
+        $0.text = "28"
+        $0.font = UIFont(name:"appleSDGothicNeo-Regular", size: 13)
+        $0.textColor = .lightGray
     }
-    
+    let sepView = UIView().then{
+        $0.backgroundColor = .systemGray6
+    }
 //BOTTOMVIEW
     let bottomView = UIView().then{
         $0.backgroundColor = .yellow
@@ -93,7 +109,7 @@ class PlaylistViewController: UIViewController{
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .systemGray6
+        self.view.backgroundColor = .white
         self.navigationController?.navigationBar.isHidden = true;
         
         setupView()
@@ -113,6 +129,7 @@ class PlaylistViewController: UIViewController{
         view.addSubview(self.reportButton)
         view.addSubview(self.mainScrollView)
         self.mainScrollView.addSubview(totalView)
+        self.totalView.addSubview(self.sepView)
         //TOPVIEW
         self.totalView.addSubview(self.topView)
         self.topView.addSubview(self.profileImage)
@@ -164,16 +181,84 @@ class PlaylistViewController: UIViewController{
             $0.top.leading.trailing.equalToSuperview()
             $0.size.height.equalTo(500)
         }
+        self.sepView.snp.makeConstraints{
+            $0.top.equalTo(self.topView.snp.bottom).offset(0)
+            $0.leading.trailing.equalToSuperview()
+            $0.size.height.equalTo(10)
+        }
         self.bottomView.snp.makeConstraints{
-            $0.top.equalTo(self.topView.snp.bottom).offset(10)
+            $0.top.equalTo(self.sepView.snp.bottom)
             $0.leading.trailing.equalToSuperview()
             $0.size.height.equalTo(500)
             $0.bottom.equalToSuperview()
         }
+
         //TOPVIEW
+        self.profileImage.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(9)
+            $0.leading.equalToSuperview().offset(35)
+            $0.size.width.height.equalTo(35)
+        }
+        self.nameLabel.snp.makeConstraints{
+            $0.leading.equalTo(self.profileImage.snp.trailing).offset(13)
+            $0.top.equalToSuperview().offset(9)
+        }
+        self.dateLabel.snp.makeConstraints{
+            $0.leading.equalTo(self.profileImage.snp.trailing).offset(13)
+            $0.top.equalTo(self.nameLabel.snp.bottom).offset(5)
+        }
+        self.playlistTitle.snp.makeConstraints{
+            $0.top.equalTo(self.profileImage.snp.bottom).offset(10)
+            $0.leading.equalToSuperview().offset(35)
+        }
+        self.lyricsScrollView.snp.makeConstraints{
+            $0.top.equalTo(self.playlistTitle.snp.bottom).offset(10)
+            $0.leading.equalToSuperview().offset(35)
+            $0.trailing.equalToSuperview().offset(-35)
+            $0.bottom.equalToSuperview().offset(-124)
+        }
+        self.lyricsView.snp.makeConstraints{
+            $0.width.equalToSuperview()
+            $0.centerX.top.bottom.equalToSuperview()
+            $0.size.height.equalTo(352)
+        }
+        self.lyricsLabel.snp.makeConstraints{
+            $0.top.leading.trailing.bottom.equalToSuperview()
+        }
         
-        
-        
+        self.playlistProgressbar.snp.makeConstraints{
+            $0.top.equalTo(self.lyricsScrollView.snp.bottom).offset(20)
+            $0.leading.equalToSuperview().offset(30)
+            $0.trailing.equalToSuperview().offset(-30)
+        }
+        self.playtimeStart.snp.makeConstraints{
+            $0.top.equalTo(self.playlistProgressbar.snp.bottom).offset(11)
+            $0.leading.equalToSuperview().offset(29)
+        }
+        self.playtimeEnd.snp.makeConstraints{
+            $0.top.equalTo(self.playlistProgressbar.snp.bottom).offset(11)
+            $0.trailing.equalToSuperview().offset(-29)
+        }
+        self.commentImage.snp.makeConstraints{
+            $0.top.equalTo(self.playtimeStart.snp.bottom).offset(14)
+            $0.leading.equalToSuperview().offset(29)
+        }
+        self.commentCount.snp.makeConstraints{
+            $0.top.equalTo(self.commentImage.snp.bottom).offset(2)
+            $0.leading.equalToSuperview().offset(40)
+        }
+        self.playButton.snp.makeConstraints{
+            $0.top.equalTo(self.playlistProgressbar.snp.bottom).offset(30)
+            $0.centerX.equalToSuperview()
+        }
+        self.heartImage.snp.makeConstraints{
+            $0.top.equalTo(self.playtimeEnd.snp.bottom).offset(14)
+            $0.trailing.equalToSuperview().offset(-29)
+        }
+        self.heartCount.snp.makeConstraints{
+            $0.top.equalTo(self.heartImage.snp.bottom).offset(2)
+            $0.trailing.equalToSuperview().offset(-35)
+        }
         //BOTTOMVIEW
         
         
@@ -182,7 +267,6 @@ class PlaylistViewController: UIViewController{
             $0.leading.trailing.bottom.equalToSuperview()
             $0.size.height.equalTo(86)
         }
-        
     }
     
     //MARK: - AddTarget
