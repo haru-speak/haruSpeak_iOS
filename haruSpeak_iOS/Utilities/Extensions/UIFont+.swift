@@ -9,7 +9,7 @@ import UIKit
 
 extension UIFont {
     enum Family: String {
-        case Bold, Regular, Thin
+        case Bold, Regular, Thin, Semibold
     }
     
     static func appleSDGothicNeo(size: CGFloat, family: Family = .Regular) -> UIFont {

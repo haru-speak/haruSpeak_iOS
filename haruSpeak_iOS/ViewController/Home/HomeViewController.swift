@@ -61,6 +61,9 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         
     }
     private let calendar = FSCalendar(frame: CGRect(x: 15, y: 20, width: 350, height: 300))
+    private let lineView = UIView().then{
+        $0.backgroundColor = .clear
+    }
     private let line = UIImageView().then{
         $0.image = UIImage(named: "line")?.withRenderingMode(.alwaysOriginal)
     }
@@ -83,12 +86,15 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         self.recordCollectionView.delegate = self
         self.recordCollectionView.dataSource = self
         
+        self.navigationController?.navigationBar.isHidden = true;
         
         setupView()
         setupLayout()
         addTarget()
         setCalendarUI()
         setFloatingButton()
+        
+        self.view.translatesAutoresizingMaskIntoConstraints = true
     }
 
 //MARK: - CalendarUI
@@ -142,13 +148,48 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
 //MARK: - Selector
     @objc func tap(_ sender: Any) {
         print("Record Screen Open")
+
     }
     @objc func didClickAlarm(sender: UITapGestureRecognizer) {
+        //testcode start
+        let VC = PlaylistViewController()
+        VC.modalPresentationStyle = .fullScreen
+        present(VC, animated: true)
+        //testcode finish
         print("didClickAlarm")
     }
     @objc func didClickAnnouncement(sender: UITapGestureRecognizer) {
         print("didClickAnnouncement")
     }
+
+    // 캘린더 늘리기 일단 보류
+//    @objc func didDragCalendar(sender: UIPanGestureRecognizer) {
+//        let velocity = sender.velocity(in: self.view) //속도
+//        let translation = sender.translation(in: self.view) //위치
+//        let height = self.topView.frame.maxY
+//
+//        if sender.state == .ended{
+//            if velocity.y>0{
+//                calendar.scope = .month
+//                print("down")
+//            }else{
+//                calendar.scope = .week
+//                print("up")
+//            }
+//        }else{
+//            if height <= height+translation.y && height+translation.y <= height+230{
+//                self.topView.frame = CGRect(x: 0, y: 0, width: self.topView.frame.width, height: height+translation.y)
+//                UIView.animate(withDuration: 0, animations: {
+//                    self.view.layoutIfNeeded()
+//                    sender.setTranslation(CGPoint.zero, in: self.view)
+//                })
+//
+//
+//            }
+//        }
+//
+//    }
+
     
     
 //MARK: - addSubView
@@ -163,7 +204,8 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         self.topView.addSubview(self.calendarView)
         self.calendarView.backgroundColor = .clear
         self.calendarView.addSubview(self.calendar)
-        self.topView.addSubview(self.line)
+        self.topView.addSubview(self.lineView)
+        self.lineView.addSubview(self.line)
         self.view.addSubview(self.recordCollectionView)
 
     }
@@ -201,14 +243,18 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             $0.trailing.equalTo(self.topView.snp.trailing).offset(-10)
         }
         self.calendarView.snp.makeConstraints{
-            $0.height.equalTo(330)
             $0.top.equalTo(self.tabbar.snp.bottom).offset(0)
             $0.leading.equalTo(self.topView.snp.leading).offset(0)
             $0.trailing.equalTo(self.topView.snp.trailing).offset(0)
         }
+        self.lineView.snp.makeConstraints{
+            $0.top.equalTo(self.calendarView.snp.bottom).offset(0)
+            $0.leading.trailing.bottom.equalToSuperview()
+            $0.size.height.equalTo(20)
+        }
         self.line.snp.makeConstraints{
             $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(self.topView.snp.bottom).offset(-11)
+            $0.bottom.equalTo(self.lineView.snp.bottom).offset(-11)
         }
         self.recordCollectionView.snp.makeConstraints {
             $0.top.equalTo(self.topView.snp.bottom).offset(20)
@@ -230,8 +276,15 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         let AnnouncementBtn = UITapGestureRecognizer(target: self, action: #selector(didClickAnnouncement))
         announcementButton.isUserInteractionEnabled = true
         announcementButton.addGestureRecognizer(AnnouncementBtn)
+        
+        // 캘린더 늘리기 일단 보류
+//        let CalendarDrag = UIPanGestureRecognizer(target: self, action: #selector(didDragCalendar))
+//        lineView.isUserInteractionEnabled = true
+//        lineView.addGestureRecognizer(CalendarDrag)
+//
     }
     
+
 }
 
 //MARK: - Extension
