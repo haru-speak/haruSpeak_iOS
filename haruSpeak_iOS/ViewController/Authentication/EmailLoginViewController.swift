@@ -13,6 +13,7 @@ import Then
 class EmailLoginViewController: UIViewController{
     //MARK: - Properties
     let arrowLeft = UIButton(type: .system).then{
+        
         $0.setTitle("arrowLeft", for: .normal)
         $0.setImage(UIImage(named: "arrowLeft")?.withRenderingMode(.alwaysOriginal), for: .normal)
 

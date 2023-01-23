@@ -16,6 +16,7 @@ import Speech
 class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDelegate{
     //MARK: - Properties
     let arrowLeft = UIImageView().then{
+        
         $0.image = UIImage(named: "arrowLeft")?.withRenderingMode(.alwaysOriginal)
     }
     let date = UILabel().then{
@@ -41,12 +42,12 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         $0.backgroundColor = .systemGray5
     }
     let startMsg = UILabel().then{
-        $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 18)//글씨체 굵기 세미볼드로 바꿔야함
+        $0.font = UIFont(name:"appleSDGothicNeo-SemiBold", size: 18)
         $0.textColor = .init(red: 0, green: 0, blue: 0, alpha: 0.3)
         $0.text = "녹음 버튼을 눌러 스피킹을 기록해보세요!"
     }
     let STTText = UILabel().then{
-        $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 20)//글씨체 굵기 세미볼드로 바꿔야함
+        $0.font = UIFont(name:"appleSDGothicNeo-SemiBold", size: 20)
         $0.textColor = .init(red: 0, green: 0, blue: 0, alpha: 0.6)
         $0.text = "  "
         $0.numberOfLines = 100
@@ -115,6 +116,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        self.navigationController?.navigationBar.isHidden = true;
         setupView()
         setupLayout()
         addTarget()
@@ -153,20 +155,15 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         self.mainButton.image = UIImage(named:mainButtonArray[buttonIndex])
         if buttonIndex == 0{
             self.STTText.isHidden = false
-            self.delete.isHidden = true
-            self.done.isHidden = true
             self.timerLabel.isHidden = false
             self.nextButton.isHidden = false
-//            self.STTText.isHidden = false
-//            self.delete.isHidden = true
-//            self.done.isHidden = true
-//            self.timerLabel.isHidden = true
-//            self.nextButton.isHidden = true
+            self.delete.isHidden = true
+            self.done.isHidden = true
             playButtonTapped()
         }
         else if buttonIndex == 1{
             self.STTText.isHidden = false
-            self.startMsg.isHidden = false
+            self.startMsg.isHidden = true
             self.delete.isHidden = true
             self.nextButton.isHidden = true
             self.done.isHidden = false
@@ -176,9 +173,10 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         else{
             self.STTText.isHidden = false
             self.delete.isHidden = false
-            self.done.isHidden = true
             self.timerLabel.isHidden = false
             self.nextButton.isHidden = false
+            self.startMsg.isHidden = true
+            self.done.isHidden = true
             pauseButtonTapped()
         }
     }
@@ -259,13 +257,11 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     
     //MARK: - addSubView
     private func setupView(){
-//        self.view.addSubview(self.arrowLeft)
+        self.view.addSubview(self.arrowLeft)
         self.view.addSubview(self.date)
-//        self.view.addSubview(self.delete)
+        self.view.addSubview(self.delete)
         self.view.addSubview(self.line1)
         self.view.addSubview(self.line2)
-        self.view.addSubview(self.arrowLeft)
-        self.view.addSubview(self.delete)
         self.view.addSubview(self.startMsg)
         self.view.addSubview(self.STTText)
         self.view.addSubview(self.baseCircle)
@@ -278,7 +274,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     //MARK: - Layout
     private func setupLayout(){
         self.arrowLeft.snp.makeConstraints{
-            $0.top.equalTo(self.view.snp.top).offset(55)//55
+            $0.top.equalTo(self.view.snp.top).offset(55)
             $0.leading.equalTo(self.view.snp.leading).offset(16)
             $0.width.equalTo(28)
             $0.height.equalTo(28)
@@ -289,12 +285,12 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         }
         self.delete.snp.makeConstraints{
             $0.trailing.equalTo(self.view.snp.trailing).offset(-29)
-            $0.top.equalTo(self.view.snp.top).offset(80)//61
+            $0.top.equalTo(self.view.snp.top).offset(61)
         }
         
         self.line1.snp.makeConstraints{
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(self.view.snp.top).offset(107)//107
+            $0.top.equalTo(self.view.snp.top).offset(107)
             $0.width.equalTo(331)
             $0.height.equalTo(1)
         }
