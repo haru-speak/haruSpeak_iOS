@@ -15,6 +15,7 @@ import Speech
 class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDelegate{
     //MARK: - Properties
     let arrowLeft = UIImageView().then{
+        
         $0.image = UIImage(named: "arrowLeft")?.withRenderingMode(.alwaysOriginal)
     }
     let date = UILabel().then{
