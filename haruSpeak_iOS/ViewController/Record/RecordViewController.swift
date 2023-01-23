@@ -16,7 +16,6 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     //MARK: - Properties
     let arrowLeft = UIImageView().then{
         $0.image = UIImage(named: "arrowLeft")?.withRenderingMode(.alwaysOriginal)
-        
     }
     let date = UILabel().then{
         $0.font = UIFont(name:"appleSDGothicNeo", size: 16)
