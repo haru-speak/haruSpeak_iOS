@@ -70,6 +70,7 @@ final class RecordCell: UICollectionViewCell {
             print("clickPause")
         }else{
             print("clickPlay")
+//            HomeViewController().blueViewup()
         }
         
         }
