@@ -120,7 +120,6 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         setupLayout()
         addTarget()
         setCalendarUI()
-//        setFloatingButton()
         
         self.view.translatesAutoresizingMaskIntoConstraints = true
     }
@@ -158,13 +157,15 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         calendar.appearance.todayColor = UIColor.lightGray
         calendar.appearance.selectionColor = UIColor.mainColor
     }
-//MARK: - FloatingButton
-    func setFloatingButton() {
-
-            
-        
-
-        }
+    
+    
+    //
+//    func blueViewup(){
+//        self.blueViewConstraint?.update(offset: 70)
+//        UIView.animate(withDuration: 0.3){
+//            self.view.layoutIfNeeded()
+//        }
+//    }
     
 //MARK: - Selector
     @objc func tap(_ sender: Any) {
@@ -190,20 +191,9 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     @objc func didClickClose(_ sender: Any) {
         print("Click Close blue Playlist")
         self.blueViewConstraint?.update(offset: 0)
-        UIView.animate(withDuration: 0.2){
+        UIView.animate(withDuration: 0.3){
             self.view.layoutIfNeeded()
         }
-        
-        
-//        UIView.animate(withDuration: 0, delay: 0, options: .curveEaseIn, animations: {
-//            self.recordCollectionView.snp.makeConstraints {
-//                $0.top.equalTo(self.topView.snp.bottom).offset(20)
-//                $0.bottom.trailing.leading.equalToSuperview()
-//            }
-//        }) { _ in
-//            self.blueViewRemoved = true
-//            self.view.layoutIfNeeded()
-//        }
     }
 
     
@@ -219,7 +209,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     @objc func didDragCalendar(sender: UITapGestureRecognizer) {
         if self.calendar.scope == .week{
             self.calendarConstraint?.update(offset: 550)
-            UIView.animate(withDuration: 0.2){
+            UIView.animate(withDuration: 0.3){
                 self.calendar.scope = .month
                 self.view.layoutIfNeeded()
             }
@@ -235,34 +225,11 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     @objc func didClickFloatingButton(sender: UITapGestureRecognizer){
         print("didClickFloatingButton")
     }
-//        let velocity = sender.velocity(in: self.view) //속도
-//        let translation = sender.translation(in: self.view) //위치
-//        let height = self.topView.frame.maxY
-//
-//        if sender.state == .ended{
-//            if velocity.y>0{
-//                calendar.scope = .month
-//                print("down")
-//            }else{
-//                calendar.scope = .week
-//                print("up")
-//            }
-//        }else{
-//            if height <= height+translation.y && height+translation.y <= height+230{
-//                self.topView.frame = CGRect(x: 0, y: 0, width: self.topView.frame.width, height: height+translation.y)
-//                UIView.animate(withDuration: 0, animations: {
-//                    self.view.layoutIfNeeded()
-//                    sender.setTranslation(CGPoint.zero, in: self.view)
-//                })
-//
-//
-//            }
-//        }
-
     
 
-    
-    
+    //TESTTEST
+
+
     
 //MARK: - addSubView
     private func setupView(){
@@ -424,22 +391,22 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecordCell.identifier, for: indexPath) as! RecordCell
 
-//        let playBtn = UITapGestureRecognizer(target: self, action: #selector(didClickPlayinRecordCell))
-//        cell.playButton.isUserInteractionEnabled = true
-//        cell.playButton.addGestureRecognizer(playBtn)
-        
-        
 
-        
         
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecordCell.identifier, for: indexPath) as! RecordCell
+//프로필 클릭시 나오는 화면임
+//        collectionViewindex = indexPath.row
+//        let VC = ClickRecordViewController()
+//        VC.modalPresentationStyle = .overCurrentContext
+//        present(VC, animated: false)
+        self.blueViewConstraint?.update(offset: 70)
+        UIView.animate(withDuration: 0.3){
+            self.view.layoutIfNeeded()
+        }
         
-        collectionViewindex = indexPath.row
-        let VC = ClickRecordViewController()
-        VC.modalPresentationStyle = .overCurrentContext
-        present(VC, animated: false)
     }
    
 }

@@ -14,7 +14,7 @@ final class RecordCell: UICollectionViewCell {
     let playButton = UIImageView().then{
         $0.image = UIImage(named: "play.blue")?.withRenderingMode(.alwaysOriginal)
     }
-    let title = UILabel().then{
+    var title = UILabel().then{
         $0.text = "Nothing beats \"AboutTime\""
         $0.font = .appleSDGothicNeo(size: 18)
     }
@@ -70,7 +70,6 @@ final class RecordCell: UICollectionViewCell {
             print("clickPause")
         }else{
             print("clickPlay")
-//            HomeViewController().blueViewup()
         }
         
         }
