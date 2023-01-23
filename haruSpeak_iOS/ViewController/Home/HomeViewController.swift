@@ -16,6 +16,8 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     
 //MARK: - Properties
     private var calendarConstraint : Constraint?
+    private var blueViewConstraint : Constraint?
+//    private var floatingButtonConstraint : Constraint?
     // TOPVIEW START
     let topView = UIView().then{
         $0.roundCorners(cornerRadius: 30, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner])
@@ -184,48 +186,26 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             print("clickPlay")
         }
     }
+    
     @objc func didClickClose(_ sender: Any) {
         print("Click Close blue Playlist")
-
-        UIView.animate(withDuration: 0, delay: 0, options: .curveEaseIn, animations: {
-            self.recordCollectionView.snp.makeConstraints {
-                $0.top.equalTo(self.topView.snp.bottom).offset(20)
-                $0.bottom.trailing.leading.equalToSuperview()
-            }
-        }) { _ in
-            self.blueViewRemoved = true
+        self.blueViewConstraint?.update(offset: 0)
+        UIView.animate(withDuration: 0.2){
             self.view.layoutIfNeeded()
         }
-    }
-
-    
-//    //TEST (RecordCell에서 play버튼 누르면 popup하게 만들기)
-//    func blueViewup(){
-//        print("Click blueViewup")
-//
+        
+        
 //        UIView.animate(withDuration: 0, delay: 0, options: .curveEaseIn, animations: {
-//            self.recordCollectionView.removeFromSuperview()
-//            self.blueView.removeFromSuperview()
-//
-//            self.view.addSubview(self.recordCollectionView)
-//            self.view.addSubview(self.blueView)
-//
 //            self.recordCollectionView.snp.makeConstraints {
 //                $0.top.equalTo(self.topView.snp.bottom).offset(20)
-//                $0.trailing.leading.equalToSuperview()
-//                $0.bottom.equalTo(self.blueView.snp.top)
-//            }
-//            self.blueView.snp.makeConstraints{
-//                $0.leading.trailing.equalToSuperview()
-//                $0.bottom.equalToSuperview().offset(-80)
-//                $0.size.height.equalTo(70)
+//                $0.bottom.trailing.leading.equalToSuperview()
 //            }
 //        }) { _ in
-//            self.blueViewRemoved = false
+//            self.blueViewRemoved = true
 //            self.view.layoutIfNeeded()
 //        }
-//    }
-//    //TEST
+    }
+
     
     @objc func didClickBlueView(_ sender: Any) {
         print("Click blue Playlist")
@@ -357,7 +337,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         self.blueView.snp.makeConstraints{
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().offset(-80)
-            $0.size.height.equalTo(70)
+            self.blueViewConstraint = $0.size.height.equalTo(70).constraint
         }
         self.playButton.snp.makeConstraints{
             $0.centerY.equalToSuperview()
