@@ -72,7 +72,7 @@ class PlaylistViewController: UIViewController{
         $0.textColor = .lightGray
     }
     let playButton = UIImageView().then{
-        $0.image = UIImage(named: "play")?.withRenderingMode(.alwaysOriginal)
+        $0.image = UIImage(named: "play.blue")?.withRenderingMode(.alwaysOriginal)
     }
     let heartImage = UIImageView().then{
         $0.image = UIImage(named: "heart")?.withRenderingMode(.alwaysOriginal)
