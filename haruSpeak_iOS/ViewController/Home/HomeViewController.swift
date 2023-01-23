@@ -16,6 +16,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     
 //MARK: - Properties
     private var calendarConstraint : Constraint?
+    private var blueViewConstraint : Constraint?
     // TOPVIEW START
     let topView = UIView().then{
         $0.roundCorners(cornerRadius: 30, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner])
@@ -97,6 +98,14 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         let playButtonArray = ["play.white","pause.white"]
         var playindex = 0
     
+    private let floatingButton = MDCFloatingButton().then{
+        $0.sizeToFit()
+        $0.setImage(UIImage(systemName: "plus"), for: .normal)
+        $0.setImageTintColor(.white, for: .normal)
+        $0.backgroundColor = .mainColor
+    }
+
+
 //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,7 +120,6 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         setupLayout()
         addTarget()
         setCalendarUI()
-        setFloatingButton()
         
         self.view.translatesAutoresizingMaskIntoConstraints = true
     }
@@ -149,20 +157,15 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         calendar.appearance.todayColor = UIColor.lightGray
         calendar.appearance.selectionColor = UIColor.mainColor
     }
-//MARK: - FloatingButton
-    func setFloatingButton() {
-            let floatingButton = MDCFloatingButton()
-            let image = UIImage(systemName: "plus")
-            floatingButton.sizeToFit()
-            floatingButton.translatesAutoresizingMaskIntoConstraints = false
-            floatingButton.setImage(image, for: .normal)
-            floatingButton.setImageTintColor(.white, for: .normal)
-            floatingButton.backgroundColor = .mainColor
-            floatingButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
-            view.addSubview(floatingButton)
-            view.addConstraint(NSLayoutConstraint(item: floatingButton, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: -160))
-            view.addConstraint(NSLayoutConstraint(item: floatingButton, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1.0, constant: -14))
-        }
+    
+    
+    //
+//    func blueViewup(){
+//        self.blueViewConstraint?.update(offset: 70)
+//        UIView.animate(withDuration: 0.3){
+//            self.view.layoutIfNeeded()
+//        }
+//    }
     
 //MARK: - Selector
     @objc func tap(_ sender: Any) {
@@ -184,48 +187,15 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             print("clickPlay")
         }
     }
+    
     @objc func didClickClose(_ sender: Any) {
         print("Click Close blue Playlist")
-
-        UIView.animate(withDuration: 0, delay: 0, options: .curveEaseIn, animations: {
-            self.recordCollectionView.snp.makeConstraints {
-                $0.top.equalTo(self.topView.snp.bottom).offset(20)
-                $0.bottom.trailing.leading.equalToSuperview()
-            }
-        }) { _ in
-            self.blueViewRemoved = true
+        self.blueViewConstraint?.update(offset: 0)
+        UIView.animate(withDuration: 0.3){
             self.view.layoutIfNeeded()
         }
     }
 
-    
-//    //TEST (RecordCell에서 play버튼 누르면 popup하게 만들기)
-//    func blueViewup(){
-//        print("Click blueViewup")
-//
-//        UIView.animate(withDuration: 0, delay: 0, options: .curveEaseIn, animations: {
-//            self.recordCollectionView.removeFromSuperview()
-//            self.blueView.removeFromSuperview()
-//
-//            self.view.addSubview(self.recordCollectionView)
-//            self.view.addSubview(self.blueView)
-//
-//            self.recordCollectionView.snp.makeConstraints {
-//                $0.top.equalTo(self.topView.snp.bottom).offset(20)
-//                $0.trailing.leading.equalToSuperview()
-//                $0.bottom.equalTo(self.blueView.snp.top)
-//            }
-//            self.blueView.snp.makeConstraints{
-//                $0.leading.trailing.equalToSuperview()
-//                $0.bottom.equalToSuperview().offset(-80)
-//                $0.size.height.equalTo(70)
-//            }
-//        }) { _ in
-//            self.blueViewRemoved = false
-//            self.view.layoutIfNeeded()
-//        }
-//    }
-//    //TEST
     
     @objc func didClickBlueView(_ sender: Any) {
         print("Click blue Playlist")
@@ -239,7 +209,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     @objc func didDragCalendar(sender: UITapGestureRecognizer) {
         if self.calendar.scope == .week{
             self.calendarConstraint?.update(offset: 550)
-            UIView.animate(withDuration: 0.2){
+            UIView.animate(withDuration: 0.3){
                 self.calendar.scope = .month
                 self.view.layoutIfNeeded()
             }
@@ -251,34 +221,18 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             }
         }
     }
-//        let velocity = sender.velocity(in: self.view) //속도
-//        let translation = sender.translation(in: self.view) //위치
-//        let height = self.topView.frame.maxY
-//
-//        if sender.state == .ended{
-//            if velocity.y>0{
-//                calendar.scope = .month
-//                print("down")
-//            }else{
-//                calendar.scope = .week
-//                print("up")
-//            }
-//        }else{
-//            if height <= height+translation.y && height+translation.y <= height+230{
-//                self.topView.frame = CGRect(x: 0, y: 0, width: self.topView.frame.width, height: height+translation.y)
-//                UIView.animate(withDuration: 0, animations: {
-//                    self.view.layoutIfNeeded()
-//                    sender.setTranslation(CGPoint.zero, in: self.view)
-//                })
-//
-//
-//            }
-//        }
-
+    
+    @objc func didClickFloatingButton(sender: UITapGestureRecognizer){
+        print("didClickFloatingButton")
+        let VC = RecordViewController()
+        VC.modalPresentationStyle = .fullScreen
+        present(VC, animated: true)
+    }
     
 
-    
-    
+    //TESTTEST
+
+
     
 //MARK: - addSubView
     private func setupView(){
@@ -299,6 +253,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         self.blueView.addSubview(self.playButton)
         self.blueView.addSubview(self.playTitle)
         self.blueView.addSubview(self.closeButton)
+        self.view.addSubview(self.floatingButton)
 
     }
         
@@ -357,7 +312,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         self.blueView.snp.makeConstraints{
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().offset(-80)
-            $0.size.height.equalTo(70)
+            self.blueViewConstraint = $0.size.height.equalTo(70).constraint
         }
         self.playButton.snp.makeConstraints{
             $0.centerY.equalToSuperview()
@@ -371,9 +326,11 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview().offset(-17)
         }
-        
-        
-        
+        self.floatingButton.snp.makeConstraints{
+            $0.trailing.equalToSuperview().offset(-18)
+            $0.bottom.equalTo(self.blueView.snp.top).offset(-19)
+            $0.height.equalTo(50)
+        }
     }
         
     
@@ -399,12 +356,16 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         let blueViewButton = UITapGestureRecognizer(target: self, action: #selector(didClickBlueView))
         blueView.isUserInteractionEnabled = true
         blueView.addGestureRecognizer(blueViewButton)
-        // 캘린더 늘리기 일단 보류
+        
         let CalendarDrag = UITapGestureRecognizer(target: self, action: #selector(didDragCalendar))
         lineView.isUserInteractionEnabled = true
         lineView.addGestureRecognizer(CalendarDrag)
-
+        
+        let floatingBtn = UITapGestureRecognizer(target: self, action: #selector(didClickFloatingButton))
+        floatingButton.isUserInteractionEnabled = true
+        floatingButton.addGestureRecognizer(floatingBtn)
     }
+    
     
 
 }
@@ -433,22 +394,22 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecordCell.identifier, for: indexPath) as! RecordCell
 
-//        let playBtn = UITapGestureRecognizer(target: self, action: #selector(didClickPlayinRecordCell))
-//        cell.playButton.isUserInteractionEnabled = true
-//        cell.playButton.addGestureRecognizer(playBtn)
-        
-        
 
-        
         
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecordCell.identifier, for: indexPath) as! RecordCell
+//프로필 클릭시 나오는 화면임
+//        collectionViewindex = indexPath.row
+//        let VC = ClickRecordViewController()
+//        VC.modalPresentationStyle = .overCurrentContext
+//        present(VC, animated: false)
+        self.blueViewConstraint?.update(offset: 70)
+        UIView.animate(withDuration: 0.3){
+            self.view.layoutIfNeeded()
+        }
         
-        collectionViewindex = indexPath.row
-        let VC = ClickRecordViewController()
-        VC.modalPresentationStyle = .overCurrentContext
-        present(VC, animated: false)
     }
    
 }
