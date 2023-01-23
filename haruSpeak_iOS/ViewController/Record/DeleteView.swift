@@ -18,7 +18,6 @@ class DeleteViewController: UIViewController{
         $0.backgroundColor = UIColor.white
         $0.layer.cornerRadius = 12
         $0.clipsToBounds = true
-        
     }
     let text = UILabel().then{
         $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 15)

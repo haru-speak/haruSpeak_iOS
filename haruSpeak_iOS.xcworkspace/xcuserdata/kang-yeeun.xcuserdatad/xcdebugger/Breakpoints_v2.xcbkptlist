@@ -14,8 +14,8 @@
             filePath = "haruSpeak_iOS/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "application(_:open:options:)"
             landmarkType = "7">
          </BreakpointContent>
