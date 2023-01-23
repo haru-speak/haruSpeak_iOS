@@ -224,6 +224,9 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     
     @objc func didClickFloatingButton(sender: UITapGestureRecognizer){
         print("didClickFloatingButton")
+        let VC = RecordViewController()
+        VC.modalPresentationStyle = .fullScreen
+        present(VC, animated: true)
     }
     
 
