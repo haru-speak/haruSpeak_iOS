@@ -20,7 +20,7 @@ class SaveViewController: UIViewController{
     }
     let setTitle = UITextField().then{
         $0.font = UIFont(name:"appleSDGothicNeo", size: 16)
-        $0.placeholder = " 오늘의 스피킹 제목을 입력해주세요."
+        $0.placeholder = " 오늘의 스피킹에 제목을 달아주세요 :)"
         $0.textColor = .systemGray5
     }
     
@@ -70,14 +70,16 @@ class SaveViewController: UIViewController{
     }
     let uploadButton = UIButton().then{
         $0.backgroundColor = .mainColor
+        $0.setTitleColor(.white, for: .normal)
         $0.setTitle("올리기", for: .normal)
     }
-//    let backButton = UIButton().then{
-//        $0.setImage(UIImage(systemName:"x.blue")?.withRenderingMode(.alwaysOriginal), for: .normal)
-//    }
-    let backButton = UIImageView().then{
-        $0.image = UIImage(systemName:"x.blue")?.withRenderingMode(.alwaysOriginal)
+    let backButton = UIButton().then{
+        $0.backgroundColor = .mainColor
+        $0.setImage(UIImage(systemName:"backBlue")?.withRenderingMode(.alwaysOriginal), for: .normal)
     }
+//    let backButton = UIImageView().then{
+//        $0.image = UIImage(systemName:"x.blue")?.withRenderingMode(.alwaysOriginal)
+//    }
     
 
 //MARK: - LifeCycle
@@ -92,7 +94,6 @@ class SaveViewController: UIViewController{
     func setUpView(){
         self.view.addSubview(self.popView)
         self.popView.addSubview(self.uploadButton)
-        self.popView.addSubview(self.backButton)
         self.popView.addSubview(self.setTitle)
         self.popView.addSubview(self.line)
         self.popView.addSubview(self.setText)
@@ -105,18 +106,19 @@ class SaveViewController: UIViewController{
         self.popView.addSubview(self.selected1)
         self.popView.addSubview(self.selected2)
         self.popView.addSubview(self.selected3)
+        self.popView.addSubview(self.backButton)
     }
 
 //MARK: - Selector
-//    @objc private func didClickBack(_ button: UIButton) {
-//        dismiss(animated: false)
-//        print("didClickBack")
-//    }
-    @objc private func didClickBack(sender: UITapGestureRecognizer) {
+    @objc private func didClickBack(_ button: UIButton) {
         dismiss(animated: false)
         print("didClickBack")
     }
-    
+//    @objc private func didClickBack(sender: UITapGestureRecognizer) {
+//        dismiss(animated: false)
+//        print("didClickBack")
+//    }
+//
     @objc private func didClickUpload(_ button: UIButton) {
         print("didClickUpload")
     }
@@ -222,12 +224,12 @@ class SaveViewController: UIViewController{
     
 //MARK: - Target
     func addTarget(){
-//        self.backButton.addTarget(self, action: #selector(self.didClickBack(_:)), for: .touchUpInside)
+        self.backButton.addTarget(self, action: #selector(self.didClickBack(_:)), for: .touchUpInside)
         
-        let backBtn = UITapGestureRecognizer(target: self, action: #selector(didClickBack(sender: )))
-        backButton.isUserInteractionEnabled = true
-        backButton.addGestureRecognizer(backBtn)
-        
+//        let backBtn = UITapGestureRecognizer(target: self, action: #selector(didClickBack(sender: )))
+//        backButton.isUserInteractionEnabled = true
+//        backButton.addGestureRecognizer(backBtn)
+//
         self.uploadButton.addTarget(self, action: #selector(self.didClickUpload(_:)), for: .touchUpInside)
 
         let pubBtn = UITapGestureRecognizer(target: self, action: #selector(didClickPub(sender: )))
