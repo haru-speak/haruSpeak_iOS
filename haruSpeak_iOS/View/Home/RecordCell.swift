@@ -12,7 +12,7 @@ final class RecordCell: UICollectionViewCell {
     static let identifier = "RecordCell"
     
     let playButton = UIImageView().then{
-        $0.image = UIImage(named: "play")?.withRenderingMode(.alwaysOriginal)
+        $0.image = UIImage(named: "play.blue")?.withRenderingMode(.alwaysOriginal)
     }
     let title = UILabel().then{
         $0.text = "Nothing beats \"AboutTime\""
@@ -44,7 +44,7 @@ final class RecordCell: UICollectionViewCell {
         $0.backgroundColor = UIColor.lightGray
     }
 //MARK: - ButtonArray
-    let playButtonArray = ["play","pause"]
+    let playButtonArray = ["play.blue","pause.blue"]
     var playindex = 0
     let heartButtonArray = ["heart","heart.fill"]
     var heartindex = 0
@@ -70,6 +70,7 @@ final class RecordCell: UICollectionViewCell {
             print("clickPause")
         }else{
             print("clickPlay")
+//            HomeViewController().blueViewup()
         }
         
         }
