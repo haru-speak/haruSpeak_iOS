@@ -22,11 +22,17 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         $0.text = "12월 8일"
         $0.textColor = .black
     }
+//    let delete = UILabel().then{
+//        $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 18)
+//        $0.text = "삭제"
+//        $0.textColor = .mainColor
+//        $0.backgroundColor = .gray
+//        $0.isHidden = true
+//    }
     let delete = UIButton().then{
         $0.setTitle("삭제", for: .normal)
         $0.setTitleColor(.mainColor, for: .normal)
         $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 18)
-        $0.backgroundColor = .white
         $0.isHidden = true
     }
     let line1 = UIView().then{
@@ -145,7 +151,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         self.mainButton.image = UIImage(named:mainButtonArray[buttonIndex])
         if buttonIndex == 0{
             self.STTText.isHidden = false
-            self.delete.isHidden = false
+            self.delete.isHidden = true
             self.done.isHidden = true
             self.timerLabel.isHidden = false
             self.nextButton.isHidden = false
@@ -158,7 +164,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         }
         else if buttonIndex == 1{
             self.STTText.isHidden = false
-            self.startMsg.isHidden = true
+            self.startMsg.isHidden = false
             self.delete.isHidden = true
             self.nextButton.isHidden = true
             self.done.isHidden = false
@@ -175,15 +181,17 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         }
     }
     @objc func deleteTapped(){
-        print("delete")
+        let VC1 = DeleteViewController()
+        VC1.modalPresentationStyle = .overCurrentContext
+        present(VC1, animated: false)
     }
     @objc func doneTapped(){
         print("done")
     }
     @objc func nextTapped(){
-        let VC = SaveViewController()
-        VC.modalPresentationStyle = .overCurrentContext
-        present(VC, animated: false)
+        let VC2 = SaveViewController()
+        VC2.modalPresentationStyle = .overCurrentContext
+        present(VC2, animated: false)
     }
     
     //MARK: - For STT
@@ -249,11 +257,13 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     
     //MARK: - addSubView
     private func setupView(){
-        self.view.addSubview(self.arrowLeft)
+//        self.view.addSubview(self.arrowLeft)
         self.view.addSubview(self.date)
-        self.view.addSubview(self.delete)
+//        self.view.addSubview(self.delete)
         self.view.addSubview(self.line1)
         self.view.addSubview(self.line2)
+        self.view.addSubview(self.arrowLeft)
+        self.view.addSubview(self.delete)
         self.view.addSubview(self.startMsg)
         self.view.addSubview(self.STTText)
         self.view.addSubview(self.baseCircle)
@@ -266,7 +276,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     //MARK: - Layout
     private func setupLayout(){
         self.arrowLeft.snp.makeConstraints{
-            $0.top.equalTo(self.view.snp.top).offset(55)
+            $0.top.equalTo(self.view.snp.top).offset(55)//55
             $0.leading.equalTo(self.view.snp.leading).offset(16)
             $0.width.equalTo(28)
             $0.height.equalTo(28)
@@ -277,12 +287,12 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         }
         self.delete.snp.makeConstraints{
             $0.trailing.equalTo(self.view.snp.trailing).offset(-29)
-            $0.top.equalTo(self.view.snp.top).offset(61)
+            $0.top.equalTo(self.view.snp.top).offset(80)//61
         }
         
         self.line1.snp.makeConstraints{
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(self.view.snp.top).offset(107)
+            $0.top.equalTo(self.view.snp.top).offset(107)//107
             $0.width.equalTo(331)
             $0.height.equalTo(1)
         }
@@ -337,6 +347,9 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         let mainBtn = UITapGestureRecognizer(target: self, action: #selector(mainButtonTapped))
         mainButton.isUserInteractionEnabled = true
         mainButton.addGestureRecognizer(mainBtn)
+//        let deleteBtn = UITapGestureRecognizer(target: self, action: #selector(deleteTapped))
+//        delete.isUserInteractionEnabled = true
+//        delete.addGestureRecognizer(deleteBtn)
         self.delete.addTarget(self, action: #selector(self.deleteTapped), for: .touchUpInside)
         self.done.addTarget(self, action: #selector(self.doneTapped), for: .touchUpInside)
         self.nextButton.addTarget(self, action: #selector(self.nextTapped), for: .touchUpInside)
