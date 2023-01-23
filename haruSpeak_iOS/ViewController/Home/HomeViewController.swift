@@ -187,6 +187,10 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             print("clickPlay")
         }
     }
+    @objc func didClickClose(_ sender: Any) {
+        print("Click Clost blue Playlist")
+
+    }
 
     // 캘린더 늘리기 일단 보류
 //    @objc func didDragCalendar(sender: UIPanGestureRecognizer) {
@@ -328,6 +332,10 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         let playBtn = UITapGestureRecognizer(target: self, action: #selector(didClickPlay))
         playButton.isUserInteractionEnabled = true
         playButton.addGestureRecognizer(playBtn)
+        
+        let closeBtn = UITapGestureRecognizer(target: self, action: #selector(didClickClose))
+        closeButton.isUserInteractionEnabled = true
+        closeButton.addGestureRecognizer(closeBtn)
         // 캘린더 늘리기 일단 보류
 //        let CalendarDrag = UIPanGestureRecognizer(target: self, action: #selector(didDragCalendar))
 //        lineView.isUserInteractionEnabled = true
