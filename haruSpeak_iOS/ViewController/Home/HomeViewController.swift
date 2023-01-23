@@ -75,7 +75,21 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     
     var collectionViewindex = 0
 
-    
+    //BLUE PLAYLIST VIEW
+    private let blueView = UIView().then{
+        $0.backgroundColor = .mainColor
+    }
+    private let playButton = UIImageView().then{
+        $0.image = UIImage(named: "play.white")?.withRenderingMode(.alwaysOriginal)
+    }
+    private let playTitle = UILabel().then{
+        $0.text = "Nothing beats About time"
+        $0.textColor = .white
+        $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 18)
+    }
+    private let closeButton = UIImageView().then{
+        $0.image = UIImage(named: "x.white")?.withRenderingMode(.alwaysOriginal)
+    }
     
 //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -140,8 +154,8 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             floatingButton.backgroundColor = .mainColor
             floatingButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
             view.addSubview(floatingButton)
-            view.addConstraint(NSLayoutConstraint(item: floatingButton, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: -100))
-            view.addConstraint(NSLayoutConstraint(item: floatingButton, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1.0, constant: -32))
+            view.addConstraint(NSLayoutConstraint(item: floatingButton, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: -160))
+            view.addConstraint(NSLayoutConstraint(item: floatingButton, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1.0, constant: -14))
         }
     
 //MARK: - Selector
@@ -206,6 +220,10 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         self.topView.addSubview(self.lineView)
         self.lineView.addSubview(self.line)
         self.view.addSubview(self.recordCollectionView)
+        self.view.addSubview(self.blueView)
+        self.blueView.addSubview(self.playButton)
+        self.blueView.addSubview(self.playTitle)
+        self.blueView.addSubview(self.closeButton)
 
     }
         
@@ -257,9 +275,26 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         }
         self.recordCollectionView.snp.makeConstraints {
             $0.top.equalTo(self.topView.snp.bottom).offset(20)
-            $0.bottom.trailing.leading.equalToSuperview()
+            $0.trailing.leading.equalToSuperview()
+            $0.bottom.equalTo(self.blueView.snp.top)
         }
-
+        self.blueView.snp.makeConstraints{
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview().offset(-80)
+            $0.size.height.equalTo(70)
+        }
+        self.playButton.snp.makeConstraints{
+            $0.centerY.equalToSuperview()
+            $0.leading.equalToSuperview().offset(16)
+        }
+        self.playTitle.snp.makeConstraints{
+            $0.centerY.equalToSuperview()
+            $0.leading.equalTo(self.playButton.snp.trailing).offset(20)
+        }
+        self.closeButton.snp.makeConstraints{
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview().offset(-17)
+        }
         
         
     }
