@@ -22,6 +22,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         $0.text = "12월 8일"
         $0.textColor = .black
     }
+    
 //    let delete = UILabel().then{
 //        $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 18)
 //        $0.text = "삭제"
