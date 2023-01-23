@@ -91,6 +91,10 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         $0.image = UIImage(named: "x.white")?.withRenderingMode(.alwaysOriginal)
     }
     
+    //ButtonArray
+        let playButtonArray = ["play.white","pause.white"]
+        var playindex = 0
+    
 //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -173,6 +177,19 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     }
     @objc func didClickAnnouncement(sender: UITapGestureRecognizer) {
         print("didClickAnnouncement")
+    }
+    @objc func didClickPlay(sender: UITapGestureRecognizer) {
+        self.playindex = (self.playindex >= self.playButtonArray.count-1) ? 0 : self.playindex+1
+        self.playButton.image = UIImage(named:playButtonArray[playindex])
+        if playindex == 0{
+            print("clickPause")
+        }else{
+            print("clickPlay")
+        }
+    }
+    @objc func didClickClose(_ sender: Any) {
+        print("Click Clost blue Playlist")
+
     }
 
     // 캘린더 늘리기 일단 보류
@@ -285,7 +302,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         }
         self.playButton.snp.makeConstraints{
             $0.centerY.equalToSuperview()
-            $0.leading.equalToSuperview().offset(16)
+            $0.leading.equalToSuperview().offset(26.21)
         }
         self.playTitle.snp.makeConstraints{
             $0.centerY.equalToSuperview()
@@ -295,6 +312,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview().offset(-17)
         }
+        
         
         
     }
@@ -311,6 +329,13 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         announcementButton.isUserInteractionEnabled = true
         announcementButton.addGestureRecognizer(AnnouncementBtn)
         
+        let playBtn = UITapGestureRecognizer(target: self, action: #selector(didClickPlay))
+        playButton.isUserInteractionEnabled = true
+        playButton.addGestureRecognizer(playBtn)
+        
+        let closeBtn = UITapGestureRecognizer(target: self, action: #selector(didClickClose))
+        closeButton.isUserInteractionEnabled = true
+        closeButton.addGestureRecognizer(closeBtn)
         // 캘린더 늘리기 일단 보류
 //        let CalendarDrag = UIPanGestureRecognizer(target: self, action: #selector(didDragCalendar))
 //        lineView.isUserInteractionEnabled = true
