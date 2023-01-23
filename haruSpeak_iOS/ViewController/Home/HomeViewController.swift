@@ -17,7 +17,6 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
 //MARK: - Properties
     private var calendarConstraint : Constraint?
     private var blueViewConstraint : Constraint?
-//    private var floatingButtonConstraint : Constraint?
     // TOPVIEW START
     let topView = UIView().then{
         $0.roundCorners(cornerRadius: 30, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner])
@@ -99,6 +98,14 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         let playButtonArray = ["play.white","pause.white"]
         var playindex = 0
     
+    private let floatingButton = MDCFloatingButton().then{
+        $0.sizeToFit()
+        $0.setImage(UIImage(systemName: "plus"), for: .normal)
+        $0.setImageTintColor(.white, for: .normal)
+        $0.backgroundColor = .mainColor
+    }
+
+
 //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,7 +120,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         setupLayout()
         addTarget()
         setCalendarUI()
-        setFloatingButton()
+//        setFloatingButton()
         
         self.view.translatesAutoresizingMaskIntoConstraints = true
     }
@@ -153,17 +160,10 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     }
 //MARK: - FloatingButton
     func setFloatingButton() {
-            let floatingButton = MDCFloatingButton()
-            let image = UIImage(systemName: "plus")
-            floatingButton.sizeToFit()
-            floatingButton.translatesAutoresizingMaskIntoConstraints = false
-            floatingButton.setImage(image, for: .normal)
-            floatingButton.setImageTintColor(.white, for: .normal)
-            floatingButton.backgroundColor = .mainColor
-            floatingButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
-            view.addSubview(floatingButton)
-            view.addConstraint(NSLayoutConstraint(item: floatingButton, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: -160))
-            view.addConstraint(NSLayoutConstraint(item: floatingButton, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1.0, constant: -14))
+
+            
+        
+
         }
     
 //MARK: - Selector
@@ -231,6 +231,10 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             }
         }
     }
+    
+    @objc func didClickFloatingButton(sender: UITapGestureRecognizer){
+        print("didClickFloatingButton")
+    }
 //        let velocity = sender.velocity(in: self.view) //속도
 //        let translation = sender.translation(in: self.view) //위치
 //        let height = self.topView.frame.maxY
@@ -279,6 +283,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         self.blueView.addSubview(self.playButton)
         self.blueView.addSubview(self.playTitle)
         self.blueView.addSubview(self.closeButton)
+        self.view.addSubview(self.floatingButton)
 
     }
         
@@ -351,9 +356,11 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview().offset(-17)
         }
-        
-        
-        
+        self.floatingButton.snp.makeConstraints{
+            $0.trailing.equalToSuperview().offset(-18)
+            $0.bottom.equalTo(self.blueView.snp.top).offset(-19)
+            $0.height.equalTo(50)
+        }
     }
         
     
@@ -379,12 +386,16 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         let blueViewButton = UITapGestureRecognizer(target: self, action: #selector(didClickBlueView))
         blueView.isUserInteractionEnabled = true
         blueView.addGestureRecognizer(blueViewButton)
-        // 캘린더 늘리기 일단 보류
+        
         let CalendarDrag = UITapGestureRecognizer(target: self, action: #selector(didDragCalendar))
         lineView.isUserInteractionEnabled = true
         lineView.addGestureRecognizer(CalendarDrag)
-
+        
+        let floatingBtn = UITapGestureRecognizer(target: self, action: #selector(didClickFloatingButton))
+        floatingButton.isUserInteractionEnabled = true
+        floatingButton.addGestureRecognizer(floatingBtn)
     }
+    
     
 
 }
