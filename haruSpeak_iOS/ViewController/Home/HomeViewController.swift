@@ -19,7 +19,6 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     private let topView = UIView().then{
         $0.roundCorners(cornerRadius: 30, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner])
         $0.backgroundColor = .white
-        
         $0.layer.borderWidth = 0.3
         $0.layer.masksToBounds = false
         $0.layer.shadowColor = UIColor.lightGray.cgColor
@@ -34,7 +33,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         $0.textColor = .lightGray
     }
     private let alarmButton = UIImageView().then{
-        $0.image = UIImage(named: "alarm")?.withRenderingMode(.alwaysOriginal)
+        $0.image = UIImage(named: "alarm.blue")?.withRenderingMode(.alwaysOriginal)
     }
     private let message = UILabel().then{
         $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 22)
