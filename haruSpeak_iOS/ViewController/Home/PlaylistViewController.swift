@@ -99,6 +99,7 @@ class PlaylistViewController: UIViewController{
     }
     let commentTextField = UITextField().then{
         $0.placeholder = "피드백을 남겨보세요!"
+        
     }
     let submitButton = UIImageView().then{
         $0.image = UIImage(named: "commentupload")?.withRenderingMode(.alwaysOriginal)
@@ -265,8 +266,25 @@ class PlaylistViewController: UIViewController{
         //COMMENTSUBMIT
         self.bottomFixedView.snp.makeConstraints{
             $0.leading.trailing.bottom.equalToSuperview()
-            $0.size.height.equalTo(86)
+            $0.size.height.equalTo(106)
         }
+        self.commentSubmitView.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(7)
+            $0.leading.equalToSuperview().offset(7)
+            $0.trailing.equalToSuperview().offset(-7)
+        }
+        self.commentTextField.snp.makeConstraints{
+            $0.centerY.equalToSuperview()
+            $0.leading.equalToSuperview().offset(10)
+            $0.top.equalToSuperview().offset(5)
+            $0.bottom.equalToSuperview().offset(-5)
+        }
+        self.submitButton.snp.makeConstraints{
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview().offset(-10)
+        }
+        
+        
     }
     
     //MARK: - AddTarget
