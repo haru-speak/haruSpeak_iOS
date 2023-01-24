@@ -17,6 +17,11 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
 //MARK: - Properties
     private var calendarConstraint : Constraint?
     private var blueViewConstraint : Constraint?
+    
+    //녹음 있는 날짜 Array
+    let formatter = DateFormatter()
+    let haveDataCircle : Array = ["2023-01-25", "2023-01-17"]
+    
     // TOPVIEW START
     let topView = UIView().then{
         $0.roundCorners(cornerRadius: 30, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner])
@@ -131,6 +136,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         setCalendarUI()
         
         self.view.translatesAutoresizingMaskIntoConstraints = true
+
     }
 
 //MARK: - CalendarUI
@@ -158,9 +164,10 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         //이벤트 동그라미
         calendar.appearance.eventDefaultColor = UIColor.mainColor
         calendar.appearance.eventSelectionColor = UIColor.mainColor
-        
+
         //해당 월만 보이게끔
         calendar.placeholderType = .none
+        
     }
 
     // 날짜 선택 시 콜백 메소드 (백엔드 들어오면 해당 날짜 데이터 가져오기, mylog, mymate 구분도 해야됨)
@@ -175,6 +182,22 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         print(dateFormatter.string(from: date) + " 해제됨")
+    }
+    
+    //녹음 있는 날짜 출력(작은 동그라미)
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.dateFormat = "yyyy-MM-dd"
+        var dates = [Date]()
+        for i in 0...haveDataCircle.count-1{
+            var a = formatter.date(from: haveDataCircle[i])
+            dates.append(a!)
+        }
+        
+        if dates.contains(date){
+            return 1
+        }
+        return 0
     }
 
 
@@ -238,7 +261,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     @objc func didDragCalendar(sender: UITapGestureRecognizer) {
         if self.calendar.scope == .week{
             self.calendarConstraint?.update(offset: 530)
-            UIView.animate(withDuration: 0.2){
+            UIView.animate(withDuration: 0.3){
                 self.calendar.scope = .month
 //                self.calendar.headerHeight = 30
                 self.calendar.appearance.headerDateFormat = "M월"
