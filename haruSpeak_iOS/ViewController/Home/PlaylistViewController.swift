@@ -20,7 +20,10 @@ class PlaylistViewController: UIViewController{
     let reportButton = UIImageView().then{
         $0.image = UIImage(named: "reportbutton")?.withRenderingMode(.alwaysOriginal)
     }
-    let mainScrollView = UIScrollView()
+    let mainScrollView = UIScrollView().then{
+        $0.showsHorizontalScrollIndicator = false
+        $0.showsVerticalScrollIndicator = false
+    }
     let totalView = UIView().then{
         $0.backgroundColor = .white
     }
@@ -45,7 +48,10 @@ class PlaylistViewController: UIViewController{
         $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 20)
         $0.numberOfLines = 1
     }
-    let lyricsScrollView = UIScrollView()
+    let lyricsScrollView = UIScrollView().then{
+        $0.showsHorizontalScrollIndicator = false
+        $0.showsVerticalScrollIndicator = false
+    }
     let lyricsView = UIView().then{
         $0.backgroundColor = .white
     }
