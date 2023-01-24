@@ -213,7 +213,7 @@ class SaveViewController: UIViewController{
             $0.bottom.equalTo(self.popView.snp.bottom).offset(0)
             $0.leading.equalTo(self.popView.snp.leading).offset(0)
             $0.trailing.equalTo(self.popView.snp.trailing).offset(0)
-            $0.height.equalTo(50)
+            $0.height.equalTo(74)
         }
         self.backButton.snp.makeConstraints{
             $0.top.equalTo(self.popView.snp.top).offset(14)
