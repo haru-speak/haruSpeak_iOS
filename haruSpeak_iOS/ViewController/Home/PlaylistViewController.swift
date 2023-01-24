@@ -88,7 +88,7 @@ class PlaylistViewController: UIViewController{
     }
 //BOTTOMVIEW
     let bottomView = UIView().then{
-        $0.backgroundColor = .yellow
+        $0.backgroundColor = .white
     }
     let labelBottomview = UILabel().then{
         $0.text = "댓글"
@@ -283,11 +283,11 @@ class PlaylistViewController: UIViewController{
         }
         //BOTTOMVIEW
         self.labelBottomview.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(11)
+            $0.top.equalToSuperview().offset(20)
             $0.leading.equalToSuperview().offset(34)
         }
         self.commentCollectionView.snp.makeConstraints{
-            $0.top.equalTo(self.labelBottomview.snp.bottom).offset(10)
+            $0.top.equalTo(self.labelBottomview.snp.bottom).offset(0)
             $0.leading.equalToSuperview().offset(10)
             $0.trailing.equalToSuperview().offset(-10)
             $0.bottom.equalToSuperview().offset(-10)
@@ -348,13 +348,28 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommentCell.identifier, for: indexPath) as! CommentCell
+
+
+        
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommentCell.identifier, for: indexPath) as! CommentCell
+        
         
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 320, height: collectionView.frame.height)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 5
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: self.view.frame.width , height: 70)
+    }
+   
     
 }
