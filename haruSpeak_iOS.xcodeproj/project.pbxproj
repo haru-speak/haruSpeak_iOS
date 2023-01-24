@@ -42,6 +42,7 @@
 		E5E984DA296EE2A300E5DE83 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E984D9296EE2A300E5DE83 /* HomeViewController.swift */; };
 		E5E984DC296EE2AF00E5DE83 /* StudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E984DB296EE2AF00E5DE83 /* StudyViewController.swift */; };
 		E5E984DE296EE2BA00E5DE83 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E984DD296EE2BA00E5DE83 /* MyPageViewController.swift */; };
+		E5F7F4DA297F9A540004800E /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F7F4D9297F9A540004800E /* CommentCell.swift */; };
 		E5FD566629790E0A0088DDAF /* SearchFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FD566529790E0A0088DDAF /* SearchFilterView.swift */; };
 		E5FD5668297A2A640088DDAF /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FD5667297A2A640088DDAF /* PlaylistViewController.swift */; };
 /* End PBXBuildFile section */
@@ -113,6 +114,7 @@
 		E5E984D9296EE2A300E5DE83 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E5E984DB296EE2AF00E5DE83 /* StudyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyViewController.swift; sourceTree = "<group>"; };
 		E5E984DD296EE2BA00E5DE83 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		E5F7F4D9297F9A540004800E /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		E5FD566529790E0A0088DDAF /* SearchFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterView.swift; sourceTree = "<group>"; };
 		E5FD5667297A2A640088DDAF /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
 		E5FD566A297C29590088DDAF /* AppleSDGothicNeo-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AppleSDGothicNeo-Semibold.ttf"; sourceTree = "<group>"; };
@@ -376,6 +378,7 @@
 			children = (
 				E51CE8BC296F77B500ADB07B /* CustomTabbar.swift */,
 				E51CE8BE296FBED100ADB07B /* RecordCell.swift */,
+				E5F7F4D9297F9A540004800E /* CommentCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -642,6 +645,7 @@
 				68BD8E052971B80400939DFB /* RecordViewController.swift in Sources */,
 				68BD8E20297D7D1D00939DFB /* DeleteViewController.swift in Sources */,
 				E5E984B6296ED95300E5DE83 /* UIColor+.swift in Sources */,
+				E5F7F4DA297F9A540004800E /* CommentCell.swift in Sources */,
 				E51CE8C92971038A00ADB07B /* ClickRecordViewController.swift in Sources */,
 				E5FD5668297A2A640088DDAF /* PlaylistViewController.swift in Sources */,
 				E59D362629742C3B00A012C4 /* AssignmentView.swift in Sources */,
