@@ -47,8 +47,8 @@ final class CommentCell: UICollectionViewCell {
  
     
 //MARK: - ButtonArray
-    let playButtonArray = ["thumbsup","thumbsup.blue"]
-    var playindex = 0
+    let thumbsupButtonArray = ["thumbsup","thumbsup.blue"]
+    var thumbsupindex = 0
     
     
 //MARK: - Init
@@ -63,7 +63,15 @@ final class CommentCell: UICollectionViewCell {
     }
     
     //MARK: - Selector
-
+    @objc func didClickThumbsup(sender: UITapGestureRecognizer) {
+        self.thumbsupindex = (self.thumbsupindex >= self.thumbsupButtonArray.count-1) ? 0 : self.thumbsupindex+1
+        self.clickThumbsup.image = UIImage(named:thumbsupButtonArray[thumbsupindex])
+        if self.thumbsupindex == 0{
+            print("clickUnlike")
+        }else{
+            print("clickLike")
+        }
+        }
     //MARK: - addSubView
     private func setupView(){
         self.addSubview(self.profileImage)
@@ -126,7 +134,10 @@ final class CommentCell: UICollectionViewCell {
     
     //MARK: - AddTarget
     private func addTarget(){
-   
+        
+        let thumbsupBtn = UITapGestureRecognizer(target: self, action: #selector(didClickThumbsup))
+        clickThumbsup.isUserInteractionEnabled = true
+        clickThumbsup.addGestureRecognizer(thumbsupBtn)
         }
     }
 
