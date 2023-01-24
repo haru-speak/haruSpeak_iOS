@@ -146,7 +146,7 @@ class SaveViewController: UIViewController{
         self.popView.snp.makeConstraints{
             $0.leading.equalToSuperview().offset(0)
             $0.trailing.equalToSuperview().offset(0)
-            $0.bottom.equalToSuperview().offset(-50)
+            $0.bottom.equalToSuperview().offset(0)
             $0.size.height.equalTo(241)
             
         }

@@ -24,14 +24,6 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         $0.text = "12월 8일"
         $0.textColor = .black
     }
-    
-//    let delete = UILabel().then{
-//        $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 18)
-//        $0.text = "삭제"
-//        $0.textColor = .mainColor
-//        $0.backgroundColor = .gray
-//        $0.isHidden = true
-//    }
     let delete = UIButton().then{
         $0.setTitle("삭제", for: .normal)
         $0.setTitleColor(.mainColor, for: .normal)
@@ -107,10 +99,6 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     var count:Int = 0
     var timeCounting: Bool = false
     
-    //MARK: - ButtonArray
-    let mainButtonArray = ["startRecording","pauseRecording","play.blue"]
-    var buttonIndex = 0
-    
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -151,42 +139,37 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     
     //MARK: - Selector
     @objc func mainButtonTapped(sender: UITapGestureRecognizer) {
-        self.buttonIndex = (self.buttonIndex >= self.mainButtonArray.count-1) ? 0 : self.buttonIndex+1
-        self.mainButton.image = UIImage(named:mainButtonArray[buttonIndex])
-        if buttonIndex == 0{
-            self.STTText.isHidden = false
-            self.timerLabel.isHidden = false
-            self.nextButton.isHidden = false
-            self.delete.isHidden = true
-            self.done.isHidden = true
-            playButtonTapped()
+
+        if self.mainButton.image == UIImage(named:"pause.blue")?.withRenderingMode(.alwaysOriginal){
+            print("playPauseButtonTapped")
+            playPauseButtonTapped()
+
         }
-        else if buttonIndex == 1{
-            self.STTText.isHidden = false
-            self.startMsg.isHidden = true
-            self.delete.isHidden = true
-            self.nextButton.isHidden = true
-            self.done.isHidden = false
-            self.timerLabel.isHidden = false
-            recordButtonTapped()
+        else if self.mainButton.image == UIImage(named:"pauseRecording")?.withRenderingMode(.alwaysOriginal){
+            pauseButtonTapped()
+            print("pauseButtonTapped")
+
+        }
+        else if self.mainButton.image == UIImage(named:"continueRecording")?.withRenderingMode(.alwaysOriginal){
+            continueButtonTapped()
+            print("continueButtonTapped")
+
+        }
+        else if self.mainButton.image == UIImage(named:"play.blue")?.withRenderingMode(.alwaysOriginal){
+            playButtonTapped()
+            print("playButtonTapped")
+
         }
         else{
-            self.STTText.isHidden = false
-            self.delete.isHidden = false
-            self.timerLabel.isHidden = false
-            self.nextButton.isHidden = false
-            self.startMsg.isHidden = true
-            self.done.isHidden = true
-            pauseButtonTapped()
+            recordButtonTapped()
+            print("recordButtonTapped")
         }
     }
+    
     @objc func deleteTapped(){
         let VC1 = DeleteViewController()
         VC1.modalPresentationStyle = .overCurrentContext
         present(VC1, animated: false)
-    }
-    @objc func doneTapped(){
-        print("done")
     }
     @objc func nextTapped(){
         let VC2 = SaveViewController()
@@ -195,22 +178,86 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     }
     @objc func backTapped(){
         dismiss(animated: false)
-        print("back")
     }
     
     //MARK: - For STT
     @objc func recordButtonTapped() {
+        //녹음 시작, 이미지는 pause
+        self.mainButton.image = UIImage(named:"pauseRecording")?.withRenderingMode(.alwaysOriginal)
+        self.STTText.isHidden = false
+        self.done.isHidden = false
+        self.timerLabel.isHidden = false
+        self.startMsg.isHidden = true
+        self.delete.isHidden = true
+        self.nextButton.isHidden = true
         startRecording()
     }
     @objc func pauseButtonTapped(){
+        //녹음 멈춤, 이미지는 계속
+        self.mainButton.image = UIImage(named:"continueRecording")?.withRenderingMode(.alwaysOriginal)
+        self.STTText.isHidden = false
+        self.done.isHidden = false
+        self.timerLabel.isHidden = false
+        self.startMsg.isHidden = true
+        self.delete.isHidden = true
+        self.nextButton.isHidden = true
+        stopRecording()
+    }
+                                        
+    @objc func continueButtonTapped(){
+        //녹음 재개, 이미지는 pauseRecording
+        self.mainButton.image = UIImage(named:"pauseRecording")?.withRenderingMode(.alwaysOriginal)
+        self.STTText.isHidden = false
+        self.done.isHidden = false
+        self.timerLabel.isHidden = false
+        self.startMsg.isHidden = true
+        self.delete.isHidden = true
+        self.nextButton.isHidden = true
+        continueRecording()
+    }
+                                        
+    @objc func doneTapped(){
+        //녹음 finish, 이미지는 play.blue
+        self.mainButton.image = UIImage(named:"play.blue")?.withRenderingMode(.alwaysOriginal)
         finishRecording(success: true)
         transcribeAudio()
+        self.STTText.isHidden = false
+        self.delete.isHidden = false
+        self.nextButton.isHidden = false
+        self.timerLabel.isHidden = true
+        self.startMsg.isHidden = true
+        self.done.isHidden = true
     }
+    
     @objc func playButtonTapped() {
-            audioPlayer = try? AVAudioPlayer(contentsOf: audioRecorder.url)
-            audioPlayer?.delegate = self
-            audioPlayer?.play()
+        //오디오 파일 재생, 이미지는 pause.blue
+        self.mainButton.image = UIImage(named:"pause.blue")?.withRenderingMode(.alwaysOriginal)
+        self.STTText.isHidden = false
+        self.delete.isHidden = false
+        self.nextButton.isHidden = false
+        self.timerLabel.isHidden = true
+        self.startMsg.isHidden = true
+        self.done.isHidden = true
+        audioPlayer = try? AVAudioPlayer(contentsOf: audioRecorder.url)
+        audioPlayer?.delegate = self
+        audioPlayer?.play()
         }
+    
+    @objc func playPauseButtonTapped() {
+        //오디오 파일 재생 멈춤, 이미지는 play.blue
+        self.mainButton.image = UIImage(named:"play.blue")
+        self.STTText.isHidden = false
+        self.delete.isHidden = false
+        self.nextButton.isHidden = false
+        self.timerLabel.isHidden = true
+        self.startMsg.isHidden = true
+        self.done.isHidden = true
+        audioPlayer?.pause()
+//        audioPlayer = try? AVAudioPlayer(contentsOf: audioRecorder.url)
+//        audioPlayer?.delegate = self
+//        audioPlayer?.play()
+        }
+    
     @objc func transcribeAudio() {
         self.audioUrl = audioRecorder.url
         guard let audioUrl = audioUrl else {
@@ -386,6 +433,19 @@ extension RecordViewController {
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
+    }
+    func stopRecording(){
+        print("stopRecording")
+        timeCounting = false
+        timer.invalidate()
+        audioRecorder.pause()
+    }
+    
+    func continueRecording(){
+        print("continueRecording")
+        timeCounting = true
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCounter), userInfo: nil, repeats: true)
+        audioRecorder.record()
     }
     
     func finishRecording(success: Bool) {
