@@ -78,10 +78,12 @@ class EmailLoginViewController: UIViewController{
     @objc func arrowLeftButtonTapped(){
         self.navigationController?.pushViewController(AuthenticationViewController(), animated: true)
     }
+    
     @objc func joinMembershipButtonTapped(){
         self.navigationController?.pushViewController(MembershipViewController(), animated: true)
         self.navigationController?.navigationBar.isHidden = true
     }
+    
     @objc func loginButtonTapped(){
         self.navigationController?.pushViewController(HomeViewController(), animated: true)
         self.navigationController?.navigationBar.isHidden = true
