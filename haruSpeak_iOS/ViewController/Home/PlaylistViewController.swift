@@ -142,6 +142,25 @@ class PlaylistViewController: UIViewController{
         dismiss(animated: true)
         print("didClickBack")
     }
+    @objc func didClickPlay(sender: UITapGestureRecognizer) {
+        self.playindex = (self.playindex >= self.playButtonArray.count-1) ? 0 : self.playindex+1
+        self.playButton.image = UIImage(named:playButtonArray[playindex])
+        if playindex == 0{
+            print("clickPause")
+        }else{
+            print("clickPlay")
+        }
+        
+        }
+    @objc func didClickheart(sender: UITapGestureRecognizer) {
+        self.heartindex = (self.heartindex >= self.heartButtonArray.count-1) ? 0 : self.heartindex+1
+        self.heartImage.image = UIImage(named:heartButtonArray[heartindex])
+        if self.heartindex == 0{
+            print("clickUnlike")
+        }else{
+            print("clickLike")
+        }
+        }
     
     //MARK: - addSubView
     func setupView(){
@@ -317,17 +336,29 @@ class PlaylistViewController: UIViewController{
         
         
     }
+    //MARK: - ButtonArray
+        let playButtonArray = ["play.blue","pause.blue"]
+        var playindex = 0
+        let heartButtonArray = ["heart","heart.fill"]
+        var heartindex = 0
     
     //MARK: - AddTarget
     func addTarget(){
         let backBtn = UITapGestureRecognizer(target: self, action: #selector(didClickBack))
         backButton.isUserInteractionEnabled = true
         backButton.addGestureRecognizer(backBtn)
+        let playBtn = UITapGestureRecognizer(target: self, action: #selector(didClickPlay))
+        playButton.isUserInteractionEnabled = true
+        playButton.addGestureRecognizer(playBtn)
+        
+        let heartBtn = UITapGestureRecognizer(target: self, action: #selector(didClickheart))
+        heartImage.isUserInteractionEnabled = true
+        heartImage.addGestureRecognizer(heartBtn)
+        
     }
     
     //MARK: - SetupCollectionView
     func setupCollectionView(){
-        
         self.commentCollectionView.delegate = self
         self.commentCollectionView.dataSource = self
     }
