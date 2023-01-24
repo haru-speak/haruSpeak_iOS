@@ -62,6 +62,15 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         
     }
     private let calendar = FSCalendar(frame: CGRect(x: 15, y: 20, width: 350, height: 300))
+    private let calendarRight = UIButton().then{
+        $0.setImage(UIImage(named: "calendarright")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        $0.isHidden = true
+    }
+    private let calendarLeft = UIButton().then{
+        $0.setImage(UIImage(named: "calendarleft")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        $0.isHidden = true
+    }
+    
     private let lineView = UIView().then{
         $0.backgroundColor = .clear
     }
@@ -134,8 +143,8 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         calendar.scope = .week
         
         //Header (늘릴때 필요?)
-        calendar.headerHeight = 0
-        calendar.appearance.headerDateFormat = "M월"
+        calendar.headerHeight = 25
+        calendar.appearance.headerDateFormat = ""
         calendar.appearance.headerMinimumDissolvedAlpha = 0
         calendar.appearance.headerTitleFont = UIFont.appleSDGothicNeo(size: 16, family: .Bold)
         calendar.appearance.headerTitleColor = .black
@@ -145,23 +154,49 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         calendar.appearance.weekdayTextColor = .lightGray
         calendar.appearance.todayColor = UIColor.lightGray
         calendar.appearance.selectionColor = UIColor.mainColor
+        
+        //이벤트 동그라미
+        calendar.appearance.eventDefaultColor = UIColor.mainColor
+        calendar.appearance.eventSelectionColor = UIColor.mainColor
+        
+        //해당 월만 보이게끔
+        calendar.placeholderType = .none
     }
-    
+
     // 날짜 선택 시 콜백 메소드 (백엔드 들어오면 해당 날짜 데이터 가져오기, mylog, mymate 구분도 해야됨)
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         print(dateFormatter.string(from: date) + " 선택됨")
     }
     
     // 날짜 선택 해제 시 콜백 메소드
     public func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         print(dateFormatter.string(from: date) + " 해제됨")
     }
 
+
 //MARK: - Selector
+    private var currentPage: Date?
+    private lazy var today: Date = {
+        return Date()
+    }()
+    @objc func monthForthButtonPressed(_ sender: Any) {
+        self.moveCurrentPage(moveUp: true)
+    }
+    @objc func monthBackButtonPressed(_ sender: Any) {
+        self.moveCurrentPage(moveUp: false)
+    }
+    private func moveCurrentPage(moveUp: Bool) {
+        let calendar = Calendar.current
+        var dateComponents = DateComponents()
+        dateComponents.month = moveUp ? 1 : -1
+        self.currentPage = calendar.date(byAdding: dateComponents, to: self.currentPage ?? self.today)
+        self.calendar.setCurrentPage(self.currentPage!, animated: true)
+    }
+    
     @objc func tap(_ sender: Any) {
         print("Record Screen Open")
 
@@ -202,18 +237,24 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     // 캘린더 늘리기 일단 보류
     @objc func didDragCalendar(sender: UITapGestureRecognizer) {
         if self.calendar.scope == .week{
-            self.calendarConstraint?.update(offset: 550)
-            UIView.animate(withDuration: 0.3){
+            self.calendarConstraint?.update(offset: 530)
+            UIView.animate(withDuration: 0.2){
                 self.calendar.scope = .month
 //                self.calendar.headerHeight = 30
+                self.calendar.appearance.headerDateFormat = "M월"
+                self.calendarRight.isHidden = false
+                self.calendarLeft.isHidden = false
                 self.view.layoutIfNeeded()
             }
 
         }else{
-            self.calendarConstraint?.update(offset: 320)
+            self.calendarConstraint?.update(offset: 340)
             UIView.animate(withDuration: 0){
                 self.calendar.scope = .week
 //                self.calendar.headerHeight = 0
+                self.calendar.appearance.headerDateFormat = ""
+                self.calendarRight.isHidden = true
+                self.calendarLeft.isHidden = true
                 self.view.layoutIfNeeded()
             }
 
@@ -226,6 +267,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         VC.modalPresentationStyle = .fullScreen
         present(VC, animated: true)
     }
+    
 
     
 //MARK: - addSubView
@@ -239,6 +281,8 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         self.topView.addSubview(self.tabbar)
         self.topView.addSubview(self.calendarView)
         self.calendarView.backgroundColor = .clear
+        self.calendar.addSubview(self.calendarRight)
+        self.calendar.addSubview(self.calendarLeft)
         self.calendarView.addSubview(self.calendar)
         self.topView.addSubview(self.lineView)
         self.lineView.addSubview(self.line)
@@ -248,7 +292,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         self.blueView.addSubview(self.playTitle)
         self.blueView.addSubview(self.closeButton)
         self.view.addSubview(self.floatingButton)
-
+        
     }
         
     
@@ -257,7 +301,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     private func setupLayout(){
         self.topView.snp.makeConstraints{
             $0.top.trailing.leading.equalToSuperview().offset(0)
-            self.calendarConstraint = $0.height.equalTo(320).constraint
+            self.calendarConstraint = $0.height.equalTo(340).constraint
         }
         self.date.snp.makeConstraints{
             $0.top.equalTo(self.topView.snp.top).offset(54)
@@ -285,9 +329,17 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             $0.trailing.equalTo(self.topView.snp.trailing).offset(-10)
         }
         self.calendarView.snp.makeConstraints{
-            $0.top.equalTo(self.tabbar.snp.bottom).offset(0)
+            $0.top.equalTo(self.tabbar.snp.bottom).offset(-5)
             $0.leading.equalTo(self.topView.snp.leading).offset(0)
             $0.trailing.equalTo(self.topView.snp.trailing).offset(0)
+        }
+        self.calendarRight.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(6)
+            $0.trailing.equalToSuperview().offset(-135)
+        }
+        self.calendarLeft.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(2)
+            $0.leading.equalToSuperview().offset(135)
         }
         self.lineView.snp.makeConstraints{
             $0.top.equalTo(self.calendarView.snp.bottom).offset(0)
@@ -358,6 +410,10 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         let floatingBtn = UITapGestureRecognizer(target: self, action: #selector(didClickFloatingButton))
         floatingButton.isUserInteractionEnabled = true
         floatingButton.addGestureRecognizer(floatingBtn)
+        
+        self.calendarRight.addTarget(self, action: #selector(self.monthForthButtonPressed), for: .touchUpInside)
+        
+        self.calendarLeft.addTarget(self, action: #selector(self.monthBackButtonPressed), for: .touchUpInside)
     }
     
     
