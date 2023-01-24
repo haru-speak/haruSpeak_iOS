@@ -5,7 +5,6 @@
 //  Created by 강예은 on 2023/01/14.
 //
 
-
 import Foundation
 import UIKit
 import SnapKit
@@ -24,6 +23,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         $0.text = "12월 8일"
         $0.textColor = .black
     }
+
     let delete = UIButton().then{
         $0.setTitle("삭제", for: .normal)
         $0.setTitleColor(.mainColor, for: .normal)
