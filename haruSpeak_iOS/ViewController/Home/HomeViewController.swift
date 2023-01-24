@@ -125,29 +125,18 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     }
 
 //MARK: - CalendarUI
+
     private func setCalendarUI(){
         self.calendar.delegate = self
         self.calendar.dataSource = self
-        
-        self.calendar.locale = Locale(identifier: "ko_KR")
-        
-        // 상단 요일을 영어로 변경
-        self.calendar.calendarWeekdayView.weekdayLabels[0].text = "S"
-        self.calendar.calendarWeekdayView.weekdayLabels[1].text = "M"
-        self.calendar.calendarWeekdayView.weekdayLabels[2].text = "T"
-        self.calendar.calendarWeekdayView.weekdayLabels[3].text = "W"
-        self.calendar.calendarWeekdayView.weekdayLabels[4].text = "T"
-        self.calendar.calendarWeekdayView.weekdayLabels[5].text = "F"
-        self.calendar.calendarWeekdayView.weekdayLabels[6].text = "S"
-        
-        calendar.appearance.caseOptions = FSCalendarCaseOptions.weekdayUsesSingleUpperCase
-        
+        self.calendar.locale = Locale(identifier: "en_EN")
+
         calendar.scope = .week
         
         //Header (늘릴때 필요?)
         calendar.headerHeight = 0
         calendar.appearance.headerDateFormat = "M월"
-        calendar.appearance.headerMinimumDissolvedAlpha = 0.0
+        calendar.appearance.headerMinimumDissolvedAlpha = 0
         calendar.appearance.headerTitleFont = UIFont.appleSDGothicNeo(size: 16, family: .Bold)
         calendar.appearance.headerTitleColor = .black
         
@@ -158,15 +147,20 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         calendar.appearance.selectionColor = UIColor.mainColor
     }
     
+    // 날짜 선택 시 콜백 메소드 (백엔드 들어오면 해당 날짜 데이터 가져오기, mylog, mymate 구분도 해야됨)
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        print(dateFormatter.string(from: date) + " 선택됨")
+    }
     
-    //
-//    func blueViewup(){
-//        self.blueViewConstraint?.update(offset: 70)
-//        UIView.animate(withDuration: 0.3){
-//            self.view.layoutIfNeeded()
-//        }
-//    }
-    
+    // 날짜 선택 해제 시 콜백 메소드
+    public func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        print(dateFormatter.string(from: date) + " 해제됨")
+    }
+
 //MARK: - Selector
     @objc func tap(_ sender: Any) {
         print("Record Screen Open")
@@ -211,14 +205,18 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             self.calendarConstraint?.update(offset: 550)
             UIView.animate(withDuration: 0.3){
                 self.calendar.scope = .month
+//                self.calendar.headerHeight = 30
                 self.view.layoutIfNeeded()
             }
+
         }else{
             self.calendarConstraint?.update(offset: 320)
             UIView.animate(withDuration: 0){
                 self.calendar.scope = .week
+//                self.calendar.headerHeight = 0
                 self.view.layoutIfNeeded()
             }
+
         }
     }
     
@@ -228,10 +226,6 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         VC.modalPresentationStyle = .fullScreen
         present(VC, animated: true)
     }
-    
-
-    //TESTTEST
-
 
     
 //MARK: - addSubView
