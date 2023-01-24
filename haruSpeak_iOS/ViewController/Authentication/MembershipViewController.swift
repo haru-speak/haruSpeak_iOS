@@ -32,7 +32,7 @@ class MembershipViewController: UIViewController{
         $0.placeholder = " 이메일 주소"
         $0.layer.cornerRadius = 6
         $0.borderStyle = .none
-        $0.textColor = .systemGray5
+        $0.textColor = .gray
     }
     let pwText = UILabel().then{
         $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 18)
@@ -43,7 +43,7 @@ class MembershipViewController: UIViewController{
         $0.font = UIFont(name:"appleSDGothicNeo", size: 16)
         $0.placeholder = " 비밀번호를 입력해주세요."
         $0.layer.cornerRadius = 6
-        $0.textColor = .systemGray5
+        $0.textColor = .gray
     }
     let pwCheckText = UILabel().then{
         $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 18)
@@ -54,7 +54,7 @@ class MembershipViewController: UIViewController{
         $0.font = UIFont(name:"appleSDGothicNeo", size: 16)
         $0.placeholder = " 다시 한번 입력해주세요."
         $0.layer.cornerRadius = 6
-        $0.textColor = .systemGray5
+        $0.textColor = .gray
     }
     let nameText = UILabel().then{
         $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 18)
@@ -65,7 +65,7 @@ class MembershipViewController: UIViewController{
         $0.font = UIFont(name:"appleSDGothicNeo", size: 16)
         $0.placeholder = " 이름을 입력해주세요."
         $0.layer.cornerRadius = 6
-        $0.textColor = .systemGray5
+        $0.textColor = .gray
     }
     let birthText = UILabel().then{
         $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 18)
@@ -137,30 +137,45 @@ class MembershipViewController: UIViewController{
     //textfield check image
     let check1 = UIImageView().then{
         $0.image = UIImage(named: "check.blue")?.withRenderingMode(.alwaysOriginal)
+        $0.isHidden = true
     }
     let check2 = UIImageView().then{
         $0.image = UIImage(named: "check.blue")?.withRenderingMode(.alwaysOriginal)
+        $0.isHidden = true
     }
     let check3 = UIImageView().then{
         $0.image = UIImage(named: "check.blue")?.withRenderingMode(.alwaysOriginal)
+        $0.isHidden = true
     }
     let check4 = UIImageView().then{
         $0.image = UIImage(named: "check.blue")?.withRenderingMode(.alwaysOriginal)
+        $0.isHidden = true
+    }
+    let check5 = UIImageView().then{
+        $0.image = UIImage(named: "check.blue")?.withRenderingMode(.alwaysOriginal)
+        $0.isHidden = true
+    }
+    let check6 = UIImageView().then{
+        $0.image = UIImage(named: "check.blue")?.withRenderingMode(.alwaysOriginal)
+        $0.isHidden = true
     }
     //textfield 오류 멘트
     let idErr = UILabel().then{
         $0.font = UIFont(name:"appleSDGothicNeo-Regular", size: 12)
         $0.text = "형식에 맞지 않는 이메일입니다."
+        $0.isHidden = true
         $0.textColor = .red
     }
     let pwErr = UILabel().then{
         $0.font = UIFont(name:"appleSDGothicNeo-Regular", size: 12)
         $0.text = "최소 8자리를 입력해주세요. (영문, 숫자 포함)"
+        $0.isHidden = true
         $0.textColor = .red
     }
     let pwCheckErr = UILabel().then{
         $0.font = UIFont(name:"appleSDGothicNeo-Regular", size: 12)
         $0.text = "비밀번호가 일치하지 않습니다."
+        $0.isHidden = true
         $0.textColor = .red
     }
     
@@ -200,6 +215,8 @@ class MembershipViewController: UIViewController{
         man.layer.borderColor = UIColor.mainColor.cgColor
         woman.setTitleColor(.systemGray5, for: .normal)
         woman.layer.borderColor = UIColor.systemGray5.cgColor
+        check5.isHidden = false
+        check6.isHidden = true
     }
     
     @objc func womanButtonTapped(){
@@ -207,7 +224,66 @@ class MembershipViewController: UIViewController{
         woman.layer.borderColor = UIColor.mainColor.cgColor
         man.setTitleColor(.systemGray5, for: .normal)
         man.layer.borderColor = UIColor.systemGray5.cgColor
+        check5.isHidden = true
+        check6.isHidden = false
     }
+    @objc func checkID(){
+        if isValidID(testStr:idTextField.text!) == true{
+            check1.isHidden = false
+            idErr.isHidden = true
+            line1.backgroundColor = .systemGray5
+        }
+        else{
+            check1.isHidden = true
+            idErr.isHidden = false
+            line1.backgroundColor = .red
+        }
+    }
+    @objc func checkPW(){
+        if isValidPW(string: pwTextField.text!) == true{
+            check2.isHidden = false
+            pwErr.isHidden = true
+            line2.backgroundColor = .systemGray5
+        }
+        else{
+            check2.isHidden = true
+            pwErr.isHidden = false
+            line2.backgroundColor = .red
+        }
+    }
+    
+    @objc func checkPWcheck(){
+        if isSame(pwTextField,pwCheckTextField) == true{
+            check3.isHidden = false
+            pwCheckErr.isHidden = true
+            line3.backgroundColor = .systemGray5
+        }
+        else{
+            check3.isHidden = true
+            pwCheckErr.isHidden = false
+            line3.backgroundColor = .red
+        }
+    }
+    
+    @objc func isValidID(testStr:String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: testStr)
+    }
+    
+    @objc func isValidPW(string: String) -> Bool {
+        let passwordRegEx = "^[a-zA-Z0-9!@#$%^&*(),.?\":{}|<>_-]{8,}$"
+        let predicate = NSPredicate(format:"SELF MATCHES %@", passwordRegEx)
+        return predicate.evaluate(with: string)
+    }
+    
+    @objc func isSame(_ first: UITextField,_ second: UITextField) -> Bool {
+            if(first.text == second.text) {
+                return true
+            } else {
+                return false
+            }
+        }
 
         
        
@@ -239,6 +315,8 @@ class MembershipViewController: UIViewController{
             self.view.addSubview(self.check2)
             self.view.addSubview(self.check3)
             self.view.addSubview(self.check4)
+            self.view.addSubview(self.check5)
+            self.view.addSubview(self.check6)
             self.view.addSubview(self.idErr)
             self.view.addSubview(self.pwErr)
             self.view.addSubview(self.pwCheckErr)
@@ -399,17 +477,29 @@ class MembershipViewController: UIViewController{
             $0.width.equalTo(24)
             $0.height.equalTo(24)
         }
+        self.check5.snp.makeConstraints{
+            $0.trailing.equalTo(self.man.snp.trailing).offset(-9)
+            $0.centerY.equalTo(self.man)
+            $0.width.equalTo(24)
+            $0.height.equalTo(24)
+        }
+        self.check6.snp.makeConstraints{
+            $0.trailing.equalTo(self.woman.snp.trailing).offset(-9)
+            $0.centerY.equalTo(self.woman)
+            $0.width.equalTo(24)
+            $0.height.equalTo(24)
+        }
         
         self.idErr.snp.makeConstraints{
-            $0.leading.equalTo(self.view.snp.leading).offset(30)
+            $0.leading.equalTo(self.view.snp.leading).offset(32)
             $0.top.equalTo(self.idText.snp.bottom).offset(45)
         }
         self.pwErr.snp.makeConstraints{
-            $0.leading.equalTo(self.view.snp.leading).offset(30)
+            $0.leading.equalTo(self.view.snp.leading).offset(32)
             $0.top.equalTo(self.pwText.snp.bottom).offset(45)
         }
         self.pwCheckErr.snp.makeConstraints{
-            $0.leading.equalTo(self.view.snp.leading).offset(30)
+            $0.leading.equalTo(self.view.snp.leading).offset(32)
             $0.top.equalTo(self.pwCheckText.snp.bottom).offset(45)
         }
         
@@ -421,5 +511,9 @@ class MembershipViewController: UIViewController{
         self.membershipButton.addTarget(self, action: #selector(self.membershipButtonTapped), for: .touchUpInside)
         self.man.addTarget(self, action: #selector(self.genderButtonTapped), for: .touchUpInside)
         self.woman.addTarget(self, action: #selector(self.genderButtonTapped), for: .touchUpInside)
+        self.idTextField.addTarget(self, action: #selector(self.checkID), for: .editingDidEndOnExit)
+        self.pwTextField.addTarget(self, action: #selector(self.checkPW), for: .editingDidEndOnExit)
+        self.pwCheckTextField.addTarget(self, action: #selector(self.checkPWcheck), for: .editingDidEndOnExit)
+
     }
 }

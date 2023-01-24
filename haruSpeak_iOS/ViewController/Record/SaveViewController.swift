@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-class SaveViewController: UIViewController{
+class SaveViewController: UIViewController, UITextFieldDelegate{
     
     //MARK: - Properties
     let popView = UIView().then{
@@ -21,7 +21,8 @@ class SaveViewController: UIViewController{
     let setTitle = UITextField().then{
         $0.font = UIFont(name:"appleSDGothicNeo", size: 16)
         $0.placeholder = " 오늘의 스피킹에 제목을 달아주세요 :)"
-        $0.textColor = .systemGray5
+        $0.textColor = .gray
+        $0.becomeFirstResponder()
     }
     
     let line = UIView().then{
@@ -90,6 +91,7 @@ class SaveViewController: UIViewController{
         addTarget()
         
     }
+
 //MARK: - AddSubview
     func setUpView(){
         self.view.addSubview(self.popView)
@@ -138,7 +140,6 @@ class SaveViewController: UIViewController{
         self.selected2.isHidden = true
         self.selected1.isHidden = true
     }
-    
     
     
 //MARK: - Layout
@@ -244,7 +245,6 @@ class SaveViewController: UIViewController{
         pri.isUserInteractionEnabled = true
         pri.addGestureRecognizer(priBtn)
         
+       }
+        
     }
-    
-
-}
