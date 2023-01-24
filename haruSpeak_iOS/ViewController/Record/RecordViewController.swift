@@ -193,6 +193,10 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         VC2.modalPresentationStyle = .overCurrentContext
         present(VC2, animated: false)
     }
+    @objc func backTapped(){
+        dismiss(animated: false)
+        print("back")
+    }
     
     //MARK: - For STT
     @objc func recordButtonTapped() {
@@ -345,9 +349,9 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         let mainBtn = UITapGestureRecognizer(target: self, action: #selector(mainButtonTapped))
         mainButton.isUserInteractionEnabled = true
         mainButton.addGestureRecognizer(mainBtn)
-//        let deleteBtn = UITapGestureRecognizer(target: self, action: #selector(deleteTapped))
-//        delete.isUserInteractionEnabled = true
-//        delete.addGestureRecognizer(deleteBtn)
+        let backBtn = UITapGestureRecognizer(target: self, action: #selector(backTapped))
+        arrowLeft.isUserInteractionEnabled = true
+        arrowLeft.addGestureRecognizer(backBtn)
         self.delete.addTarget(self, action: #selector(self.deleteTapped), for: .touchUpInside)
         self.done.addTarget(self, action: #selector(self.doneTapped), for: .touchUpInside)
         self.nextButton.addTarget(self, action: #selector(self.nextTapped), for: .touchUpInside)
