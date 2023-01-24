@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
+
 class PlaylistViewController: UIViewController{
     //MARK: - Properties
 // NAVIGATION BAR
@@ -87,18 +88,33 @@ class PlaylistViewController: UIViewController{
     }
 //BOTTOMVIEW
     let bottomView = UIView().then{
-        $0.backgroundColor = .yellow
+        $0.backgroundColor = .white
     }
+    let labelBottomview = UILabel().then{
+        $0.text = "댓글"
+        $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size: 15)
+    }
+    lazy var commentCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+        $0.register(CommentCell.self, forCellWithReuseIdentifier: CommentCell.identifier)
+        $0.backgroundColor = .clear
+        $0.showsHorizontalScrollIndicator = false
+        $0.showsVerticalScrollIndicator = false
+    }
+    
+    
+    
 
 //COMMENTSUMBMIT
     let bottomFixedView = UIView().then{
         $0.backgroundColor = .white
     }
     let commentSubmitView = UIView().then{
-        $0.backgroundColor = .lightGray
+        $0.backgroundColor = .systemGray6
+        $0.roundCorners(cornerRadius: 10, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
     }
     let commentTextField = UITextField().then{
         $0.placeholder = "피드백을 남겨보세요!"
+        $0.font = UIFont(name:"appleSDGothicNeo-Regular", size: 13)
         
     }
     let submitButton = UIImageView().then{
@@ -116,6 +132,9 @@ class PlaylistViewController: UIViewController{
         setupView()
         setupLayout()
         addTarget()
+        setupCollectionView()
+        
+        self.navigationController?.navigationBar.isHidden = true;
         
     }
     //MARK: - Selector
@@ -148,8 +167,10 @@ class PlaylistViewController: UIViewController{
         self.topView.addSubview(self.playButton)
         self.topView.addSubview(self.heartImage)
         self.topView.addSubview(self.heartCount)
-        //BOTTOMVIEW (추가사항 있음)
+        //BOTTOMVIEW
         self.totalView.addSubview(self.bottomView)
+        self.bottomView.addSubview(self.labelBottomview)
+        self.bottomView.addSubview(self.commentCollectionView)
         //COMMENTSUBMIT
         view.addSubview(self.bottomFixedView)
         self.bottomFixedView.addSubview(self.commentSubmitView)
@@ -261,7 +282,16 @@ class PlaylistViewController: UIViewController{
             $0.trailing.equalToSuperview().offset(-35)
         }
         //BOTTOMVIEW
-        
+        self.labelBottomview.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(20)
+            $0.leading.equalToSuperview().offset(34)
+        }
+        self.commentCollectionView.snp.makeConstraints{
+            $0.top.equalTo(self.labelBottomview.snp.bottom).offset(0)
+            $0.leading.equalToSuperview().offset(10)
+            $0.trailing.equalToSuperview().offset(-10)
+            $0.bottom.equalToSuperview().offset(-10)
+        }
         
         //COMMENTSUBMIT
         self.bottomFixedView.snp.makeConstraints{
@@ -272,6 +302,7 @@ class PlaylistViewController: UIViewController{
             $0.top.equalToSuperview().offset(7)
             $0.leading.equalToSuperview().offset(7)
             $0.trailing.equalToSuperview().offset(-7)
+            $0.size.height.equalTo(40)
         }
         self.commentTextField.snp.makeConstraints{
             $0.centerY.equalToSuperview()
@@ -294,5 +325,51 @@ class PlaylistViewController: UIViewController{
         backButton.addGestureRecognizer(backBtn)
     }
     
+    //MARK: - SetupCollectionView
+    func setupCollectionView(){
+        
+        self.commentCollectionView.delegate = self
+        self.commentCollectionView.dataSource = self
+    }
+    
+}
+
+
+
+//CollectionVIew
+extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommentCell.identifier, for: indexPath) as! CommentCell
+
+
+        
+        return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommentCell.identifier, for: indexPath) as! CommentCell
+        
+        
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: self.view.frame.width , height: 70)
+    }
+   
     
 }
