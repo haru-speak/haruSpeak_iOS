@@ -51,6 +51,7 @@ final class CommentCell: UICollectionViewCell {
     var thumbsupindex = 0
     
     
+    
 //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
