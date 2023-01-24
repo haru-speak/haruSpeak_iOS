@@ -96,10 +96,12 @@ class PlaylistViewController: UIViewController{
         $0.backgroundColor = .white
     }
     let commentSubmitView = UIView().then{
-        $0.backgroundColor = .lightGray
+        $0.backgroundColor = .systemGray6
+        $0.roundCorners(cornerRadius: 10, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
     }
     let commentTextField = UITextField().then{
         $0.placeholder = "피드백을 남겨보세요!"
+        $0.font = UIFont(name:"appleSDGothicNeo-Regular", size: 13)
         
     }
     let submitButton = UIImageView().then{
@@ -273,6 +275,7 @@ class PlaylistViewController: UIViewController{
             $0.top.equalToSuperview().offset(7)
             $0.leading.equalToSuperview().offset(7)
             $0.trailing.equalToSuperview().offset(-7)
+            $0.size.height.equalTo(40)
         }
         self.commentTextField.snp.makeConstraints{
             $0.centerY.equalToSuperview()
