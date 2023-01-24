@@ -20,7 +20,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     
     //녹음 있는 날짜 Array
     let formatter = DateFormatter()
-    let haveDataCircle : Array = ["2023-01-25", "2023-01-17"]
+    let haveDataCircle : Array = ["2023-01-23", "2023-01-17", "2023-01-11", "2023-01-13"]
     
     // TOPVIEW START
     let topView = UIView().then{
@@ -69,11 +69,13 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     private let calendar = FSCalendar(frame: CGRect(x: 15, y: 20, width: 350, height: 300))
     private let calendarRight = UIButton().then{
         $0.setImage(UIImage(named: "calendarright")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        $0.isHidden = true
+//        $0.isHidden = true
+        $0.alpha = 0
     }
     private let calendarLeft = UIButton().then{
         $0.setImage(UIImage(named: "calendarleft")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        $0.isHidden = true
+//        $0.isHidden = true
+        $0.alpha = 0
     }
     
     private let lineView = UIView().then{
@@ -190,7 +192,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         formatter.dateFormat = "yyyy-MM-dd"
         var dates = [Date]()
         for i in 0...haveDataCircle.count-1{
-            var a = formatter.date(from: haveDataCircle[i])
+            let a = formatter.date(from: haveDataCircle[i])
             dates.append(a!)
         }
         
@@ -261,23 +263,23 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     @objc func didDragCalendar(sender: UITapGestureRecognizer) {
         if self.calendar.scope == .week{
             self.calendarConstraint?.update(offset: 530)
-            UIView.animate(withDuration: 0.3){
+            UIView.animate(withDuration: 0.5){
                 self.calendar.scope = .month
 //                self.calendar.headerHeight = 30
                 self.calendar.appearance.headerDateFormat = "M월"
-                self.calendarRight.isHidden = false
-                self.calendarLeft.isHidden = false
+                self.calendarRight.alpha = 1
+                self.calendarLeft.alpha = 1
                 self.view.layoutIfNeeded()
             }
 
         }else{
-            self.calendarConstraint?.update(offset: 340)
+            self.calendarConstraint?.update(offset: 350)
             UIView.animate(withDuration: 0){
                 self.calendar.scope = .week
 //                self.calendar.headerHeight = 0
                 self.calendar.appearance.headerDateFormat = ""
-                self.calendarRight.isHidden = true
-                self.calendarLeft.isHidden = true
+                self.calendarRight.alpha = 0
+                self.calendarLeft.alpha = 0
                 self.view.layoutIfNeeded()
             }
 
@@ -324,7 +326,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     private func setupLayout(){
         self.topView.snp.makeConstraints{
             $0.top.trailing.leading.equalToSuperview().offset(0)
-            self.calendarConstraint = $0.height.equalTo(340).constraint
+            self.calendarConstraint = $0.height.equalTo(350).constraint
         }
         self.date.snp.makeConstraints{
             $0.top.equalTo(self.topView.snp.top).offset(54)
