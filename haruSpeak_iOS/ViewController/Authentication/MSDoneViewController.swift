@@ -48,10 +48,12 @@ class MSDoneViewController: UIViewController{
     
     //MARK: - Selector
     @objc func arrowLeftButtonTapped(){
-        self.navigationController?.pushViewController(AuthenticationViewController(), animated: true)
+        dismiss(animated: true)
     }
     @objc func loginButtonTapped(){
-        self.navigationController?.pushViewController(AuthenticationViewController(), animated: true)
+        let VC = AuthenticationViewController()
+        VC.modalPresentationStyle = .fullScreen
+        present(VC, animated: true)
     }
     
     

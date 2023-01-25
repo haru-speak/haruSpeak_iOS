@@ -87,8 +87,9 @@ class AuthenticationViewController: UIViewController{
     
     //MARK: - Selector
     @objc func emailLoginButtonTapped(){
-        self.navigationController?.pushViewController(EmailLoginViewController(), animated: true)
-        self.navigationController?.navigationBar.isHidden = true
+        let VC = EmailLoginViewController()
+        VC.modalPresentationStyle = .fullScreen
+        present(VC, animated: true)
         }
     
     @objc func googleLoginButtonTapped(){
@@ -208,8 +209,9 @@ class AuthenticationViewController: UIViewController{
     
     
     @objc func joinMembershipButtonTapped(){
-        self.navigationController?.pushViewController(MembershipViewController(), animated: true)
-        self.navigationController?.navigationBar.isHidden = true
+        let VC = MembershipViewController()
+        VC.modalPresentationStyle = .fullScreen
+        present(VC, animated: true)
     }
         
     

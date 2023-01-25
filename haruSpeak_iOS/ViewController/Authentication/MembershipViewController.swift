@@ -9,10 +9,8 @@ import Foundation
 import UIKit
 import SnapKit
 import Then
-//Need to add date UIpicker & textfield underline
-//Need to add check images
+
 class MembershipViewController: UIViewController{
-    private var datePopViewConstraint : Constraint?
     //MARK: - Properties
     let arrowLeft = UIButton(type: .system).then{
         $0.setTitle("arrowLeft", for: .normal)
@@ -33,7 +31,7 @@ class MembershipViewController: UIViewController{
         $0.placeholder = " 이메일 주소"
         $0.layer.cornerRadius = 6
         $0.borderStyle = .none
-        $0.textColor = .systemGray4
+        $0.textColor = .lightGray
     }
     let pwText = UILabel().then{
         $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 18)
@@ -44,7 +42,7 @@ class MembershipViewController: UIViewController{
         $0.font = UIFont(name:"appleSDGothicNeo", size: 16)
         $0.placeholder = " 비밀번호를 입력해주세요."
         $0.layer.cornerRadius = 6
-        $0.textColor = .systemGray4
+        $0.textColor = .lightGray
     }
     let pwCheckText = UILabel().then{
         $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 18)
@@ -55,7 +53,7 @@ class MembershipViewController: UIViewController{
         $0.font = UIFont(name:"appleSDGothicNeo", size: 16)
         $0.placeholder = " 다시 한번 입력해주세요."
         $0.layer.cornerRadius = 6
-        $0.textColor = .systemGray4
+        $0.textColor = .lightGray
     }
     let nameText = UILabel().then{
         $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 18)
@@ -66,7 +64,7 @@ class MembershipViewController: UIViewController{
         $0.font = UIFont(name:"appleSDGothicNeo", size: 16)
         $0.placeholder = " 이름을 입력해주세요."
         $0.layer.cornerRadius = 6
-        $0.textColor = .systemGray4
+        $0.textColor = .lightGray
     }
     let birthText = UILabel().then{
         $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 18)
@@ -84,7 +82,7 @@ class MembershipViewController: UIViewController{
         $0.layer.borderColor = UIColor.systemGray4.cgColor
         $0.textColor = .systemGray4
     }
-
+    
     let genderText = UILabel().then{
         $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 18)
         $0.text = "성별"
@@ -197,12 +195,13 @@ class MembershipViewController: UIViewController{
     
     //MARK: - Selector
     @objc func arrowLeftButtonTapped(){
-        self.navigationController?.pushViewController(AuthenticationViewController(), animated: true)
+        dismiss(animated: true)
     }
     
     @objc func membershipButtonTapped(){
-        self.navigationController?.pushViewController(MSDoneViewController(), animated: true)
-        self.navigationController?.navigationBar.isHidden = true
+        let VC = MSDoneViewController()
+        VC.modalPresentationStyle = .fullScreen
+        present(VC, animated: true)
     }
     
     @objc private func genderButtonTapped(_ button: UIButton) {
@@ -290,9 +289,9 @@ class MembershipViewController: UIViewController{
         }
     @objc func dateTapped(){
         let VC1 = DatePickerViewController()
+        VC1.delegate = self
         VC1.modalPresentationStyle = .overCurrentContext
         present(VC1, animated: false)
-
     }
     
 
@@ -508,16 +507,16 @@ class MembershipViewController: UIViewController{
         }
         
         self.idErr.snp.makeConstraints{
-            $0.leading.equalTo(self.view.snp.leading).offset(32)
-            $0.top.equalTo(self.idText.snp.bottom).offset(45)
+            $0.leading.equalTo(self.view.snp.leading).offset(30)
+            $0.top.equalTo(self.idText.snp.bottom).offset(47)
         }
         self.pwErr.snp.makeConstraints{
-            $0.leading.equalTo(self.view.snp.leading).offset(32)
-            $0.top.equalTo(self.pwText.snp.bottom).offset(45)
+            $0.leading.equalTo(self.view.snp.leading).offset(30)
+            $0.top.equalTo(self.pwText.snp.bottom).offset(47)
         }
         self.pwCheckErr.snp.makeConstraints{
-            $0.leading.equalTo(self.view.snp.leading).offset(32)
-            $0.top.equalTo(self.pwCheckText.snp.bottom).offset(45)
+            $0.leading.equalTo(self.view.snp.leading).offset(30)
+            $0.top.equalTo(self.pwCheckText.snp.bottom).offset(47)
         }
         
     }
@@ -537,5 +536,14 @@ class MembershipViewController: UIViewController{
         dateText.addGestureRecognizer(dateBtn)
 
 
+    }
+}
+
+extension MembershipViewController: SendDataDelegate{
+    func sendData(data: String) {
+        if data != nil{
+            dateText.text = data
+            dateText.textColor = .black
+        }
     }
 }

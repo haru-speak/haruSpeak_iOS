@@ -76,12 +76,13 @@ class EmailLoginViewController: UIViewController{
     
     //MARK: - Selector
     @objc func arrowLeftButtonTapped(){
-        self.navigationController?.pushViewController(AuthenticationViewController(), animated: true)
+        dismiss(animated: true)
     }
     
     @objc func joinMembershipButtonTapped(){
-        self.navigationController?.pushViewController(MembershipViewController(), animated: true)
-        self.navigationController?.navigationBar.isHidden = true
+        let VC = MembershipViewController()
+        VC.modalPresentationStyle = .fullScreen
+        present(VC, animated: true)
     }
     
     @objc func loginButtonTapped(){
