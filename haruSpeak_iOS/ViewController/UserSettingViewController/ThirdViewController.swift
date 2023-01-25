@@ -98,6 +98,7 @@ class ThirdViewController: UIViewController{
         $0.setTitleColor(UIColor.white, for: .normal)
         $0.roundCorners(cornerRadius: 15, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
         $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size:16)
+        $0.isEnabled = false
     }
     
     
@@ -219,8 +220,10 @@ class ThirdViewController: UIViewController{
     func checkButtonisClicked(){
         if Btn1switch == false && Btn2switch == false && Btn3switch == false && Btn4switch == false && Btn5switch == false{
             self.nextButton.backgroundColor = .systemGray6
+            self.nextButton.isEnabled = false
         }else{
             self.nextButton.backgroundColor = .mainColor
+            self.nextButton.isEnabled = true
         }
     }
     
