@@ -228,12 +228,12 @@ class SecondLearnerViewController: UIViewController{
     @objc private func didClickNext(_ button: UIButton) {
         let VC = SecondGiverViewController()
         VC.modalPresentationStyle = .fullScreen
-        present(VC, animated: true)
+        present(VC, animated: false)
         print("didClickNext")
     }
     
     @objc private func didClickBack(_ button: UIButton) {
-        dismiss(animated: true)
+        dismiss(animated: false)
         print("didClickBack")
     }
     
