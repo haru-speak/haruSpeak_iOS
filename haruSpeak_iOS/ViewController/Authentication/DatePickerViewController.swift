@@ -10,13 +10,12 @@ import Foundation
 import UIKit
 import SnapKit
 import Then
-import Foundation
-import UIKit
-import SnapKit
-import Then
 
+protocol SendDataDelegate {
+    func sendData(data: String)
+}
 class DatePickerViewController: UIViewController{
-    
+    var delegate: SendDataDelegate?
     //MARK: - Properties
     let popView = UIView().then{
         $0.backgroundColor = UIColor.systemGray6    }
@@ -31,7 +30,6 @@ class DatePickerViewController: UIViewController{
             $0.preferredDatePickerStyle = .wheels
             $0.locale = Locale(identifier: "ko_KR")
         }
-    
 
 //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -39,24 +37,30 @@ class DatePickerViewController: UIViewController{
         setUpView()
         layout()
         addTarget()
-        
     }
 //MARK: - AddSubview
     func setUpView(){
         self.view.addSubview(self.popView)
-        self.popView.addSubview(done)
         self.popView.addSubview(self.datePicker)
-
+        self.popView.addSubview(done)
     }
 
 //MARK: - Selector
     @objc private func didClickDone(_ button: UIButton) {
-        dismiss(animated: false)
-    }
-    @objc private func didClickBack() {
+        let datePickerView = datePicker
+        let dateFormat = DateFormatter()
+        dateFormat.dateFormat = "  yyyy. MM. dd"
+        delegate?.sendData(data: dateFormat.string(from: datePickerView.date))
         dismiss(animated: false)
     }
     
+    @objc private func didClickBack() {
+//        let datePickerView = datePicker
+//        let dateFormat = DateFormatter()
+//        dateFormat.dateFormat = "  yyyy. MM. dd"
+//        delegate?.sendData(data: dateFormat.string(from: datePickerView.date))
+        dismiss(animated: false)
+    }
     
     
 //MARK: - Layout
@@ -70,6 +74,7 @@ class DatePickerViewController: UIViewController{
         self.done.snp.makeConstraints{
             $0.trailing.equalToSuperview().offset(-20)
             $0.top.equalTo(self.popView.snp.top).offset(10)
+            $0.height.equalTo(26)
         }
         self.datePicker.snp.makeConstraints{
             $0.leading.equalToSuperview().offset(0)
@@ -86,6 +91,4 @@ class DatePickerViewController: UIViewController{
         self.view.isUserInteractionEnabled = true
         self.view.addGestureRecognizer(close)
     }
-    
-
 }

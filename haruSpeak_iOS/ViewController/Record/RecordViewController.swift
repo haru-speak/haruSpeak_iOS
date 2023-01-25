@@ -191,6 +191,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     
     @objc func deleteTapped(){
         let VC1 = DeleteViewController()
+        VC1.delegate = self
         VC1.modalPresentationStyle = .overCurrentContext
         present(VC1, animated: false)
 
@@ -572,3 +573,22 @@ extension RecordViewController {
     }
 }
 
+extension RecordViewController: SendYesDelegate{
+    func sendYes(yes: Bool) {
+        print(yes)
+        if yes == true{
+            self.mainButton.image = UIImage(named: "startRecording")?.withRenderingMode(.alwaysOriginal)
+            self.startMsg.isHidden = false
+            self.STTText.isHidden = true
+            self.done.isHidden = true
+            self.timerLabel.isHidden = true
+            self.delete.isHidden = true
+            self.nextButton.isHidden = true
+            
+            self.line2.isHidden = false
+            self.recordProgressbar.isHidden = true
+            self.playtimeStart.isHidden = true
+            self.playtimeEnd.isHidden = true
+        }
+    }
+}
