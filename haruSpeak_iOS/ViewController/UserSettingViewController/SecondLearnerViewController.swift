@@ -11,6 +11,15 @@ import SnapKit
 import Then
 
 class SecondLearnerViewController: UIViewController{
+//MARK: - Datasource
+    var levelTextArray : Array = ["하고싶은 말을 단어 나열 수준으로 할 수 있고 \n문장 구성에 어려움이 있어요.",
+                                  "익숙한 소재에 대해 짧은 문장으로 \n답변할 수 있지만 막히는 부분이 많아요.",
+                                  "일상적인 소재로 의사소통은 가능하지만 \n다양한 어휘 사용에는 부족함이 있어요.",
+                                  "익숙한 상황에서 대화 참여에 무리가 없고 \n오랫동안 대화가 가능해요.",
+                                  "익숙하지 않은 소재에도 대화참여가 가능하며 발화량이 많고 \n다양한 어휘를 사용해 자연스럽게 말할 수 있어요."
+    ]
+    var levelArray : Array = ["LV.1", "LV.2", "LV.3", "LV.4", "LV.5"]
+    
     
 //MARK: - Properties
     let backButton = UIImageView().then{
@@ -26,12 +35,12 @@ class SecondLearnerViewController: UIViewController{
         $0.textAlignment = .center
     }
     let levelLabel = UILabel().then{
-        $0.text = "LV.2"
+        $0.text = "LV.1"
         $0.textColor = .mainColor
         $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 15)
     }
     let descriptionLabel = UILabel().then{
-        $0.text = "익숙한 소재에 대해 짧은 문장으로 \n답변할 수 있지만 막히는 부분이 많아요."
+        $0.text = "하고싶은 말을 단어 나열 수준으로 할 수 있고 \n문장 구성에 어려움이 있어요."
         $0.textColor = .lightGray
         $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 15)
         $0.numberOfLines = 2
@@ -42,29 +51,29 @@ class SecondLearnerViewController: UIViewController{
     }
     //Level Bar
     let levelbar1 = UIView().then{
-        $0.backgroundColor = .systemGray6
-        $0.roundCorners(cornerRadius: 20, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
+        $0.backgroundColor = .mainColor
+        $0.roundCorners(cornerRadius: 18, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
     }
     let levelbar2 = UIView().then{
         $0.backgroundColor = .systemGray6
-        $0.roundCorners(cornerRadius: 20, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
+        $0.roundCorners(cornerRadius: 18, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
     }
     let levelbar3 = UIView().then{
         $0.backgroundColor = .systemGray6
-        $0.roundCorners(cornerRadius: 20, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
+        $0.roundCorners(cornerRadius: 18, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
     }
     let levelbar4 = UIView().then{
         $0.backgroundColor = .systemGray6
-        $0.roundCorners(cornerRadius: 20, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
+        $0.roundCorners(cornerRadius: 18, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
     }
     let levelbar5 = UIView().then{
         $0.backgroundColor = .systemGray6
-        $0.roundCorners(cornerRadius: 20, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
+        $0.roundCorners(cornerRadius: 18, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
     }
     //Level
     let levelLable1 = UILabel().then{
         $0.text = "LV.1"
-        $0.textColor = .lightGray
+        $0.textColor = .black
         $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
     }
     let levelLable2 = UILabel().then{
@@ -102,6 +111,7 @@ class SecondLearnerViewController: UIViewController{
         addTarget()
         
         self.view.backgroundColor = .white
+        self.navigationController?.navigationBar.isHidden = true;
         
         let attributedStr = NSMutableAttributedString(string: titleLabel.text!)
         attributedStr.addAttribute(.foregroundColor, value: UIColor.mainColor, range: (titleLabel.text! as NSString).range(of: "영어"))
@@ -129,9 +139,103 @@ class SecondLearnerViewController: UIViewController{
     }
 
 //MARK: - Selector
-
+    
     @objc func didClickLevel1(sender: UITapGestureRecognizer) {
         print("didClickLevel1")
+        self.levelbar1.backgroundColor = .mainColor
+        self.levelbar2.backgroundColor = .systemGray6
+        self.levelbar3.backgroundColor = .systemGray6
+        self.levelbar4.backgroundColor = .systemGray6
+        self.levelbar5.backgroundColor = .systemGray6
+        
+        self.levelLable1.textColor = .black
+        self.levelLable2.textColor = .lightGray
+        self.levelLable3.textColor = .lightGray
+        self.levelLable4.textColor = .lightGray
+        self.levelLable5.textColor = .lightGray
+        
+        self.descriptionLabel.text = levelTextArray[0]
+        self.levelLabel.text = levelArray[0]
+    }
+    @objc func didClickLevel2(sender: UITapGestureRecognizer) {
+        print("didClickLevel2")
+        self.levelbar1.backgroundColor = .systemGray6
+        self.levelbar2.backgroundColor = .mainColor
+        self.levelbar3.backgroundColor = .systemGray6
+        self.levelbar4.backgroundColor = .systemGray6
+        self.levelbar5.backgroundColor = .systemGray6
+        
+        self.levelLable1.textColor = .lightGray
+        self.levelLable2.textColor = .black
+        self.levelLable3.textColor = .lightGray
+        self.levelLable4.textColor = .lightGray
+        self.levelLable5.textColor = .lightGray
+        
+        self.descriptionLabel.text = levelTextArray[1]
+        self.levelLabel.text = levelArray[1]
+    }
+    @objc func didClickLevel3(sender: UITapGestureRecognizer) {
+        print("didClickLevel3")
+        self.levelbar1.backgroundColor = .systemGray6
+        self.levelbar2.backgroundColor = .systemGray6
+        self.levelbar3.backgroundColor = .mainColor
+        self.levelbar4.backgroundColor = .systemGray6
+        self.levelbar5.backgroundColor = .systemGray6
+        
+        self.levelLable1.textColor = .lightGray
+        self.levelLable2.textColor = .lightGray
+        self.levelLable3.textColor = .black
+        self.levelLable4.textColor = .lightGray
+        self.levelLable5.textColor = .lightGray
+        
+        self.descriptionLabel.text = levelTextArray[2]
+        self.levelLabel.text = levelArray[2]
+    }
+    @objc func didClickLevel4(sender: UITapGestureRecognizer) {
+        print("didClickLevel4")
+        self.levelbar1.backgroundColor = .systemGray6
+        self.levelbar2.backgroundColor = .systemGray6
+        self.levelbar3.backgroundColor = .systemGray6
+        self.levelbar4.backgroundColor = .mainColor
+        self.levelbar5.backgroundColor = .systemGray6
+        
+        self.levelLable1.textColor = .lightGray
+        self.levelLable2.textColor = .lightGray
+        self.levelLable3.textColor = .lightGray
+        self.levelLable4.textColor = .black
+        self.levelLable5.textColor = .lightGray
+        
+        self.descriptionLabel.text = levelTextArray[3]
+        self.levelLabel.text = levelArray[3]
+    }
+    @objc func didClickLevel5(sender: UITapGestureRecognizer) {
+        print("didClickLevel5")
+        self.levelbar1.backgroundColor = .systemGray6
+        self.levelbar2.backgroundColor = .systemGray6
+        self.levelbar3.backgroundColor = .systemGray6
+        self.levelbar4.backgroundColor = .systemGray6
+        self.levelbar5.backgroundColor = .mainColor
+        
+        self.levelLable1.textColor = .lightGray
+        self.levelLable2.textColor = .lightGray
+        self.levelLable3.textColor = .lightGray
+        self.levelLable4.textColor = .lightGray
+        self.levelLable5.textColor = .black
+        
+        self.descriptionLabel.text = levelTextArray[4]
+        self.levelLabel.text = levelArray[4]
+    }
+    
+    @objc private func didClickNext(_ button: UIButton) {
+        let VC = SecondGiverViewController()
+        VC.modalPresentationStyle = .fullScreen
+        present(VC, animated: true)
+        print("didClickNext")
+    }
+    
+    @objc private func didClickBack(_ button: UIButton) {
+        dismiss(animated: true)
+        print("didClickBack")
     }
     
 //MARK: - Layout
@@ -229,6 +333,30 @@ class SecondLearnerViewController: UIViewController{
     
 //MARK: - Target
     func addTarget(){
+        let levelOneButton = UITapGestureRecognizer(target: self, action: #selector(didClickLevel1))
+        levelbar1.isUserInteractionEnabled = true
+        levelbar1.addGestureRecognizer(levelOneButton)
         
+        let levelTwoButton = UITapGestureRecognizer(target: self, action: #selector(didClickLevel2))
+        levelbar2.isUserInteractionEnabled = true
+        levelbar2.addGestureRecognizer(levelTwoButton)
+        
+        let levelThreeButton = UITapGestureRecognizer(target: self, action: #selector(didClickLevel3))
+        levelbar3.isUserInteractionEnabled = true
+        levelbar3.addGestureRecognizer(levelThreeButton)
+        
+        let levelFourButton = UITapGestureRecognizer(target: self, action: #selector(didClickLevel4))
+        levelbar4.isUserInteractionEnabled = true
+        levelbar4.addGestureRecognizer(levelFourButton)
+        
+        let levelFiveButton = UITapGestureRecognizer(target: self, action: #selector(didClickLevel5))
+        levelbar5.isUserInteractionEnabled = true
+        levelbar5.addGestureRecognizer(levelFiveButton)
+        
+        self.nextButton.addTarget(self, action: #selector(self.didClickNext(_:)), for: .touchUpInside)
+        
+        let backBtn = UITapGestureRecognizer(target: self, action: #selector(didClickBack))
+        backButton.isUserInteractionEnabled = true
+        backButton.addGestureRecognizer(backBtn)
     }
 }

@@ -19,6 +19,8 @@ class ThirdViewController: UIViewController{
         layout()
         addTarget()
         
+        self.navigationController?.navigationBar.isHidden = true;
+        
     }
 //MARK: - AddSubview
     func setUpView(){
