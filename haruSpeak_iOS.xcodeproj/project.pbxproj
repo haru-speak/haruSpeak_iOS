@@ -23,6 +23,7 @@
 		E5158DD32981748200054322 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5158DD22981748200054322 /* ThirdViewController.swift */; };
 		E5158DD52981764D00054322 /* SecondGiverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5158DD42981764D00054322 /* SecondGiverViewController.swift */; };
 		E5158DD82981A44E00054322 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5158DD72981A44E00054322 /* ProgressBarView.swift */; };
+		E5158DDA2981B76300054322 /* FifthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5158DD92981B76300054322 /* FifthViewController.swift */; };
 		E51CE8BD296F77B500ADB07B /* CustomTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51CE8BC296F77B500ADB07B /* CustomTabbar.swift */; };
 		E51CE8BF296FBED100ADB07B /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51CE8BE296FBED100ADB07B /* RecordCell.swift */; };
 		E51CE8C92971038A00ADB07B /* ClickRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51CE8C82971038A00ADB07B /* ClickRecordViewController.swift */; };
@@ -94,6 +95,7 @@
 		E5158DD22981748200054322 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		E5158DD42981764D00054322 /* SecondGiverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondGiverViewController.swift; sourceTree = "<group>"; };
 		E5158DD72981A44E00054322 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
+		E5158DD92981B76300054322 /* FifthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifthViewController.swift; sourceTree = "<group>"; };
 		E51CE8BC296F77B500ADB07B /* CustomTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabbar.swift; sourceTree = "<group>"; };
 		E51CE8BE296FBED100ADB07B /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
 		E51CE8C82971038A00ADB07B /* ClickRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickRecordViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				E5158DD02981746800054322 /* SecondLearnerViewController.swift */,
 				E5158DD42981764D00054322 /* SecondGiverViewController.swift */,
 				E5158DD22981748200054322 /* ThirdViewController.swift */,
+				E5158DD92981B76300054322 /* FifthViewController.swift */,
 			);
 			path = UserSettingViewController;
 			sourceTree = "<group>";
@@ -656,6 +659,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5158DDA2981B76300054322 /* FifthViewController.swift in Sources */,
 				E51CE8BD296F77B500ADB07B /* CustomTabbar.swift in Sources */,
 				68BD8E1C297C22E900939DFB /* SaveViewController.swift in Sources */,
 				68BD8E1E297C42A000939DFB /* MSDoneViewController.swift in Sources */,

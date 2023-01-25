@@ -97,6 +97,8 @@ class SecondGiverViewController: UIViewController{
         $0.setTitle("다음", for: .normal)
         $0.backgroundColor = .mainColor
         $0.setTitleColor(UIColor.white, for: .normal)
+        $0.roundCorners(cornerRadius: 15, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
+        $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size:16)
     }
     
     
