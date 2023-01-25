@@ -22,7 +22,6 @@ class SaveViewController: UIViewController, UITextFieldDelegate{
         $0.font = UIFont(name:"appleSDGothicNeo", size: 16)
         $0.placeholder = " 오늘의 스피킹에 제목을 달아주세요 :)"
         $0.textColor = .gray
-        $0.becomeFirstResponder()
     }
     
     let line = UIView().then{
@@ -78,14 +77,13 @@ class SaveViewController: UIViewController, UITextFieldDelegate{
         $0.backgroundColor = .mainColor
         $0.setImage(UIImage(systemName:"backBlue")?.withRenderingMode(.alwaysOriginal), for: .normal)
     }
-//    let backButton = UIImageView().then{
-//        $0.image = UIImage(systemName:"x.blue")?.withRenderingMode(.alwaysOriginal)
-//    }
+
     
 
 //MARK: - LifeCycle
     override func viewDidLoad() {
         self.view.backgroundColor = .black.withAlphaComponent(0.3)
+        setKeyboardObserver()
         setUpView()
         layout()
         addTarget()
@@ -112,15 +110,16 @@ class SaveViewController: UIViewController, UITextFieldDelegate{
     }
 
 //MARK: - Selector
+
+    @objc private func keyboardDown(){
+        self.setTitle.resignFirstResponder()
+    }
+    
     @objc private func didClickBack(_ button: UIButton) {
         dismiss(animated: false)
         print("didClickBack")
     }
-//    @objc private func didClickBack(sender: UITapGestureRecognizer) {
-//        dismiss(animated: false)
-//        print("didClickBack")
-//    }
-//
+
     @objc private func didClickUpload(_ button: UIButton) {
         print("didClickUpload")
     }
@@ -225,12 +224,11 @@ class SaveViewController: UIViewController, UITextFieldDelegate{
     
 //MARK: - Target
     func addTarget(){
+        let down = UITapGestureRecognizer(target: self, action: #selector(self.keyboardDown))
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(down)
         self.backButton.addTarget(self, action: #selector(self.didClickBack(_:)), for: .touchUpInside)
         
-//        let backBtn = UITapGestureRecognizer(target: self, action: #selector(didClickBack(sender: )))
-//        backButton.isUserInteractionEnabled = true
-//        backButton.addGestureRecognizer(backBtn)
-//
         self.uploadButton.addTarget(self, action: #selector(self.didClickUpload(_:)), for: .touchUpInside)
 
         let pubBtn = UITapGestureRecognizer(target: self, action: #selector(didClickPub(sender: )))
@@ -247,4 +245,35 @@ class SaveViewController: UIViewController, UITextFieldDelegate{
         
        }
         
+    }
+
+extension SaveViewController {
+    
+    func setKeyboardObserver() {
+            NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+            
+            NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object:nil)
+        }
+        
+        @objc func keyboardWillShow(notification: NSNotification) {
+              if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+                      let keyboardRectangle = keyboardFrame.cgRectValue
+                      let keyboardHeight = keyboardRectangle.height
+                  UIView.animate(withDuration: 1) {
+                      self.view.window?.frame.origin.y -= keyboardHeight
+                  }
+              }
+          }
+        
+        @objc func keyboardWillHide(notification: NSNotification) {
+            if self.view.window?.frame.origin.y != 0 {
+                if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+                        let keyboardRectangle = keyboardFrame.cgRectValue
+                        let keyboardHeight = keyboardRectangle.height
+                    UIView.animate(withDuration: 1) {
+                        self.view.window?.frame.origin.y += keyboardHeight
+                    }
+                }
+            }
+        }
     }
