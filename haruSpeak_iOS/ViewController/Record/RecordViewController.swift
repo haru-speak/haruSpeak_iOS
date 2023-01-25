@@ -575,7 +575,6 @@ extension RecordViewController {
 
 extension RecordViewController: SendYesDelegate{
     func sendYes(yes: Bool) {
-        print(yes)
         if yes == true{
             self.mainButton.image = UIImage(named: "startRecording")?.withRenderingMode(.alwaysOriginal)
             self.startMsg.isHidden = false
@@ -589,6 +588,7 @@ extension RecordViewController: SendYesDelegate{
             self.recordProgressbar.isHidden = true
             self.playtimeStart.isHidden = true
             self.playtimeEnd.isHidden = true
+            self.count = 0
         }
     }
 }
