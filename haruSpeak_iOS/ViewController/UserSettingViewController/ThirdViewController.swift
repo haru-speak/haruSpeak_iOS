@@ -102,6 +102,8 @@ class ThirdViewController: UIViewController{
         $0.setTitle("다음", for: .normal)
         $0.backgroundColor = .systemGray6
         $0.setTitleColor(UIColor.white, for: .normal)
+        $0.roundCorners(cornerRadius: 15, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
+        $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size:16)
     }
     
     
@@ -153,6 +155,81 @@ class ThirdViewController: UIViewController{
         print("didClickBack")
     }
     
+    var Btn1switch = false
+    var Btn2switch = false
+    var Btn3switch = false
+    var Btn4switch = false
+    var Btn5switch = false
+    
+    @objc private func didClickBtn1(_ button: UIButton) {
+        if Btn1switch == false{
+            self.achievementButton1.backgroundColor = .mainColor
+            self.achievementButton1Label.textColor = .white
+            Btn1switch = true
+        }else{
+            self.achievementButton1.backgroundColor = .white
+            self.achievementButton1Label.textColor = .black
+            Btn1switch = false
+        }
+        checkButtonisClicked()
+    }
+    @objc private func didClickBtn2(_ button: UIButton) {
+        if Btn2switch == false{
+            self.achievementButton2.backgroundColor = .mainColor
+            self.achievementButton2Label.textColor = .white
+            Btn2switch = true
+        }else{
+            self.achievementButton2.backgroundColor = .white
+            self.achievementButton2Label.textColor = .black
+            Btn2switch = false
+        }
+        checkButtonisClicked()
+    }
+    @objc private func didClickBtn3(_ button: UIButton) {
+        if Btn3switch == false{
+            self.achievementButton3.backgroundColor = .mainColor
+            self.achievementButton3Label.textColor = .white
+            Btn3switch = true
+        }else{
+            self.achievementButton3.backgroundColor = .white
+            self.achievementButton3Label.textColor = .black
+            Btn3switch = false
+        }
+        checkButtonisClicked()
+    }
+    @objc private func didClickBtn4(_ button: UIButton) {
+        if Btn4switch == false{
+            self.achievementButton4.backgroundColor = .mainColor
+            self.achievementButton4Label.textColor = .white
+            Btn4switch = true
+        }else{
+            self.achievementButton4.backgroundColor = .white
+            self.achievementButton4Label.textColor = .black
+            Btn4switch = false
+        }
+        checkButtonisClicked()
+    }
+    @objc private func didClickBtn5(_ button: UIButton) {
+        if Btn5switch == false{
+            self.achievementButton5.backgroundColor = .mainColor
+            self.achievementButton5Label.textColor = .white
+            Btn5switch = true
+        }else{
+            self.achievementButton5.backgroundColor = .white
+            self.achievementButton5Label.textColor = .black
+            Btn5switch = false
+        }
+        checkButtonisClicked()
+    }
+    
+    func checkButtonisClicked(){
+        if Btn1switch == false && Btn2switch == false && Btn3switch == false && Btn4switch == false && Btn5switch == false{
+            self.nextButton.backgroundColor = .systemGray6
+        }else{
+            self.nextButton.backgroundColor = .mainColor
+        }
+    }
+    
     
     
 //MARK: - Layout
@@ -173,7 +250,7 @@ class ThirdViewController: UIViewController{
         }
         self.descriptionLabel.snp.makeConstraints{
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(self.titleLabel.snp.bottom).offset(8)
+            $0.top.equalTo(self.titleLabel.snp.bottom).offset(15)
         }
         self.achievementMainView.snp.makeConstraints{
             $0.height.equalTo(353)
@@ -225,14 +302,32 @@ class ThirdViewController: UIViewController{
         self.nextButton.snp.makeConstraints{
             $0.centerX.equalToSuperview()
             $0.leading.equalToSuperview().offset(28)
-            $0.top.equalTo(self.achievementMainView.snp.bottom).offset(117)
+            $0.top.equalTo(self.achievementMainView.snp.bottom).offset(80)
             $0.height.equalTo(45)
         }
     }
     
 //MARK: - Target
     func addTarget(){
+        let achievementBtn1 = UITapGestureRecognizer(target: self, action: #selector(didClickBtn1))
+        achievementButton1.isUserInteractionEnabled = true
+        achievementButton1.addGestureRecognizer(achievementBtn1)
         
+        let achievementBtn2 = UITapGestureRecognizer(target: self, action: #selector(didClickBtn2))
+        achievementButton2.isUserInteractionEnabled = true
+        achievementButton2.addGestureRecognizer(achievementBtn2)
+        
+        let achievementBtn3 = UITapGestureRecognizer(target: self, action: #selector(didClickBtn3))
+        achievementButton3.isUserInteractionEnabled = true
+        achievementButton3.addGestureRecognizer(achievementBtn3)
+        
+        let achievementBtn4 = UITapGestureRecognizer(target: self, action: #selector(didClickBtn4))
+        achievementButton4.isUserInteractionEnabled = true
+        achievementButton4.addGestureRecognizer(achievementBtn4)
+        
+        let achievementBtn5 = UITapGestureRecognizer(target: self, action: #selector(didClickBtn5))
+        achievementButton5.isUserInteractionEnabled = true
+        achievementButton5.addGestureRecognizer(achievementBtn5)
         
         self.nextButton.addTarget(self, action: #selector(self.didClickNext(_:)), for: .touchUpInside)
         
