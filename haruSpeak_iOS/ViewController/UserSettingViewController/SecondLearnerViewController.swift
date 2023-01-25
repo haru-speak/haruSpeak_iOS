@@ -20,14 +20,11 @@ class SecondLearnerViewController: UIViewController{
     ]
     var levelArray : Array = ["LV.1", "LV.2", "LV.3", "LV.4", "LV.5"]
     
-    
 //MARK: - Properties
     let backButton = UIImageView().then{
         $0.image = UIImage(named: "arrowLeft")?.withRenderingMode(.alwaysOriginal)
     }
-    let progressBar = UIProgressView().then{
-        $0.backgroundColor = .systemGray6
-    }
+    let progressBar = ProgressBarView()
     let titleLabel = UILabel().then{
         $0.text = "승연님의 영어 스피킹 레벨은 \n어디쯤이라고 생각하시나요?"
         $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 24)
@@ -116,6 +113,8 @@ class SecondLearnerViewController: UIViewController{
         let attributedStr = NSMutableAttributedString(string: titleLabel.text!)
         attributedStr.addAttribute(.foregroundColor, value: UIColor.mainColor, range: (titleLabel.text! as NSString).range(of: "영어"))
         titleLabel.attributedText = attributedStr
+        
+        self.progressBar.ratio = 1/5
     }
 //MARK: - AddSubview
     func setUpView(){
@@ -248,6 +247,7 @@ class SecondLearnerViewController: UIViewController{
             $0.top.equalToSuperview().offset(69)
             $0.leading.equalTo(self.backButton.snp.trailing).offset(21)
             $0.trailing.equalToSuperview().offset(-65)
+            $0.height.equalTo(2)
         }
         self.titleLabel.snp.makeConstraints{
             $0.centerX.equalToSuperview()
