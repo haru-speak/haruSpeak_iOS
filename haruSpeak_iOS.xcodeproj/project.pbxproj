@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		685149C72980FA4D00C1FED2 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685149C62980FA4D00C1FED2 /* DatePickerViewController.swift */; };
+		685149CA298170A800C1FED2 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685149C9298170A800C1FED2 /* FirstViewController.swift */; };
 		68BD8E022971B52C00939DFB /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E012971B52C00939DFB /* AuthenticationViewController.swift */; };
 		68BD8E052971B80400939DFB /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E042971B80400939DFB /* RecordViewController.swift */; };
 		68BD8E0E2972F30B00939DFB /* MembershipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E0D2972F30B00939DFB /* MembershipViewController.swift */; };
@@ -70,6 +71,7 @@
 		20CF64B5BEE330CC56697D1A /* Pods-haruSpeak_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-haruSpeak_iOS.debug.xcconfig"; path = "Target Support Files/Pods-haruSpeak_iOS/Pods-haruSpeak_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		5CED103FD6A92F4325BBDEE6 /* Pods_haruSpeak_iOS_haruSpeak_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_haruSpeak_iOS_haruSpeak_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		685149C62980FA4D00C1FED2 /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
+		685149C9298170A800C1FED2 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		68BD8E012971B52C00939DFB /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		68BD8E042971B80400939DFB /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		68BD8E0D2972F30B00939DFB /* MembershipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +152,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		685149C82981703200C1FED2 /* UserSettingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				685149C9298170A800C1FED2 /* FirstViewController.swift */,
+			);
+			path = UserSettingViewController;
+			sourceTree = "<group>";
+		};
 		68BD8DFF2971B50200939DFB /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,6 +331,7 @@
 		E5E984BF296EDDC000E5DE83 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				685149C82981703200C1FED2 /* UserSettingViewController */,
 				68BD8E032971B7F300939DFB /* Record */,
 				68BD8DFF2971B50200939DFB /* Authentication */,
 				E5E984C1296EDDF500E5DE83 /* Home */,
@@ -653,6 +664,7 @@
 				E5FD5668297A2A640088DDAF /* PlaylistViewController.swift in Sources */,
 				685149C72980FA4D00C1FED2 /* DatePickerViewController.swift in Sources */,
 				E59D362629742C3B00A012C4 /* AssignmentView.swift in Sources */,
+				685149CA298170A800C1FED2 /* FirstViewController.swift in Sources */,
 				E59D36242974016E00A012C4 /* MyStudyBottomView.swift in Sources */,
 				E51CE8BF296FBED100ADB07B /* RecordCell.swift in Sources */,
 			);
