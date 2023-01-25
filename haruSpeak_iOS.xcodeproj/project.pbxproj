@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		685149C72980FA4D00C1FED2 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685149C62980FA4D00C1FED2 /* DatePickerViewController.swift */; };
 		68BD8E022971B52C00939DFB /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E012971B52C00939DFB /* AuthenticationViewController.swift */; };
 		68BD8E052971B80400939DFB /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E042971B80400939DFB /* RecordViewController.swift */; };
 		68BD8E0E2972F30B00939DFB /* MembershipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E0D2972F30B00939DFB /* MembershipViewController.swift */; };
@@ -68,6 +69,7 @@
 		172D10AB066C1878AD0F24D3 /* Pods-haruSpeak_iOS-haruSpeak_iOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-haruSpeak_iOS-haruSpeak_iOSUITests.release.xcconfig"; path = "Target Support Files/Pods-haruSpeak_iOS-haruSpeak_iOSUITests/Pods-haruSpeak_iOS-haruSpeak_iOSUITests.release.xcconfig"; sourceTree = "<group>"; };
 		20CF64B5BEE330CC56697D1A /* Pods-haruSpeak_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-haruSpeak_iOS.debug.xcconfig"; path = "Target Support Files/Pods-haruSpeak_iOS/Pods-haruSpeak_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		5CED103FD6A92F4325BBDEE6 /* Pods_haruSpeak_iOS_haruSpeak_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_haruSpeak_iOS_haruSpeak_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		685149C62980FA4D00C1FED2 /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		68BD8E012971B52C00939DFB /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		68BD8E042971B80400939DFB /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		68BD8E0D2972F30B00939DFB /* MembershipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipViewController.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				68BD8E0F2972F33800939DFB /* EmailLoginViewController.swift */,
 				68BD8E0D2972F30B00939DFB /* MembershipViewController.swift */,
 				68BD8E1D297C42A000939DFB /* MSDoneViewController.swift */,
+				685149C62980FA4D00C1FED2 /* DatePickerViewController.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -648,6 +651,7 @@
 				E5F7F4DA297F9A540004800E /* CommentCell.swift in Sources */,
 				E51CE8C92971038A00ADB07B /* ClickRecordViewController.swift in Sources */,
 				E5FD5668297A2A640088DDAF /* PlaylistViewController.swift in Sources */,
+				685149C72980FA4D00C1FED2 /* DatePickerViewController.swift in Sources */,
 				E59D362629742C3B00A012C4 /* AssignmentView.swift in Sources */,
 				E59D36242974016E00A012C4 /* MyStudyBottomView.swift in Sources */,
 				E51CE8BF296FBED100ADB07B /* RecordCell.swift in Sources */,

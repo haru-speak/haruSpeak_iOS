@@ -12,6 +12,7 @@ import Then
 //Need to add date UIpicker & textfield underline
 //Need to add check images
 class MembershipViewController: UIViewController{
+    private var datePopViewConstraint : Constraint?
     //MARK: - Properties
     let arrowLeft = UIButton(type: .system).then{
         $0.setTitle("arrowLeft", for: .normal)
@@ -32,7 +33,7 @@ class MembershipViewController: UIViewController{
         $0.placeholder = " 이메일 주소"
         $0.layer.cornerRadius = 6
         $0.borderStyle = .none
-        $0.textColor = .gray
+        $0.textColor = .systemGray4
     }
     let pwText = UILabel().then{
         $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 18)
@@ -43,7 +44,7 @@ class MembershipViewController: UIViewController{
         $0.font = UIFont(name:"appleSDGothicNeo", size: 16)
         $0.placeholder = " 비밀번호를 입력해주세요."
         $0.layer.cornerRadius = 6
-        $0.textColor = .gray
+        $0.textColor = .systemGray4
     }
     let pwCheckText = UILabel().then{
         $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 18)
@@ -54,7 +55,7 @@ class MembershipViewController: UIViewController{
         $0.font = UIFont(name:"appleSDGothicNeo", size: 16)
         $0.placeholder = " 다시 한번 입력해주세요."
         $0.layer.cornerRadius = 6
-        $0.textColor = .gray
+        $0.textColor = .systemGray4
     }
     let nameText = UILabel().then{
         $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 18)
@@ -65,24 +66,25 @@ class MembershipViewController: UIViewController{
         $0.font = UIFont(name:"appleSDGothicNeo", size: 16)
         $0.placeholder = " 이름을 입력해주세요."
         $0.layer.cornerRadius = 6
-        $0.textColor = .gray
+        $0.textColor = .systemGray4
     }
     let birthText = UILabel().then{
         $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 18)
         $0.text = "생년월일"
         $0.textColor = .black
     }
-//    let date = UITextField().then{
-//        $0.font = UIFont(name:"appleSDGothicNeo", size: 16)
-//        $0.placeholder = " 생년월일"
-//        $0.layer.cornerRadius = 6
-//        $0.textColor = .systemGray5
-//    }
-    let date = UIDatePicker().then{
-        $0.datePickerMode = .date
-        $0.preferredDatePickerStyle = .wheels
-        $0.locale = Locale(identifier: "ko_KR")
+    let vector = UIImageView().then{
+        $0.image = UIImage(named: "vector")?.withRenderingMode(.alwaysOriginal)
     }
+    let dateText = UILabel().then{
+        $0.font = UIFont(name:"appleSDGothicNeo", size: 15)
+        $0.text = "  생년월일"
+        $0.layer.borderWidth = 1
+        $0.layer.cornerRadius = 6
+        $0.layer.borderColor = UIColor.systemGray4.cgColor
+        $0.textColor = .systemGray4
+    }
+
     let genderText = UILabel().then{
         $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 18)
         $0.text = "성별"
@@ -97,19 +99,19 @@ class MembershipViewController: UIViewController{
     }
     let man = UIButton(type: .system).then{
         $0.setTitle("남성", for: .normal)
-        $0.setTitleColor(.systemGray5, for: .normal)
+        $0.setTitleColor(.systemGray4, for: .normal)
         $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
         $0.layer.cornerRadius = 20
-        $0.layer.borderColor = UIColor.systemGray5.cgColor
+        $0.layer.borderColor = UIColor.systemGray4.cgColor
         $0.layer.borderWidth = 1
         $0.tag = 0
     }
     let woman = UIButton(type: .system).then{
         $0.setTitle("여성", for: .normal)
-        $0.setTitleColor(.systemGray5, for: .normal)
+        $0.setTitleColor(.systemGray4, for: .normal)
         $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
         $0.layer.cornerRadius = 20
-        $0.layer.borderColor = UIColor.systemGray5.cgColor
+        $0.layer.borderColor = UIColor.systemGray4.cgColor
         $0.layer.borderWidth = 1
         $0.tag = 1
     }
@@ -123,16 +125,16 @@ class MembershipViewController: UIViewController{
     }
     //textfield underline
     let line1 = UIView().then{
-        $0.backgroundColor = .systemGray5
+        $0.backgroundColor = .systemGray4
     }
     let line2 = UIView().then{
-        $0.backgroundColor = .systemGray5
+        $0.backgroundColor = .systemGray4
     }
     let line3 = UIView().then{
-        $0.backgroundColor = .systemGray5
+        $0.backgroundColor = .systemGray4
     }
     let line4 = UIView().then{
-        $0.backgroundColor = .systemGray5
+        $0.backgroundColor = .systemGray4
     }
     //textfield check image
     let check1 = UIImageView().then{
@@ -180,15 +182,16 @@ class MembershipViewController: UIViewController{
     }
     
     
-    private var lineLayer: CALayer?
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        
         setupView()
         setupLayout()
         addTarget()
+        
     }
     
     
@@ -213,8 +216,8 @@ class MembershipViewController: UIViewController{
     @objc func manButtonTapped(){
         man.setTitleColor(.mainColor, for: .normal)
         man.layer.borderColor = UIColor.mainColor.cgColor
-        woman.setTitleColor(.systemGray5, for: .normal)
-        woman.layer.borderColor = UIColor.systemGray5.cgColor
+        woman.setTitleColor(.lightGray, for: .normal)
+        woman.layer.borderColor = UIColor.lightGray.cgColor
         check5.isHidden = false
         check6.isHidden = true
     }
@@ -222,16 +225,17 @@ class MembershipViewController: UIViewController{
     @objc func womanButtonTapped(){
         woman.setTitleColor(.mainColor, for: .normal)
         woman.layer.borderColor = UIColor.mainColor.cgColor
-        man.setTitleColor(.systemGray5, for: .normal)
-        man.layer.borderColor = UIColor.systemGray5.cgColor
+        man.setTitleColor(.lightGray, for: .normal)
+        man.layer.borderColor = UIColor.lightGray.cgColor
         check5.isHidden = true
         check6.isHidden = false
     }
+    
     @objc func checkID(){
         if isValidID(testStr:idTextField.text!) == true{
             check1.isHidden = false
             idErr.isHidden = true
-            line1.backgroundColor = .systemGray5
+            line1.backgroundColor = .lightGray
         }
         else{
             check1.isHidden = true
@@ -243,7 +247,7 @@ class MembershipViewController: UIViewController{
         if isValidPW(string: pwTextField.text!) == true{
             check2.isHidden = false
             pwErr.isHidden = true
-            line2.backgroundColor = .systemGray5
+            line2.backgroundColor = .lightGray
         }
         else{
             check2.isHidden = true
@@ -256,7 +260,7 @@ class MembershipViewController: UIViewController{
         if isSame(pwTextField,pwCheckTextField) == true{
             check3.isHidden = false
             pwCheckErr.isHidden = true
-            line3.backgroundColor = .systemGray5
+            line3.backgroundColor = .lightGray
         }
         else{
             check3.isHidden = true
@@ -284,6 +288,13 @@ class MembershipViewController: UIViewController{
                 return false
             }
         }
+    @objc func dateTapped(){
+        let VC1 = DatePickerViewController()
+        VC1.modalPresentationStyle = .overCurrentContext
+        present(VC1, animated: false)
+
+    }
+    
 
         
        
@@ -301,7 +312,8 @@ class MembershipViewController: UIViewController{
             self.view.addSubview(self.nameText)
             self.view.addSubview(self.nameTextField)
             self.view.addSubview(self.birthText)
-            self.view.addSubview(self.date)
+            self.view.addSubview(self.vector)
+            self.view.addSubview(self.dateText)
             self.view.addSubview(self.genderText)
             self.view.addSubview(self.idCheckButton)
             self.view.addSubview(self.man)
@@ -388,8 +400,13 @@ class MembershipViewController: UIViewController{
             $0.leading.equalTo(self.view.snp.leading).offset(29)
             $0.top.equalTo(self.nameTextField.snp.bottom).offset(34)
         }
+        
+        self.vector.snp.makeConstraints{
+            $0.centerY.equalTo(self.dateText)
+            $0.trailing.equalTo(self.dateText.snp.trailing).offset(-10)
+        }
 
-        self.date.snp.makeConstraints{
+        self.dateText.snp.makeConstraints{
             $0.leading.equalTo(self.view.snp.leading).offset(29)
             $0.top.equalTo(self.birthText.snp.bottom).offset(10)
             $0.width.equalTo(335)
@@ -398,7 +415,7 @@ class MembershipViewController: UIViewController{
 
         self.genderText.snp.makeConstraints{
             $0.leading.equalTo(self.view.snp.leading).offset(29)
-            $0.top.equalTo(self.date.snp.bottom).offset(34)
+            $0.top.equalTo(self.dateText.snp.bottom).offset(34)
         }
 
         self.idCheckButton.snp.makeConstraints{
@@ -514,6 +531,11 @@ class MembershipViewController: UIViewController{
         self.idTextField.addTarget(self, action: #selector(self.checkID), for: .editingDidEndOnExit)
         self.pwTextField.addTarget(self, action: #selector(self.checkPW), for: .editingDidEndOnExit)
         self.pwCheckTextField.addTarget(self, action: #selector(self.checkPWcheck), for: .editingDidEndOnExit)
+        
+        let dateBtn = UITapGestureRecognizer(target: self, action: #selector(dateTapped))
+        dateText.isUserInteractionEnabled = true
+        dateText.addGestureRecognizer(dateBtn)
+
 
     }
 }
