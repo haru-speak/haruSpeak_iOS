@@ -19,6 +19,8 @@
 		8C30D8B79FC345A04F0C9D3C /* Pods_haruSpeak_iOS_haruSpeak_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CED103FD6A92F4325BBDEE6 /* Pods_haruSpeak_iOS_haruSpeak_iOSUITests.framework */; };
 		A1ECF52D7F2B9619C0BD5DCA /* Pods_haruSpeak_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFC49101112B419E65F52532 /* Pods_haruSpeak_iOS.framework */; };
 		E255F8C5D56021B7F5E5848B /* Pods_haruSpeak_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69211967B5E3367D949CA34A /* Pods_haruSpeak_iOSTests.framework */; };
+		E5158DD12981746800054322 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5158DD02981746800054322 /* SecondViewController.swift */; };
+		E5158DD32981748200054322 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5158DD22981748200054322 /* ThirdViewController.swift */; };
 		E51CE8BD296F77B500ADB07B /* CustomTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51CE8BC296F77B500ADB07B /* CustomTabbar.swift */; };
 		E51CE8BF296FBED100ADB07B /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51CE8BE296FBED100ADB07B /* RecordCell.swift */; };
 		E51CE8C92971038A00ADB07B /* ClickRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51CE8C82971038A00ADB07B /* ClickRecordViewController.swift */; };
@@ -86,6 +88,8 @@
 		8AFD346FB091CD305B383290 /* Pods-haruSpeak_iOS-haruSpeak_iOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-haruSpeak_iOS-haruSpeak_iOSUITests.debug.xcconfig"; path = "Target Support Files/Pods-haruSpeak_iOS-haruSpeak_iOSUITests/Pods-haruSpeak_iOS-haruSpeak_iOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BACA4D97B5C12EA35396E86F /* Pods-haruSpeak_iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-haruSpeak_iOSTests.debug.xcconfig"; path = "Target Support Files/Pods-haruSpeak_iOSTests/Pods-haruSpeak_iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DFC49101112B419E65F52532 /* Pods_haruSpeak_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_haruSpeak_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5158DD02981746800054322 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		E5158DD22981748200054322 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		E51CE8BC296F77B500ADB07B /* CustomTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabbar.swift; sourceTree = "<group>"; };
 		E51CE8BE296FBED100ADB07B /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
 		E51CE8C82971038A00ADB07B /* ClickRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickRecordViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +160,8 @@
 			isa = PBXGroup;
 			children = (
 				685149C9298170A800C1FED2 /* FirstViewController.swift */,
+				E5158DD02981746800054322 /* SecondViewController.swift */,
+				E5158DD22981748200054322 /* ThirdViewController.swift */,
 			);
 			path = UserSettingViewController;
 			sourceTree = "<group>";
@@ -652,8 +658,10 @@
 				68BD8E022971B52C00939DFB /* AuthenticationViewController.swift in Sources */,
 				E5E984DE296EE2BA00E5DE83 /* MyPageViewController.swift in Sources */,
 				E5E984DA296EE2A300E5DE83 /* HomeViewController.swift in Sources */,
+				E5158DD12981746800054322 /* SecondViewController.swift in Sources */,
 				E5E984BB296ED9A900E5DE83 /* TempService.swift in Sources */,
 				E5E984B8296ED95D00E5DE83 /* UIFont+.swift in Sources */,
+				E5158DD32981748200054322 /* ThirdViewController.swift in Sources */,
 				E5FD566629790E0A0088DDAF /* SearchFilterView.swift in Sources */,
 				E537186B2972926F00CD95F5 /* TopViewCollectionViewCell.swift in Sources */,
 				68BD8E052971B80400939DFB /* RecordViewController.swift in Sources */,
