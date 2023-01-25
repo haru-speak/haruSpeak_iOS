@@ -11,9 +11,14 @@ import UIKit
 import SnapKit
 import Then
 
+protocol SendYesDelegate {
+    func sendYes(yes: Bool)
+}
+
 class DeleteViewController: UIViewController{
     
     //MARK: - Properties
+    var delegate: SendYesDelegate?
     let popView = UIView().then{
         $0.backgroundColor = UIColor.white
         $0.layer.cornerRadius = 12
@@ -45,7 +50,6 @@ class DeleteViewController: UIViewController{
         $0.setTitleColor(.mainColor, for: .normal)
         $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
     }
-    
 
 //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -68,9 +72,12 @@ class DeleteViewController: UIViewController{
 
 //MARK: - Selector
     @objc private func didClickYes(_ button: UIButton) {
+        delegate?.sendYes(yes: true)
+        dismiss(animated: false)
         print("Yes")
     }
     @objc private func didClickNo(_ button: UIButton) {
+        delegate?.sendYes(yes: false)
         dismiss(animated: false)
         print("didClickNo")
     }
@@ -117,6 +124,4 @@ class DeleteViewController: UIViewController{
         self.yes.addTarget(self, action: #selector(self.didClickYes(_:)), for: .touchUpInside)
         self.no.addTarget(self, action: #selector(self.didClickNo(_:)), for: .touchUpInside)
     }
-    
-
 }

@@ -53,7 +53,7 @@ class MSDoneViewController: UIViewController{
     @objc func loginButtonTapped(){
         let VC = AuthenticationViewController()
         VC.modalPresentationStyle = .fullScreen
-        present(VC, animated: true)
+        present(VC, animated: false)
     }
     
     
