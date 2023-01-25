@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  SecondGiverViewController.swift
 //  haruSpeak_iOS
 //
 //  Created by 077tech on 2023/01/25.
@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-class SecondViewController: UIViewController{
+class SecondGiverViewController: UIViewController{
     
 //MARK: - Properties
    
