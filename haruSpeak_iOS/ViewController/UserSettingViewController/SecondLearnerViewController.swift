@@ -92,7 +92,22 @@ class SecondLearnerViewController: UIViewController{
     }
 //MARK: - AddSubview
     func setUpView(){
-        
+        self.view.addSubview(self.backButton)
+        self.view.addSubview(self.progressBar)
+        self.view.addSubview(self.titleLabel)
+        self.view.addSubview(self.levelLabel)
+        self.view.addSubview(self.descriptionLabel)
+        self.view.addSubview(self.levelbar1)
+        self.view.addSubview(self.levelbar2)
+        self.view.addSubview(self.levelbar3)
+        self.view.addSubview(self.levelbar4)
+        self.view.addSubview(self.levelbar5)
+        self.view.addSubview(self.levelLable1)
+        self.view.addSubview(self.levelLable2)
+        self.view.addSubview(self.levelLable3)
+        self.view.addSubview(self.levelLable4)
+        self.view.addSubview(self.levelLable5)
+        self.view.addSubview(self.nextButton)
     }
 
 //MARK: - Selector
