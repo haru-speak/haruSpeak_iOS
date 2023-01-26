@@ -18,12 +18,11 @@ class EmailLoginViewController: UIViewController{
         $0.setImage(UIImage(named: "arrowLeft")?.withRenderingMode(.alwaysOriginal), for: .normal)
 
     }
-    let haruSpeakLogo = UIView().then{
-        $0.backgroundColor = .systemGray6
-        $0.layer.cornerRadius = 7
+    let haruSpeakLogo = UIImageView().then{
+        $0.image = UIImage(named: "logo")?.withRenderingMode(.alwaysOriginal)
     }
     let loginText = UILabel().then{
-        $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 24)
+        $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 18)
         $0.text = "로그인"
         $0.textColor = .black
     }
@@ -31,20 +30,20 @@ class EmailLoginViewController: UIViewController{
         $0.backgroundColor = .systemGray6
         $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
         $0.placeholder = " 이메일"
-        $0.layer.cornerRadius = 7
+        $0.roundCorners(cornerRadius: 6, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
     }
     let passwordTextField = UITextField().then{
         $0.backgroundColor = .systemGray6
         $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
         $0.placeholder = " 비밀번호"
-        $0.layer.cornerRadius = 7
+        $0.roundCorners(cornerRadius: 6, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
     }
     
     let emailLoginButton = UIButton(type: .system).then{
         $0.setTitle("로그인", for: .normal)
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
-        $0.layer.cornerRadius = 7
+        $0.roundCorners(cornerRadius: 6, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
         $0.backgroundColor = .mainColor
 
     }
@@ -118,20 +117,20 @@ class EmailLoginViewController: UIViewController{
         }
         self.haruSpeakLogo.snp.makeConstraints{
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(self.view.snp.top).offset(55)
-            $0.width.equalTo(129)
-            $0.height.equalTo(30)
+            $0.top.equalToSuperview().offset(201)
+            $0.width.equalTo(192)
+            $0.height.equalTo(52)
             
         }
             
         self.loginText.snp.makeConstraints{
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(self.view.snp.top).offset(121)
+            $0.top.equalToSuperview().offset(61)
         }
         
         self.emailTextField.snp.makeConstraints{
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(self.loginText.snp.bottom).offset(187)
+            $0.top.equalTo(self.haruSpeakLogo.snp.bottom).offset(40)
             $0.width.equalTo(333)
             $0.height.equalTo(45)
         }

@@ -1,8 +1,8 @@
 //
-//  AuthenticationViewController.swift
+//  JoinMSViewController.swift
 //  haruSpeak_iOS
 //
-//  Created by 강예은 on 2023/01/13.
+//  Created by 강예은 on 2023/01/26.
 //
 
 import Foundation
@@ -17,9 +17,7 @@ import AuthenticationServices
 import NaverThirdPartyLogin
 import Alamofire
 
-class AuthenticationViewController: UIViewController{
-    
-    
+class JoinMSViewController: UIViewController{
     //MARK: - Properties
     let arrowLeft = UIButton(type: .system).then{
         $0.setTitle("arrowLeft", for: .normal)
@@ -27,8 +25,14 @@ class AuthenticationViewController: UIViewController{
     }
     let loginText = UILabel().then{
         $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
-        $0.text = "로그인"
+        $0.text = "회원가입"
         $0.textColor = .black
+    }
+    let startText = UILabel().then{
+        $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 24)
+        $0.text = "회원가입하고 편하게\n하루스픽을 이용해보세요!"
+        $0.textColor = .black
+        $0.numberOfLines = 2
     }
     
     let emailLogin = UIButton(type: .system).then{
@@ -68,7 +72,7 @@ class AuthenticationViewController: UIViewController{
         $0.layer.borderColor = UIColor.systemGray4.cgColor
     }
     let joinMembership = UIButton(type: .system).then{
-        $0.setTitle("아직 계정이 없나요? 회원가입 하기", for: .normal)
+        $0.setTitle("아직 계정이 없나요? 바로 로그인", for: .normal)
         $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Thin", size: 13)
         $0.setTitleColor(.gray, for: .normal)
     }
@@ -91,7 +95,7 @@ class AuthenticationViewController: UIViewController{
     }
     
     @objc func emailLoginButtonTapped(){
-        let VC = EmailLoginViewController()
+        let VC = MembershipViewController()
         VC.modalPresentationStyle = .fullScreen
         present(VC, animated: true)
         }
@@ -213,7 +217,7 @@ class AuthenticationViewController: UIViewController{
     
     
     @objc func joinMembershipButtonTapped(){
-        let VC = MembershipViewController()
+        let VC = AuthenticationViewController()
         VC.modalPresentationStyle = .fullScreen
         present(VC, animated: true)
     }
@@ -223,6 +227,7 @@ class AuthenticationViewController: UIViewController{
         private func setupView(){
             self.view.addSubview(self.arrowLeft)
             self.view.addSubview(self.loginText)
+            self.view.addSubview(self.startText)
             self.view.addSubview(self.emailLogin)
             self.view.addSubview(self.KakaoTalkLogin)
             self.view.addSubview(self.AppleLogin)
@@ -246,7 +251,10 @@ class AuthenticationViewController: UIViewController{
             $0.top.equalTo(self.view.snp.top).offset(61)
             
         }
-            
+        self.startText.snp.makeConstraints{
+            $0.centerX.equalToSuperview()
+            $0.top.equalToSuperview().offset(158)
+        }
         
         self.emailLogin.snp.makeConstraints{
             $0.centerX.equalToSuperview()
@@ -302,8 +310,25 @@ class AuthenticationViewController: UIViewController{
     
 }
 
-//MARK: - Extension Apple
-extension AuthenticationViewController: ASAuthorizationControllerPresentationContextProviding, ASAuthorizationControllerDelegate{
+//MARK: - Extension Apple & Naver
+extension JoinMSViewController: ASAuthorizationControllerPresentationContextProviding, ASAuthorizationControllerDelegate, NaverThirdPartyLoginConnectionDelegate{
+    
+    func oauth20ConnectionDidFinishRequestACTokenWithAuthCode() {
+        print("네이버 로그인 성공")
+        self.naverLoginPaser()
+    }
+    
+    func oauth20ConnectionDidFinishRequestACTokenWithRefreshToken() {
+        print("네이버 토큰\(naverLoginInstance?.accessToken)")
+    }
+    
+    func oauth20ConnectionDidFinishDeleteToken() {
+        print("네이버 로그아웃")
+    }
+    
+    func oauth20Connection(_ oauthConnection: NaverThirdPartyLoginConnection!, didFailWithError error: Error!) {
+        print("에러 = \(error.localizedDescription)")
+    }
     
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return self.view.window!
@@ -338,22 +363,3 @@ extension AuthenticationViewController: ASAuthorizationControllerPresentationCon
     }
 }
 
-//MARK: - Extension Naver
-extension AuthenticationViewController : NaverThirdPartyLoginConnectionDelegate{
-    func oauth20ConnectionDidFinishRequestACTokenWithAuthCode() {
-        print("네이버 로그인 성공")
-        self.naverLoginPaser()
-    }
-    
-    func oauth20ConnectionDidFinishRequestACTokenWithRefreshToken() {
-        print("네이버 토큰\(naverLoginInstance?.accessToken)")
-    }
-    
-    func oauth20ConnectionDidFinishDeleteToken() {
-        print("네이버 로그아웃")
-    }
-    
-    func oauth20Connection(_ oauthConnection: NaverThirdPartyLoginConnection!, didFailWithError error: Error!) {
-        print("에러 = \(error.localizedDescription)")
-    }
-}

@@ -10,6 +10,7 @@
 		685149C72980FA4D00C1FED2 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685149C62980FA4D00C1FED2 /* DatePickerViewController.swift */; };
 		685149CA298170A800C1FED2 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685149C9298170A800C1FED2 /* FirstViewController.swift */; };
 		685149CF298256C400C1FED2 /* FourthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685149CE298256C400C1FED2 /* FourthViewController.swift */; };
+		68603AB52982C0E600A1DCD8 /* JoinMSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603AB42982C0E600A1DCD8 /* JoinMSViewController.swift */; };
 		68BD8E022971B52C00939DFB /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E012971B52C00939DFB /* AuthenticationViewController.swift */; };
 		68BD8E052971B80400939DFB /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E042971B80400939DFB /* RecordViewController.swift */; };
 		68BD8E0E2972F30B00939DFB /* MembershipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E0D2972F30B00939DFB /* MembershipViewController.swift */; };
@@ -79,6 +80,7 @@
 		685149C62980FA4D00C1FED2 /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		685149C9298170A800C1FED2 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		685149CE298256C400C1FED2 /* FourthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthViewController.swift; sourceTree = "<group>"; };
+		68603AB42982C0E600A1DCD8 /* JoinMSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinMSViewController.swift; sourceTree = "<group>"; };
 		68BD8E012971B52C00939DFB /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		68BD8E042971B80400939DFB /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		68BD8E0D2972F30B00939DFB /* MembershipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipViewController.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				68BD8E0D2972F30B00939DFB /* MembershipViewController.swift */,
 				68BD8E1D297C42A000939DFB /* MSDoneViewController.swift */,
 				685149C62980FA4D00C1FED2 /* DatePickerViewController.swift */,
+				68603AB42982C0E600A1DCD8 /* JoinMSViewController.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -692,6 +695,7 @@
 				E5E984B6296ED95300E5DE83 /* UIColor+.swift in Sources */,
 				E5F7F4DA297F9A540004800E /* CommentCell.swift in Sources */,
 				E51CE8C92971038A00ADB07B /* ClickRecordViewController.swift in Sources */,
+				68603AB52982C0E600A1DCD8 /* JoinMSViewController.swift in Sources */,
 				E5FD5668297A2A640088DDAF /* PlaylistViewController.swift in Sources */,
 				685149C72980FA4D00C1FED2 /* DatePickerViewController.swift in Sources */,
 				E59D362629742C3B00A012C4 /* AssignmentView.swift in Sources */,
