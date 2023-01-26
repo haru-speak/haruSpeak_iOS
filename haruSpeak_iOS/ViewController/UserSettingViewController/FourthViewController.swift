@@ -28,6 +28,7 @@ class FourthViewController: UIViewController{
         $0.textColor = .lightGray
         $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size: 15)
         $0.numberOfLines = 3
+        $0.textAlignment = .center
     }
     let travel = UIButton().then{
         $0.layer.borderWidth = 1
@@ -158,7 +159,9 @@ class FourthViewController: UIViewController{
         addTarget()
         self.view.backgroundColor = .white
         self.navigationController?.navigationBar.isHidden = true;
-        
+        let attributedStr = NSMutableAttributedString(string: titleLabel2.text!)
+        attributedStr.addAttribute(.foregroundColor, value: UIColor.mainColor, range: (titleLabel2.text! as NSString).range(of: "3가지"))
+        titleLabel2.attributedText = attributedStr
         self.progressBar.ratio = 4/5
     }
 //MARK: - AddSubview
