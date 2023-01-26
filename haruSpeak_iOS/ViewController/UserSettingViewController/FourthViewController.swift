@@ -214,7 +214,6 @@ class FourthViewController: UIViewController{
     @objc private func didClickTravel(_ button: UIButton) {
         self.travel.backgroundColor = .mainColor; self.travelTxt.textColor = .white
         
-        self.travel.backgroundColor = .white; self.travelTxt.textColor = .black
         self.movie.backgroundColor = .white; self.movieTxt.textColor = .black
         self.work.backgroundColor = .white; self.workTxt.textColor = .black
         self.shopping.backgroundColor = .white; self.shoppingTxt.textColor = .black
