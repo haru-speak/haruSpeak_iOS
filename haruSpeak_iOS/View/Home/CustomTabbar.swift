@@ -122,6 +122,8 @@ final class CustomTabbar: UIView {
         self.allButton.titleLabel?.font = .appleSDGothicNeo(size: 14)
         
         self.selectedItem = .myMate
+        
+        HomeViewController().mymateFollowerSwitch()
     }
     
     private func highlightAll() {

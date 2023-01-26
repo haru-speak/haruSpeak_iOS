@@ -13,15 +13,35 @@ import FSCalendar
 import MaterialComponents.MaterialButtons
 
 class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance{
+
+//MARK: - DatsSource
+    //녹음 있는 날짜 Array
+    let haveDataCircle : Array = ["2023-01-23", "2023-01-17", "2023-01-11", "2023-01-13"]
+    
+    //TEST
+    func mymateFollowerSwitch(){
+        print("aaaa")
+        //        self.englishMessage.textColor = .mainColor
+        //        self.englishMessage.text = "hello"
+        //        self.view.setNeedsLayout()
+        self.calendarConstraint?.update(offset: 530)
+        UIView.animate(withDuration: 0.5){
+            self.calendar.scope = .month
+            //                self.calendar.headerHeight = 30
+            self.calendar.appearance.headerDateFormat = "M월"
+            self.calendarRight.alpha = 1
+            self.calendarLeft.alpha = 1
+            self.view.layoutIfNeeded()
+        }
+    }
+    //TESTEND
+    
     
 //MARK: - Properties
     private var calendarConstraint : Constraint?
     private var blueViewConstraint : Constraint?
     
-    //녹음 있는 날짜 Array
     let formatter = DateFormatter()
-    let haveDataCircle : Array = ["2023-01-23", "2023-01-17", "2023-01-11", "2023-01-13"]
-    
     // TOPVIEW START
     let topView = UIView().then{
         $0.roundCorners(cornerRadius: 30, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner])
