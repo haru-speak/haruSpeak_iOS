@@ -6,6 +6,7 @@ PODS:
   - AppAuth/Core (1.6.0)
   - AppAuth/ExternalUserAgent (1.6.0):
     - AppAuth/Core
+  - DropDown (2.3.13)
   - FSCalendar (2.8.4)
   - GoogleSignIn (7.0.0):
     - AppAuth (~> 1.5)
@@ -82,6 +83,7 @@ PODS:
   - XLPagerTabStrip (9.0.0)
 
 DEPENDENCIES:
+  - DropDown
   - FSCalendar
   - GoogleSignIn
   - KakaoSDKAuth
@@ -96,6 +98,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - AppAuth
+    - DropDown
     - FSCalendar
     - GoogleSignIn
     - GTMAppAuth
@@ -114,6 +117,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
   AppAuth: 8fca6b5563a5baef2c04bee27538025e4ceb2add
+  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
   GoogleSignIn: b232380cf495a429b8095d3178a8d5855b42e842
   GTMAppAuth: 99fb010047ba3973b7026e45393f51f27ab965ae
@@ -129,6 +133,6 @@ SPEC CHECKSUMS:
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
 
-PODFILE CHECKSUM: 7afe834e096078426f9bd967a8ce177bef23528e
+PODFILE CHECKSUM: 6db4767feceac9cad3c473198381975225d3104c
 
 COCOAPODS: 1.11.3

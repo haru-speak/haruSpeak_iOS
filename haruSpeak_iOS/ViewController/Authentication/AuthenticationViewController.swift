@@ -35,35 +35,35 @@ class AuthenticationViewController: UIViewController{
         $0.setTitle("이메일 주소로 계속하기", for: .normal)
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
-        $0.layer.cornerRadius = 22.5
+        $0.roundCorners(cornerRadius: 6, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
         $0.backgroundColor = .mainColor
     }
     let KakaoTalkLogin = UIButton(type: .system).then{
         $0.setTitle("카카오톡으로 계속하기", for: .normal)
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
-        $0.layer.cornerRadius = 22.5
+        $0.roundCorners(cornerRadius: 6, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
         $0.backgroundColor = .KakaoColor
     }
     let AppleLogin = UIButton(type: .system).then{
         $0.setTitle("Apple로 계속하기", for: .normal)
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
-        $0.layer.cornerRadius = 22.5
+        $0.roundCorners(cornerRadius: 6, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
         $0.backgroundColor = .black
     }
     let NaverLogin = UIButton(type: .system).then{
         $0.setTitle("Naver로 계속하기", for: .normal)
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
-        $0.layer.cornerRadius = 22.5
+        $0.roundCorners(cornerRadius: 6, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
         $0.backgroundColor = .NaverColor
     }
     let GoogleLogin = UIButton(type: .system).then{
         $0.setTitle("구글 계정으로 계속하기", for: .normal)
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
-        $0.layer.cornerRadius = 22.5
+        $0.roundCorners(cornerRadius: 6, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.systemGray4.cgColor
     }
@@ -86,6 +86,10 @@ class AuthenticationViewController: UIViewController{
     }
     
     //MARK: - Selector
+    @objc func arrowLeftButtonTapped(){
+        dismiss(animated: true)
+    }
+    
     @objc func emailLoginButtonTapped(){
         let VC = EmailLoginViewController()
         VC.modalPresentationStyle = .fullScreen
@@ -287,6 +291,7 @@ class AuthenticationViewController: UIViewController{
     
 //MARK: - AddTarget
     private func addTarget(){
+        self.arrowLeft.addTarget(self, action: #selector(self.arrowLeftButtonTapped), for: .touchUpInside)
         self.emailLogin.addTarget(self, action: #selector(self.emailLoginButtonTapped), for: .touchUpInside)
         self.GoogleLogin.addTarget(self, action: #selector(self.googleLoginButtonTapped), for: .touchUpInside)
         self.KakaoTalkLogin.addTarget(self, action: #selector(self.kakaoLoginButtonTapped), for: .touchUpInside)
