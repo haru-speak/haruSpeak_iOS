@@ -19,6 +19,11 @@
 		8C30D8B79FC345A04F0C9D3C /* Pods_haruSpeak_iOS_haruSpeak_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CED103FD6A92F4325BBDEE6 /* Pods_haruSpeak_iOS_haruSpeak_iOSUITests.framework */; };
 		A1ECF52D7F2B9619C0BD5DCA /* Pods_haruSpeak_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFC49101112B419E65F52532 /* Pods_haruSpeak_iOS.framework */; };
 		E255F8C5D56021B7F5E5848B /* Pods_haruSpeak_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69211967B5E3367D949CA34A /* Pods_haruSpeak_iOSTests.framework */; };
+		E5158DD12981746800054322 /* SecondLearnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5158DD02981746800054322 /* SecondLearnerViewController.swift */; };
+		E5158DD32981748200054322 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5158DD22981748200054322 /* ThirdViewController.swift */; };
+		E5158DD52981764D00054322 /* SecondGiverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5158DD42981764D00054322 /* SecondGiverViewController.swift */; };
+		E5158DD82981A44E00054322 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5158DD72981A44E00054322 /* ProgressBarView.swift */; };
+		E5158DDA2981B76300054322 /* FifthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5158DD92981B76300054322 /* FifthViewController.swift */; };
 		E51CE8BD296F77B500ADB07B /* CustomTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51CE8BC296F77B500ADB07B /* CustomTabbar.swift */; };
 		E51CE8BF296FBED100ADB07B /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51CE8BE296FBED100ADB07B /* RecordCell.swift */; };
 		E51CE8C92971038A00ADB07B /* ClickRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51CE8C82971038A00ADB07B /* ClickRecordViewController.swift */; };
@@ -86,6 +91,11 @@
 		8AFD346FB091CD305B383290 /* Pods-haruSpeak_iOS-haruSpeak_iOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-haruSpeak_iOS-haruSpeak_iOSUITests.debug.xcconfig"; path = "Target Support Files/Pods-haruSpeak_iOS-haruSpeak_iOSUITests/Pods-haruSpeak_iOS-haruSpeak_iOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BACA4D97B5C12EA35396E86F /* Pods-haruSpeak_iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-haruSpeak_iOSTests.debug.xcconfig"; path = "Target Support Files/Pods-haruSpeak_iOSTests/Pods-haruSpeak_iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DFC49101112B419E65F52532 /* Pods_haruSpeak_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_haruSpeak_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5158DD02981746800054322 /* SecondLearnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondLearnerViewController.swift; sourceTree = "<group>"; };
+		E5158DD22981748200054322 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		E5158DD42981764D00054322 /* SecondGiverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondGiverViewController.swift; sourceTree = "<group>"; };
+		E5158DD72981A44E00054322 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
+		E5158DD92981B76300054322 /* FifthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifthViewController.swift; sourceTree = "<group>"; };
 		E51CE8BC296F77B500ADB07B /* CustomTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabbar.swift; sourceTree = "<group>"; };
 		E51CE8BE296FBED100ADB07B /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
 		E51CE8C82971038A00ADB07B /* ClickRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickRecordViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +166,10 @@
 			isa = PBXGroup;
 			children = (
 				685149C9298170A800C1FED2 /* FirstViewController.swift */,
+				E5158DD02981746800054322 /* SecondLearnerViewController.swift */,
+				E5158DD42981764D00054322 /* SecondGiverViewController.swift */,
+				E5158DD22981748200054322 /* ThirdViewController.swift */,
+				E5158DD92981B76300054322 /* FifthViewController.swift */,
 			);
 			path = UserSettingViewController;
 			sourceTree = "<group>";
@@ -210,6 +224,14 @@
 				77AA8A0B5111D220ACA4BB9D /* Pods-haruSpeak_iOSTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		E5158DD62981A43600054322 /* UserSetting */ = {
+			isa = PBXGroup;
+			children = (
+				E5158DD72981A44E00054322 /* ProgressBarView.swift */,
+			);
+			path = UserSetting;
 			sourceTree = "<group>";
 		};
 		E5862C50296ED0C900095439 = {
@@ -320,6 +342,7 @@
 		E5E984BE296ED9B900E5DE83 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E5158DD62981A43600054322 /* UserSetting */,
 				68BD8E142975BCE600939DFB /* Record */,
 				E5E984C8296EDEF900E5DE83 /* Home */,
 				E5E984C6296EDEEC00E5DE83 /* Study */,
@@ -636,6 +659,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5158DDA2981B76300054322 /* FifthViewController.swift in Sources */,
 				E51CE8BD296F77B500ADB07B /* CustomTabbar.swift in Sources */,
 				68BD8E1C297C22E900939DFB /* SaveViewController.swift in Sources */,
 				68BD8E1E297C42A000939DFB /* MSDoneViewController.swift in Sources */,
@@ -646,14 +670,17 @@
 				68BD8E102972F33800939DFB /* EmailLoginViewController.swift in Sources */,
 				E5E984BD296ED9B500E5DE83 /* TempModel.swift in Sources */,
 				E59D3628297583D200A012C4 /* SearchStudyViewController.swift in Sources */,
+				E5158DD52981764D00054322 /* SecondGiverViewController.swift in Sources */,
 				E5862C61296ED0C900095439 /* ViewController.swift in Sources */,
 				E5862C5D296ED0C900095439 /* AppDelegate.swift in Sources */,
 				E5862C5F296ED0C900095439 /* SceneDelegate.swift in Sources */,
 				68BD8E022971B52C00939DFB /* AuthenticationViewController.swift in Sources */,
 				E5E984DE296EE2BA00E5DE83 /* MyPageViewController.swift in Sources */,
 				E5E984DA296EE2A300E5DE83 /* HomeViewController.swift in Sources */,
+				E5158DD12981746800054322 /* SecondLearnerViewController.swift in Sources */,
 				E5E984BB296ED9A900E5DE83 /* TempService.swift in Sources */,
 				E5E984B8296ED95D00E5DE83 /* UIFont+.swift in Sources */,
+				E5158DD32981748200054322 /* ThirdViewController.swift in Sources */,
 				E5FD566629790E0A0088DDAF /* SearchFilterView.swift in Sources */,
 				E537186B2972926F00CD95F5 /* TopViewCollectionViewCell.swift in Sources */,
 				68BD8E052971B80400939DFB /* RecordViewController.swift in Sources */,
@@ -667,6 +694,7 @@
 				685149CA298170A800C1FED2 /* FirstViewController.swift in Sources */,
 				E59D36242974016E00A012C4 /* MyStudyBottomView.swift in Sources */,
 				E51CE8BF296FBED100ADB07B /* RecordCell.swift in Sources */,
+				E5158DD82981A44E00054322 /* ProgressBarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
