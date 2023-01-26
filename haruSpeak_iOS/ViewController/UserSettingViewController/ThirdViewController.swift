@@ -139,7 +139,7 @@ class ThirdViewController: UIViewController{
     @objc private func didClickNext(_ button: UIButton) {
         
 //        다음 ViewController 만들면 활성화시켜주세여
-        let VC = FifthViewController()
+        let VC = FourthViewController()
         VC.modalPresentationStyle = .fullScreen
         present(VC, animated: false)
         print("didClickNext")
