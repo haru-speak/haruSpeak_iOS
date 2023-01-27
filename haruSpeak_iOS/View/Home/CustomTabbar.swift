@@ -19,7 +19,7 @@ protocol SampleProtocol {
   func sendStringTab(data: String)
 }
 
-class CustomTabbar: UIView {
+class CustomTabbar: UIView{
     
     //MARK: - Properties
     var selectedItem: topTabBarItem = .myLog

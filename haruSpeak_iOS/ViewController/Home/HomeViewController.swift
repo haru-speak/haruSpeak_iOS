@@ -17,8 +17,6 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
 
 
 //MARK: - DatsSource
-    var checkClick = 0
-    
     //녹음 있는 날짜 Array
     var haveDataCircle = [String]()
     //CollectionView
@@ -40,8 +38,10 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
                 }
 
     }
-
+    
+    var checkdata = "qwe"
     func sendStringTab(data: String) {
+        self.checkdata = data
         if data == "MyLog"{
             print("clickMyLog")
             RecordCellTitleArray = ["MyLog1", "MyLog2", "MyLog3", "MyLog4", "MyLog5", "MyLog6"]
@@ -52,7 +52,30 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
                 self.checkRecordCellCount()
                 self.recordCollectionView.reloadData()
             }
-            
+            //change layout
+            if self.calendar.scope == .week{
+                self.calendarConstraint?.update(offset: 320)
+                self.calendarTopConstraint?.update(offset: -30)
+                self.myMateConstraint?.update(offset: -5)
+                UIView.animate(withDuration: 0.5){
+                    self.calendar.scope = .week
+                    self.calendar.appearance.headerDateFormat = ""
+                    self.calendarRight.alpha = 0
+                    self.calendarLeft.alpha = 0
+                    self.view.layoutIfNeeded()
+                }
+            }else{
+                self.calendarConstraint?.update(offset: 530)
+                self.calendarTopConstraint?.update(offset: -5)
+                self.myMateConstraint?.update(offset: 0)
+                UIView.animate(withDuration: 0.5){
+                    self.calendar.scope = .month
+                    self.calendar.appearance.headerDateFormat = "M월"
+                    self.calendarRight.alpha = 1
+                    self.calendarLeft.alpha = 1
+                    self.view.layoutIfNeeded()
+                }
+            }
         }else if data == "MyMate"{
             print("clickMyMate")
             
@@ -64,6 +87,30 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
                 self.checkRecordCellCount()
                 self.recordCollectionView.reloadData()
             }
+            //change layout
+            if self.calendar.scope == .week{
+                self.calendarConstraint?.update(offset: 370)
+                self.calendarTopConstraint?.update(offset: -30)
+                self.myMateConstraint?.update(offset: 50)
+                UIView.animate(withDuration: 0.5){
+                    self.calendar.scope = .week
+                    self.calendar.appearance.headerDateFormat = ""
+                    self.calendarRight.alpha = 0
+                    self.calendarLeft.alpha = 0
+                    self.view.layoutIfNeeded()
+                }
+            }else{
+                self.calendarConstraint?.update(offset: 580)
+                self.calendarTopConstraint?.update(offset: -5)
+                self.myMateConstraint?.update(offset: 50)
+                UIView.animate(withDuration: 0.5){
+                    self.calendar.scope = .month
+                    self.calendar.appearance.headerDateFormat = "M월"
+                    self.calendarRight.alpha = 1
+                    self.calendarLeft.alpha = 1
+                    self.view.layoutIfNeeded()
+                }
+            }
         }else{
             print("clickAll")
             RecordCellTitleArray = ["All1", "All2", "All3", "All4", "All5", "All6"]
@@ -73,6 +120,30 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             DispatchQueue.main.async {
                 self.checkRecordCellCount()
                 self.recordCollectionView.reloadData()
+            }
+            //change layout
+            if self.calendar.scope == .week{
+                self.calendarConstraint?.update(offset: 320)
+                self.calendarTopConstraint?.update(offset: -30)
+                self.myMateConstraint?.update(offset: 0)
+                UIView.animate(withDuration: 0.5){
+                    self.calendar.scope = .week
+                    self.calendar.appearance.headerDateFormat = ""
+                    self.calendarRight.alpha = 0
+                    self.calendarLeft.alpha = 0
+                    self.view.layoutIfNeeded()
+                }
+            }else{
+                self.calendarConstraint?.update(offset: 530)
+                self.calendarTopConstraint?.update(offset: -5)
+                self.myMateConstraint?.update(offset: 0)
+                UIView.animate(withDuration: 0.5){
+                    self.calendar.scope = .month
+                    self.calendar.appearance.headerDateFormat = "M월"
+                    self.calendarRight.alpha = 1
+                    self.calendarLeft.alpha = 1
+                    self.view.layoutIfNeeded()
+                }
             }
         }
     }
@@ -88,6 +159,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     var calendarTopConstraint : Constraint?
     var calendarConstraint : Constraint?
     var blueViewConstraint : Constraint?
+    var myMateConstraint : Constraint?
     
     let formatter = DateFormatter()
     // TOPVIEW START
@@ -131,17 +203,19 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         $0.textColor = .gray
     }
     let tabbar = CustomTabbar()
+    let myMateFriendCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+        $0.register(MyMateFriendCell.self, forCellWithReuseIdentifier: MyMateFriendCell.identifier)
+        $0.backgroundColor = .yellow
+    }
     
     let calendarView = UIView()
     let calendar = FSCalendar(frame: CGRect(x: 15, y: 20, width: 350, height: 300))
     let calendarRight = UIButton().then{
         $0.setImage(UIImage(named: "calendarright")?.withRenderingMode(.alwaysOriginal), for: .normal)
-//        $0.isHidden = true
         $0.alpha = 0
     }
     let calendarLeft = UIButton().then{
         $0.setImage(UIImage(named: "calendarleft")?.withRenderingMode(.alwaysOriginal), for: .normal)
-//        $0.isHidden = true
         $0.alpha = 0
     }
     
@@ -224,10 +298,8 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         let countRecordCell = Int(RecordCellTitleArray.count)
         if countRecordCell == 0{
             hideRecordView.isHidden = false
-            print("hidden")
         }else{
             hideRecordView.isHidden = true
-            print("nothidden")
         }
     }
 //MARK: - CalendarUI
@@ -363,30 +435,52 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
 
     // 캘린더 늘리기 일단 보류
     @objc func didDragCalendar(sender: UITapGestureRecognizer) {
-        if self.calendar.scope == .week{
-            self.calendarConstraint?.update(offset: 530)
-            self.calendarTopConstraint?.update(offset: -5)
-            UIView.animate(withDuration: 0.5){
-                self.calendar.scope = .month
-//                self.calendar.headerHeight = 30
-                self.calendar.appearance.headerDateFormat = "M월"
-                self.calendarRight.alpha = 1
-                self.calendarLeft.alpha = 1
-                self.view.layoutIfNeeded()
+        if checkdata == "MyMate" {
+            if self.calendar.scope == .week{
+                self.calendarConstraint?.update(offset: 580)
+                self.calendarTopConstraint?.update(offset: -5)
+                UIView.animate(withDuration: 0.5){
+                    self.calendar.scope = .month
+                    self.calendar.appearance.headerDateFormat = "M월"
+                    self.calendarRight.alpha = 1
+                    self.calendarLeft.alpha = 1
+                    self.view.layoutIfNeeded()
+                }
+            }else{
+                self.calendarConstraint?.update(offset: 370)
+                self.calendarTopConstraint?.update(offset: -30)
+                UIView.animate(withDuration: 0){
+                    self.calendar.scope = .week
+                    self.calendar.appearance.headerDateFormat = ""
+                    self.calendarRight.alpha = 0
+                    self.calendarLeft.alpha = 0
+                    self.view.layoutIfNeeded()
+                }
             }
-
         }else{
-            self.calendarConstraint?.update(offset: 320)
-            self.calendarTopConstraint?.update(offset: -30)
-            UIView.animate(withDuration: 0){
-                self.calendar.scope = .week
-//                self.calendar.headerHeight = 0
-                self.calendar.appearance.headerDateFormat = ""
-                self.calendarRight.alpha = 0
-                self.calendarLeft.alpha = 0
-                self.view.layoutIfNeeded()
+            if self.calendar.scope == .week{
+                self.calendarConstraint?.update(offset: 530)
+                self.calendarTopConstraint?.update(offset: -5)
+                UIView.animate(withDuration: 0.5){
+                    self.calendar.scope = .month
+                    self.calendar.appearance.headerDateFormat = "M월"
+                    self.calendarRight.alpha = 1
+                    self.calendarLeft.alpha = 1
+                    self.view.layoutIfNeeded()
+                }
+                
+            }else{
+                self.calendarConstraint?.update(offset: 320)
+                self.calendarTopConstraint?.update(offset: -30)
+                UIView.animate(withDuration: 0){
+                    self.calendar.scope = .week
+                    self.calendar.appearance.headerDateFormat = ""
+                    self.calendarRight.alpha = 0
+                    self.calendarLeft.alpha = 0
+                    self.view.layoutIfNeeded()
+                }
+                
             }
-
         }
     }
     
@@ -396,21 +490,6 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         VC.modalPresentationStyle = .fullScreen
         present(VC, animated: true)
     }
-    //TEST
-    @objc func mymateFollowerSwitch(_ sender: Any){
-        print("aaaa")
-        print("asdasd")
-
-            self.RecordCellTitleArray = ["No.6", "No.5", "No.4", "No.3", "No.2", "No.1"]
-            self.RecordCellHeartCountArray = ["4", "3", "1", "6", "13", "21"]
-            self.RecordCellCommentCountArray = ["9", "1", "7", "6", "4", "2"]
-            self.RecordCellHeartImgArray = [false, true, true, false, true, true]
-        DispatchQueue.main.async {
-            self.recordCollectionView.reloadData()
-        }
-        
-    }
-    //TESTEND
 
     
 //MARK: - addSubView
@@ -422,6 +501,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         self.topView.addSubview(self.announcementButton)
         self.topView.addSubview(self.englishMessage)
         self.topView.addSubview(self.tabbar)
+        self.topView.addSubview(self.myMateFriendCollectionView)
         self.topView.addSubview(self.calendarView)
         self.calendarView.backgroundColor = .clear
         self.calendar.addSubview(self.calendarRight)
@@ -473,8 +553,13 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             $0.leading.equalTo(self.topView.snp.leading).offset(10)
             $0.trailing.equalTo(self.topView.snp.trailing).offset(-10)
         }
+        self.myMateFriendCollectionView.snp.makeConstraints{
+            $0.top.equalTo(self.tabbar.snp.bottom).offset(0)
+            $0.leading.trailing.equalToSuperview().offset(10)
+            self.myMateConstraint = $0.height.equalTo(0).constraint
+        }
         self.calendarView.snp.makeConstraints{
-            self.calendarTopConstraint = $0.top.equalTo(self.tabbar.snp.bottom).offset(-30).constraint
+            self.calendarTopConstraint = $0.top.equalTo(self.myMateFriendCollectionView.snp.bottom).offset(-30).constraint
             $0.leading.equalTo(self.topView.snp.leading)
             $0.trailing.equalTo(self.topView.snp.trailing)
         }
