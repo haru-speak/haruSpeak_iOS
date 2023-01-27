@@ -13,10 +13,13 @@ import FSCalendar
 import MaterialComponents.MaterialButtons
 
 class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance, SampleProtocol{
-
+    var selectedIndex : IndexPath?
 
 
 //MARK: - DatsSource
+    
+    var myMateFriends = [String]()
+    
     //녹음 있는 날짜 Array
     var haveDataCircle = [String]()
     //CollectionView
@@ -26,8 +29,12 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     var RecordCellHeartImgArray = [Bool]()
     
     func DataSourceSet(){
+        //
+        myMateFriends.append(contentsOf: ["데이", "연", "동동", "나단", "무유", "우기", "채드"])
+        myMateFriends.append(contentsOf: [""])
+        //달력 동그라미 데이터
         haveDataCircle.append(contentsOf: ["2023-01-23", "2023-01-17", "2023-01-11", "2023-01-13"])
-
+        //BottomView 데이터
         RecordCellTitleArray.append(contentsOf: ["MyLog_StartData", "MyLog_StartData", "MyLog_StartData", "MyLog_StartData", "MyLog_StartData", "MyLog_StartData"])
         RecordCellHeartCountArray.append(contentsOf: ["5", "2", "8", "9", "15", "13"])
         RecordCellCommentCountArray.append(contentsOf: ["3", "8", "2", "3", "5", "1"])
@@ -38,8 +45,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
                 }
 
     }
-    
-    var checkdata = "qwe"
+    var checkdata = "data String"
     func sendStringTab(data: String) {
         self.checkdata = data
         if data == "MyLog"{
@@ -153,6 +159,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         return String(format: "%p", address)
     }
 
+    
     
     
 //MARK: - Properties
@@ -699,11 +706,13 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if collectionView == self.recordCollectionView{
             return RecordCellTitleArray.count
         }else{
-            return 10
+            return myMateFriends.count
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        
         if collectionView == self.recordCollectionView{
             let Rcell = collectionView.dequeueReusableCell(withReuseIdentifier: RecordCell.identifier, for: indexPath) as! RecordCell
             Rcell.title.text = self.RecordCellTitleArray[indexPath.row]
@@ -718,25 +727,39 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
         else{
             let Mcell = collectionView.dequeueReusableCell(withReuseIdentifier: MyMateFriendCell.identifier, for: indexPath) as! MyMateFriendCell
-            return Mcell
+            Mcell.profileName.text = self.myMateFriends[indexPath.row]
+                if indexPath == selectedIndex{
+                    Mcell.borderView.backgroundColor = .mainColor
+                    Mcell.profileName.textColor = .mainColor
+                    self.myMateFriendCollectionView.layoutIfNeeded()
+                }else{
+                    Mcell.borderView.backgroundColor = .systemGray6
+                    Mcell.profileName.textColor = .gray
+                    self.myMateFriendCollectionView.layoutIfNeeded()
+                }
+                return Mcell
+            
         }
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecordCell.identifier, for: indexPath) as! RecordCell
-        
+        if collectionView == self.recordCollectionView{
+//            let Rcell = collectionView.dequeueReusableCell(withReuseIdentifier: RecordCell.identifier, for: indexPath) as! RecordCell
+            self.blueViewConstraint?.update(offset: 70)
+            self.playTitle.text = self.RecordCellTitleArray[indexPath.row]
+            UIView.animate(withDuration: 0.3){
+                self.view.layoutIfNeeded()
+            }
+        }else{
+            selectedIndex = indexPath
+            myMateFriendCollectionView.reloadData()
+            print(indexPath.row)
+        }
 //프로필 클릭시 나오는 화면임
 //        collectionViewindex = indexPath.row
 //        let VC = ClickRecordViewController()
 //        VC.modalPresentationStyle = .overCurrentContext
 //        present(VC, animated: false)
-        
-        
-        self.blueViewConstraint?.update(offset: 70)
-        self.playTitle.text = self.RecordCellTitleArray[indexPath.row]
-        UIView.animate(withDuration: 0.3){
-            self.view.layoutIfNeeded()
-        }
-        
+
     }
    
 }
