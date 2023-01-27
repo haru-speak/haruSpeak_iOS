@@ -152,7 +152,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         $0.image = UIImage(named: "play.white")?.withRenderingMode(.alwaysOriginal)
     }
     private let playTitle = UILabel().then{
-        $0.text = "Nothing beats About time"
+        $0.text = ""
         $0.textColor = .white
         $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 18)
     }
@@ -558,6 +558,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecordCell.identifier, for: indexPath) as! RecordCell
+        
 //프로필 클릭시 나오는 화면임
 //        collectionViewindex = indexPath.row
 //        let VC = ClickRecordViewController()
@@ -566,6 +567,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         
         self.blueViewConstraint?.update(offset: 70)
+        self.playTitle.text = self.RecordCellTitleArray[indexPath.row]
         UIView.animate(withDuration: 0.3){
             self.view.layoutIfNeeded()
         }
