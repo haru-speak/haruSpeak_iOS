@@ -117,31 +117,55 @@ class AuthenticationViewController: UIViewController{
     
     @objc func kakaoLoginButtonTapped(){
         // isKakaoTalkLoginAvailable() : 카톡 설치 되어있으면 true
+        // 카카오톡 실행 가능 여부 확인
         if (UserApi.isKakaoTalkLoginAvailable()) {
-            
-            //카톡 설치되어있으면 -> 카톡으로 로그인
             UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
                 if let error = error {
                     print(error)
-                } else {
-                    print("카카오 톡으로 로그인 성공")
-                    
+                }
+                else {
+                    print("loginWithKakaoTalk() success.")
+                    UserApi.shared.me() {(user, error) in
+                        if let error = error {
+                            print(error)
+                        }
+                        else {
+                            print("me() success.")
+                            
+                            //do something
+                            _ = user
+                        }
+                    }
+
+                    //do something
                     _ = oauthToken
-                    /// 로그인 관련 메소드 추가
                 }
             }
+            
         } else {
 
             // 카톡 없으면 -> 계정으로 로그인
-            UserApi.shared.loginWithKakaoAccount { (oauthToken, error) in
+            UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
                 if let error = error {
-                    print(error)
-                } else {
-                    print("카카오 계정으로 로그인 성공")
-                    
-                    _ = oauthToken
-                    // 관련 메소드 추가
-                }
+                        print(error)
+                    }
+                    else {
+                        print("loginWithKakaoAccount() success.")
+                        UserApi.shared.me() {(user, error) in
+                            if let error = error {
+                                print(error)
+                            }
+                            else {
+                                print("me() success.")
+                                
+                                //do something
+                                _ = user
+                            }
+                        }
+
+                        //do something
+                        _ = oauthToken
+                    }
             }
         }
     }

@@ -18,10 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        //MARK: ForKakaoLogin
-        KakaoSDK.initSDK(appKey: "${NATIVE_APP_KEY}")
+        //for Kakao
+        KakaoSDK.initSDK(appKey: "8993fe3ef733e01759a788f5e63200ba")
         
-        //MARK: ForAppleLogin
+        //for Apple
         let appleIDProvider = ASAuthorizationAppleIDProvider()
                 //forUserID = userIdentifier
                 appleIDProvider.getCredentialState(forUserID: "001281.9301aaa1f617423c9c7a64b671b6eb84.0758") { (credentialState, error) in
@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     print("Revoked Notification")
                     // 로그인 페이지로 이동
                 }
-        //MARK: ForNaverLogin
+        //for Naver
         let instance = NaverThirdPartyLoginConnection.getSharedInstance()
         
         //네이버 앱으로 인증하는 방식을 활성화
@@ -58,13 +58,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //네이버 아이디로 로그인하기 설정
         //애플리케이션을 등록할 때 입력한 URL Scheme
-        instance?.serviceUrlScheme = kServiceAppUrlScheme
+        instance?.serviceUrlScheme = "naverSchemes"
         //애플리케이션 등록 후 받은 클라이언트 아이디
-        instance?.consumerKey = kConsumerKey
+        instance?.consumerKey = "fo28fpPz5fxhokDXctz0"
         //애플리케이션 등록 후 발급받은 클라이언트 시크릿
-        instance?.consumerSecret = kConsumerSecret
+        instance?.consumerSecret = "JzSzrfItYE"
         //애플리케이션 이름
-        instance?.appName = kServiceAppName
+        instance?.appName = "haruSpeak"
         return true
     }
     
@@ -126,21 +126,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-    //MARK: - forGoogleLogin
         let signInConfig = GIDConfiguration.init(clientID: "795436124010-3dbce8b9tv7f6ev3j5a3rjdt8oibltt4.apps.googleusercontent.com")
         
         
         func application( _ app: UIApplication,open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+            //forGoogleLogin
             var handled: Bool
             handled = GIDSignIn.sharedInstance.handle(url)
             if handled {
                 return true
             }
+            //forNaverLogin
+            NaverThirdPartyLoginConnection.getSharedInstance()?.application(app, open: url, options: options)
+            
           // Handle other custom URL types.
           // If not handled by this app, return false.
             return false
-            
-            NaverThirdPartyLoginConnection.getSharedInstance()?.application(app, open: url, options: options)
         }
 
 }
