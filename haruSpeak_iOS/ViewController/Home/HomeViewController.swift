@@ -12,11 +12,13 @@ import Then
 import FSCalendar
 import MaterialComponents.MaterialButtons
 
-class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance{
-    
-    
+class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance, SampleProtocol{
+
+
 
 //MARK: - DatsSource
+    var checkClick = 0
+    
     //녹음 있는 날짜 Array
     var haveDataCircle = [String]()
     //CollectionView
@@ -25,11 +27,10 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     var RecordCellCommentCountArray = [String]()
     var RecordCellHeartImgArray = [Bool]()
     
-    
     func DataSourceSet(){
         haveDataCircle.append(contentsOf: ["2023-01-23", "2023-01-17", "2023-01-11", "2023-01-13"])
-        
-        RecordCellTitleArray.append(contentsOf: ["No.1", "No.2", "No.3", "No.4", "No.5", "No.6"])
+
+        RecordCellTitleArray.append(contentsOf: ["MyLog_StartData", "MyLog_StartData", "MyLog_StartData", "MyLog_StartData", "MyLog_StartData", "MyLog_StartData"])
         RecordCellHeartCountArray.append(contentsOf: ["5", "2", "8", "9", "15", "13"])
         RecordCellCommentCountArray.append(contentsOf: ["3", "8", "2", "3", "5", "1"])
         RecordCellHeartImgArray.append(contentsOf: [true, true, false, false, true, false])
@@ -37,26 +38,50 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
                     self.recordCollectionView.reloadData()
                     self.checkRecordCellCount()
                 }
+
     }
 
-    
-    
-    
-    //TEST
-    func mymateFollowerSwitch(){
-        print("aaaa")
-        print("asdasd")
-
-//            self.RecordCellTitleArray = ["No.6", "No.5", "No.4", "No.3", "No.2", "No.1"]
-//            self.RecordCellHeartCountArray = ["4", "3", "1", "6", "13", "21"]
-//            self.RecordCellCommentCountArray = ["9", "1", "7", "6", "4", "2"]
-//            self.RecordCellHeartImgArray = [false, true, true, false, true, true]
-//        DispatchQueue.main.async {
-//            self.recordCollectionView.reloadData()
-//        }
-        
+    func sendStringTab(data: String) {
+        if data == "MyLog"{
+            print("clickMyLog")
+            RecordCellTitleArray = ["MyLog1", "MyLog2", "MyLog3", "MyLog4", "MyLog5", "MyLog6"]
+            RecordCellHeartCountArray = ["4", "3", "1", "6", "13", "21"]
+            RecordCellCommentCountArray = ["9", "1", "7", "6", "4", "2"]
+            RecordCellHeartImgArray = [false, true, true, false, true, true]
+            DispatchQueue.main.async {
+                self.checkRecordCellCount()
+                self.recordCollectionView.reloadData()
+            }
+            
+        }else if data == "MyMate"{
+            print("clickMyMate")
+            
+            RecordCellTitleArray = ["MyMate", "MyMate2", "MyMate3", "MyMate4", "MyMate5", "MyMate6"]
+            RecordCellHeartCountArray = ["4", "3", "1", "6", "13", "21"]
+            RecordCellCommentCountArray = ["9", "1", "7", "6", "4", "2"]
+            RecordCellHeartImgArray = [false, true, false, false, true, false]
+            DispatchQueue.main.async {
+                self.checkRecordCellCount()
+                self.recordCollectionView.reloadData()
+            }
+        }else{
+            print("clickAll")
+            RecordCellTitleArray = ["All1", "All2", "All3", "All4", "All5", "All6"]
+            RecordCellHeartCountArray = ["4", "3", "1", "6", "13", "21"]
+            RecordCellCommentCountArray = ["9", "1", "7", "6", "4", "2"]
+            RecordCellHeartImgArray = [true, true, false, true, true, false]
+            DispatchQueue.main.async {
+                self.checkRecordCellCount()
+                self.recordCollectionView.reloadData()
+            }
+        }
     }
-    //TESTEND
+
+    func address(of object: UnsafeRawPointer) -> String{
+        let address = Int(bitPattern: object)
+        return String(format: "%p", address)
+    }
+
     
     
 //MARK: - Properties
@@ -179,9 +204,9 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         
         self.recordCollectionView.delegate = self
         self.recordCollectionView.dataSource = self
+        tabbar.delegate = self
         
         self.navigationController?.navigationBar.isHidden = true;
-        
         setupView()
         setupLayout()
         addTarget()
@@ -191,7 +216,9 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         
         self.view.translatesAutoresizingMaskIntoConstraints = true
         topView.bringSubviewToFront(self.tabbar)
+
     }
+
 //MARK: - Check Cell isEmpty
     func checkRecordCellCount(){
         let countRecordCell = Int(RecordCellTitleArray.count)
@@ -239,10 +266,22 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         print(dateFormatter.string(from: date) + " 선택됨")
+        
+        //날짜 클릭하면 cell 변경
+        if dateFormatter.string(from: date) == "2023-01-23"{
+            self.RecordCellTitleArray = ["No.6", "No.5", "No.4", "No.3", "No.2", "No.1"]
+            self.RecordCellHeartCountArray = ["4", "3", "1", "6", "13", "21"]
+            self.RecordCellCommentCountArray = ["9", "1", "7", "6", "4", "2"]
+            self.RecordCellHeartImgArray = [false, true, true, false, true, true]
+        DispatchQueue.main.async {
+            self.checkRecordCellCount()
+            self.recordCollectionView.reloadData()
+        }
+        }
     }
     
     // 날짜 선택 해제 시 콜백 메소드
-    public func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
+    func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         print(dateFormatter.string(from: date) + " 해제됨")
@@ -253,11 +292,12 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         formatter.locale = Locale(identifier: "ko_KR")
         formatter.dateFormat = "yyyy-MM-dd"
         var dates = [Date]()
-        for i in 0...haveDataCircle.count-1{
-            let a = formatter.date(from: haveDataCircle[i])
-            dates.append(a!)
+        if haveDataCircle.count > 0{
+            for i in 0...haveDataCircle.count-1{
+                let a = formatter.date(from: haveDataCircle[i])
+                dates.append(a!)
+            }
         }
-        
         if dates.contains(date){
             return 1
         }
@@ -356,7 +396,21 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         VC.modalPresentationStyle = .fullScreen
         present(VC, animated: true)
     }
-    
+    //TEST
+    @objc func mymateFollowerSwitch(_ sender: Any){
+        print("aaaa")
+        print("asdasd")
+
+            self.RecordCellTitleArray = ["No.6", "No.5", "No.4", "No.3", "No.2", "No.1"]
+            self.RecordCellHeartCountArray = ["4", "3", "1", "6", "13", "21"]
+            self.RecordCellCommentCountArray = ["9", "1", "7", "6", "4", "2"]
+            self.RecordCellHeartImgArray = [false, true, true, false, true, true]
+        DispatchQueue.main.async {
+            self.recordCollectionView.reloadData()
+        }
+        
+    }
+    //TESTEND
 
     
 //MARK: - addSubView
