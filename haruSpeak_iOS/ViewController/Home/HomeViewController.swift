@@ -89,9 +89,9 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             }
             //change layout
             if self.calendar.scope == .week{
-                self.calendarConstraint?.update(offset: 370)
+                self.calendarConstraint?.update(offset: 400)
                 self.calendarTopConstraint?.update(offset: -30)
-                self.myMateConstraint?.update(offset: 50)
+                self.myMateConstraint?.update(offset: 80)
                 UIView.animate(withDuration: 0.5){
                     self.calendar.scope = .week
                     self.calendar.appearance.headerDateFormat = ""
@@ -100,9 +100,9 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
                     self.view.layoutIfNeeded()
                 }
             }else{
-                self.calendarConstraint?.update(offset: 580)
+                self.calendarConstraint?.update(offset: 610)
                 self.calendarTopConstraint?.update(offset: -5)
-                self.myMateConstraint?.update(offset: 50)
+                self.myMateConstraint?.update(offset: 80)
                 UIView.animate(withDuration: 0.5){
                     self.calendar.scope = .month
                     self.calendar.appearance.headerDateFormat = "M월"
@@ -203,11 +203,18 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         $0.textColor = .gray
     }
     let tabbar = CustomTabbar()
-    let myMateFriendCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+    var myMateFriendCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         $0.register(MyMateFriendCell.self, forCellWithReuseIdentifier: MyMateFriendCell.identifier)
-        $0.backgroundColor = .yellow
+        $0.backgroundColor = .white
+        
+        if let layout = $0.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.scrollDirection = .horizontal
+        }
+        $0.showsHorizontalScrollIndicator = false
     }
-    
+    let seperateLine = UIView().then{
+        $0.backgroundColor = UIColor.systemGray4
+    }
     let calendarView = UIView()
     let calendar = FSCalendar(frame: CGRect(x: 15, y: 20, width: 350, height: 300))
     let calendarRight = UIButton().then{
@@ -222,6 +229,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     private let lineView = UIView().then{
         $0.backgroundColor = .clear
     }
+    
     private let line = UIImageView().then{
         $0.image = UIImage(named: "line")?.withRenderingMode(.alwaysOriginal)
     }
@@ -278,6 +286,9 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         
         self.recordCollectionView.delegate = self
         self.recordCollectionView.dataSource = self
+        self.myMateFriendCollectionView.delegate = self
+        self.myMateFriendCollectionView.dataSource = self
+        
         tabbar.delegate = self
         
         self.navigationController?.navigationBar.isHidden = true;
@@ -290,6 +301,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         
         self.view.translatesAutoresizingMaskIntoConstraints = true
         topView.bringSubviewToFront(self.tabbar)
+        topView.bringSubviewToFront(self.seperateLine)
 
     }
 
@@ -437,7 +449,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     @objc func didDragCalendar(sender: UITapGestureRecognizer) {
         if checkdata == "MyMate" {
             if self.calendar.scope == .week{
-                self.calendarConstraint?.update(offset: 580)
+                self.calendarConstraint?.update(offset: 610)
                 self.calendarTopConstraint?.update(offset: -5)
                 UIView.animate(withDuration: 0.5){
                     self.calendar.scope = .month
@@ -447,7 +459,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
                     self.view.layoutIfNeeded()
                 }
             }else{
-                self.calendarConstraint?.update(offset: 370)
+                self.calendarConstraint?.update(offset: 400)
                 self.calendarTopConstraint?.update(offset: -30)
                 UIView.animate(withDuration: 0){
                     self.calendar.scope = .week
@@ -468,7 +480,6 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
                     self.calendarLeft.alpha = 1
                     self.view.layoutIfNeeded()
                 }
-                
             }else{
                 self.calendarConstraint?.update(offset: 320)
                 self.calendarTopConstraint?.update(offset: -30)
@@ -502,6 +513,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         self.topView.addSubview(self.englishMessage)
         self.topView.addSubview(self.tabbar)
         self.topView.addSubview(self.myMateFriendCollectionView)
+        self.topView.addSubview(self.seperateLine)
         self.topView.addSubview(self.calendarView)
         self.calendarView.backgroundColor = .clear
         self.calendar.addSubview(self.calendarRight)
@@ -550,13 +562,20 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         }
         self.tabbar.snp.makeConstraints{
             $0.top.equalTo(self.englishMessage.snp.bottom).offset(17)
-            $0.leading.equalTo(self.topView.snp.leading).offset(10)
-            $0.trailing.equalTo(self.topView.snp.trailing).offset(-10)
+            $0.leading.equalTo(self.topView.snp.leading).offset(30)
+            $0.trailing.equalTo(self.topView.snp.trailing).offset(-30)
         }
         self.myMateFriendCollectionView.snp.makeConstraints{
             $0.top.equalTo(self.tabbar.snp.bottom).offset(0)
-            $0.leading.trailing.equalToSuperview().offset(10)
+            $0.leading.equalToSuperview().offset(15)
+            $0.trailing.equalToSuperview().offset(-15)
             self.myMateConstraint = $0.height.equalTo(0).constraint
+        }
+        self.seperateLine.snp.makeConstraints{
+            $0.top.equalTo(self.myMateFriendCollectionView.snp.bottom)
+            $0.leading.equalToSuperview().offset(30)
+            $0.trailing.equalToSuperview().offset(-30)
+            $0.height.equalTo(1)
         }
         self.calendarView.snp.makeConstraints{
             self.calendarTopConstraint = $0.top.equalTo(self.myMateFriendCollectionView.snp.bottom).offset(-30).constraint
@@ -677,23 +696,30 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return RecordCellTitleArray.count
+        if collectionView == self.recordCollectionView{
+            return RecordCellTitleArray.count
+        }else{
+            return 10
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecordCell.identifier, for: indexPath) as! RecordCell
-
-        cell.title.text = self.RecordCellTitleArray[indexPath.row]
-        cell.likeLabel.text = self.RecordCellHeartCountArray[indexPath.row]
-        cell.commentLabel.text = self.RecordCellCommentCountArray[indexPath.row]
-        if self.RecordCellHeartImgArray[indexPath.row] == true{
-            cell.heart.image = UIImage(named: "heart.fill")?.withRenderingMode(.alwaysOriginal)
-        }else{
-            cell.heart.image = UIImage(named: "heart")?.withRenderingMode(.alwaysOriginal)
+        if collectionView == self.recordCollectionView{
+            let Rcell = collectionView.dequeueReusableCell(withReuseIdentifier: RecordCell.identifier, for: indexPath) as! RecordCell
+            Rcell.title.text = self.RecordCellTitleArray[indexPath.row]
+            Rcell.likeLabel.text = self.RecordCellHeartCountArray[indexPath.row]
+            Rcell.commentLabel.text = self.RecordCellCommentCountArray[indexPath.row]
+            if self.RecordCellHeartImgArray[indexPath.row] == true{
+                Rcell.heart.image = UIImage(named: "heart.fill")?.withRenderingMode(.alwaysOriginal)
+            }else{
+                Rcell.heart.image = UIImage(named: "heart")?.withRenderingMode(.alwaysOriginal)
+            }
+            return Rcell
         }
-        
-        
-        return cell
+        else{
+            let Mcell = collectionView.dequeueReusableCell(withReuseIdentifier: MyMateFriendCell.identifier, for: indexPath) as! MyMateFriendCell
+            return Mcell
+        }
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecordCell.identifier, for: indexPath) as! RecordCell
@@ -717,16 +743,28 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 5
+        if collectionView == self.recordCollectionView{
+            return 5
+        }else{
+            return 5
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        if collectionView == self.recordCollectionView{
+            return 0
+        }else{
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if collectionView == self.recordCollectionView{
+            return CGSize(width: self.view.frame.width , height: 70)
+        }else{
+            return CGSize(width: 50 , height: 60)
+        }
         
-        return CGSize(width: self.view.frame.width , height: 70)
     }
     
 }
