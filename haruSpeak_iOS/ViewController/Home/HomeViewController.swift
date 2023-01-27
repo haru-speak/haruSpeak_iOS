@@ -389,7 +389,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             $0.bottom.equalTo(self.lineView.snp.bottom).offset(-11)
         }
         self.recordCollectionView.snp.makeConstraints {
-            $0.top.equalTo(self.topView.snp.bottom).offset(20)
+            $0.top.equalTo(self.topView.snp.bottom).offset(10)
             $0.trailing.leading.equalToSuperview()
             $0.bottom.equalTo(self.blueView.snp.top)
         }
