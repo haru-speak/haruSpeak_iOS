@@ -71,10 +71,10 @@ class JoinMSViewController: UIViewController{
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.systemGray4.cgColor
     }
-    let joinMembership = UIButton(type: .system).then{
-        $0.setTitle("아직 계정이 없나요? 바로 로그인", for: .normal)
-        $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Thin", size: 13)
-        $0.setTitleColor(.gray, for: .normal)
+    let login = UILabel().then{
+        $0.text = "이미 계정이 있으신가요? 바로 로그인"
+        $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size: 13)
+        $0.textColor = .lightGray
     }
     let naverLoginInstance = NaverThirdPartyLoginConnection.getSharedInstance()
     
@@ -86,7 +86,9 @@ class JoinMSViewController: UIViewController{
         setupView()
         setupLayout()
         addTarget()
-        
+        let attributedStr = NSMutableAttributedString(string: login.text!)
+        attributedStr.addAttribute(.foregroundColor, value: UIColor.mainColor, range: (login.text! as NSString).range(of: "바로 로그인"))
+        login.attributedText = attributedStr
     }
     
     //MARK: - Selector
@@ -216,7 +218,7 @@ class JoinMSViewController: UIViewController{
     
     
     
-    @objc func joinMembershipButtonTapped(){
+    @objc func loginButtonTapped(){
         let VC = AuthenticationViewController()
         VC.modalPresentationStyle = .fullScreen
         present(VC, animated: true)
@@ -233,7 +235,7 @@ class JoinMSViewController: UIViewController{
             self.view.addSubview(self.AppleLogin)
             self.view.addSubview(self.NaverLogin)
             self.view.addSubview(self.GoogleLogin)
-            self.view.addSubview(self.joinMembership)
+            self.view.addSubview(self.login)
 
 
         }
@@ -290,7 +292,7 @@ class JoinMSViewController: UIViewController{
             $0.height.equalTo(45)
         }
         
-        self.joinMembership.snp.makeConstraints{
+        self.login.snp.makeConstraints{
             $0.centerX.equalToSuperview()
             $0.top.equalTo(self.GoogleLogin.snp.bottom).offset(19)
         }
@@ -305,7 +307,9 @@ class JoinMSViewController: UIViewController{
         self.KakaoTalkLogin.addTarget(self, action: #selector(self.kakaoLoginButtonTapped), for: .touchUpInside)
         self.AppleLogin.addTarget(self, action: #selector(self.appleLoginButtonTapped), for: .touchUpInside)
         self.NaverLogin.addTarget(self, action: #selector(self.naverLoginButtonTapped), for: .touchUpInside)
-        self.joinMembership.addTarget(self, action: #selector(self.joinMembershipButtonTapped), for: .touchUpInside)
+        let loginBtn = UITapGestureRecognizer(target: self, action: #selector(loginButtonTapped))
+        login.isUserInteractionEnabled = true
+        login.addGestureRecognizer(loginBtn)
     }
     
 }

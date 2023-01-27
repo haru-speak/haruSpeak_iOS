@@ -67,10 +67,10 @@ class AuthenticationViewController: UIViewController{
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.systemGray4.cgColor
     }
-    let joinMembership = UIButton(type: .system).then{
-        $0.setTitle("아직 계정이 없나요? 회원가입 하기", for: .normal)
-        $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Thin", size: 13)
-        $0.setTitleColor(.gray, for: .normal)
+    let joinMembership = UILabel().then{
+        $0.text = "아직 계정이 없나요? 회원가입 하기"
+        $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size: 13)
+        $0.textColor = .lightGray
     }
     let naverLoginInstance = NaverThirdPartyLoginConnection.getSharedInstance()
     
@@ -82,6 +82,9 @@ class AuthenticationViewController: UIViewController{
         setupView()
         setupLayout()
         addTarget()
+        let attributedStr = NSMutableAttributedString(string: joinMembership.text!)
+        attributedStr.addAttribute(.foregroundColor, value: UIColor.gray, range: (joinMembership.text! as NSString).range(of: "회원가입 하기"))
+        joinMembership.attributedText = attributedStr
         
     }
     
@@ -297,7 +300,9 @@ class AuthenticationViewController: UIViewController{
         self.KakaoTalkLogin.addTarget(self, action: #selector(self.kakaoLoginButtonTapped), for: .touchUpInside)
         self.AppleLogin.addTarget(self, action: #selector(self.appleLoginButtonTapped), for: .touchUpInside)
         self.NaverLogin.addTarget(self, action: #selector(self.naverLoginButtonTapped), for: .touchUpInside)
-        self.joinMembership.addTarget(self, action: #selector(self.joinMembershipButtonTapped), for: .touchUpInside)
+        let joinMSBtn = UITapGestureRecognizer(target: self, action: #selector(joinMembershipButtonTapped))
+        joinMembership.isUserInteractionEnabled = true
+        joinMembership.addGestureRecognizer(joinMSBtn)
     }
     
 }
