@@ -14,14 +14,26 @@ import MaterialComponents.MaterialButtons
 
 class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance{
     
-//MARK: - Properties
-    private var calendarConstraint : Constraint?
-    private var blueViewConstraint : Constraint?
     
+
+//MARK: - DatsSource
     //녹음 있는 날짜 Array
-    let formatter = DateFormatter()
     let haveDataCircle : Array = ["2023-01-23", "2023-01-17", "2023-01-11", "2023-01-13"]
     
+    //TEST
+    func mymateFollowerSwitch(){
+        print("aaaa")
+        print("asdasd")
+    }
+    //TESTEND
+    
+    
+//MARK: - Properties
+    var calendarTopConstraint : Constraint?
+    var calendarConstraint : Constraint?
+    var blueViewConstraint : Constraint?
+    
+    let formatter = DateFormatter()
     // TOPVIEW START
     let topView = UIView().then{
         $0.roundCorners(cornerRadius: 30, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner])
@@ -57,22 +69,21 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     private let announcementButton = UIImageView().then{
         $0.image = UIImage(named: "announcement")?.withRenderingMode(.alwaysOriginal)
     }
-    private let englishMessage = UILabel().then{
+    let englishMessage = UILabel().then{
         $0.font = UIFont(name:"appleSDGothicNeo", size: 16)
         $0.text = "What's your favorite movie?"
         $0.textColor = .gray
     }
-    private let tabbar = CustomTabbar()
-    private let calendarView = UIView().then{_ in
-        
-    }
-    private let calendar = FSCalendar(frame: CGRect(x: 15, y: 20, width: 350, height: 300))
-    private let calendarRight = UIButton().then{
+    let tabbar = CustomTabbar()
+    
+    let calendarView = UIView()
+    let calendar = FSCalendar(frame: CGRect(x: 15, y: 20, width: 350, height: 300))
+    let calendarRight = UIButton().then{
         $0.setImage(UIImage(named: "calendarright")?.withRenderingMode(.alwaysOriginal), for: .normal)
 //        $0.isHidden = true
         $0.alpha = 0
     }
-    private let calendarLeft = UIButton().then{
+    let calendarLeft = UIButton().then{
         $0.setImage(UIImage(named: "calendarleft")?.withRenderingMode(.alwaysOriginal), for: .normal)
 //        $0.isHidden = true
         $0.alpha = 0
@@ -138,7 +149,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         setCalendarUI()
         
         self.view.translatesAutoresizingMaskIntoConstraints = true
-
+        topView.bringSubviewToFront(self.tabbar)
     }
 
 //MARK: - CalendarUI
@@ -263,6 +274,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     @objc func didDragCalendar(sender: UITapGestureRecognizer) {
         if self.calendar.scope == .week{
             self.calendarConstraint?.update(offset: 530)
+            self.calendarTopConstraint?.update(offset: -5)
             UIView.animate(withDuration: 0.5){
                 self.calendar.scope = .month
 //                self.calendar.headerHeight = 30
@@ -273,7 +285,8 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             }
 
         }else{
-            self.calendarConstraint?.update(offset: 350)
+            self.calendarConstraint?.update(offset: 320)
+            self.calendarTopConstraint?.update(offset: -30)
             UIView.animate(withDuration: 0){
                 self.calendar.scope = .week
 //                self.calendar.headerHeight = 0
@@ -326,7 +339,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     private func setupLayout(){
         self.topView.snp.makeConstraints{
             $0.top.trailing.leading.equalToSuperview().offset(0)
-            self.calendarConstraint = $0.height.equalTo(350).constraint
+            self.calendarConstraint = $0.height.equalTo(320).constraint
         }
         self.date.snp.makeConstraints{
             $0.top.equalTo(self.topView.snp.top).offset(54)
@@ -354,9 +367,9 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             $0.trailing.equalTo(self.topView.snp.trailing).offset(-10)
         }
         self.calendarView.snp.makeConstraints{
-            $0.top.equalTo(self.tabbar.snp.bottom).offset(-5)
-            $0.leading.equalTo(self.topView.snp.leading).offset(0)
-            $0.trailing.equalTo(self.topView.snp.trailing).offset(0)
+            self.calendarTopConstraint = $0.top.equalTo(self.tabbar.snp.bottom).offset(-30).constraint
+            $0.leading.equalTo(self.topView.snp.leading)
+            $0.trailing.equalTo(self.topView.snp.trailing)
         }
         self.calendarRight.snp.makeConstraints{
             $0.top.equalToSuperview().offset(6)
@@ -376,7 +389,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             $0.bottom.equalTo(self.lineView.snp.bottom).offset(-11)
         }
         self.recordCollectionView.snp.makeConstraints {
-            $0.top.equalTo(self.topView.snp.bottom).offset(20)
+            $0.top.equalTo(self.topView.snp.bottom).offset(10)
             $0.trailing.leading.equalToSuperview()
             $0.bottom.equalTo(self.blueView.snp.top)
         }
