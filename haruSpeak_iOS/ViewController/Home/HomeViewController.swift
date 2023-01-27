@@ -18,12 +18,43 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
 
 //MARK: - DatsSource
     //녹음 있는 날짜 Array
-    let haveDataCircle : Array = ["2023-01-23", "2023-01-17", "2023-01-11", "2023-01-13"]
+    var haveDataCircle = [String]()
+    //CollectionView
+    var RecordCellTitleArray = [String]()
+    var RecordCellHeartCountArray = [String]()
+    var RecordCellCommentCountArray = [String]()
+    var RecordCellHeartImgArray = [Bool]()
+    
+    
+    func DataSourceSet(){
+        haveDataCircle.append(contentsOf: ["2023-01-23", "2023-01-17", "2023-01-11", "2023-01-13"])
+        
+        RecordCellTitleArray.append(contentsOf: ["No.1", "No.2", "No.3", "No.4", "No.5", "No.6"])
+        RecordCellHeartCountArray.append(contentsOf: ["5", "2", "8", "9", "15", "13"])
+        RecordCellCommentCountArray.append(contentsOf: ["3", "8", "2", "3", "5", "1"])
+        RecordCellHeartImgArray.append(contentsOf: [true, true, false, false, true, false])
+                DispatchQueue.main.async {
+                    self.recordCollectionView.reloadData()
+                    self.checkRecordCellCount()
+                }
+    }
+
+    
+    
     
     //TEST
     func mymateFollowerSwitch(){
         print("aaaa")
         print("asdasd")
+
+//            self.RecordCellTitleArray = ["No.6", "No.5", "No.4", "No.3", "No.2", "No.1"]
+//            self.RecordCellHeartCountArray = ["4", "3", "1", "6", "13", "21"]
+//            self.RecordCellCommentCountArray = ["9", "1", "7", "6", "4", "2"]
+//            self.RecordCellHeartImgArray = [false, true, true, false, true, true]
+//        DispatchQueue.main.async {
+//            self.recordCollectionView.reloadData()
+//        }
+        
     }
     //TESTEND
     
@@ -97,12 +128,20 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     }
     // TOPVIEW END
     
-    let recordCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+    var recordCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         $0.register(RecordCell.self, forCellWithReuseIdentifier: RecordCell.identifier)
         $0.backgroundColor = .systemGray6
     }
-    
     var collectionViewindex = 0
+    
+    let hideRecordView = UIView().then{
+        $0.backgroundColor = .systemGray6
+    }
+    let hideRecordViewLabel = UILabel().then{
+        $0.text = "오늘의 스피킹을 기록해보세요!"
+        $0.font = UIFont(name:"appleSDGothicNeo-Regular", size: 16)
+        $0.textColor = .gray
+    }
 
     //BLUE PLAYLIST VIEW
     var blueViewRemoved = true
@@ -113,7 +152,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         $0.image = UIImage(named: "play.white")?.withRenderingMode(.alwaysOriginal)
     }
     private let playTitle = UILabel().then{
-        $0.text = "Nothing beats About time"
+        $0.text = ""
         $0.textColor = .white
         $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 18)
     }
@@ -147,11 +186,23 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         setupLayout()
         addTarget()
         setCalendarUI()
+        checkRecordCellCount()
+        DataSourceSet()
         
         self.view.translatesAutoresizingMaskIntoConstraints = true
         topView.bringSubviewToFront(self.tabbar)
     }
-
+//MARK: - Check Cell isEmpty
+    func checkRecordCellCount(){
+        let countRecordCell = Int(RecordCellTitleArray.count)
+        if countRecordCell == 0{
+            hideRecordView.isHidden = false
+            print("hidden")
+        }else{
+            hideRecordView.isHidden = true
+            print("nothidden")
+        }
+    }
 //MARK: - CalendarUI
 
     private func setCalendarUI(){
@@ -325,6 +376,8 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         self.topView.addSubview(self.lineView)
         self.lineView.addSubview(self.line)
         self.view.addSubview(self.recordCollectionView)
+        self.view.addSubview(self.hideRecordView)
+        self.hideRecordView.addSubview(self.hideRecordViewLabel)
         self.view.addSubview(self.blueView)
         self.blueView.addSubview(self.playButton)
         self.blueView.addSubview(self.playTitle)
@@ -393,10 +446,19 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             $0.trailing.leading.equalToSuperview()
             $0.bottom.equalTo(self.blueView.snp.top)
         }
+        self.hideRecordView.snp.makeConstraints{
+            $0.top.equalTo(self.topView.snp.bottom).offset(10)
+            $0.trailing.leading.equalToSuperview()
+            $0.bottom.equalTo(self.blueView.snp.top)
+        }
+        self.hideRecordViewLabel.snp.makeConstraints{
+            $0.centerY.equalToSuperview()
+            $0.centerX.equalToSuperview()
+        }
         self.blueView.snp.makeConstraints{
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().offset(-80)
-            self.blueViewConstraint = $0.size.height.equalTo(70).constraint
+            self.blueViewConstraint = $0.size.height.equalTo(0).constraint
         }
         self.playButton.snp.makeConstraints{
             $0.centerY.equalToSuperview()
@@ -476,24 +538,36 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return RecordCellTitleArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecordCell.identifier, for: indexPath) as! RecordCell
 
-
+        cell.title.text = self.RecordCellTitleArray[indexPath.row]
+        cell.likeLabel.text = self.RecordCellHeartCountArray[indexPath.row]
+        cell.commentLabel.text = self.RecordCellCommentCountArray[indexPath.row]
+        if self.RecordCellHeartImgArray[indexPath.row] == true{
+            cell.heart.image = UIImage(named: "heart.fill")?.withRenderingMode(.alwaysOriginal)
+        }else{
+            cell.heart.image = UIImage(named: "heart")?.withRenderingMode(.alwaysOriginal)
+        }
+        
         
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecordCell.identifier, for: indexPath) as! RecordCell
+        
 //프로필 클릭시 나오는 화면임
 //        collectionViewindex = indexPath.row
 //        let VC = ClickRecordViewController()
 //        VC.modalPresentationStyle = .overCurrentContext
 //        present(VC, animated: false)
+        
+        
         self.blueViewConstraint?.update(offset: 70)
+        self.playTitle.text = self.RecordCellTitleArray[indexPath.row]
         UIView.animate(withDuration: 0.3){
             self.view.layoutIfNeeded()
         }
