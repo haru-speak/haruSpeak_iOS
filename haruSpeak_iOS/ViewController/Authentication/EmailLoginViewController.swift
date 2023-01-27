@@ -47,10 +47,10 @@ class EmailLoginViewController: UIViewController{
         $0.backgroundColor = .mainColor
 
     }
-    let joinMembership = UIButton(type: .system).then{
-        $0.setTitle("아직 계정이 없나요? 회원가입 하기", for: .normal)
-        $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Thin", size: 13)
-        $0.setTitleColor(.gray, for: .normal)
+    let joinMembership = UILabel().then{
+        $0.text = "아직 계정이 없나요? 회원가입 하기"
+        $0.font = UIFont(name:"appleSDGothicNeo-Regular", size: 13)
+        $0.textColor = .lightGray
     }
     
     let findId = UIButton(type: .system).then{
@@ -71,6 +71,9 @@ class EmailLoginViewController: UIViewController{
         setupView()
         setupLayout()
         addTarget()
+        let attributedStr = NSMutableAttributedString(string: joinMembership.text!)
+        attributedStr.addAttribute(.foregroundColor, value: UIColor.gray, range: (joinMembership.text! as NSString).range(of: "회원가입 하기"))
+        joinMembership.attributedText = attributedStr
     }
     
     //MARK: - Selector
@@ -169,7 +172,9 @@ class EmailLoginViewController: UIViewController{
 //MARK: - AddTarget
     private func addTarget(){
         self.arrowLeft.addTarget(self, action: #selector(self.arrowLeftButtonTapped), for: .touchUpInside)
-        self.joinMembership.addTarget(self, action: #selector(self.joinMembershipButtonTapped), for: .touchUpInside)
+        let joinMSBtn = UITapGestureRecognizer(target: self, action: #selector(joinMembershipButtonTapped))
+        joinMembership.isUserInteractionEnabled = true
+        joinMembership.addGestureRecognizer(joinMSBtn)
         self.emailLoginButton.addTarget(self, action: #selector(self.loginButtonTapped), for: .touchUpInside)
     }
  
