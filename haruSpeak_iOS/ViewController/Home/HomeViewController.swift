@@ -63,6 +63,8 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
                 self.calendarConstraint?.update(offset: 320)
                 self.calendarTopConstraint?.update(offset: -30)
                 self.myMateConstraint?.update(offset: -5)
+                self.bottomViewConstraint?.update(offset: 10)
+                self.filterButtonView.isHidden = true
                 UIView.animate(withDuration: 0.5){
                     self.calendar.scope = .week
                     self.calendar.appearance.headerDateFormat = ""
@@ -74,6 +76,8 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
                 self.calendarConstraint?.update(offset: 530)
                 self.calendarTopConstraint?.update(offset: -5)
                 self.myMateConstraint?.update(offset: 0)
+                self.bottomViewConstraint?.update(offset: 10)
+                self.filterButtonView.isHidden = true
                 UIView.animate(withDuration: 0.5){
                     self.calendar.scope = .month
                     self.calendar.appearance.headerDateFormat = "M월"
@@ -98,6 +102,8 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
                 self.calendarConstraint?.update(offset: 400)
                 self.calendarTopConstraint?.update(offset: -30)
                 self.myMateConstraint?.update(offset: 80)
+                self.bottomViewConstraint?.update(offset: 10)
+                self.filterButtonView.isHidden = true
                 UIView.animate(withDuration: 0.5){
                     self.calendar.scope = .week
                     self.calendar.appearance.headerDateFormat = ""
@@ -109,6 +115,8 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
                 self.calendarConstraint?.update(offset: 610)
                 self.calendarTopConstraint?.update(offset: -5)
                 self.myMateConstraint?.update(offset: 80)
+                self.bottomViewConstraint?.update(offset: 10)
+                self.filterButtonView.isHidden = true
                 UIView.animate(withDuration: 0.5){
                     self.calendar.scope = .month
                     self.calendar.appearance.headerDateFormat = "M월"
@@ -132,6 +140,8 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
                 self.calendarConstraint?.update(offset: 320)
                 self.calendarTopConstraint?.update(offset: -30)
                 self.myMateConstraint?.update(offset: 0)
+                self.bottomViewConstraint?.update(offset: 43)
+                self.filterButtonView.isHidden = false
                 UIView.animate(withDuration: 0.5){
                     self.calendar.scope = .week
                     self.calendar.appearance.headerDateFormat = ""
@@ -143,6 +153,8 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
                 self.calendarConstraint?.update(offset: 530)
                 self.calendarTopConstraint?.update(offset: -5)
                 self.myMateConstraint?.update(offset: 0)
+                self.bottomViewConstraint?.update(offset: 43)
+                self.filterButtonView.isHidden = false
                 UIView.animate(withDuration: 0.5){
                     self.calendar.scope = .month
                     self.calendar.appearance.headerDateFormat = "M월"
@@ -160,13 +172,15 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     }
 
     
-    
-    
-//MARK: - Properties
+//MARK: - Constraints
     var calendarTopConstraint : Constraint?
     var calendarConstraint : Constraint?
     var blueViewConstraint : Constraint?
     var myMateConstraint : Constraint?
+    var bottomViewConstraint : Constraint?
+    
+//MARK: - Properties
+
     
     let formatter = DateFormatter()
     // TOPVIEW START
@@ -202,10 +216,12 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         $0.attributedText = attrString
     }
     private let announcementButton = UIImageView().then{
+        //.alwaysTemplate으로 바꾸면 색깔 변경 가능
         $0.image = UIImage(named: "announcement")?.withRenderingMode(.alwaysOriginal)
+//        $0.tintColor = UIColor.mainColor
     }
     let englishMessage = UILabel().then{
-        $0.font = UIFont(name:"appleSDGothicNeo", size: 16)
+        $0.font = UIFont(name:"appleSDGothicNeo-Regular", size: 16)
         $0.text = "What's your favorite movie?"
         $0.textColor = .gray
     }
@@ -241,6 +257,18 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         $0.image = UIImage(named: "line")?.withRenderingMode(.alwaysOriginal)
     }
     // TOPVIEW END
+    let filterButtonView = UIView().then{
+        $0.backgroundColor = .systemGray6
+        $0.isHidden = true
+    }
+    let filterText = UILabel().then{
+        $0.text = "최신 순"
+        $0.font = UIFont(name:"appleSDGothicNeo-Regular", size: 15)
+        $0.textColor = .lightGray
+    }
+    let filterButton = UIImageView().then{
+        $0.image = UIImage(named: "filterbutton")?.withRenderingMode(.alwaysOriginal)
+    }
     
     var recordCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         $0.register(RecordCell.self, forCellWithReuseIdentifier: RecordCell.identifier)
@@ -309,7 +337,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         self.view.translatesAutoresizingMaskIntoConstraints = true
         topView.bringSubviewToFront(self.tabbar)
         topView.bringSubviewToFront(self.seperateLine)
-
+        self.view.bringSubviewToFront(self.filterButtonView)
     }
 
 //MARK: - Check Cell isEmpty
@@ -501,7 +529,9 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             }
         }
     }
-    
+    @objc func didClickFilterButton(sender: UITapGestureRecognizer){
+        print("didClickFilterButton")
+    }
     @objc func didClickFloatingButton(sender: UITapGestureRecognizer){
         print("didClickFloatingButton")
         let VC = RecordViewController()
@@ -528,6 +558,9 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         self.calendarView.addSubview(self.calendar)
         self.topView.addSubview(self.lineView)
         self.lineView.addSubview(self.line)
+        self.view.addSubview(self.filterButtonView)
+        self.filterButtonView.addSubview(self.filterText)
+        self.filterButtonView.addSubview(self.filterButton)
         self.view.addSubview(self.recordCollectionView)
         self.view.addSubview(self.hideRecordView)
         self.hideRecordView.addSubview(self.hideRecordViewLabel)
@@ -606,8 +639,24 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             $0.centerX.equalToSuperview()
             $0.bottom.equalTo(self.lineView.snp.bottom).offset(-11)
         }
+        self.filterButtonView.snp.makeConstraints{
+            $0.top.equalTo(self.topView.snp.bottom).offset(14)
+            $0.trailing.equalToSuperview().offset(-23)
+            $0.width.equalTo(67)
+            $0.height.equalTo(22)
+        }
+        self.filterText.snp.makeConstraints{
+            $0.top.bottom.leading.equalToSuperview()
+            $0.width.equalTo(43)
+        }
+        self.filterButton.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(7.54)
+            $0.trailing.equalToSuperview().offset(-7.33)
+            $0.width.equalTo(11.67)
+            $0.height.equalTo(7.13)
+        }
         self.recordCollectionView.snp.makeConstraints {
-            $0.top.equalTo(self.topView.snp.bottom).offset(10)
+            self.bottomViewConstraint = $0.top.equalTo(self.topView.snp.bottom).offset(10).constraint
             $0.trailing.leading.equalToSuperview()
             $0.bottom.equalTo(self.blueView.snp.top)
         }
@@ -671,6 +720,10 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         let CalendarDrag = UITapGestureRecognizer(target: self, action: #selector(didDragCalendar))
         lineView.isUserInteractionEnabled = true
         lineView.addGestureRecognizer(CalendarDrag)
+        
+        let filterBtn = UITapGestureRecognizer(target: self, action: #selector(didClickFilterButton))
+        filterButtonView.isUserInteractionEnabled = true
+        filterButtonView.addGestureRecognizer(filterBtn)
         
         let floatingBtn = UITapGestureRecognizer(target: self, action: #selector(didClickFloatingButton))
         floatingButton.isUserInteractionEnabled = true
