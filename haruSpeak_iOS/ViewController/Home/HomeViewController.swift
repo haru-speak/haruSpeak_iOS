@@ -677,6 +677,8 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         self.playButton.snp.makeConstraints{
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().offset(26.21)
+            $0.width.equalTo(14.58)
+            $0.height.equalTo(17.5)
         }
         self.playTitle.snp.makeConstraints{
             $0.centerY.equalToSuperview()
