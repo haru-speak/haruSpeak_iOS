@@ -15,33 +15,39 @@ enum topTabBarItem {
     case all
 }
 
-final class CustomTabbar: UIView {
+protocol SampleProtocol {
+  func sendStringTab(data: String)
+}
+
+class CustomTabbar: UIView{
+    
     //MARK: - Properties
     var selectedItem: topTabBarItem = .myLog
+    var delegate : SampleProtocol?
     
-    private let myLogButton = UIButton(type: .system).then {
+    let myLogButton = UIButton(type: .system).then {
         $0.setTitle("my log", for: .normal)
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = .appleSDGothicNeo(size: 14)
         $0.tag = 0
     }
     
-    private let myMateButton = UIButton(type: .system).then {
+    let myMateButton = UIButton(type: .system).then {
         $0.setTitle("my mate", for: .normal)
         $0.setTitleColor(.lightGray, for: .normal)
         $0.titleLabel?.font = UIFont.appleSDGothicNeo(size: 14)
         $0.tag = 1
     }
     
-    private let allButton = UIButton(type: .system).then {
+    let allButton = UIButton(type: .system).then {
         $0.setTitle("all", for: .normal)
         $0.setTitleColor(.lightGray, for: .normal)
         $0.titleLabel?.font = UIFont.appleSDGothicNeo(size: 14)
         $0.tag = 2
     }
     
-    private var lineLayer: CALayer?
-    private var indicatorLayer: CALayer?
+    var lineLayer: CALayer?
+    var indicatorLayer: CALayer?
     
     //MARK: - Init
     override init(frame: CGRect) {
@@ -101,7 +107,7 @@ final class CustomTabbar: UIView {
         
         self.selectedItem = .myLog
         
-        
+        delegate?.sendStringTab(data: "MyLog")
     }
     
     func highlightmyMate() {
@@ -122,8 +128,9 @@ final class CustomTabbar: UIView {
         self.allButton.titleLabel?.font = .appleSDGothicNeo(size: 14)
         
         self.selectedItem = .myMate
-        print("highlightmyMate")
-        HomeViewController().mymateFollowerSwitch()
+   
+        delegate?.sendStringTab(data: "MyMate")
+        
     }
     private func highlightAll() {
         UIView.animate(withDuration: 1.0) {
@@ -143,6 +150,8 @@ final class CustomTabbar: UIView {
         self.allButton.titleLabel?.font = .appleSDGothicNeo(size: 14, family: .Bold)
         
         self.selectedItem = .all
+        
+        delegate?.sendStringTab(data: "All")
     }
     
     

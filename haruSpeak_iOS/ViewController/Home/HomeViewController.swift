@@ -12,11 +12,14 @@ import Then
 import FSCalendar
 import MaterialComponents.MaterialButtons
 
-class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance{
-    
-    
+class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance, SampleProtocol{
+    var selectedIndex : IndexPath?
+
 
 //MARK: - DatsSource
+    
+    var myMateFriends = [String]()
+    
     //녹음 있는 날짜 Array
     var haveDataCircle = [String]()
     //CollectionView
@@ -25,11 +28,14 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     var RecordCellCommentCountArray = [String]()
     var RecordCellHeartImgArray = [Bool]()
     
-    
     func DataSourceSet(){
+        //
+        myMateFriends.append(contentsOf: ["데이", "연", "동동", "나단", "무유", "우기", "채드"])
+        myMateFriends.append(contentsOf: [""])
+        //달력 동그라미 데이터
         haveDataCircle.append(contentsOf: ["2023-01-23", "2023-01-17", "2023-01-11", "2023-01-13"])
-        
-        RecordCellTitleArray.append(contentsOf: ["No.1", "No.2", "No.3", "No.4", "No.5", "No.6"])
+        //BottomView 데이터
+        RecordCellTitleArray.append(contentsOf: ["MyLog_StartData", "MyLog_StartData", "MyLog_StartData", "MyLog_StartData", "MyLog_StartData", "MyLog_StartData"])
         RecordCellHeartCountArray.append(contentsOf: ["5", "2", "8", "9", "15", "13"])
         RecordCellCommentCountArray.append(contentsOf: ["3", "8", "2", "3", "5", "1"])
         RecordCellHeartImgArray.append(contentsOf: [true, true, false, false, true, false])
@@ -37,32 +43,144 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
                     self.recordCollectionView.reloadData()
                     self.checkRecordCellCount()
                 }
+
+    }
+    var checkdata = "data String"
+    func sendStringTab(data: String) {
+        self.checkdata = data
+        if data == "MyLog"{
+            print("clickMyLog")
+            RecordCellTitleArray = ["MyLog1", "MyLog2", "MyLog3", "MyLog4", "MyLog5", "MyLog6"]
+            RecordCellHeartCountArray = ["4", "3", "1", "6", "13", "21"]
+            RecordCellCommentCountArray = ["9", "1", "7", "6", "4", "2"]
+            RecordCellHeartImgArray = [false, true, true, false, true, true]
+            DispatchQueue.main.async {
+                self.checkRecordCellCount()
+                self.recordCollectionView.reloadData()
+            }
+            //change layout
+            if self.calendar.scope == .week{
+                self.calendarConstraint?.update(offset: 320)
+                self.calendarTopConstraint?.update(offset: -30)
+                self.myMateConstraint?.update(offset: -5)
+                self.bottomViewConstraint?.update(offset: 10)
+                self.filterButtonView.isHidden = true
+                UIView.animate(withDuration: 0.5){
+                    self.calendar.scope = .week
+                    self.calendar.appearance.headerDateFormat = ""
+                    self.calendarRight.alpha = 0
+                    self.calendarLeft.alpha = 0
+                    self.view.layoutIfNeeded()
+                }
+            }else{
+                self.calendarConstraint?.update(offset: 530)
+                self.calendarTopConstraint?.update(offset: -5)
+                self.myMateConstraint?.update(offset: 0)
+                self.bottomViewConstraint?.update(offset: 10)
+                self.filterButtonView.isHidden = true
+                UIView.animate(withDuration: 0.5){
+                    self.calendar.scope = .month
+                    self.calendar.appearance.headerDateFormat = "M월"
+                    self.calendarRight.alpha = 1
+                    self.calendarLeft.alpha = 1
+                    self.view.layoutIfNeeded()
+                }
+            }
+        }else if data == "MyMate"{
+            print("clickMyMate")
+            
+            RecordCellTitleArray = ["MyMate", "MyMate2", "MyMate3", "MyMate4", "MyMate5", "MyMate6"]
+            RecordCellHeartCountArray = ["4", "3", "1", "6", "13", "21"]
+            RecordCellCommentCountArray = ["9", "1", "7", "6", "4", "2"]
+            RecordCellHeartImgArray = [false, true, false, false, true, false]
+            DispatchQueue.main.async {
+                self.checkRecordCellCount()
+                self.recordCollectionView.reloadData()
+            }
+            //change layout
+            if self.calendar.scope == .week{
+                self.calendarConstraint?.update(offset: 400)
+                self.calendarTopConstraint?.update(offset: -30)
+                self.myMateConstraint?.update(offset: 80)
+                self.bottomViewConstraint?.update(offset: 10)
+                self.filterButtonView.isHidden = true
+                UIView.animate(withDuration: 0.5){
+                    self.calendar.scope = .week
+                    self.calendar.appearance.headerDateFormat = ""
+                    self.calendarRight.alpha = 0
+                    self.calendarLeft.alpha = 0
+                    self.view.layoutIfNeeded()
+                }
+            }else{
+                self.calendarConstraint?.update(offset: 610)
+                self.calendarTopConstraint?.update(offset: -5)
+                self.myMateConstraint?.update(offset: 80)
+                self.bottomViewConstraint?.update(offset: 10)
+                self.filterButtonView.isHidden = true
+                UIView.animate(withDuration: 0.5){
+                    self.calendar.scope = .month
+                    self.calendar.appearance.headerDateFormat = "M월"
+                    self.calendarRight.alpha = 1
+                    self.calendarLeft.alpha = 1
+                    self.view.layoutIfNeeded()
+                }
+            }
+        }else{
+            print("clickAll")
+            RecordCellTitleArray = ["All1", "All2", "All3", "All4", "All5", "All6"]
+            RecordCellHeartCountArray = ["4", "3", "1", "6", "13", "21"]
+            RecordCellCommentCountArray = ["9", "1", "7", "6", "4", "2"]
+            RecordCellHeartImgArray = [true, true, false, true, true, false]
+            DispatchQueue.main.async {
+                self.checkRecordCellCount()
+                self.recordCollectionView.reloadData()
+            }
+            //change layout
+            if self.calendar.scope == .week{
+                self.calendarConstraint?.update(offset: 320)
+                self.calendarTopConstraint?.update(offset: -30)
+                self.myMateConstraint?.update(offset: 0)
+                self.bottomViewConstraint?.update(offset: 43)
+                self.filterButtonView.isHidden = false
+                UIView.animate(withDuration: 0.5){
+                    self.calendar.scope = .week
+                    self.calendar.appearance.headerDateFormat = ""
+                    self.calendarRight.alpha = 0
+                    self.calendarLeft.alpha = 0
+                    self.view.layoutIfNeeded()
+                }
+            }else{
+                self.calendarConstraint?.update(offset: 530)
+                self.calendarTopConstraint?.update(offset: -5)
+                self.myMateConstraint?.update(offset: 0)
+                self.bottomViewConstraint?.update(offset: 43)
+                self.filterButtonView.isHidden = false
+                UIView.animate(withDuration: 0.5){
+                    self.calendar.scope = .month
+                    self.calendar.appearance.headerDateFormat = "M월"
+                    self.calendarRight.alpha = 1
+                    self.calendarLeft.alpha = 1
+                    self.view.layoutIfNeeded()
+                }
+            }
+        }
+    }
+
+    func address(of object: UnsafeRawPointer) -> String{
+        let address = Int(bitPattern: object)
+        return String(format: "%p", address)
     }
 
     
-    
-    
-    //TEST
-    func mymateFollowerSwitch(){
-        print("aaaa")
-        print("asdasd")
-
-//            self.RecordCellTitleArray = ["No.6", "No.5", "No.4", "No.3", "No.2", "No.1"]
-//            self.RecordCellHeartCountArray = ["4", "3", "1", "6", "13", "21"]
-//            self.RecordCellCommentCountArray = ["9", "1", "7", "6", "4", "2"]
-//            self.RecordCellHeartImgArray = [false, true, true, false, true, true]
-//        DispatchQueue.main.async {
-//            self.recordCollectionView.reloadData()
-//        }
-        
-    }
-    //TESTEND
-    
-    
-//MARK: - Properties
+//MARK: - Constraints
     var calendarTopConstraint : Constraint?
     var calendarConstraint : Constraint?
     var blueViewConstraint : Constraint?
+    var myMateConstraint : Constraint?
+    var bottomViewConstraint : Constraint?
+    
+//MARK: - Properties
+
     
     let formatter = DateFormatter()
     // TOPVIEW START
@@ -98,35 +216,59 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         $0.attributedText = attrString
     }
     private let announcementButton = UIImageView().then{
+        //.alwaysTemplate으로 바꾸면 색깔 변경 가능
         $0.image = UIImage(named: "announcement")?.withRenderingMode(.alwaysOriginal)
+//        $0.tintColor = UIColor.mainColor
     }
     let englishMessage = UILabel().then{
-        $0.font = UIFont(name:"appleSDGothicNeo", size: 16)
+        $0.font = UIFont(name:"appleSDGothicNeo-Regular", size: 16)
         $0.text = "What's your favorite movie?"
         $0.textColor = .gray
     }
     let tabbar = CustomTabbar()
-    
+    var myMateFriendCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+        $0.register(MyMateFriendCell.self, forCellWithReuseIdentifier: MyMateFriendCell.identifier)
+        $0.backgroundColor = .white
+        
+        if let layout = $0.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.scrollDirection = .horizontal
+        }
+        $0.showsHorizontalScrollIndicator = false
+    }
+    let seperateLine = UIView().then{
+        $0.backgroundColor = UIColor.systemGray4
+    }
     let calendarView = UIView()
     let calendar = FSCalendar(frame: CGRect(x: 15, y: 20, width: 350, height: 300))
     let calendarRight = UIButton().then{
         $0.setImage(UIImage(named: "calendarright")?.withRenderingMode(.alwaysOriginal), for: .normal)
-//        $0.isHidden = true
         $0.alpha = 0
     }
     let calendarLeft = UIButton().then{
         $0.setImage(UIImage(named: "calendarleft")?.withRenderingMode(.alwaysOriginal), for: .normal)
-//        $0.isHidden = true
         $0.alpha = 0
     }
     
     private let lineView = UIView().then{
         $0.backgroundColor = .clear
     }
+    
     private let line = UIImageView().then{
         $0.image = UIImage(named: "line")?.withRenderingMode(.alwaysOriginal)
     }
     // TOPVIEW END
+    let filterButtonView = UIView().then{
+        $0.backgroundColor = .systemGray6
+        $0.isHidden = true
+    }
+    let filterText = UILabel().then{
+        $0.text = "최신 순"
+        $0.font = UIFont(name:"appleSDGothicNeo-Regular", size: 15)
+        $0.textColor = .lightGray
+    }
+    let filterButton = UIImageView().then{
+        $0.image = UIImage(named: "filterbutton")?.withRenderingMode(.alwaysOriginal)
+    }
     
     var recordCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         $0.register(RecordCell.self, forCellWithReuseIdentifier: RecordCell.identifier)
@@ -179,9 +321,12 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         
         self.recordCollectionView.delegate = self
         self.recordCollectionView.dataSource = self
+        self.myMateFriendCollectionView.delegate = self
+        self.myMateFriendCollectionView.dataSource = self
+        
+        tabbar.delegate = self
         
         self.navigationController?.navigationBar.isHidden = true;
-        
         setupView()
         setupLayout()
         addTarget()
@@ -191,16 +336,17 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         
         self.view.translatesAutoresizingMaskIntoConstraints = true
         topView.bringSubviewToFront(self.tabbar)
+        topView.bringSubviewToFront(self.seperateLine)
+        self.view.bringSubviewToFront(self.filterButtonView)
     }
+
 //MARK: - Check Cell isEmpty
     func checkRecordCellCount(){
         let countRecordCell = Int(RecordCellTitleArray.count)
         if countRecordCell == 0{
             hideRecordView.isHidden = false
-            print("hidden")
         }else{
             hideRecordView.isHidden = true
-            print("nothidden")
         }
     }
 //MARK: - CalendarUI
@@ -239,10 +385,22 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         print(dateFormatter.string(from: date) + " 선택됨")
+        
+        //날짜 클릭하면 cell 변경
+        if dateFormatter.string(from: date) == "2023-01-23"{
+            self.RecordCellTitleArray = ["No.6", "No.5", "No.4", "No.3", "No.2", "No.1"]
+            self.RecordCellHeartCountArray = ["4", "3", "1", "6", "13", "21"]
+            self.RecordCellCommentCountArray = ["9", "1", "7", "6", "4", "2"]
+            self.RecordCellHeartImgArray = [false, true, true, false, true, true]
+        DispatchQueue.main.async {
+            self.checkRecordCellCount()
+            self.recordCollectionView.reloadData()
+        }
+        }
     }
     
     // 날짜 선택 해제 시 콜백 메소드
-    public func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
+    func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         print(dateFormatter.string(from: date) + " 해제됨")
@@ -253,11 +411,12 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         formatter.locale = Locale(identifier: "ko_KR")
         formatter.dateFormat = "yyyy-MM-dd"
         var dates = [Date]()
-        for i in 0...haveDataCircle.count-1{
-            let a = formatter.date(from: haveDataCircle[i])
-            dates.append(a!)
+        if haveDataCircle.count > 0{
+            for i in 0...haveDataCircle.count-1{
+                let a = formatter.date(from: haveDataCircle[i])
+                dates.append(a!)
+            }
         }
-        
         if dates.contains(date){
             return 1
         }
@@ -323,40 +482,62 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
 
     // 캘린더 늘리기 일단 보류
     @objc func didDragCalendar(sender: UITapGestureRecognizer) {
-        if self.calendar.scope == .week{
-            self.calendarConstraint?.update(offset: 530)
-            self.calendarTopConstraint?.update(offset: -5)
-            UIView.animate(withDuration: 0.5){
-                self.calendar.scope = .month
-//                self.calendar.headerHeight = 30
-                self.calendar.appearance.headerDateFormat = "M월"
-                self.calendarRight.alpha = 1
-                self.calendarLeft.alpha = 1
-                self.view.layoutIfNeeded()
+        if checkdata == "MyMate" {
+            if self.calendar.scope == .week{
+                self.calendarConstraint?.update(offset: 610)
+                self.calendarTopConstraint?.update(offset: -5)
+                UIView.animate(withDuration: 0.5){
+                    self.calendar.scope = .month
+                    self.calendar.appearance.headerDateFormat = "M월"
+                    self.calendarRight.alpha = 1
+                    self.calendarLeft.alpha = 1
+                    self.view.layoutIfNeeded()
+                }
+            }else{
+                self.calendarConstraint?.update(offset: 400)
+                self.calendarTopConstraint?.update(offset: -30)
+                UIView.animate(withDuration: 0){
+                    self.calendar.scope = .week
+                    self.calendar.appearance.headerDateFormat = ""
+                    self.calendarRight.alpha = 0
+                    self.calendarLeft.alpha = 0
+                    self.view.layoutIfNeeded()
+                }
             }
-
         }else{
-            self.calendarConstraint?.update(offset: 320)
-            self.calendarTopConstraint?.update(offset: -30)
-            UIView.animate(withDuration: 0){
-                self.calendar.scope = .week
-//                self.calendar.headerHeight = 0
-                self.calendar.appearance.headerDateFormat = ""
-                self.calendarRight.alpha = 0
-                self.calendarLeft.alpha = 0
-                self.view.layoutIfNeeded()
+            if self.calendar.scope == .week{
+                self.calendarConstraint?.update(offset: 530)
+                self.calendarTopConstraint?.update(offset: -5)
+                UIView.animate(withDuration: 0.5){
+                    self.calendar.scope = .month
+                    self.calendar.appearance.headerDateFormat = "M월"
+                    self.calendarRight.alpha = 1
+                    self.calendarLeft.alpha = 1
+                    self.view.layoutIfNeeded()
+                }
+            }else{
+                self.calendarConstraint?.update(offset: 320)
+                self.calendarTopConstraint?.update(offset: -30)
+                UIView.animate(withDuration: 0){
+                    self.calendar.scope = .week
+                    self.calendar.appearance.headerDateFormat = ""
+                    self.calendarRight.alpha = 0
+                    self.calendarLeft.alpha = 0
+                    self.view.layoutIfNeeded()
+                }
+                
             }
-
         }
     }
-    
+    @objc func didClickFilterButton(sender: UITapGestureRecognizer){
+        print("didClickFilterButton")
+    }
     @objc func didClickFloatingButton(sender: UITapGestureRecognizer){
         print("didClickFloatingButton")
         let VC = RecordViewController()
         VC.modalPresentationStyle = .fullScreen
         present(VC, animated: true)
     }
-    
 
     
 //MARK: - addSubView
@@ -368,6 +549,8 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         self.topView.addSubview(self.announcementButton)
         self.topView.addSubview(self.englishMessage)
         self.topView.addSubview(self.tabbar)
+        self.topView.addSubview(self.myMateFriendCollectionView)
+        self.topView.addSubview(self.seperateLine)
         self.topView.addSubview(self.calendarView)
         self.calendarView.backgroundColor = .clear
         self.calendar.addSubview(self.calendarRight)
@@ -375,6 +558,9 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         self.calendarView.addSubview(self.calendar)
         self.topView.addSubview(self.lineView)
         self.lineView.addSubview(self.line)
+        self.view.addSubview(self.filterButtonView)
+        self.filterButtonView.addSubview(self.filterText)
+        self.filterButtonView.addSubview(self.filterButton)
         self.view.addSubview(self.recordCollectionView)
         self.view.addSubview(self.hideRecordView)
         self.hideRecordView.addSubview(self.hideRecordViewLabel)
@@ -416,11 +602,23 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         }
         self.tabbar.snp.makeConstraints{
             $0.top.equalTo(self.englishMessage.snp.bottom).offset(17)
-            $0.leading.equalTo(self.topView.snp.leading).offset(10)
-            $0.trailing.equalTo(self.topView.snp.trailing).offset(-10)
+            $0.leading.equalTo(self.topView.snp.leading).offset(30)
+            $0.trailing.equalTo(self.topView.snp.trailing).offset(-30)
+        }
+        self.myMateFriendCollectionView.snp.makeConstraints{
+            $0.top.equalTo(self.tabbar.snp.bottom).offset(0)
+            $0.leading.equalToSuperview().offset(15)
+            $0.trailing.equalToSuperview().offset(-15)
+            self.myMateConstraint = $0.height.equalTo(0).constraint
+        }
+        self.seperateLine.snp.makeConstraints{
+            $0.top.equalTo(self.myMateFriendCollectionView.snp.bottom)
+            $0.leading.equalToSuperview().offset(30)
+            $0.trailing.equalToSuperview().offset(-30)
+            $0.height.equalTo(1)
         }
         self.calendarView.snp.makeConstraints{
-            self.calendarTopConstraint = $0.top.equalTo(self.tabbar.snp.bottom).offset(-30).constraint
+            self.calendarTopConstraint = $0.top.equalTo(self.myMateFriendCollectionView.snp.bottom).offset(-30).constraint
             $0.leading.equalTo(self.topView.snp.leading)
             $0.trailing.equalTo(self.topView.snp.trailing)
         }
@@ -441,8 +639,24 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             $0.centerX.equalToSuperview()
             $0.bottom.equalTo(self.lineView.snp.bottom).offset(-11)
         }
+        self.filterButtonView.snp.makeConstraints{
+            $0.top.equalTo(self.topView.snp.bottom).offset(14)
+            $0.trailing.equalToSuperview().offset(-23)
+            $0.width.equalTo(67)
+            $0.height.equalTo(22)
+        }
+        self.filterText.snp.makeConstraints{
+            $0.top.bottom.leading.equalToSuperview()
+            $0.width.equalTo(43)
+        }
+        self.filterButton.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(7.54)
+            $0.trailing.equalToSuperview().offset(-7.33)
+            $0.width.equalTo(11.67)
+            $0.height.equalTo(7.13)
+        }
         self.recordCollectionView.snp.makeConstraints {
-            $0.top.equalTo(self.topView.snp.bottom).offset(10)
+            self.bottomViewConstraint = $0.top.equalTo(self.topView.snp.bottom).offset(10).constraint
             $0.trailing.leading.equalToSuperview()
             $0.bottom.equalTo(self.blueView.snp.top)
         }
@@ -507,6 +721,10 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         lineView.isUserInteractionEnabled = true
         lineView.addGestureRecognizer(CalendarDrag)
         
+        let filterBtn = UITapGestureRecognizer(target: self, action: #selector(didClickFilterButton))
+        filterButtonView.isUserInteractionEnabled = true
+        filterButtonView.addGestureRecognizer(filterBtn)
+        
         let floatingBtn = UITapGestureRecognizer(target: self, action: #selector(didClickFloatingButton))
         floatingButton.isUserInteractionEnabled = true
         floatingButton.addGestureRecognizer(floatingBtn)
@@ -538,56 +756,91 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return RecordCellTitleArray.count
+        if collectionView == self.recordCollectionView{
+            return RecordCellTitleArray.count
+        }else{
+            return myMateFriends.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecordCell.identifier, for: indexPath) as! RecordCell
-
-        cell.title.text = self.RecordCellTitleArray[indexPath.row]
-        cell.likeLabel.text = self.RecordCellHeartCountArray[indexPath.row]
-        cell.commentLabel.text = self.RecordCellCommentCountArray[indexPath.row]
-        if self.RecordCellHeartImgArray[indexPath.row] == true{
-            cell.heart.image = UIImage(named: "heart.fill")?.withRenderingMode(.alwaysOriginal)
-        }else{
-            cell.heart.image = UIImage(named: "heart")?.withRenderingMode(.alwaysOriginal)
+        
+        
+        if collectionView == self.recordCollectionView{
+            let Rcell = collectionView.dequeueReusableCell(withReuseIdentifier: RecordCell.identifier, for: indexPath) as! RecordCell
+            Rcell.title.text = self.RecordCellTitleArray[indexPath.row]
+            Rcell.likeLabel.text = self.RecordCellHeartCountArray[indexPath.row]
+            Rcell.commentLabel.text = self.RecordCellCommentCountArray[indexPath.row]
+            if self.RecordCellHeartImgArray[indexPath.row] == true{
+                Rcell.heart.image = UIImage(named: "heart.fill")?.withRenderingMode(.alwaysOriginal)
+            }else{
+                Rcell.heart.image = UIImage(named: "heart")?.withRenderingMode(.alwaysOriginal)
+            }
+            return Rcell
         }
-        
-        
-        return cell
+        else{
+            let Mcell = collectionView.dequeueReusableCell(withReuseIdentifier: MyMateFriendCell.identifier, for: indexPath) as! MyMateFriendCell
+            Mcell.profileName.text = self.myMateFriends[indexPath.row]
+                if indexPath == selectedIndex{
+                    Mcell.borderView.backgroundColor = .mainColor
+                    Mcell.profileName.textColor = .mainColor
+                    self.myMateFriendCollectionView.layoutIfNeeded()
+                }else{
+                    Mcell.borderView.backgroundColor = .systemGray6
+                    Mcell.profileName.textColor = .gray
+                    self.myMateFriendCollectionView.layoutIfNeeded()
+                }
+                return Mcell
+            
+        }
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecordCell.identifier, for: indexPath) as! RecordCell
-        
+        if collectionView == self.recordCollectionView{
+//            let Rcell = collectionView.dequeueReusableCell(withReuseIdentifier: RecordCell.identifier, for: indexPath) as! RecordCell
+            self.blueViewConstraint?.update(offset: 70)
+            self.playTitle.text = self.RecordCellTitleArray[indexPath.row]
+            UIView.animate(withDuration: 0.3){
+                self.view.layoutIfNeeded()
+            }
+        }else{
+            selectedIndex = indexPath
+            myMateFriendCollectionView.reloadData()
+            print(indexPath.row)
+        }
 //프로필 클릭시 나오는 화면임
 //        collectionViewindex = indexPath.row
 //        let VC = ClickRecordViewController()
 //        VC.modalPresentationStyle = .overCurrentContext
 //        present(VC, animated: false)
-        
-        
-        self.blueViewConstraint?.update(offset: 70)
-        self.playTitle.text = self.RecordCellTitleArray[indexPath.row]
-        UIView.animate(withDuration: 0.3){
-            self.view.layoutIfNeeded()
-        }
-        
+
     }
    
 }
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 5
+        if collectionView == self.recordCollectionView{
+            return 5
+        }else{
+            return 5
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        if collectionView == self.recordCollectionView{
+            return 0
+        }else{
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if collectionView == self.recordCollectionView{
+            return CGSize(width: self.view.frame.width , height: 70)
+        }else{
+            return CGSize(width: 50 , height: 60)
+        }
         
-        return CGSize(width: self.view.frame.width , height: 70)
     }
     
 }
