@@ -11,6 +11,7 @@ import SnapKit
 import Then
 import FSCalendar
 import MaterialComponents.MaterialButtons
+import AVFoundation
 
 class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance, SampleProtocol{
     var selectedIndex : IndexPath?
@@ -18,6 +19,11 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
 
 //MARK: - DatsSource
     
+    //Announcement 영어 문장
+    var announcementString = "What's your favorite movie?"
+    
+    
+    //친구 목록 (MyMate)
     var myMateFriends = [String]()
     
     //녹음 있는 날짜 Array
@@ -222,7 +228,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     }
     let englishMessage = UILabel().then{
         $0.font = UIFont(name:"appleSDGothicNeo-Regular", size: 16)
-        $0.text = "What's your favorite movie?"
+        $0.text = "will be added"
         $0.textColor = .gray
     }
     let tabbar = CustomTabbar()
@@ -333,6 +339,8 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         setCalendarUI()
         checkRecordCellCount()
         DataSourceSet()
+        
+        self.englishMessage.text = announcementString
         
         self.view.translatesAutoresizingMaskIntoConstraints = true
         topView.bringSubviewToFront(self.tabbar)
@@ -450,8 +458,17 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     @objc func didClickAlarm(sender: UITapGestureRecognizer) {
         print("didClickAlarm")
     }
+    
+    let synthesizer = AVSpeechSynthesizer()
+
     @objc func didClickAnnouncement(sender: UITapGestureRecognizer) {
         print("didClickAnnouncement")
+        let utterance = AVSpeechUtterance(string: announcementString)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        utterance.volume = 10
+        utterance.rate = 0.4
+        synthesizer.speak(utterance)
+        print(utterance.rate)
     }
     @objc func didClickPlay(sender: UITapGestureRecognizer) {
         self.playindex = (self.playindex >= self.playButtonArray.count-1) ? 0 : self.playindex+1
