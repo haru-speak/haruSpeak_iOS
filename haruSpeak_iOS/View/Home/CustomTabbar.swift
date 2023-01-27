@@ -82,7 +82,7 @@ final class CustomTabbar: UIView {
     }
     
     //MARK: - Method
-    private func highlightmyLog() {
+    func highlightmyLog() {
         UIView.animate(withDuration: 1.0) {
             self.indicatorLayer!.frame = .init(x: 5,
                                               y: self.frame.height-0.5,
@@ -122,7 +122,7 @@ final class CustomTabbar: UIView {
         self.allButton.titleLabel?.font = .appleSDGothicNeo(size: 14)
         
         self.selectedItem = .myMate
-        
+        print("highlightmyMate")
         HomeViewController().mymateFollowerSwitch()
     }
     private func highlightAll() {
