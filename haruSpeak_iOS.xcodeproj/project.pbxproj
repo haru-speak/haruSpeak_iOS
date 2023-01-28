@@ -11,6 +11,7 @@
 		685149CA298170A800C1FED2 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685149C9298170A800C1FED2 /* FirstViewController.swift */; };
 		685149CF298256C400C1FED2 /* FourthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685149CE298256C400C1FED2 /* FourthViewController.swift */; };
 		68603AB52982C0E600A1DCD8 /* JoinMSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603AB42982C0E600A1DCD8 /* JoinMSViewController.swift */; };
+		68603AB8298567B200A1DCD8 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603AB7298567B200A1DCD8 /* OnboardingViewController.swift */; };
 		68BD8E022971B52C00939DFB /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E012971B52C00939DFB /* AuthenticationViewController.swift */; };
 		68BD8E052971B80400939DFB /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E042971B80400939DFB /* RecordViewController.swift */; };
 		68BD8E0E2972F30B00939DFB /* MembershipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E0D2972F30B00939DFB /* MembershipViewController.swift */; };
@@ -82,6 +83,7 @@
 		685149C9298170A800C1FED2 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		685149CE298256C400C1FED2 /* FourthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthViewController.swift; sourceTree = "<group>"; };
 		68603AB42982C0E600A1DCD8 /* JoinMSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinMSViewController.swift; sourceTree = "<group>"; };
+		68603AB7298567B200A1DCD8 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		68BD8E012971B52C00939DFB /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		68BD8E042971B80400939DFB /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		68BD8E0D2972F30B00939DFB /* MembershipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipViewController.swift; sourceTree = "<group>"; };
@@ -168,7 +170,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		685149C82981703200C1FED2 /* UserSettingViewController */ = {
+		685149C82981703200C1FED2 /* UserSetting */ = {
 			isa = PBXGroup;
 			children = (
 				685149C9298170A800C1FED2 /* FirstViewController.swift */,
@@ -178,7 +180,15 @@
 				685149CE298256C400C1FED2 /* FourthViewController.swift */,
 				E5158DD92981B76300054322 /* FifthViewController.swift */,
 			);
-			path = UserSettingViewController;
+			path = UserSetting;
+			sourceTree = "<group>";
+		};
+		68603AB62985678300A1DCD8 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				68603AB7298567B200A1DCD8 /* OnboardingViewController.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		68BD8DFF2971B50200939DFB /* Authentication */ = {
@@ -362,7 +372,8 @@
 		E5E984BF296EDDC000E5DE83 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				685149C82981703200C1FED2 /* UserSettingViewController */,
+				68603AB62985678300A1DCD8 /* Onboarding */,
+				685149C82981703200C1FED2 /* UserSetting */,
 				68BD8E032971B7F300939DFB /* Record */,
 				68BD8DFF2971B50200939DFB /* Authentication */,
 				E5E984C1296EDDF500E5DE83 /* Home */,
@@ -695,6 +706,7 @@
 				E537186B2972926F00CD95F5 /* TopViewCollectionViewCell.swift in Sources */,
 				68BD8E052971B80400939DFB /* RecordViewController.swift in Sources */,
 				E5E60041298415DC00B6E78F /* MyMateFriendCell.swift in Sources */,
+				68603AB8298567B200A1DCD8 /* OnboardingViewController.swift in Sources */,
 				68BD8E20297D7D1D00939DFB /* DeleteViewController.swift in Sources */,
 				E5E984B6296ED95300E5DE83 /* UIColor+.swift in Sources */,
 				E5F7F4DA297F9A540004800E /* CommentCell.swift in Sources */,
