@@ -26,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         studyVC.tabBarItem.image = UIImage(systemName: "square.grid.2x2")
         studyVC.title = "스터디"
         
-        let myPageVC = UINavigationController(rootViewController:JoinMSViewController())
+        let myPageVC = UINavigationController(rootViewController:FifthViewController())
         myPageVC.tabBarItem.image = UIImage(systemName: "person.crop.circle")
         myPageVC.title = "마이페이지"
         
