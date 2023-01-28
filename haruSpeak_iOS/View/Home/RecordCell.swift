@@ -133,6 +133,8 @@ final class RecordCell: UICollectionViewCell {
         self.heart.snp.makeConstraints{
             $0.trailing.equalToSuperview().offset(-33)
             $0.top.equalToSuperview().offset(20)
+            $0.width.equalTo(21.67)
+            $0.height.equalTo(20.04)
         }
         
         self.line.snp.makeConstraints{

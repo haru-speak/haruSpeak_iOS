@@ -297,14 +297,18 @@ class PlaylistViewController: UIViewController{
         self.playButton.snp.makeConstraints{
             $0.top.equalTo(self.playlistProgressbar.snp.bottom).offset(30)
             $0.centerX.equalToSuperview()
+            $0.width.equalTo(40.85)
+            $0.height.equalTo(40.94)
         }
         self.heartImage.snp.makeConstraints{
             $0.top.equalTo(self.playtimeEnd.snp.bottom).offset(14)
             $0.trailing.equalToSuperview().offset(-29)
+            $0.width.equalTo(23.33)
+            $0.height.equalTo(21.58)
         }
         self.heartCount.snp.makeConstraints{
             $0.top.equalTo(self.heartImage.snp.bottom).offset(2)
-            $0.trailing.equalToSuperview().offset(-35)
+            $0.trailing.equalToSuperview().offset(-34)
         }
         //BOTTOMVIEW
         self.labelBottomview.snp.makeConstraints{

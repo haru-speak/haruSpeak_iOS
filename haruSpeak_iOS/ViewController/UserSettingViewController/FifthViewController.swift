@@ -184,7 +184,7 @@ class FifthViewController: UIViewController{
         self.nextButton.snp.makeConstraints{
             $0.centerX.equalToSuperview()
             $0.leading.equalToSuperview().offset(28)
-            $0.top.equalTo(self.achievementMainView.snp.bottom).offset(80)
+            $0.bottom.equalToSuperview().offset(-44)
             $0.height.equalTo(45)
         }
     }
