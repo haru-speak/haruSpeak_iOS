@@ -172,69 +172,68 @@ class AuthenticationViewController: UIViewController{
     
     @objc func appleLoginButtonTapped(){
         let appleIDProvider = ASAuthorizationAppleIDProvider()
-                let request = appleIDProvider.createRequest()
-                request.requestedScopes = [.fullName, .email]
+        let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
                 
-                let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-                authorizationController.delegate = self
-                authorizationController.presentationContextProvider = self
-                authorizationController.performRequests()
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests()
     }
     
     @objc func naverLoginButtonTapped(){
         naverLoginInstance?.requestThirdPartyLogin()
+        naverLoginPaser()
     }
     
     func naverLoginPaser() {
-              guard let accessToken = naverLoginInstance?.isValidAccessTokenExpireTimeNow() else { return }
+        guard let accessToken = naverLoginInstance?.isValidAccessTokenExpireTimeNow() else { return }
               
-              if !accessToken {
-                return
-              }
-              
-              guard let tokenType = naverLoginInstance?.tokenType else { return }
-              guard let accessToken = naverLoginInstance?.accessToken else { return }
+        if !accessToken {
+            return
+        }
+        guard let tokenType = naverLoginInstance?.tokenType else { return }
+        guard let accessToken = naverLoginInstance?.accessToken else { return }
                 
-              let requestUrl = "https://openapi.naver.com/v1/nid/me"
-              let url = URL(string: requestUrl)!
+        let requestUrl = "https://openapi.naver.com/v1/nid/me"
+        let url = URL(string: requestUrl)!
               
-              let authorization = "\(tokenType) \(accessToken)"
+        let authorization = "\(tokenType) \(accessToken)"
               
-              let req = AF.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization": authorization])
+        let req = AF.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization": authorization])
               
-              req.responseJSON { response in
-                
-                guard let body = response.value as? [String: Any] else { return }
+        req.responseJSON { response in
+            guard let body = response.value as? [String: Any] else { return }
                   
-                  if let resultCode = body["message"] as? String{
-                      if resultCode.trimmingCharacters(in: .whitespaces) == "success"{
-                          let resultJson = body["response"] as! [String: Any]
+            if let resultCode = body["message"] as? String{
+                if resultCode.trimmingCharacters(in: .whitespaces) == "success"{
+                    let resultJson = body["response"] as! [String: Any]
                           
-                          let name = resultJson["name"] as? String ?? ""
-                          let id = resultJson["id"] as? String ?? ""
-                          let phone = resultJson["mobile"] as! String
-                          let gender = resultJson["gender"] as? String ?? ""
-                          let birthyear = resultJson["birthyear"] as? String ?? ""
-                          let birthday = resultJson["birthday"] as? String ?? ""
-                          let profile = resultJson["profile_image"] as? String ?? ""
-                          let email = resultJson["email"] as? String ?? ""
-                          let nickName = resultJson["nickname"] as? String ?? ""
+                    let name = resultJson["name"] as? String ?? ""
+                    let id = resultJson["id"] as? String ?? ""
+//                          let phone = resultJson["mobile"] as! String
+//                          let gender = resultJson["gender"] as? String ?? ""
+//                          let birthyear = resultJson["birthyear"] as? String ?? ""
+//                          let birthday = resultJson["birthday"] as? String ?? ""
+//                          let profile = resultJson["profile_image"] as? String ?? ""
+                    let email = resultJson["email"] as? String ?? ""
+//                          let nickName = resultJson["nickname"] as? String ?? ""
 
-                          print("네이버 로그인 이름 ",name)
-                          print("네이버 로그인 아이디 ",id)
-                          print("네이버 로그인 핸드폰 ",phone)
-                          print("네이버 로그인 성별 ",gender)
-                          print("네이버 로그인 생년 ",birthyear)
-                          print("네이버 로그인 생일 ",birthday)
-                          print("네이버 로그인 프로필사진 ",profile)
-                          print("네이버 로그인 이메일 ",email)
-                          print("네이버 로그인 닉네임 ",nickName)
-                      }
-                      else{
+                    print("네이버 로그인 이름 ",name)
+                    print("네이버 로그인 아이디 ",id)
+//                          print("네이버 로그인 핸드폰 ",phone)
+//                          print("네이버 로그인 성별 ",gender)
+//                          print("네이버 로그인 생년 ",birthyear)
+//                          print("네이버 로그인 생일 ",birthday)
+//                          print("네이버 로그인 프로필사진 ",profile)
+                    print("네이버 로그인 이메일 ",email)
+//                          print("네이버 로그인 닉네임 ",nickName)
+                }
+            else{
                           //실패
-                      }
-                  }
-              }
+                    }
+                }
+            }
         }
     
     
