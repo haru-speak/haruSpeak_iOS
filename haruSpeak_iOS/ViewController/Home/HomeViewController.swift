@@ -203,7 +203,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     
     private let date = UILabel().then{
         $0.font = UIFont(name:"appleSDGothicNeo", size: 16)
-        $0.text = "12월 8일"
+        $0.text = "MM월 dd일"
         $0.textColor = .lightGray
     }
     private let alarmButton = UIImageView().then{
@@ -339,6 +339,8 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         setCalendarUI()
         checkRecordCellCount()
         DataSourceSet()
+        checkTodayDate()
+        
         
         self.englishMessage.text = announcementString
         
@@ -352,7 +354,14 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         present(OnboardingVC, animated: false)
 
     }
+    func checkTodayDate(){
+        var formatter_year = DateFormatter()
+        formatter_year.dateFormat = "MM월 dd일"
+        var current_year_string = formatter_year.string(from: Date())
+        self.date.text = current_year_string
+    }
 
+    
 //MARK: - Check Cell isEmpty
     func checkRecordCellCount(){
         let countRecordCell = Int(RecordCellTitleArray.count)
