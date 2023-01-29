@@ -149,6 +149,7 @@ class PlaylistViewController: UIViewController{
         addTarget()
         setupCollectionView()
         DataSourceSet()
+        setKeyboardObserver()
         
         self.navigationController?.navigationBar.isHidden = true;
         
@@ -188,6 +189,10 @@ class PlaylistViewController: UIViewController{
             self.commentCollectionView.reloadData()
         }
         }
+    
+    @objc private func keyboardDown(){
+        self.commentTextField.resignFirstResponder()
+    }
     
     
     //MARK: - addSubView
@@ -390,6 +395,10 @@ class PlaylistViewController: UIViewController{
         let submitBtn = UITapGestureRecognizer(target: self, action: #selector(didClickSubmit))
         submitButton.isUserInteractionEnabled = true
         submitButton.addGestureRecognizer(submitBtn)
+        
+        let down = UITapGestureRecognizer(target: self, action: #selector(self.keyboardDown))
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(down)
     }
     
     //MARK: - SetupCollectionView
@@ -439,3 +448,34 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
    
     
 }
+
+extension PlaylistViewController {
+    
+    func setKeyboardObserver() {
+            NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+            
+            NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object:nil)
+        }
+        
+        @objc func keyboardWillShow(notification: NSNotification) {
+              if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+                      let keyboardRectangle = keyboardFrame.cgRectValue
+                      let keyboardHeight = keyboardRectangle.height
+                  UIView.animate(withDuration: 1) {
+                      self.view.window?.frame.origin.y -= keyboardHeight
+                  }
+              }
+          }
+        
+        @objc func keyboardWillHide(notification: NSNotification) {
+            if self.view.window?.frame.origin.y != 0 {
+                if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+                        let keyboardRectangle = keyboardFrame.cgRectValue
+                        let keyboardHeight = keyboardRectangle.height
+                    UIView.animate(withDuration: 1) {
+                        self.view.window?.frame.origin.y += keyboardHeight
+                    }
+                }
+            }
+        }
+    }
