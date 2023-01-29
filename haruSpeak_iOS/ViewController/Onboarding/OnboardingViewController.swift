@@ -40,6 +40,10 @@ class OnboardingViewController: UIViewController{
         self.view.backgroundColor = .white
         self.navigationController?.navigationBar.isHidden = true;
         
+        let attributedStr = NSMutableAttributedString(string: login.text!)
+        attributedStr.addAttribute(.foregroundColor, value: UIColor.mainColor, range: (login.text! as NSString).range(of: "바로 로그인"))
+        login.attributedText = attributedStr
+        
         
     }
     
@@ -59,6 +63,12 @@ class OnboardingViewController: UIViewController{
         print("didClickStart")
     }
     
+    @objc func loginButtonTapped(){
+        let AuthenticationVC = AuthenticationViewController()
+        AuthenticationVC.modalPresentationStyle = .fullScreen
+        present(AuthenticationVC, animated: true)
+    }
+    
     //MARK: - Layout
     func layout(){
         self.page.snp.makeConstraints{
@@ -69,7 +79,7 @@ class OnboardingViewController: UIViewController{
         self.start.snp.makeConstraints{
             $0.centerX.equalToSuperview()
             $0.leading.equalToSuperview().offset(28)
-            $0.bottom.equalToSuperview().offset(-44)
+            $0.bottom.equalToSuperview().offset(-82)
             $0.height.equalTo(45)
         }
         
@@ -82,5 +92,8 @@ class OnboardingViewController: UIViewController{
     //MARK: - AddTarget
     func addTarget(){
         self.start.addTarget(self, action: #selector(self.didClickStart(_:)), for: .touchUpInside)
+        let loginBtn = UITapGestureRecognizer(target: self, action: #selector(loginButtonTapped))
+        login.isUserInteractionEnabled = true
+        login.addGestureRecognizer(loginBtn)
     }
 }
