@@ -12,6 +12,15 @@ import Then
 
 
 class PlaylistViewController: UIViewController{
+    //MARK: - DATASOURCE
+    var commentList = [String]()
+    
+    
+    
+    func DataSourceSet(){
+        commentList.append(contentsOf: ["목소리가 너무 좋아요", "발음이 너무 좋아요", "배울점이 너무 많아요", "마이크 뭐쓰세요?", "영어 어떻게 공부했어요", "팔로우 합니다~"])
+    }
+    
     //MARK: - Properties
 // NAVIGATION BAR
     let backButton = UIImageView().then{
@@ -139,6 +148,7 @@ class PlaylistViewController: UIViewController{
         setupLayout()
         addTarget()
         setupCollectionView()
+        DataSourceSet()
         
         self.navigationController?.navigationBar.isHidden = true;
         
@@ -167,6 +177,18 @@ class PlaylistViewController: UIViewController{
             print("clickLike")
         }
         }
+    
+    @objc func didClickSubmit(sender: UITapGestureRecognizer) {
+        print("didClickSubmit")
+        var newComment = commentTextField.text!
+        
+        commentList.append(contentsOf: [newComment])
+        DispatchQueue.main.async {
+            self.commentCount.text = String(self.commentList.count)
+            self.commentCollectionView.reloadData()
+        }
+        }
+    
     
     //MARK: - addSubView
     func setupView(){
@@ -365,6 +387,9 @@ class PlaylistViewController: UIViewController{
         heartImage.isUserInteractionEnabled = true
         heartImage.addGestureRecognizer(heartBtn)
         
+        let submitBtn = UITapGestureRecognizer(target: self, action: #selector(didClickSubmit))
+        submitButton.isUserInteractionEnabled = true
+        submitButton.addGestureRecognizer(submitBtn)
     }
     
     //MARK: - SetupCollectionView
@@ -384,13 +409,13 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return commentList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommentCell.identifier, for: indexPath) as! CommentCell
-
-
+        
+        cell.comment.text = commentList[indexPath.row]
         
         return cell
     }
