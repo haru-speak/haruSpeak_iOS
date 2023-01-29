@@ -215,113 +215,104 @@ class FourthViewController: UIViewController{
         print("didClickBack")
     }
     @objc private func didClickTravel(_ button: UIButton) {
-        self.travel.backgroundColor = .mainColor; self.travelTxt.textColor = .white
-        
-        self.movie.backgroundColor = .white; self.movieTxt.textColor = .black
-        self.work.backgroundColor = .white; self.workTxt.textColor = .black
-        self.shopping.backgroundColor = .white; self.shoppingTxt.textColor = .black
-        self.food.backgroundColor = .white; self.foodTxt.textColor = .black
-        self.relationship.backgroundColor = .white; self.relationshipTxt.textColor = .black
-        self.health.backgroundColor = .white; self.healthTxt.textColor = .black
-        self.neighborhood.backgroundColor = .white; self.neighborhoodTxt.textColor = .black
-        self.love.backgroundColor = .white; self.loveTxt.textColor = .black
-        
+        if self.travel.backgroundColor == .mainColor{
+            self.travel.backgroundColor = .white
+            self.travelTxt.textColor = .black
+        }
+        else{
+            self.travel.backgroundColor = .mainColor
+            self.travelTxt.textColor = .white
+        }
     }
     @objc private func didClickMovie(_ button: UIButton) {
-        self.movie.backgroundColor = .mainColor; self.movieTxt.textColor = .white
-        
-        self.travel.backgroundColor = .white; self.travelTxt.textColor = .black
-        self.work.backgroundColor = .white; self.workTxt.textColor = .black
-        self.shopping.backgroundColor = .white; self.shoppingTxt.textColor = .black
-        self.food.backgroundColor = .white; self.foodTxt.textColor = .black
-        self.relationship.backgroundColor = .white; self.relationshipTxt.textColor = .black
-        self.health.backgroundColor = .white; self.healthTxt.textColor = .black
-        self.neighborhood.backgroundColor = .white; self.neighborhoodTxt.textColor = .black
-        self.love.backgroundColor = .white; self.loveTxt.textColor = .black
+        if self.movie.backgroundColor == .mainColor{
+            self.movie.backgroundColor = .white
+            self.movieTxt.textColor = .black
+        }
+        else{
+            self.movie.backgroundColor = .mainColor
+            self.movieTxt.textColor = .white
+        }
+
     }
     @objc private func didClickWork(_ button: UIButton) {
-        self.work.backgroundColor = .mainColor; self.workTxt.textColor = .white
+        if self.work.backgroundColor == .mainColor{
+            self.work.backgroundColor = .white
+            self.workTxt.textColor = .black
+        }
+        else{
+            self.work.backgroundColor = .mainColor
+            self.workTxt.textColor = .white
+        }
         
-        self.travel.backgroundColor = .white; self.travelTxt.textColor = .black
-        self.movie.backgroundColor = .white; self.movieTxt.textColor = .black
-        self.shopping.backgroundColor = .white; self.shoppingTxt.textColor = .black
-        self.food.backgroundColor = .white; self.foodTxt.textColor = .black
-        self.relationship.backgroundColor = .white; self.relationshipTxt.textColor = .black
-        self.health.backgroundColor = .white; self.healthTxt.textColor = .black
-        self.neighborhood.backgroundColor = .white; self.neighborhoodTxt.textColor = .black
-        self.love.backgroundColor = .white; self.loveTxt.textColor = .black
     }
     @objc private func didClickShopping(_ button: UIButton) {
-        self.shopping.backgroundColor = .mainColor; self.shoppingTxt.textColor = .white
+        if self.shopping.backgroundColor == .mainColor{
+            self.shopping.backgroundColor = .white
+            self.shoppingTxt.textColor = .black
+        }
+        else{
+            self.shopping.backgroundColor = .mainColor
+            self.shoppingTxt.textColor = .white
+        }
         
-        self.travel.backgroundColor = .white; self.travelTxt.textColor = .black
-        self.movie.backgroundColor = .white; self.movieTxt.textColor = .black
-        self.work.backgroundColor = .white; self.workTxt.textColor = .black
-        self.food.backgroundColor = .white; self.foodTxt.textColor = .black
-        self.relationship.backgroundColor = .white; self.relationshipTxt.textColor = .black
-        self.health.backgroundColor = .white; self.healthTxt.textColor = .black
-        self.neighborhood.backgroundColor = .white; self.neighborhoodTxt.textColor = .black
-        self.love.backgroundColor = .white; self.loveTxt.textColor = .black
+
     }
     @objc private func didClickFood(_ button: UIButton) {
-        self.food.backgroundColor = .mainColor; self.foodTxt.textColor = .white
+        if self.food.backgroundColor == .mainColor{
+            self.food.backgroundColor = .white
+            self.foodTxt.textColor = .black
+        }
+        else{
+            self.food.backgroundColor = .mainColor
+            self.foodTxt.textColor = .white
+        }
         
-        self.travel.backgroundColor = .white; self.travelTxt.textColor = .black
-        self.movie.backgroundColor = .white; self.movieTxt.textColor = .black
-        self.work.backgroundColor = .white; self.workTxt.textColor = .black
-        self.shopping.backgroundColor = .white; self.shoppingTxt.textColor = .black
-        self.relationship.backgroundColor = .white; self.relationshipTxt.textColor = .black
-        self.health.backgroundColor = .white; self.healthTxt.textColor = .black
-        self.neighborhood.backgroundColor = .white; self.neighborhoodTxt.textColor = .black
-        self.love.backgroundColor = .white; self.loveTxt.textColor = .black
+
     }
     @objc private func didClickRelationship(_ button: UIButton) {
-        self.relationship.backgroundColor = .mainColor; self.relationshipTxt.textColor = .white
-        
-        self.travel.backgroundColor = .white; self.travelTxt.textColor = .black
-        self.movie.backgroundColor = .white; self.movieTxt.textColor = .black
-        self.work.backgroundColor = .white; self.workTxt.textColor = .black
-        self.shopping.backgroundColor = .white; self.shoppingTxt.textColor = .black
-        self.food.backgroundColor = .white; self.foodTxt.textColor = .black
-        self.health.backgroundColor = .white; self.healthTxt.textColor = .black
-        self.neighborhood.backgroundColor = .white; self.neighborhoodTxt.textColor = .black
-        self.love.backgroundColor = .white; self.loveTxt.textColor = .black
+        if self.relationship.backgroundColor == .mainColor{
+            self.relationship.backgroundColor = .white
+            self.relationshipTxt.textColor = .black
+        }
+        else{
+            self.relationship.backgroundColor = .mainColor
+            self.relationshipTxt.textColor = .white
+        }
+
     }
     @objc private func didClickHealth(_ button: UIButton) {
-        self.health.backgroundColor = .mainColor; self.healthTxt.textColor = .white
-        
-        self.travel.backgroundColor = .white; self.travelTxt.textColor = .black
-        self.movie.backgroundColor = .white; self.movieTxt.textColor = .black
-        self.work.backgroundColor = .white; self.workTxt.textColor = .black
-        self.shopping.backgroundColor = .white; self.shoppingTxt.textColor = .black
-        self.food.backgroundColor = .white; self.foodTxt.textColor = .black
-        self.relationship.backgroundColor = .white; self.relationshipTxt.textColor = .black
-        self.neighborhood.backgroundColor = .white; self.neighborhoodTxt.textColor = .black
-        self.love.backgroundColor = .white; self.loveTxt.textColor = .black
+        if self.health.backgroundColor == .mainColor{
+            self.health.backgroundColor = .white
+            self.healthTxt.textColor = .black
+        }
+        else{
+            self.health.backgroundColor = .mainColor
+            self.healthTxt.textColor = .white
+        }
+
     }
     @objc private func didClickNeighborhood(_ button: UIButton) {
-        self.neighborhood.backgroundColor = .mainColor; self.neighborhoodTxt.textColor = .white
-        
-        self.travel.backgroundColor = .white; self.travelTxt.textColor = .black
-        self.movie.backgroundColor = .white; self.movieTxt.textColor = .black
-        self.work.backgroundColor = .white; self.workTxt.textColor = .black
-        self.shopping.backgroundColor = .white; self.shoppingTxt.textColor = .black
-        self.food.backgroundColor = .white; self.foodTxt.textColor = .black
-        self.relationship.backgroundColor = .white; self.relationshipTxt.textColor = .black
-        self.health.backgroundColor = .white; self.healthTxt.textColor = .black
-        self.love.backgroundColor = .white; self.loveTxt.textColor = .black
+        if self.neighborhood.backgroundColor == .mainColor{
+            self.neighborhood.backgroundColor = .white
+            self.neighborhoodTxt.textColor = .black
+        }
+        else{
+            self.neighborhood.backgroundColor = .mainColor
+            self.neighborhoodTxt.textColor = .white
+        }
+
     }
     @objc private func didClickLove(_ button: UIButton) {
-        self.love.backgroundColor = .mainColor; self.loveTxt.textColor = .white
-        
-        self.travel.backgroundColor = .white; self.travelTxt.textColor = .black
-        self.movie.backgroundColor = .white; self.movieTxt.textColor = .black
-        self.work.backgroundColor = .white; self.workTxt.textColor = .black
-        self.shopping.backgroundColor = .white; self.shoppingTxt.textColor = .black
-        self.food.backgroundColor = .white; self.foodTxt.textColor = .black
-        self.relationship.backgroundColor = .white; self.relationshipTxt.textColor = .black
-        self.health.backgroundColor = .white; self.healthTxt.textColor = .black
-        self.neighborhood.backgroundColor = .white; self.neighborhoodTxt.textColor = .black
+        if self.love.backgroundColor == .mainColor{
+            self.love.backgroundColor = .white
+            self.loveTxt.textColor = .black
+        }
+        else{
+            self.love.backgroundColor = .mainColor
+            self.loveTxt.textColor = .white
+        }
+
     }
     
     

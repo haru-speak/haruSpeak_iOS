@@ -114,6 +114,7 @@ class JoinMSViewController: UIViewController{
         print(emailAddress)
         print(fullName)
         }
+        UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: true, completion: nil)
 
         // If sign in succeeded, display the app's main content View.
     }
@@ -128,6 +129,7 @@ class JoinMSViewController: UIViewController{
                     print(error)
                 } else {
                     print("카카오 톡으로 로그인 성공")
+                    UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: true, completion: nil)
                     
                     _ = oauthToken
                     /// 로그인 관련 메소드 추가
@@ -141,6 +143,7 @@ class JoinMSViewController: UIViewController{
                     print(error)
                 } else {
                     print("카카오 계정으로 로그인 성공")
+                    UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: true, completion: nil)
                     
                     _ = oauthToken
                     // 관련 메소드 추가
@@ -213,7 +216,8 @@ class JoinMSViewController: UIViewController{
                     }
                 }
             }
-        }
+        UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: true, completion: nil)
+    }
     
     
     

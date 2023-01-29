@@ -346,6 +346,11 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         topView.bringSubviewToFront(self.tabbar)
         topView.bringSubviewToFront(self.seperateLine)
         self.view.bringSubviewToFront(self.filterButtonView)
+        
+        let OnboardingVC = OnboardingViewController()
+        OnboardingVC.modalPresentationStyle = .fullScreen
+        present(OnboardingVC, animated: false)
+
     }
 
 //MARK: - Check Cell isEmpty
