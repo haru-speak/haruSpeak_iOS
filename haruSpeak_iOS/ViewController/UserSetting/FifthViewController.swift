@@ -33,7 +33,7 @@ class FifthViewController: UIViewController{
         $0.backgroundColor = .white
     }
     let achievementButton1 = UIView().then{
-        $0.backgroundColor = .white
+        $0.backgroundColor = .mainColor
         $0.roundCorners(cornerRadius: 25, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
         $0.layer.borderColor = UIColor.mainColor.cgColor
         $0.layer.borderWidth = 1
@@ -46,7 +46,7 @@ class FifthViewController: UIViewController{
     }
     let achievementButton1Label = UILabel().then{
         $0.text = "네, 받을래요!"
-        $0.textColor = .black
+        $0.textColor = .white
         $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size: 16)
         $0.textAlignment = .center
     }
@@ -105,7 +105,7 @@ class FifthViewController: UIViewController{
         print("didClickBack")
     }
     
-    var Btn1switch = false
+    var Btn1switch = true
     var Btn2switch = false
     @objc private func didClickBtn1(_ button: UIButton) {
         if Btn1switch == false{
