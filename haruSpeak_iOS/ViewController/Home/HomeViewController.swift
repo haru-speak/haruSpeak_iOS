@@ -298,17 +298,21 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     }
     private let playButton = UIImageView().then{
         $0.image = UIImage(named: "play.white")?.withRenderingMode(.alwaysOriginal)
+        $0.isHidden = true
     }
     private let playTitle = UILabel().then{
         $0.text = ""
         $0.textColor = .white
         $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 18)
+        $0.isHidden = true
     }
     private let blueViewHeartButton = UIImageView().then{
         $0.image = UIImage(named: "heartempty.white")?.withRenderingMode(.alwaysOriginal)
+        $0.isHidden = true
     }
     private let closeButton = UIImageView().then{
         $0.image = UIImage(named: "x.white")?.withRenderingMode(.alwaysOriginal)
+        $0.isHidden = true
     }
     
     //ButtonArray
@@ -502,6 +506,11 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     @objc func didClickClose(_ sender: Any) {
         print("Click Close blue Playlist")
         self.blueViewConstraint?.update(offset: 0)
+        self.playTitle.isHidden = true
+        self.blueViewHeartButton.isHidden = true
+        self.closeButton.isHidden = true
+        self.playButton.isHidden = true
+        
         UIView.animate(withDuration: 0.3){
             self.view.layoutIfNeeded()
         }
@@ -743,6 +752,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             $0.trailing.equalToSuperview().offset(-18)
             $0.bottom.equalTo(self.blueView.snp.top).offset(-19)
             $0.height.equalTo(50)
+            $0.width.equalTo(50)
         }
     }
         
@@ -856,6 +866,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 //            let Rcell = collectionView.dequeueReusableCell(withReuseIdentifier: RecordCell.identifier, for: indexPath) as! RecordCell
             self.blueViewConstraint?.update(offset: 70)
             self.playTitle.text = self.RecordCellTitleArray[indexPath.row]
+            self.playTitle.isHidden = false
+            self.blueViewHeartButton.isHidden = false
+            self.closeButton.isHidden = false
+            self.playButton.isHidden = false
+            
             UIView.animate(withDuration: 0.3){
                 self.view.layoutIfNeeded()
             }
