@@ -6,11 +6,19 @@
 //
 
 import UIKit
+import Then
+import SnapKit
 
 final class FollowerCell: UICollectionViewCell {
 //MARK: - Properties
     static let identifier = "FollowerCell"
-    
+    let profilePhoto = UIImageView().then{
+        $0.image = UIImage(named: "mypage")?.withRenderingMode(.alwaysOriginal)
+        $0.roundCorners(cornerRadius: 35, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
+    }
+    let name = UILabel().then{
+        $0.text = "나단"
+    }
     
     
     
