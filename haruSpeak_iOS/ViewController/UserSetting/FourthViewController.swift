@@ -20,8 +20,10 @@ class FourthViewController: UIViewController{
     
     let titleLabel = UILabel().then{
         $0.text = "관심있는 주제를 선택해주세요"
-        $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 20)
         $0.textColor = .black
+        $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 24)
+        $0.numberOfLines = 2
+        $0.textAlignment = .center
     }
     let titleLabel2 = UILabel().then{
         $0.text = "선택한 주제를 바탕으로 스피킹 질문을 구성해드려요!\n주제를 3가지 이상 선택하고 관심있는 분야의\n스피킹 질문을 받아보세요 :)"
