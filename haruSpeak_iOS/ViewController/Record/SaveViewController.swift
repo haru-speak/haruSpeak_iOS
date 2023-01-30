@@ -33,16 +33,19 @@ class SaveViewController: UIViewController, UITextFieldDelegate{
         $0.textColor = .black
     }
     let pub = UILabel().then{
+//        0: open
         $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 15)
         $0.text = "공개"
         $0.textColor = .black
     }
     let onlyFriend = UILabel().then{
+//        1: friend
         $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 15)
         $0.text = "친구만 공개"
         $0.textColor = .black
     }
     let pri = UILabel().then{
+//        2: closed
         $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 15)
         $0.text = "비공개"
         $0.textColor = .black
@@ -77,6 +80,8 @@ class SaveViewController: UIViewController, UITextFieldDelegate{
         $0.backgroundColor = .mainColor
         $0.setImage(UIImage(systemName:"backBlue")?.withRenderingMode(.alwaysOriginal), for: .normal)
     }
+    var privacyBound = 0
+    var Recordingtitle : String?
 
     
 
@@ -121,20 +126,25 @@ class SaveViewController: UIViewController, UITextFieldDelegate{
     }
 
     @objc private func didClickUpload(_ button: UIButton) {
-        print("didClickUpload")
+        Recordingtitle = setTitle.text
+        print(Recordingtitle)
+        print(privacyBound)
     }
     
     @objc private func didClickPub(sender: UITapGestureRecognizer){
+        privacyBound = 0
         self.selected1.isHidden = false
         self.selected2.isHidden = true
         self.selected3.isHidden = true
     }
     @objc private func didClickonlyFriend(sender: UITapGestureRecognizer){
+        privacyBound = 1
         self.selected2.isHidden = false
         self.selected1.isHidden = true
         self.selected3.isHidden = true
     }
     @objc private func didClickPri(sender: UITapGestureRecognizer){
+        privacyBound = 2
         self.selected3.isHidden = false
         self.selected2.isHidden = true
         self.selected1.isHidden = true
@@ -235,13 +245,25 @@ class SaveViewController: UIViewController, UITextFieldDelegate{
         pub.isUserInteractionEnabled = true
         pub.addGestureRecognizer(pubBtn)
         
+        let pubBtn2 = UITapGestureRecognizer(target: self, action: #selector(didClickPub(sender: )))
+        base1.isUserInteractionEnabled = true
+        base1.addGestureRecognizer(pubBtn2)
+        
         let onlyFriendBtn = UITapGestureRecognizer(target: self, action: #selector(didClickonlyFriend(sender: )))
         onlyFriend.isUserInteractionEnabled = true
         onlyFriend.addGestureRecognizer(onlyFriendBtn)
         
+        let onlyFriendBtn2 = UITapGestureRecognizer(target: self, action: #selector(didClickonlyFriend(sender: )))
+        base2.isUserInteractionEnabled = true
+        base2.addGestureRecognizer(onlyFriendBtn2)
+        
         let priBtn = UITapGestureRecognizer(target: self, action: #selector(didClickPri(sender: )))
         pri.isUserInteractionEnabled = true
         pri.addGestureRecognizer(priBtn)
+        
+        let priBtn2 = UITapGestureRecognizer(target: self, action: #selector(didClickPri(sender: )))
+        base3.isUserInteractionEnabled = true
+        base3.addGestureRecognizer(priBtn2)
         
        }
         
