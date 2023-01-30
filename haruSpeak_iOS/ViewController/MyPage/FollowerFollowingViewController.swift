@@ -24,7 +24,7 @@ class FollowerFollowingViewController: UIViewController{
         $0.placeholder = "검색어를 입력하세요"
     }
     let followerFollowingCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
-        $0.register(RecordCell.self, forCellWithReuseIdentifier: RecordCell.identifier)
+        $0.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.identifier)
         $0.backgroundColor = .white
     }
     //MARK: - LifeCycle
@@ -98,7 +98,7 @@ extension FollowerFollowingViewController: UICollectionViewDelegate, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let Rcell = collectionView.dequeueReusableCell(withReuseIdentifier: RecordCell.identifier, for: indexPath) as! RecordCell
+        let Rcell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.identifier, for: indexPath) as! FollowerCell
         return Rcell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
