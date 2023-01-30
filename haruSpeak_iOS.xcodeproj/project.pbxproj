@@ -46,6 +46,10 @@
 		E59D362629742C3B00A012C4 /* AssignmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59D362529742C3B00A012C4 /* AssignmentView.swift */; };
 		E59D3628297583D200A012C4 /* SearchStudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59D3627297583D200A012C4 /* SearchStudyViewController.swift */; };
 		E5E60041298415DC00B6E78F /* MyMateFriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E60040298415DC00B6E78F /* MyMateFriendCell.swift */; };
+		E5E60043298783AC00B6E78F /* FollowerFollowingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E60042298783AC00B6E78F /* FollowerFollowingViewController.swift */; };
+		E5E600472987A98100B6E78F /* CustomTabbarMyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E600462987A98100B6E78F /* CustomTabbarMyPage.swift */; };
+		E5E600492987D99500B6E78F /* FollowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E600482987D99500B6E78F /* FollowerCell.swift */; };
+		E5E6004B2987D9A100B6E78F /* FollowingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E6004A2987D9A100B6E78F /* FollowingCell.swift */; };
 		E5E984B6296ED95300E5DE83 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E984B5296ED95300E5DE83 /* UIColor+.swift */; };
 		E5E984B8296ED95D00E5DE83 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E984B7296ED95D00E5DE83 /* UIFont+.swift */; };
 		E5E984BB296ED9A900E5DE83 /* TempService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E984BA296ED9A900E5DE83 /* TempService.swift */; };
@@ -126,6 +130,10 @@
 		E59D362529742C3B00A012C4 /* AssignmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentView.swift; sourceTree = "<group>"; };
 		E59D3627297583D200A012C4 /* SearchStudyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStudyViewController.swift; sourceTree = "<group>"; };
 		E5E60040298415DC00B6E78F /* MyMateFriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMateFriendCell.swift; sourceTree = "<group>"; };
+		E5E60042298783AC00B6E78F /* FollowerFollowingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerFollowingViewController.swift; sourceTree = "<group>"; };
+		E5E600462987A98100B6E78F /* CustomTabbarMyPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabbarMyPage.swift; sourceTree = "<group>"; };
+		E5E600482987D99500B6E78F /* FollowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCell.swift; sourceTree = "<group>"; };
+		E5E6004A2987D9A100B6E78F /* FollowingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingCell.swift; sourceTree = "<group>"; };
 		E5E984B5296ED95300E5DE83 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		E5E984B7296ED95D00E5DE83 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		E5E984BA296ED9A900E5DE83 /* TempService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempService.swift; sourceTree = "<group>"; };
@@ -406,6 +414,7 @@
 			isa = PBXGroup;
 			children = (
 				E5E984DD296EE2BA00E5DE83 /* MyPageViewController.swift */,
+				E5E60042298783AC00B6E78F /* FollowerFollowingViewController.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -413,6 +422,9 @@
 		E5E984C5296EDEE400E5DE83 /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
+				E5E600462987A98100B6E78F /* CustomTabbarMyPage.swift */,
+				E5E600482987D99500B6E78F /* FollowerCell.swift */,
+				E5E6004A2987D9A100B6E78F /* FollowingCell.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -689,11 +701,13 @@
 				68BD8E0E2972F30B00939DFB /* MembershipViewController.swift in Sources */,
 				68BD8E102972F33800939DFB /* EmailLoginViewController.swift in Sources */,
 				E5E984BD296ED9B500E5DE83 /* TempModel.swift in Sources */,
+				E5E600492987D99500B6E78F /* FollowerCell.swift in Sources */,
 				E59D3628297583D200A012C4 /* SearchStudyViewController.swift in Sources */,
 				E5158DD52981764D00054322 /* SecondGiverViewController.swift in Sources */,
 				685149CF298256C400C1FED2 /* FourthViewController.swift in Sources */,
 				E5862C61296ED0C900095439 /* ViewController.swift in Sources */,
 				E5862C5D296ED0C900095439 /* AppDelegate.swift in Sources */,
+				E5E60043298783AC00B6E78F /* FollowerFollowingViewController.swift in Sources */,
 				E5862C5F296ED0C900095439 /* SceneDelegate.swift in Sources */,
 				68BD8E022971B52C00939DFB /* AuthenticationViewController.swift in Sources */,
 				E5E984DE296EE2BA00E5DE83 /* MyPageViewController.swift in Sources */,
@@ -701,8 +715,10 @@
 				E5158DD12981746800054322 /* SecondLearnerViewController.swift in Sources */,
 				E5E984BB296ED9A900E5DE83 /* TempService.swift in Sources */,
 				E5E984B8296ED95D00E5DE83 /* UIFont+.swift in Sources */,
+				E5E600472987A98100B6E78F /* CustomTabbarMyPage.swift in Sources */,
 				E5158DD32981748200054322 /* ThirdViewController.swift in Sources */,
 				E5FD566629790E0A0088DDAF /* SearchFilterView.swift in Sources */,
+				E5E6004B2987D9A100B6E78F /* FollowingCell.swift in Sources */,
 				E537186B2972926F00CD95F5 /* TopViewCollectionViewCell.swift in Sources */,
 				68BD8E052971B80400939DFB /* RecordViewController.swift in Sources */,
 				E5E60041298415DC00B6E78F /* MyMateFriendCell.swift in Sources */,
