@@ -18,9 +18,10 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         
         $0.image = UIImage(named: "arrowLeft")?.withRenderingMode(.alwaysOriginal)
     }
+    let formatter = DateFormatter()
     let date = UILabel().then{
-        $0.font = UIFont(name:"appleSDGothicNeo", size: 16)
-        $0.text = "12월 8일"
+        $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 18)
+        $0.text = "MM월 dd일"
         $0.textColor = .black
     }
 
@@ -98,7 +99,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         $0.isHidden = true
     }
     let playtimeEnd = UILabel().then{
-        $0.text = "00:19"
+        $0.text = "00:01"
         $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size: 13)
         $0.textColor = .lightGray
         $0.isHidden = true
@@ -130,6 +131,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         setupView()
         setupLayout()
         addTarget()
+        checkTodayDate()
         recordingSession = AVAudioSession.sharedInstance()
 
         do {
@@ -160,6 +162,13 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     }
     
     //MARK: - Selector
+    func checkTodayDate(){
+        var formatter_year = DateFormatter()
+        formatter_year.dateFormat = "MM월 dd일"
+        var current_year_string = formatter_year.string(from: Date())
+        self.date.text = current_year_string
+    }
+    
     @objc func mainButtonTapped(sender: UITapGestureRecognizer) {
 
         if self.mainButton.image == UIImage(named:"pause.blue")?.withRenderingMode(.alwaysOriginal){
@@ -579,8 +588,11 @@ extension RecordViewController: SendYesDelegate{
             self.mainButton.image = UIImage(named: "startRecording")?.withRenderingMode(.alwaysOriginal)
             self.startMsg.isHidden = false
             self.STTText.isHidden = true
+            self.STTText.text = "  "
+            
             self.done.isHidden = true
             self.timerLabel.isHidden = true
+            self.timerLabel.text = "  "
             self.delete.isHidden = true
             self.nextButton.isHidden = true
             

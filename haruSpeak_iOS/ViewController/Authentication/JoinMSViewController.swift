@@ -113,8 +113,8 @@ class JoinMSViewController: UIViewController{
         print(user)
         print(emailAddress)
         print(fullName)
-        }
         UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: true, completion: nil)
+        }
 
         // If sign in succeeded, display the app's main content View.
     }
