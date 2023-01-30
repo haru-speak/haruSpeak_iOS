@@ -82,6 +82,12 @@ class SaveViewController: UIViewController, UITextFieldDelegate{
     }
     var privacyBound = 0
     var Recordingtitle : String?
+    let formatter = DateFormatter()
+    let date = UILabel().then{
+        $0.font = UIFont(name:"appleSDGothicNeo", size: 16)
+        $0.text = "MM월 dd일"
+        $0.textColor = .lightGray
+    }
 
     
 
@@ -92,6 +98,7 @@ class SaveViewController: UIViewController, UITextFieldDelegate{
         setUpView()
         layout()
         addTarget()
+        checkTodayDate()
         
     }
 
@@ -115,7 +122,13 @@ class SaveViewController: UIViewController, UITextFieldDelegate{
     }
 
 //MARK: - Selector
-
+    func checkTodayDate(){
+        var formatter_year = DateFormatter()
+        formatter_year.dateFormat = "MM월 dd일"
+        var current_year_string = formatter_year.string(from: Date())
+        self.date.text = current_year_string
+    }
+    
     @objc private func keyboardDown(){
         self.setTitle.resignFirstResponder()
     }
@@ -129,6 +142,7 @@ class SaveViewController: UIViewController, UITextFieldDelegate{
         Recordingtitle = setTitle.text
         print(Recordingtitle)
         print(privacyBound)
+        print(date.text)
     }
     
     @objc private func didClickPub(sender: UITapGestureRecognizer){
