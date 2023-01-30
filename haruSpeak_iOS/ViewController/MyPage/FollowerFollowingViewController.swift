@@ -10,7 +10,28 @@ import UIKit
 import SnapKit
 import Then
 
-class FollowerFollowingViewController: UIViewController{
+class FollowerFollowingViewController: UIViewController, MyPageTabbarProtocol{
+    
+    func sendStringTab(data: String) {
+        print(data)
+        
+        if data == "Follower"{
+            self.followerCollectionView.isHidden = false
+            self.followingCollectionView.isHidden = true
+            DispatchQueue.main.async {
+                self.followerCollectionView.reloadData()
+                self.view.layoutIfNeeded()
+            }
+        }else{
+            self.followerCollectionView.isHidden = true
+            self.followingCollectionView.isHidden = false
+            DispatchQueue.main.async {
+                self.followingCollectionView.reloadData()
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+    
     //MARK: - Datasource
     
     
@@ -23,15 +44,29 @@ class FollowerFollowingViewController: UIViewController{
     let searchBar = UISearchBar().then{
         $0.placeholder = "검색어를 입력하세요"
     }
-    let followerFollowingCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+    var followerCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         $0.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.identifier)
         $0.backgroundColor = .white
+        $0.isHidden = false
     }
+    var followingCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+        $0.register(FollowingCell.self, forCellWithReuseIdentifier: FollowingCell.identifier)
+        $0.backgroundColor = .white
+        $0.isHidden = true
+    }
+    
+    
     //MARK: - LifeCycle
     override func viewDidLoad() {
         setUpView()
         layout()
         addTarget()
+        self.followerCollectionView.delegate = self
+        self.followerCollectionView.dataSource = self
+        
+        self.followingCollectionView.delegate = self
+        self.followingCollectionView.dataSource = self
+        tabbar.delegate = self
         
         self.view.backgroundColor = .white
         self.navigationController?.navigationBar.isHidden = true;
@@ -42,10 +77,8 @@ class FollowerFollowingViewController: UIViewController{
         self.view.addSubview(self.backButton)
         self.view.addSubview(self.tabbar)
         self.view.addSubview(self.searchBar)
-        self.view.addSubview(self.followerFollowingCollectionView)
-        
-        self.followerFollowingCollectionView.delegate = self
-        self.followerFollowingCollectionView.dataSource = self
+        self.view.addSubview(self.followerCollectionView)
+        self.view.addSubview(self.followingCollectionView)
     }
     
     //MARK: - Selector
@@ -71,7 +104,12 @@ class FollowerFollowingViewController: UIViewController{
             $0.centerX.equalToSuperview()
             $0.leading.equalToSuperview().offset(15)
         }
-        self.followerFollowingCollectionView.snp.makeConstraints{
+        self.followerCollectionView.snp.makeConstraints{
+            $0.top.equalTo(self.searchBar.snp.bottom).offset(20)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview().offset(-50)
+        }
+        self.followingCollectionView.snp.makeConstraints{
             $0.top.equalTo(self.searchBar.snp.bottom).offset(20)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().offset(-50)
@@ -98,8 +136,14 @@ extension FollowerFollowingViewController: UICollectionViewDelegate, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let Rcell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.identifier, for: indexPath) as! FollowerCell
-        return Rcell
+        if collectionView == self.followerCollectionView{
+            let Followercell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.identifier, for: indexPath) as! FollowerCell
+            return Followercell
+        }else{
+            let Followingcell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowingCell.identifier, for: indexPath) as! FollowingCell
+            return Followingcell
+        }
+
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         

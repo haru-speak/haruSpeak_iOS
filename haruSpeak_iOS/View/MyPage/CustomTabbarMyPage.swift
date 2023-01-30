@@ -14,15 +14,15 @@ enum topTabBarItem2 {
     case Following
 }
 
-//protocol SampleProtocol {
-//  func sendStringTab(data: String)
-//}
+protocol MyPageTabbarProtocol {
+  func sendStringTab(data: String)
+}
 
 class CustomTabbarMyPage: UIView{
     
     //MARK: - Properties
     var selectedItem: topTabBarItem2 = .Follower
-//    var delegate : SampleProtocol?
+    var delegate : MyPageTabbarProtocol?
     
     let followerButton = UIButton(type: .system).then {
         $0.setTitle("팔로워", for: .normal)
@@ -96,7 +96,8 @@ class CustomTabbarMyPage: UIView{
         
         self.selectedItem = .Follower
         
-//        delegate?.sendStringTab(data: "MyLog")
+        delegate?.sendStringTab(data: "Follower")
+        print("Follower (CELL)")
     }
     
     func highlightFollowing() {
@@ -115,7 +116,8 @@ class CustomTabbarMyPage: UIView{
         
         self.selectedItem = .Following
    
-//        delegate?.sendStringTab(data: "MyMate")
+        delegate?.sendStringTab(data: "Following")
+        print("Following (CELL)")
         
     }
 
