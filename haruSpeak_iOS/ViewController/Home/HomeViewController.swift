@@ -203,7 +203,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     
     private let date = UILabel().then{
         $0.font = UIFont(name:"appleSDGothicNeo", size: 16)
-        $0.text = "12월 8일"
+        $0.text = "MM월 dd일"
         $0.textColor = .lightGray
     }
     private let alarmButton = UIImageView().then{
@@ -298,17 +298,26 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     }
     private let playButton = UIImageView().then{
         $0.image = UIImage(named: "play.white")?.withRenderingMode(.alwaysOriginal)
+        $0.isHidden = true
     }
     private let playTitle = UILabel().then{
         $0.text = ""
         $0.textColor = .white
         $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 18)
+        $0.isHidden = true
+    }
+    private let blueViewHeartButton = UIImageView().then{
+        $0.image = UIImage(named: "heartempty.white")?.withRenderingMode(.alwaysOriginal)
+        $0.isHidden = true
     }
     private let closeButton = UIImageView().then{
         $0.image = UIImage(named: "x.white")?.withRenderingMode(.alwaysOriginal)
+        $0.isHidden = true
     }
     
     //ButtonArray
+        let heartButtonArray = ["heartempty.white","heart.fill"]
+        var heartindex = 0
         let playButtonArray = ["play.white","pause.white"]
         var playindex = 0
     
@@ -339,6 +348,8 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         setCalendarUI()
         checkRecordCellCount()
         DataSourceSet()
+        checkTodayDate()
+        
         
         self.englishMessage.text = announcementString
         
@@ -352,7 +363,14 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         present(OnboardingVC, animated: false)
 
     }
+    func checkTodayDate(){
+        var formatter_year = DateFormatter()
+        formatter_year.dateFormat = "MM월 dd일"
+        var current_year_string = formatter_year.string(from: Date())
+        self.date.text = current_year_string
+    }
 
+    
 //MARK: - Check Cell isEmpty
     func checkRecordCellCount(){
         let countRecordCell = Int(RecordCellTitleArray.count)
@@ -488,11 +506,25 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     @objc func didClickClose(_ sender: Any) {
         print("Click Close blue Playlist")
         self.blueViewConstraint?.update(offset: 0)
+        self.playTitle.isHidden = true
+        self.blueViewHeartButton.isHidden = true
+        self.closeButton.isHidden = true
+        self.playButton.isHidden = true
+        
         UIView.animate(withDuration: 0.3){
             self.view.layoutIfNeeded()
         }
     }
 
+    @objc func didClickheart(sender: UITapGestureRecognizer) {
+        self.heartindex = (self.heartindex >= self.heartButtonArray.count-1) ? 0 : self.heartindex+1
+        self.blueViewHeartButton.image = UIImage(named:heartButtonArray[heartindex])
+        if self.heartindex == 0{
+            print("clickUnlike")
+        }else{
+            print("clickLike")
+        }
+        }
     
     @objc func didClickBlueView(_ sender: Any) {
         print("Click blue Playlist")
@@ -589,9 +621,9 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         self.view.addSubview(self.blueView)
         self.blueView.addSubview(self.playButton)
         self.blueView.addSubview(self.playTitle)
+        self.blueView.addSubview(self.blueViewHeartButton)
         self.blueView.addSubview(self.closeButton)
         self.view.addSubview(self.floatingButton)
-        
     }
         
     
@@ -710,10 +742,17 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview().offset(-17)
         }
+        self.blueViewHeartButton.snp.makeConstraints{
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalTo(self.closeButton.snp.leading).offset(-10)
+            $0.width.equalTo(21.67)
+            $0.height.equalTo(20.04)
+        }
         self.floatingButton.snp.makeConstraints{
             $0.trailing.equalToSuperview().offset(-18)
             $0.bottom.equalTo(self.blueView.snp.top).offset(-19)
             $0.height.equalTo(50)
+            $0.width.equalTo(50)
         }
     }
         
@@ -736,6 +775,10 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         let closeBtn = UITapGestureRecognizer(target: self, action: #selector(didClickClose))
         closeButton.isUserInteractionEnabled = true
         closeButton.addGestureRecognizer(closeBtn)
+        
+        let heartBtn = UITapGestureRecognizer(target: self, action: #selector(didClickheart))
+        blueViewHeartButton.isUserInteractionEnabled = true
+        blueViewHeartButton.addGestureRecognizer(heartBtn)
         
         let blueViewButton = UITapGestureRecognizer(target: self, action: #selector(didClickBlueView))
         blueView.isUserInteractionEnabled = true
@@ -823,6 +866,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 //            let Rcell = collectionView.dequeueReusableCell(withReuseIdentifier: RecordCell.identifier, for: indexPath) as! RecordCell
             self.blueViewConstraint?.update(offset: 70)
             self.playTitle.text = self.RecordCellTitleArray[indexPath.row]
+            self.playTitle.isHidden = false
+            self.blueViewHeartButton.isHidden = false
+            self.closeButton.isHidden = false
+            self.playButton.isHidden = false
+            
             UIView.animate(withDuration: 0.3){
                 self.view.layoutIfNeeded()
             }

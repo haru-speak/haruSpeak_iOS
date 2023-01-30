@@ -9,6 +9,12 @@
 import UIKit
 
 final class CommentCell: UICollectionViewCell {
+    
+    
+    
+    
+    
+    
 //MARK: - Properties
     static let identifier = "RecordCell"
     
@@ -113,15 +119,17 @@ final class CommentCell: UICollectionViewCell {
         self.clickThumbsup.snp.makeConstraints{
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview().offset(-14)
+            $0.width.equalTo(12)
+            $0.height.equalTo(11.11)
         }
         self.divideView.snp.makeConstraints{
             $0.width.equalTo(1)
             $0.height.equalTo(5)
-            $0.trailing.equalTo(self.clickThumbsup.snp.leading).offset(-3)
+            $0.trailing.equalTo(self.clickThumbsup.snp.leading).offset(-8)
             $0.centerY.equalToSuperview()
         }
         self.commentImage.snp.makeConstraints{
-            $0.trailing.equalTo(self.divideView.snp.leading).offset(-3)
+            $0.trailing.equalTo(self.divideView.snp.leading).offset(-8)
             $0.centerY.equalToSuperview()
         }
         self.line.snp.makeConstraints{
