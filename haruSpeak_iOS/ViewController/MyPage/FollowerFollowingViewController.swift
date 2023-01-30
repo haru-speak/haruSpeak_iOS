@@ -19,6 +19,7 @@ class FollowerFollowingViewController: UIViewController{
     let backButton = UIImageView().then{
         $0.image = UIImage(named: "arrowLeft")?.withRenderingMode(.alwaysOriginal)
     }
+    let tabbar = CustomTabbarMyPage()
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -33,7 +34,7 @@ class FollowerFollowingViewController: UIViewController{
     //MARK: - AddSubview
     func setUpView(){
         self.view.addSubview(self.backButton)
-        
+        self.view.addSubview(self.tabbar)
     }
     
     //MARK: - Selector
@@ -48,6 +49,11 @@ class FollowerFollowingViewController: UIViewController{
         self.backButton.snp.makeConstraints{
             $0.top.equalToSuperview().offset(55)
             $0.leading.equalToSuperview().offset(16)
+        }
+        self.tabbar.snp.makeConstraints{
+            $0.top.equalTo(self.backButton.snp.bottom).offset(20)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(50)
         }
     }
     
