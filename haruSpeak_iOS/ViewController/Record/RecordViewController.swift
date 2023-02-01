@@ -15,7 +15,6 @@ import Speech
 class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDelegate{
     //MARK: - Properties
     let arrowLeft = UIImageView().then{
-        
         $0.image = UIImage(named: "arrowLeft")?.withRenderingMode(.alwaysOriginal)
     }
     let formatter = DateFormatter()
@@ -276,6 +275,12 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         
         finishRecording(success: true)
         transcribeAudio()
+//        let data = try? Data.init(contentsOf: audioRecorder.url)
+//        
+//
+//        if data != nil {
+//            print("data 존재")
+//        }
         audioPlayer = try? AVAudioPlayer(contentsOf: audioRecorder.url)
         audioPlayer?.delegate = self
         
