@@ -14,6 +14,7 @@
 		68603AB8298567B200A1DCD8 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603AB7298567B200A1DCD8 /* OnboardingViewController.swift */; };
 		68603ABA29882C3900A1DCD8 /* MakeStudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603AB929882C3900A1DCD8 /* MakeStudyViewController.swift */; };
 		68603ABC298A56C800A1DCD8 /* KakaoLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603ABB298A56C800A1DCD8 /* KakaoLoginModel.swift */; };
+		68603ABE298A9C7000A1DCD8 /* StudyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603ABD298A9C7000A1DCD8 /* StudyDetailViewController.swift */; };
 		68BD8E022971B52C00939DFB /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E012971B52C00939DFB /* AuthenticationViewController.swift */; };
 		68BD8E052971B80400939DFB /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E042971B80400939DFB /* RecordViewController.swift */; };
 		68BD8E0E2972F30B00939DFB /* MembershipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E0D2972F30B00939DFB /* MembershipViewController.swift */; };
@@ -92,6 +93,7 @@
 		68603AB7298567B200A1DCD8 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		68603AB929882C3900A1DCD8 /* MakeStudyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeStudyViewController.swift; sourceTree = "<group>"; };
 		68603ABB298A56C800A1DCD8 /* KakaoLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginModel.swift; sourceTree = "<group>"; };
+		68603ABD298A9C7000A1DCD8 /* StudyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyDetailViewController.swift; sourceTree = "<group>"; };
 		68BD8E012971B52C00939DFB /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		68BD8E042971B80400939DFB /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		68BD8E0D2972F30B00939DFB /* MembershipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipViewController.swift; sourceTree = "<group>"; };
@@ -412,6 +414,7 @@
 				E5E984DB296EE2AF00E5DE83 /* StudyViewController.swift */,
 				E59D3627297583D200A012C4 /* SearchStudyViewController.swift */,
 				68603AB929882C3900A1DCD8 /* MakeStudyViewController.swift */,
+				68603ABD298A9C7000A1DCD8 /* StudyDetailViewController.swift */,
 			);
 			path = Study;
 			sourceTree = "<group>";
@@ -710,6 +713,7 @@
 				E5E600492987D99500B6E78F /* FollowerCell.swift in Sources */,
 				E59D3628297583D200A012C4 /* SearchStudyViewController.swift in Sources */,
 				E5158DD52981764D00054322 /* SecondGiverViewController.swift in Sources */,
+				68603ABE298A9C7000A1DCD8 /* StudyDetailViewController.swift in Sources */,
 				685149CF298256C400C1FED2 /* FourthViewController.swift in Sources */,
 				E5862C61296ED0C900095439 /* ViewController.swift in Sources */,
 				E5862C5D296ED0C900095439 /* AppDelegate.swift in Sources */,

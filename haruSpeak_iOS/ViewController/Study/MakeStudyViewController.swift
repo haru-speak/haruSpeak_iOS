@@ -32,7 +32,7 @@ class MakeStudyViewController: UIViewController{
         $0.showsVerticalScrollIndicator = false
     }
     let mainView = UIView().then{
-        $0.backgroundColor = .lightGray
+        $0.backgroundColor = .white
     }
     
     let newStudyText = UILabel().then{
@@ -349,15 +349,16 @@ class MakeStudyViewController: UIViewController{
             $0.centerX.equalToSuperview()
         }
         self.mainScrollView.snp.makeConstraints{
-            $0.top.equalTo(self.makeStudyText.snp.bottom).offset(0)
+            $0.top.equalTo(self.makeStudyText.snp.bottom).offset(36)
             $0.leading.trailing.bottom.equalToSuperview()
         }
         self.mainView.snp.makeConstraints{
-            $0.top.equalTo(self.mainScrollView.snp.top).offset(36)
+            $0.width.equalTo(330)
+            $0.top.equalTo(self.mainScrollView.snp.top).offset(0)
             $0.leading.equalTo(self.mainScrollView.snp.leading).offset(30)
             $0.trailing.equalTo(self.mainScrollView.snp.trailing).offset(-30)
             $0.bottom.equalToSuperview()
-            $0.height.equalTo(700)
+            $0.size.height.equalTo(750)
         }
         
         self.makeStudyText.snp.makeConstraints{
@@ -461,6 +462,8 @@ class MakeStudyViewController: UIViewController{
         self.whereDropView.snp.makeConstraints{
             $0.top.equalTo(self.testNameDropView.snp.bottom).offset(381)
             $0.leading.equalTo(self.mainView.snp.leading).offset(0)
+            $0.width.equalTo(83)
+            $0.height.equalTo(29)
         }
         self.ivIcon4.snp.makeConstraints{
             $0.top.equalTo(self.whereDropView.snp.top).offset(15)
