@@ -12,6 +12,8 @@
 		685149CF298256C400C1FED2 /* FourthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685149CE298256C400C1FED2 /* FourthViewController.swift */; };
 		68603AB52982C0E600A1DCD8 /* JoinMSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603AB42982C0E600A1DCD8 /* JoinMSViewController.swift */; };
 		68603AB8298567B200A1DCD8 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603AB7298567B200A1DCD8 /* OnboardingViewController.swift */; };
+		68603ABA29882C3900A1DCD8 /* MakeStudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603AB929882C3900A1DCD8 /* MakeStudyViewController.swift */; };
+		68603ABC298A56C800A1DCD8 /* KakaoLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603ABB298A56C800A1DCD8 /* KakaoLoginModel.swift */; };
 		68BD8E022971B52C00939DFB /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E012971B52C00939DFB /* AuthenticationViewController.swift */; };
 		68BD8E052971B80400939DFB /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E042971B80400939DFB /* RecordViewController.swift */; };
 		68BD8E0E2972F30B00939DFB /* MembershipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E0D2972F30B00939DFB /* MembershipViewController.swift */; };
@@ -88,6 +90,8 @@
 		685149CE298256C400C1FED2 /* FourthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthViewController.swift; sourceTree = "<group>"; };
 		68603AB42982C0E600A1DCD8 /* JoinMSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinMSViewController.swift; sourceTree = "<group>"; };
 		68603AB7298567B200A1DCD8 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		68603AB929882C3900A1DCD8 /* MakeStudyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeStudyViewController.swift; sourceTree = "<group>"; };
+		68603ABB298A56C800A1DCD8 /* KakaoLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginModel.swift; sourceTree = "<group>"; };
 		68BD8E012971B52C00939DFB /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		68BD8E042971B80400939DFB /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		68BD8E0D2972F30B00939DFB /* MembershipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipViewController.swift; sourceTree = "<group>"; };
@@ -361,6 +365,7 @@
 			isa = PBXGroup;
 			children = (
 				E5E984BC296ED9B500E5DE83 /* TempModel.swift */,
+				68603ABB298A56C800A1DCD8 /* KakaoLoginModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -406,6 +411,7 @@
 			children = (
 				E5E984DB296EE2AF00E5DE83 /* StudyViewController.swift */,
 				E59D3627297583D200A012C4 /* SearchStudyViewController.swift */,
+				68603AB929882C3900A1DCD8 /* MakeStudyViewController.swift */,
 			);
 			path = Study;
 			sourceTree = "<group>";
@@ -711,10 +717,12 @@
 				E5862C5F296ED0C900095439 /* SceneDelegate.swift in Sources */,
 				68BD8E022971B52C00939DFB /* AuthenticationViewController.swift in Sources */,
 				E5E984DE296EE2BA00E5DE83 /* MyPageViewController.swift in Sources */,
+				68603ABA29882C3900A1DCD8 /* MakeStudyViewController.swift in Sources */,
 				E5E984DA296EE2A300E5DE83 /* HomeViewController.swift in Sources */,
 				E5158DD12981746800054322 /* SecondLearnerViewController.swift in Sources */,
 				E5E984BB296ED9A900E5DE83 /* TempService.swift in Sources */,
 				E5E984B8296ED95D00E5DE83 /* UIFont+.swift in Sources */,
+				68603ABC298A56C800A1DCD8 /* KakaoLoginModel.swift in Sources */,
 				E5E600472987A98100B6E78F /* CustomTabbarMyPage.swift in Sources */,
 				E5158DD32981748200054322 /* ThirdViewController.swift in Sources */,
 				E5FD566629790E0A0088DDAF /* SearchFilterView.swift in Sources */,
