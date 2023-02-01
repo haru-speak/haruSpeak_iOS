@@ -50,6 +50,8 @@
 		E5E600472987A98100B6E78F /* CustomTabbarMyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E600462987A98100B6E78F /* CustomTabbarMyPage.swift */; };
 		E5E600492987D99500B6E78F /* FollowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E600482987D99500B6E78F /* FollowerCell.swift */; };
 		E5E6004B2987D9A100B6E78F /* FollowingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E6004A2987D9A100B6E78F /* FollowingCell.swift */; };
+		E5E6004D2988D36700B6E78F /* MoreProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E6004C2988D36700B6E78F /* MoreProfileViewController.swift */; };
+		E5E6004F2988D49000B6E78F /* LevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E6004E2988D49000B6E78F /* LevelView.swift */; };
 		E5E984B6296ED95300E5DE83 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E984B5296ED95300E5DE83 /* UIColor+.swift */; };
 		E5E984B8296ED95D00E5DE83 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E984B7296ED95D00E5DE83 /* UIFont+.swift */; };
 		E5E984BB296ED9A900E5DE83 /* TempService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E984BA296ED9A900E5DE83 /* TempService.swift */; };
@@ -134,6 +136,8 @@
 		E5E600462987A98100B6E78F /* CustomTabbarMyPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabbarMyPage.swift; sourceTree = "<group>"; };
 		E5E600482987D99500B6E78F /* FollowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCell.swift; sourceTree = "<group>"; };
 		E5E6004A2987D9A100B6E78F /* FollowingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingCell.swift; sourceTree = "<group>"; };
+		E5E6004C2988D36700B6E78F /* MoreProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreProfileViewController.swift; sourceTree = "<group>"; };
+		E5E6004E2988D49000B6E78F /* LevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelView.swift; sourceTree = "<group>"; };
 		E5E984B5296ED95300E5DE83 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		E5E984B7296ED95D00E5DE83 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		E5E984BA296ED9A900E5DE83 /* TempService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempService.swift; sourceTree = "<group>"; };
@@ -415,6 +419,7 @@
 			children = (
 				E5E984DD296EE2BA00E5DE83 /* MyPageViewController.swift */,
 				E5E60042298783AC00B6E78F /* FollowerFollowingViewController.swift */,
+				E5E6004C2988D36700B6E78F /* MoreProfileViewController.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -425,6 +430,7 @@
 				E5E600462987A98100B6E78F /* CustomTabbarMyPage.swift */,
 				E5E600482987D99500B6E78F /* FollowerCell.swift */,
 				E5E6004A2987D9A100B6E78F /* FollowingCell.swift */,
+				E5E6004E2988D49000B6E78F /* LevelView.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -694,6 +700,7 @@
 				E5158DDA2981B76300054322 /* FifthViewController.swift in Sources */,
 				E51CE8BD296F77B500ADB07B /* CustomTabbar.swift in Sources */,
 				68BD8E1C297C22E900939DFB /* SaveViewController.swift in Sources */,
+				E5E6004F2988D49000B6E78F /* LevelView.swift in Sources */,
 				68BD8E1E297C42A000939DFB /* MSDoneViewController.swift in Sources */,
 				E537182A297151DB00CD95F5 /* StudyCustomTabbar.swift in Sources */,
 				E5E984DC296EE2AF00E5DE83 /* StudyViewController.swift in Sources */,
@@ -724,6 +731,7 @@
 				E5E60041298415DC00B6E78F /* MyMateFriendCell.swift in Sources */,
 				68603AB8298567B200A1DCD8 /* OnboardingViewController.swift in Sources */,
 				68BD8E20297D7D1D00939DFB /* DeleteViewController.swift in Sources */,
+				E5E6004D2988D36700B6E78F /* MoreProfileViewController.swift in Sources */,
 				E5E984B6296ED95300E5DE83 /* UIColor+.swift in Sources */,
 				E5F7F4DA297F9A540004800E /* CommentCell.swift in Sources */,
 				E51CE8C92971038A00ADB07B /* ClickRecordViewController.swift in Sources */,

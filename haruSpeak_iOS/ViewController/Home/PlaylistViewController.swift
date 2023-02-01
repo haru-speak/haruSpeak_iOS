@@ -65,7 +65,7 @@ class PlaylistViewController: UIViewController{
         $0.backgroundColor = .white
     }
     let lyricsLabel = UILabel().then{
-        $0.text = "My room is tiny. \n When I say tiny… I mean, really tiny. \nMy room is tiny.\nWhen I say tiny… I mean, really tiny.\nMy room is tiny.\n When I say tiny… I mean, really tiny. \nMy room is tiny.\nWhen I say tiny… I mean, really tiny.\nMy room is tiny.\n When I say tiny… I mean, really tiny. \nMy room is tiny.\nWhen I say tiny… I mean, really tiny.\nMy room is tiny.\n When I say tiny… I mean, really tiny. \nMy room is tiny.\nWhen I say tiny… I mean, really tiny.\nMy room is tiny."
+        $0.text = "My room is tiny. \n When I say tiny… I mean, really tiny. \nMy room is tiny.\nWhen I say tiny… I mean, really tiny.\nMy room is tiny.\nWhen I say tiny… I mean, really tiny. \nMy room is tiny.\nWhen I say tiny… I mean, really tiny.\nMy room is tiny.\nWhen I say tiny… I mean, really tiny. \nMy room is tiny.\nWhen I say tiny… I mean, really tiny.\nMy room is tiny.\nWhen I say tiny… I mean, really tiny. \nMy room is tiny.\nWhen I say tiny… I mean, really tiny.\nMy room is tiny."
         $0.numberOfLines = 0
     }
     let playlistProgressbar = UIProgressView()
@@ -153,6 +153,12 @@ class PlaylistViewController: UIViewController{
         
         self.navigationController?.navigationBar.isHidden = true;
         
+
+        let attrString = NSMutableAttributedString(string: lyricsLabel.text!)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 10
+        attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attrString.length))
+        lyricsLabel.attributedText = attrString
     }
     //MARK: - Selector
     @objc private func didClickBack(_ button: UIButton) {

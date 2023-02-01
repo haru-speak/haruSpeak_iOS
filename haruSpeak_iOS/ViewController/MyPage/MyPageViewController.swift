@@ -158,12 +158,21 @@ class MyPageViewController: UIViewController{
     }
 
 //MARK: - Selector
+
     @objc func didClickFollowerFollowingView(sender: UITapGestureRecognizer){
         print("didClickFollowerFollowingView")
         let VC = FollowerFollowingViewController()
         VC.modalPresentationStyle = .fullScreen
         present(VC, animated: true)
     }
+    @objc func didClickMoreProfileView(sender: UITapGestureRecognizer){
+        print("didClickMoreProfileView")
+        let VC = MoreProfileViewController()
+        VC.modalPresentationStyle = .fullScreen
+        present(VC, animated: true)
+    }
+    
+    
    
     
 //MARK: - Layout
@@ -293,9 +302,15 @@ class MyPageViewController: UIViewController{
     
 //MARK: - Target
     func addTarget(){
+
+        
         let followerFollowingBtn = UITapGestureRecognizer(target: self, action: #selector(didClickFollowerFollowingView))
         followerFollowingView.isUserInteractionEnabled = true
         followerFollowingView.addGestureRecognizer(followerFollowingBtn)
+    
+        let moreProfileBtn = UITapGestureRecognizer(target: self, action: #selector(didClickMoreProfileView))
+        moreProfileButton.isUserInteractionEnabled = true
+        moreProfileButton.addGestureRecognizer(moreProfileBtn)
     }
     
 }
