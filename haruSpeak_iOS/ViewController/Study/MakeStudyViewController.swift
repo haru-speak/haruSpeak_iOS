@@ -1128,7 +1128,7 @@ class MakeStudyViewController: UIViewController{
             $0.leading.equalTo(self.thumbnailView.snp.leading).offset(30)
         }
         self.thumbnailLabelImg.snp.makeConstraints{
-            $0.top.equalTo(self.thumbnailView.snp.top).offset(16)
+            $0.top.equalTo(self.thumbnailView.snp.top).offset(12)
             $0.leading.equalTo(self.thumbnailLabel.snp.trailing).offset(12)
         }
         self.uploadButton.snp.makeConstraints{
