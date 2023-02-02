@@ -175,7 +175,7 @@ final class Slider: UIControl {
       private func updateLayout(_ value: Double, _ isLowerThumb: Bool) {
         DispatchQueue.main.async {
           let startValue = value - self.minValue
-          let length = self.bounds.width - self.thumbViewLength
+            let length = 267.0 - self.thumbViewLength
           let offset = startValue * length / (self.maxValue - self.minValue)
           
           if isLowerThumb {

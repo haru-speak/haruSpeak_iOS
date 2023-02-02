@@ -190,12 +190,11 @@ class MakeStudyViewController: UIViewController{
         let slider = Slider()
         slider.minValue = 1
         slider.maxValue = 30
-        slider.lower = 1
+        slider.lower = 5
         slider.upper = 30
         slider.lowerThumbColor = .mainColor
         slider.upperThumbColor = .mainColor
-        
-        slider.addTarget(self, action: #selector(changeValue), for: .valueChanged)
+
         return slider
     }()
     
@@ -1172,5 +1171,6 @@ class MakeStudyViewController: UIViewController{
         let detailBtn = UITapGestureRecognizer(target: self, action: #selector(setStudyDetailClicked))
         setStudyDetail.isUserInteractionEnabled = true
         setStudyDetail.addGestureRecognizer(detailBtn)
+        self.slider.addTarget(self, action: #selector(changeValue), for: .valueChanged)
     }
 }
