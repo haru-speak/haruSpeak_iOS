@@ -35,6 +35,9 @@ class MSDoneViewController: UIViewController{
         $0.backgroundColor = .mainColor
 
     }
+    let joinmemImg = UIImageView().then{
+        $0.image = UIImage(named: "joinMem")?.withRenderingMode(.alwaysOriginal)
+    }
     
     
     //MARK: - LifeCycle
@@ -66,7 +69,7 @@ class MSDoneViewController: UIViewController{
         self.view.addSubview(self.membershipText1)
         self.view.addSubview(self.membershipText2)
         self.view.addSubview(self.loginButton)
-        
+        self.view.addSubview(self.joinmemImg)
         
         
     }
@@ -93,6 +96,12 @@ class MSDoneViewController: UIViewController{
             $0.bottom.equalTo(self.view.snp.bottom).offset(-56)
             $0.width.equalTo(333)
             $0.height.equalTo(45)
+        }
+        self.joinmemImg.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(273.47)
+            $0.leading.equalToSuperview().offset(30)
+            $0.width.equalTo(375.49)
+            $0.height.equalTo(420.99)
         }
     }
     
