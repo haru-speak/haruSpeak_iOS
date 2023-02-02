@@ -15,6 +15,8 @@
 		68603ABA29882C3900A1DCD8 /* MakeStudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603AB929882C3900A1DCD8 /* MakeStudyViewController.swift */; };
 		68603ABC298A56C800A1DCD8 /* KakaoLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603ABB298A56C800A1DCD8 /* KakaoLoginModel.swift */; };
 		68603ABE298A9C7000A1DCD8 /* StudyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603ABD298A9C7000A1DCD8 /* StudyDetailViewController.swift */; };
+		68603AC0298B6BB300A1DCD8 /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603ABF298B6BB300A1DCD8 /* Slider.swift */; };
+		68603AC2298B965900A1DCD8 /* DeleteStudyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603AC1298B965800A1DCD8 /* DeleteStudyDetailViewController.swift */; };
 		68BD8E022971B52C00939DFB /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E012971B52C00939DFB /* AuthenticationViewController.swift */; };
 		68BD8E052971B80400939DFB /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E042971B80400939DFB /* RecordViewController.swift */; };
 		68BD8E0E2972F30B00939DFB /* MembershipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E0D2972F30B00939DFB /* MembershipViewController.swift */; };
@@ -94,6 +96,8 @@
 		68603AB929882C3900A1DCD8 /* MakeStudyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeStudyViewController.swift; sourceTree = "<group>"; };
 		68603ABB298A56C800A1DCD8 /* KakaoLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginModel.swift; sourceTree = "<group>"; };
 		68603ABD298A9C7000A1DCD8 /* StudyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyDetailViewController.swift; sourceTree = "<group>"; };
+		68603ABF298B6BB300A1DCD8 /* Slider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
+		68603AC1298B965800A1DCD8 /* DeleteStudyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteStudyDetailViewController.swift; sourceTree = "<group>"; };
 		68BD8E012971B52C00939DFB /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		68BD8E042971B80400939DFB /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		68BD8E0D2972F30B00939DFB /* MembershipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipViewController.swift; sourceTree = "<group>"; };
@@ -415,6 +419,7 @@
 				E59D3627297583D200A012C4 /* SearchStudyViewController.swift */,
 				68603AB929882C3900A1DCD8 /* MakeStudyViewController.swift */,
 				68603ABD298A9C7000A1DCD8 /* StudyDetailViewController.swift */,
+				68603AC1298B965800A1DCD8 /* DeleteStudyDetailViewController.swift */,
 			);
 			path = Study;
 			sourceTree = "<group>";
@@ -446,6 +451,7 @@
 				E59D36232974016E00A012C4 /* MyStudyBottomView.swift */,
 				E59D362529742C3B00A012C4 /* AssignmentView.swift */,
 				E5FD566529790E0A0088DDAF /* SearchFilterView.swift */,
+				68603ABF298B6BB300A1DCD8 /* Slider.swift */,
 			);
 			path = Study;
 			sourceTree = "<group>";
@@ -710,6 +716,7 @@
 				68BD8E0E2972F30B00939DFB /* MembershipViewController.swift in Sources */,
 				68BD8E102972F33800939DFB /* EmailLoginViewController.swift in Sources */,
 				E5E984BD296ED9B500E5DE83 /* TempModel.swift in Sources */,
+				68603AC0298B6BB300A1DCD8 /* Slider.swift in Sources */,
 				E5E600492987D99500B6E78F /* FollowerCell.swift in Sources */,
 				E59D3628297583D200A012C4 /* SearchStudyViewController.swift in Sources */,
 				E5158DD52981764D00054322 /* SecondGiverViewController.swift in Sources */,
@@ -738,6 +745,7 @@
 				68BD8E20297D7D1D00939DFB /* DeleteViewController.swift in Sources */,
 				E5E984B6296ED95300E5DE83 /* UIColor+.swift in Sources */,
 				E5F7F4DA297F9A540004800E /* CommentCell.swift in Sources */,
+				68603AC2298B965900A1DCD8 /* DeleteStudyDetailViewController.swift in Sources */,
 				E51CE8C92971038A00ADB07B /* ClickRecordViewController.swift in Sources */,
 				68603AB52982C0E600A1DCD8 /* JoinMSViewController.swift in Sources */,
 				E5FD5668297A2A640088DDAF /* PlaylistViewController.swift in Sources */,
