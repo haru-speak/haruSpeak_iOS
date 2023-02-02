@@ -211,14 +211,14 @@ extension FollowerFollowingViewController: UICollectionViewDelegate, UICollectio
             }
             
             
-            
-            
             return Followingcell
         }
 
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+            let VC = DetailProfileViewController()
+            VC.modalPresentationStyle = .overCurrentContext
+            present(VC, animated: false)
         
     }
 }
