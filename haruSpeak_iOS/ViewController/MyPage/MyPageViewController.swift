@@ -45,7 +45,7 @@ class MyPageViewController: UIViewController{
     }
     let profileName = UILabel().then{
         $0.text = "무유"
-        $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 24)
+        $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 22)
         $0.numberOfLines = 0
     }
     let moreProfileButton = UIImageView().then{
@@ -477,6 +477,10 @@ class MyPageViewController: UIViewController{
         let moreProfileBtn = UITapGestureRecognizer(target: self, action: #selector(didClickMoreProfileView))
         moreProfileButton.isUserInteractionEnabled = true
         moreProfileButton.addGestureRecognizer(moreProfileBtn)
+        
+        let profileLabelBtn = UITapGestureRecognizer(target: self, action: #selector(didClickMoreProfileView))
+        profileName.isUserInteractionEnabled = true
+        profileName.addGestureRecognizer(profileLabelBtn)
     }
     
 }
