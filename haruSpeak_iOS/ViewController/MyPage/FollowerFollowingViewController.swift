@@ -32,8 +32,45 @@ class FollowerFollowingViewController: UIViewController, MyPageTabbarProtocol{
         }
     }
     
-    //MARK: - Datasource
+    //MARK: - DatsSource
+    //FOLLOWER
+        var userPictureArray = [String]()
+        var userNameArray = [String]()
+        var userFollowerArray = [String]()
+        var userFollowingArray = [String]()
+        var crossFollowArray = [Bool]()
+    //FOLLOWING
+        var followinguserPictureArray = [String]()
+        var followinguserNameArray = [String]()
+        var followinguserFollowerArray = [String]()
+        var followinguserFollowingArray = [String]()
+        var followingStarArray = [Bool]()
+        var followingFollowingArray = [Bool]()
     
+    
+        func DataSourceSet(){
+            userPictureArray.append(contentsOf: ["mypage", "mypage", "mypage", "mypage", "mypage", "mypage", "mypage"])
+            userNameArray.append(contentsOf: ["데이", "연", "동동", "나단", "무유", "우기", "채드"])
+            userFollowerArray.append(contentsOf: ["5", "2", "8", "9", "15", "13", "20"])
+            userFollowingArray.append(contentsOf: ["3", "8", "2", "3", "5", "1", "9"])
+            crossFollowArray.append(contentsOf: [true, true, false, false, true, false, false])
+                    DispatchQueue.main.async {
+                        self.followerCollectionView.reloadData()
+                        self.followingCollectionView.reloadData()
+                    }
+            
+            followinguserPictureArray.append(contentsOf: ["mypage", "mypage", "mypage", "mypage", "mypage", "mypage", "mypage", "mypage", "mypage", "mypage", "mypage", "mypage", "mypage", "mypage", "mypage", "mypage", "mypage", "mypage", "mypage"])
+            followinguserNameArray.append(contentsOf: ["데이", "연", "동동", "나단", "무유", "우기", "채드", "연", "동동", "나단", "무유", "우기", "채드", "연", "동동", "나단", "무유", "우기", "채드"])
+            followinguserFollowerArray.append(contentsOf: ["5", "2", "8", "9", "15", "13", "20", "2", "8", "9", "15", "13", "20", "2", "8", "9", "15", "13", "20"])
+            followinguserFollowingArray.append(contentsOf: ["3", "8", "2", "3", "5", "1", "9", "8", "2", "3", "5", "1", "9", "8", "2", "3", "5", "1", "9"])
+            followingStarArray.append(contentsOf: [true, true, true, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false])
+            followingFollowingArray.append(contentsOf: [true, true, true, false, true, false, true, false, false, false, false, true, false, true, false, false, true, false, true])
+                    DispatchQueue.main.async {
+                        self.followerCollectionView.reloadData()
+                        self.followingCollectionView.reloadData()
+                    }
+
+        }
     
     
     //MARK: - Properties
@@ -61,6 +98,7 @@ class FollowerFollowingViewController: UIViewController, MyPageTabbarProtocol{
         setUpView()
         layout()
         addTarget()
+        DataSourceSet()
         self.followerCollectionView.delegate = self
         self.followerCollectionView.dataSource = self
         
@@ -132,15 +170,49 @@ extension FollowerFollowingViewController: UICollectionViewDelegate, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        if collectionView == self.followerCollectionView{
+            return userPictureArray.count
+        }else{
+            return followinguserPictureArray.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == self.followerCollectionView{
             let Followercell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.identifier, for: indexPath) as! FollowerCell
+            
+            Followercell.profilePhoto.image = UIImage(named: "\(userPictureArray[indexPath.row])")?.withRenderingMode(.alwaysOriginal)
+            Followercell.name.text = userNameArray[indexPath.row]
+            Followercell.followerNumber.text = userFollowerArray[indexPath.row]
+            Followercell.followingNumber.text = userFollowingArray[indexPath.row]
+            Followercell.crossFollowImage.isHidden = crossFollowArray[indexPath.row]
+            
             return Followercell
         }else{
             let Followingcell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowingCell.identifier, for: indexPath) as! FollowingCell
+            
+            Followingcell.profilePhoto.image = UIImage(named: "\(followinguserPictureArray[indexPath.row])")?.withRenderingMode(.alwaysOriginal)
+            Followingcell.name.text = followinguserNameArray[indexPath.row]
+            Followingcell.followerNumber.text = followinguserFollowerArray[indexPath.row]
+            Followingcell.followingNumber.text = followinguserFollowingArray[indexPath.row]
+            if followingStarArray[indexPath.row] == true{
+                Followingcell.starImage.image = UIImage(named: "star.fill")?.withRenderingMode(.alwaysOriginal)
+            }else{
+                Followingcell.starImage.image = UIImage(named: "star")?.withRenderingMode(.alwaysOriginal)
+            }
+            if followingFollowingArray[indexPath.row] == true{
+                Followingcell.followButton.backgroundColor = .mainColor
+                Followingcell.followButton.setTitleColor(UIColor.white, for: .normal)
+                Followingcell.followButton.setTitle("팔로우", for: .normal)
+            }else{
+                Followingcell.followButton.backgroundColor = .systemGray6
+                Followingcell.followButton.setTitleColor(UIColor.black, for: .normal)
+                Followingcell.followButton.setTitle("팔로잉", for: .normal)
+            }
+            
+            
+            
+            
             return Followingcell
         }
 

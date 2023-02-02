@@ -23,6 +23,8 @@ class CustomTabbarMyPage: UIView{
     //MARK: - Properties
     var selectedItem: topTabBarItem2 = .Follower
     var delegate : MyPageTabbarProtocol?
+    var follower = 6
+    var following = 23
     
     let followerButton = UIButton(type: .system).then {
         $0.setTitle("팔로워", for: .normal)
@@ -47,6 +49,9 @@ class CustomTabbarMyPage: UIView{
         self.addSubView()
         self.layout()
         self.addTarget()
+        
+        followerButton.setTitle("\(follower) 팔로워", for: .normal)
+        followingButton.setTitle("\(following) 팔로잉", for: .normal)
     }
     
     required init?(coder: NSCoder) {
