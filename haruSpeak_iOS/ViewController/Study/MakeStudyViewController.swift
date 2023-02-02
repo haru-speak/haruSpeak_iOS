@@ -422,7 +422,7 @@ class MakeStudyViewController: UIViewController{
     
     //MARK: - Selector
     @objc func backTapped(){
-        let VC1 = DeleteStudyDetailViewController()
+        let VC1 = DeleteMakeStudyViewController()
         VC1.modalPresentationStyle = .overCurrentContext
         present(VC1, animated: false)
     }

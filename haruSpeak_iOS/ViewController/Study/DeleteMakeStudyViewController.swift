@@ -11,7 +11,7 @@ import SnapKit
 import Then
 
 
-class DeleteStudyDetailViewController: UIViewController{
+class DeleteMakeStudyViewController: UIViewController{
     
     //MARK: - Properties
     let popView = UIView().then{
