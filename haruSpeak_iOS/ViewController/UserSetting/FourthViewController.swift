@@ -17,7 +17,7 @@ class FourthViewController: UIViewController{
         $0.image = UIImage(named: "arrowLeft")?.withRenderingMode(.alwaysOriginal)
     }
     let progressBar = ProgressBarView()
-    
+    var pass = 0
     let titleLabel = UILabel().then{
         $0.text = "관심있는 주제를 선택해주세요"
         $0.textColor = .black
@@ -159,6 +159,7 @@ class FourthViewController: UIViewController{
         setUpView()
         layout()
         addTarget()
+        
         self.view.backgroundColor = .white
         self.navigationController?.navigationBar.isHidden = true;
         let attributedStr = NSMutableAttributedString(string: titleLabel2.text!)
@@ -218,103 +219,141 @@ class FourthViewController: UIViewController{
     }
     @objc private func didClickTravel(_ button: UIButton) {
         if self.travel.backgroundColor == .mainColor{
+            pass -= 1
             self.travel.backgroundColor = .white
             self.travelTxt.textColor = .black
         }
         else{
+            pass += 1
             self.travel.backgroundColor = .mainColor
             self.travelTxt.textColor = .white
         }
+        nextPage()
     }
     @objc private func didClickMovie(_ button: UIButton) {
         if self.movie.backgroundColor == .mainColor{
+            pass -= 1
             self.movie.backgroundColor = .white
             self.movieTxt.textColor = .black
         }
         else{
+            pass += 1
             self.movie.backgroundColor = .mainColor
             self.movieTxt.textColor = .white
         }
+        nextPage()
 
     }
     @objc private func didClickWork(_ button: UIButton) {
         if self.work.backgroundColor == .mainColor{
+            pass -= 1
             self.work.backgroundColor = .white
             self.workTxt.textColor = .black
         }
         else{
+            pass += 1
             self.work.backgroundColor = .mainColor
             self.workTxt.textColor = .white
         }
+        nextPage()
         
     }
     @objc private func didClickShopping(_ button: UIButton) {
         if self.shopping.backgroundColor == .mainColor{
+            pass -= 1
             self.shopping.backgroundColor = .white
             self.shoppingTxt.textColor = .black
         }
         else{
+            pass += 1
             self.shopping.backgroundColor = .mainColor
             self.shoppingTxt.textColor = .white
         }
+        nextPage()
         
 
     }
     @objc private func didClickFood(_ button: UIButton) {
         if self.food.backgroundColor == .mainColor{
+            pass -= 1
             self.food.backgroundColor = .white
             self.foodTxt.textColor = .black
         }
         else{
+            pass += 1
             self.food.backgroundColor = .mainColor
             self.foodTxt.textColor = .white
         }
+        nextPage()
         
 
     }
     @objc private func didClickRelationship(_ button: UIButton) {
         if self.relationship.backgroundColor == .mainColor{
+            pass -= 1
             self.relationship.backgroundColor = .white
             self.relationshipTxt.textColor = .black
         }
         else{
+            pass += 1
             self.relationship.backgroundColor = .mainColor
             self.relationshipTxt.textColor = .white
         }
+        nextPage()
 
     }
     @objc private func didClickHealth(_ button: UIButton) {
         if self.health.backgroundColor == .mainColor{
+            pass -= 1
             self.health.backgroundColor = .white
             self.healthTxt.textColor = .black
         }
         else{
+            pass += 1
             self.health.backgroundColor = .mainColor
             self.healthTxt.textColor = .white
         }
+        nextPage()
 
     }
     @objc private func didClickNeighborhood(_ button: UIButton) {
         if self.neighborhood.backgroundColor == .mainColor{
+            pass -= 1
             self.neighborhood.backgroundColor = .white
             self.neighborhoodTxt.textColor = .black
         }
         else{
+            pass += 1
             self.neighborhood.backgroundColor = .mainColor
             self.neighborhoodTxt.textColor = .white
         }
+        nextPage()
 
     }
     @objc private func didClickLove(_ button: UIButton) {
         if self.love.backgroundColor == .mainColor{
+            pass -= 1
             self.love.backgroundColor = .white
             self.loveTxt.textColor = .black
         }
         else{
+            pass += 1
             self.love.backgroundColor = .mainColor
             self.loveTxt.textColor = .white
         }
+        nextPage()
 
+    }
+    
+    func nextPage(){
+        if pass >= 3{
+            self.nextButton.backgroundColor = .mainColor
+            self.nextButton.isEnabled = true
+        }
+        else{
+            self.nextButton.backgroundColor = .systemGray6
+            self.nextButton.isEnabled = false
+        }
     }
     
     
