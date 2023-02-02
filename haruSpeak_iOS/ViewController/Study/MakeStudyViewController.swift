@@ -341,7 +341,8 @@ class MakeStudyViewController: UIViewController{
         $0.text = ""
         $0.font = UIFont(name:"appleSDGothicNeo-Regular", size: 15)
     }
-    let day = ["월 ": 0,"화 ": 0,"수 ": 0,"목 ": 0,"금 ": 0,"토 ": 0,"일": 0]
+    var day = [0,0,0,0,0,0,0]
+    let dayText = ["월 ","화 ","수 ","목 ","금 ","토 ","일 "]
     
     
     //MARK: - LifeCycle
@@ -403,6 +404,7 @@ class MakeStudyViewController: UIViewController{
         self.mainView.addSubview(self.sat)
         self.mainView.addSubview(self.sun)
         self.mainView.addSubview(self.perWeekLabel)
+        self.mainView.addSubview(self.dayLabel)
         self.mainView.addSubview(self.offyes)
         self.mainView.addSubview(self.offno)
         self.mainView.addSubview(self.middleline)
@@ -569,6 +571,7 @@ class MakeStudyViewController: UIViewController{
             if perWeek != 0{
                 perWeek -= 1
             }
+            day[0] = 0
             self.mon.backgroundColor = .white
             self.mon.setTitleColor(.lightGray, for: .normal)
         }
@@ -578,8 +581,11 @@ class MakeStudyViewController: UIViewController{
             }
             self.mon.backgroundColor = .mainColor
             self.mon.setTitleColor(.white, for: .normal)
+            day[0] = 1
         }
-        self.perWeekLabel.text = "주 \(Int(self.perWeek))회,"
+        self.perWeekLabel.text = "주 \(Int(self.perWeek))회, "
+        dayLabel.text = ""
+        printDay()
     }
     @objc func tueClicked(_ button: UIButton){
         if self.tue.backgroundColor == .mainColor{
@@ -588,6 +594,7 @@ class MakeStudyViewController: UIViewController{
             }
             self.tue.backgroundColor = .white
             self.tue.setTitleColor(.lightGray, for: .normal)
+            day[1] = 0
         }
         else{
             if perWeek != 7{
@@ -595,9 +602,11 @@ class MakeStudyViewController: UIViewController{
             }
             self.tue.backgroundColor = .mainColor
             self.tue.setTitleColor(.white, for: .normal)
-            
+            day[1] = 1
         }
-        self.perWeekLabel.text = "주 \(Int(self.perWeek))회,"
+        self.perWeekLabel.text = "주 \(Int(self.perWeek))회, "
+        dayLabel.text = ""
+        printDay()
     }
     @objc func wedClicked(_ button: UIButton){
         if self.wed.backgroundColor == .mainColor{
@@ -606,6 +615,7 @@ class MakeStudyViewController: UIViewController{
             }
             self.wed.backgroundColor = .white
             self.wed.setTitleColor(.lightGray, for: .normal)
+            day[2] = 0
             
         }
         else{
@@ -614,14 +624,18 @@ class MakeStudyViewController: UIViewController{
             }
             self.wed.backgroundColor = .mainColor
             self.wed.setTitleColor(.white, for: .normal)
+            day[2] = 1
         }
-        self.perWeekLabel.text = "주 \(Int(self.perWeek))회,"
+        self.perWeekLabel.text = "주 \(Int(self.perWeek))회, "
+        dayLabel.text = ""
+        printDay()
     }
     @objc func thurClicked(_ button: UIButton){
         if self.thur.backgroundColor == .mainColor{
             perWeek -= 1
             self.thur.backgroundColor = .white
             self.thur.setTitleColor(.lightGray, for: .normal)
+            day[3] = 0
         }
         else{
             if perWeek != 7{
@@ -629,8 +643,11 @@ class MakeStudyViewController: UIViewController{
             }
             self.thur.backgroundColor = .mainColor
             self.thur.setTitleColor(.white, for: .normal)
+            day[3] = 1
         }
-        self.perWeekLabel.text = "주 \(Int(self.perWeek))회,"
+        self.perWeekLabel.text = "주 \(Int(self.perWeek))회, "
+        dayLabel.text = ""
+        printDay()
     }
     @objc func friClicked(_ button: UIButton){
         if self.fri.backgroundColor == .mainColor{
@@ -639,7 +656,7 @@ class MakeStudyViewController: UIViewController{
             }
             self.fri.backgroundColor = .white
             self.fri.setTitleColor(.lightGray, for: .normal)
-            
+            day[4] = 0
         }
         else{
             if perWeek != 7{
@@ -647,8 +664,11 @@ class MakeStudyViewController: UIViewController{
             }
             self.fri.backgroundColor = .mainColor
             self.fri.setTitleColor(.white, for: .normal)
+            day[4] = 1
         }
-        self.perWeekLabel.text = "주 \(Int(self.perWeek))회,"
+        self.perWeekLabel.text = "주 \(Int(self.perWeek))회, "
+        dayLabel.text = ""
+        printDay()
     }
     @objc func satClicked(_ button: UIButton){
         if self.sat.backgroundColor == .mainColor{
@@ -656,8 +676,8 @@ class MakeStudyViewController: UIViewController{
                 perWeek -= 1
             }
             self.sat.backgroundColor = .white
-            self.sat.setTitleColor(.white, for: .normal)
-            
+            self.sat.setTitleColor(.lightGray, for: .normal)
+            day[5] = 0
         }
         else{
             if perWeek != 7{
@@ -665,8 +685,12 @@ class MakeStudyViewController: UIViewController{
             }
             self.sat.backgroundColor = .mainColor
             self.sat.setTitleColor(.white, for: .normal)
+            day[5] = 1
         }
-        self.perWeekLabel.text = "주 \(Int(self.perWeek))회,"
+        self.perWeekLabel.text = "주 \(Int(self.perWeek))회, "
+        dayLabel.text = ""
+        printDay()
+        
     }
     @objc func sunClicked(_ button: UIButton){
         if self.sun.backgroundColor == .mainColor{
@@ -675,7 +699,7 @@ class MakeStudyViewController: UIViewController{
             }
             self.sun.backgroundColor = .white
             self.sun.setTitleColor(.lightGray, for: .normal)
-            
+            day[6] = 0
         }
         else{
             if perWeek != 7{
@@ -683,8 +707,11 @@ class MakeStudyViewController: UIViewController{
             }
             self.sun.backgroundColor = .mainColor
             self.sun.setTitleColor(.white, for: .normal)
+            day[6] = 1
         }
-        self.perWeekLabel.text = "주 \(Int(self.perWeek))회,"
+        self.perWeekLabel.text = "주 \(Int(self.perWeek))회, "
+        dayLabel.text = ""
+        printDay()
     }
     
     @objc func offyesClicked(_ button: UIButton) {
@@ -710,6 +737,13 @@ class MakeStudyViewController: UIViewController{
     }
     @objc func setStudyDetailClicked(){
         self.setStudyDetailLabel.isHidden = true
+    }
+    func printDay(){
+        for i in stride(from: 0, to: 7, by: 1){
+            if day[i] == 1{
+                dayLabel.text? += dayText[i]
+            }
+        }
     }
     
     
@@ -1023,7 +1057,10 @@ class MakeStudyViewController: UIViewController{
             $0.bottom.equalTo(self.line5.snp.bottom).offset(-5)
             $0.leading.equalTo(self.mainView.snp.leading).offset(0)
         }
-        
+        self.dayLabel.snp.makeConstraints{
+            $0.bottom.equalTo(self.line5.snp.bottom).offset(-5)
+            $0.leading.equalTo(self.perWeekLabel.snp.trailing).offset(0)
+        }
         self.offLineText.snp.makeConstraints{
             $0.top.equalTo(self.whenText.snp.bottom).offset(137)
             $0.leading.equalTo(self.mainView.snp.leading).offset(0)
