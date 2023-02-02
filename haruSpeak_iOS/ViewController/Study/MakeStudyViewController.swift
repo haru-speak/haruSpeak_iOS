@@ -337,6 +337,11 @@ class MakeStudyViewController: UIViewController{
         $0.backgroundColor = .mainColor
         
     }
+    let dayLabel = UILabel().then{
+        $0.text = ""
+        $0.font = UIFont(name:"appleSDGothicNeo-Regular", size: 15)
+    }
+    let day = ["월 ": 0,"화 ": 0,"수 ": 0,"목 ": 0,"금 ": 0,"토 ": 0,"일": 0]
     
     
     //MARK: - LifeCycle
@@ -980,37 +985,37 @@ class MakeStudyViewController: UIViewController{
         }
         self.tue.snp.makeConstraints{
             $0.top.equalTo(self.whenText.snp.bottom).offset(17)
-            $0.leading.equalTo(self.mon.snp.trailing).offset(30)
+            $0.leading.equalTo(self.mon.snp.trailing).offset(22)
             $0.width.equalTo(29)
             $0.height.equalTo(38)
         }
         self.wed.snp.makeConstraints{
             $0.top.equalTo(self.whenText.snp.bottom).offset(17)
-            $0.leading.equalTo(self.tue.snp.trailing).offset(30)
+            $0.leading.equalTo(self.tue.snp.trailing).offset(22)
             $0.width.equalTo(29)
             $0.height.equalTo(38)
         }
         self.thur.snp.makeConstraints{
             $0.top.equalTo(self.whenText.snp.bottom).offset(17)
-            $0.leading.equalTo(self.wed.snp.trailing).offset(30)
+            $0.centerX.equalToSuperview()
             $0.width.equalTo(29)
             $0.height.equalTo(38)
         }
         self.fri.snp.makeConstraints{
             $0.top.equalTo(self.whenText.snp.bottom).offset(17)
-            $0.leading.equalTo(self.thur.snp.trailing).offset(30)
+            $0.leading.equalTo(self.thur.snp.trailing).offset(22)
             $0.width.equalTo(29)
             $0.height.equalTo(38)
         }
         self.sat.snp.makeConstraints{
             $0.top.equalTo(self.whenText.snp.bottom).offset(17)
-            $0.leading.equalTo(self.fri.snp.trailing).offset(30)
+            $0.leading.equalTo(self.fri.snp.trailing).offset(22)
             $0.width.equalTo(29)
             $0.height.equalTo(38)
         }
         self.sun.snp.makeConstraints{
             $0.top.equalTo(self.whenText.snp.bottom).offset(17)
-            $0.leading.equalTo(self.sat.snp.trailing).offset(30)
+            $0.trailing.equalTo(self.mainView.snp.trailing).offset(0)
             $0.width.equalTo(29)
             $0.height.equalTo(38)
         }
