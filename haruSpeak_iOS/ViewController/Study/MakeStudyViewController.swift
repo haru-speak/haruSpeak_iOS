@@ -503,14 +503,22 @@ class MakeStudyViewController: UIViewController{
         if noGoal.image == UIImage(named: "checkbox.fill")?.withRenderingMode(.alwaysOriginal){
             noGoal.image = UIImage(named: "checkbox.empty")?.withRenderingMode(.alwaysOriginal)
             self.noGoalText.textColor = .lightGray
-            self.testNameDropView.isEnabled = true
-            self.testLevelDropView.isEnabled = true
+            self.testNameDropView.isHidden = false
+            self.testLevelDropView.isHidden = false
+            self.line4.isHidden = false
+            self.ivIcon2.isHidden = false
+            self.line3.isHidden = false
+            self.ivIcon3.isHidden = false
         }
         else{
             noGoal.image = UIImage(named: "checkbox.fill")?.withRenderingMode(.alwaysOriginal)
             self.noGoalText.textColor = .mainColor
-            self.testNameDropView.isEnabled = false
-            self.testLevelDropView.isEnabled = false
+            self.testNameDropView.isHidden = true
+            self.testLevelDropView.isHidden = true
+            self.line4.isHidden = true
+            self.ivIcon2.isHidden = true
+            self.line3.isHidden = true
+            self.ivIcon3.isHidden = true
             self.testNameDropView.setTitle("시험", for: .normal)
             self.testNameDropView.setTitleColor(.lightGray, for: .normal)
             self.testLevelDropView.setTitle("등급", for: .normal)
@@ -522,7 +530,9 @@ class MakeStudyViewController: UIViewController{
     @objc func noLimitClicked(){
         if noLimit.image == UIImage(named: "checkbox.fill")?.withRenderingMode(.alwaysOriginal){
             noLimit.image = UIImage(named: "checkbox.empty")?.withRenderingMode(.alwaysOriginal)
-            self.slider.isEnabled = true
+            self.slider.isHidden = false
+            self.minimum.isHidden = false
+            self.maximum.isHidden = false
             self.noLimitText.textColor = .lightGray
             self.minimum.textColor = .black
             self.maximum.textColor = .black
@@ -533,7 +543,9 @@ class MakeStudyViewController: UIViewController{
         }
         else{
             noLimit.image = UIImage(named: "checkbox.fill")?.withRenderingMode(.alwaysOriginal)
-            self.slider.isEnabled = false
+            self.slider.isHidden = true
+            self.minimum.isHidden = true
+            self.maximum.isHidden = true
             self.noLimitText.textColor = .mainColor
             self.minimum.textColor = .lightGray
             self.maximum.textColor = .lightGray
@@ -676,7 +688,9 @@ class MakeStudyViewController: UIViewController{
         self.offyes.setTitleColor(.white, for: .normal)
         self.offno.backgroundColor = .white
         self.offno.setTitleColor(.lightGray, for: .normal)
-        self.whereDropView.isEnabled = true
+        self.whereDropView.isHidden = false
+        self.line6.isHidden = false
+        self.ivIcon4.isHidden = false
     }
     
     @objc func offnoClicked(_ button: UIButton) {
@@ -684,7 +698,9 @@ class MakeStudyViewController: UIViewController{
         self.offno.setTitleColor(.white, for: .normal)
         self.offyes.backgroundColor = .white
         self.offyes.setTitleColor(.lightGray, for: .normal)
-        self.whereDropView.isEnabled = false
+        self.whereDropView.isHidden = true
+        self.line6.isHidden = true
+        self.ivIcon4.isHidden = true
         self.whereDropView.setTitle("지역", for: .normal)
         self.whereDropView.setTitleColor(.lightGray, for: .normal)
     }
