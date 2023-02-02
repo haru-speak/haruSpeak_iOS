@@ -18,7 +18,7 @@ final class FollowerCell: UICollectionViewCell {
         $0.roundCorners(cornerRadius: 15, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
     }
     let name = UILabel().then{
-        $0.text = "나단"
+        $0.text = "User"
         $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size: 15)
         $0.textColor = .black
     }
