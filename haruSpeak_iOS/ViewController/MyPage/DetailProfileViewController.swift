@@ -29,7 +29,7 @@ class DetailProfileViewController: UIViewController{
     }
     
     let profileImage = UIImageView().then{
-        $0.roundCorners(cornerRadius: 25, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
+        $0.roundCorners(cornerRadius: 22, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
         $0.image = UIImage(named: "mypage")?.withRenderingMode(.alwaysOriginal)
         $0.backgroundColor = .white
     }
