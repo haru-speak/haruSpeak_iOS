@@ -206,9 +206,9 @@ extension StudyViewController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
 //        스터디 상세설명페이지 제작 후 주석 해제
-//        let VC = ClickRecordViewController()
-//        VC.modalPresentationStyle = .overCurrentContext
-//        present(VC, animated: false)
+        let VC = StudyDetailViewController()
+        VC.modalPresentationStyle = .overCurrentContext
+        present(VC, animated: false)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 320, height: collectionView.frame.height)

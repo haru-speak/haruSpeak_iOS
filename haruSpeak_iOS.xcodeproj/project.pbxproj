@@ -18,6 +18,7 @@
 		68603AC0298B6BB300A1DCD8 /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603ABF298B6BB300A1DCD8 /* Slider.swift */; };
 		68603AC2298B965900A1DCD8 /* DeleteMakeStudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603AC1298B965800A1DCD8 /* DeleteMakeStudyViewController.swift */; };
 		68603AC4298BE30300A1DCD8 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603AC3298BE30300A1DCD8 /* MessageViewController.swift */; };
+		68603AC6298C00C300A1DCD8 /* MessageCustomTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603AC5298C00C300A1DCD8 /* MessageCustomTabbar.swift */; };
 		68BD8E022971B52C00939DFB /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E012971B52C00939DFB /* AuthenticationViewController.swift */; };
 		68BD8E052971B80400939DFB /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E042971B80400939DFB /* RecordViewController.swift */; };
 		68BD8E0E2972F30B00939DFB /* MembershipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E0D2972F30B00939DFB /* MembershipViewController.swift */; };
@@ -103,6 +104,7 @@
 		68603ABF298B6BB300A1DCD8 /* Slider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
 		68603AC1298B965800A1DCD8 /* DeleteMakeStudyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteMakeStudyViewController.swift; sourceTree = "<group>"; };
 		68603AC3298BE30300A1DCD8 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		68603AC5298C00C300A1DCD8 /* MessageCustomTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCustomTabbar.swift; sourceTree = "<group>"; };
 		68BD8E012971B52C00939DFB /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		68BD8E042971B80400939DFB /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		68BD8E0D2972F30B00939DFB /* MembershipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipViewController.swift; sourceTree = "<group>"; };
@@ -464,6 +466,7 @@
 				E59D362529742C3B00A012C4 /* AssignmentView.swift */,
 				E5FD566529790E0A0088DDAF /* SearchFilterView.swift */,
 				68603ABF298B6BB300A1DCD8 /* Slider.swift */,
+				68603AC5298C00C300A1DCD8 /* MessageCustomTabbar.swift */,
 			);
 			path = Study;
 			sourceTree = "<group>";
@@ -747,6 +750,7 @@
 				E5158DD12981746800054322 /* SecondLearnerViewController.swift in Sources */,
 				E5E984BB296ED9A900E5DE83 /* TempService.swift in Sources */,
 				E5E984B8296ED95D00E5DE83 /* UIFont+.swift in Sources */,
+				68603AC6298C00C300A1DCD8 /* MessageCustomTabbar.swift in Sources */,
 				68603ABC298A56C800A1DCD8 /* KakaoLoginModel.swift in Sources */,
 				E5E600472987A98100B6E78F /* CustomTabbarMyPage.swift in Sources */,
 				E5158DD32981748200054322 /* ThirdViewController.swift in Sources */,
