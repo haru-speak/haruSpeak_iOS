@@ -231,9 +231,16 @@ class MyPageViewController: UIViewController{
             layout.scrollDirection = .horizontal
             return layout
         }()
-
+        let giverCollectionViewLayout: UICollectionViewFlowLayout = {
+            let layout = MyPageCustomCollectionViewFlowLayout()
+            layout.itemSize = CGSize(width: self.view.bounds.width - 40, height: self.view.bounds.height - 80)
+            layout.minimumLineSpacing = 20
+            layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            layout.scrollDirection = .horizontal
+            return layout
+        }()
         learnerView.collectionViewLayout = collectionViewLayout
-        giverView.collectionViewLayout = collectionViewLayout
+        giverView.collectionViewLayout = giverCollectionViewLayout
     }
     
 //MARK: - AddSubview
