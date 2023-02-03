@@ -148,7 +148,8 @@ class FourthViewController: UIViewController{
     
     let nextButton = UIButton().then{
         $0.setTitle("다음", for: .normal)
-        $0.backgroundColor = .mainColor
+        $0.backgroundColor = .systemGray6
+        $0.isEnabled = false
         $0.setTitleColor(UIColor.white, for: .normal)
         $0.roundCorners(cornerRadius: 15, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
         $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size:16)
