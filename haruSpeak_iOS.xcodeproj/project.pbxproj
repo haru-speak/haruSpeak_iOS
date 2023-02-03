@@ -62,6 +62,7 @@
 		E5E60051298BDC2A00B6E78F /* DetailProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E60050298BDC2A00B6E78F /* DetailProfileViewController.swift */; };
 		E5E60053298C9B7000B6E78F /* PointViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E60052298C9B7000B6E78F /* PointViewCell.swift */; };
 		E5E60056298D1EFE00B6E78F /* MyPageCustomCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E60055298D1EFE00B6E78F /* MyPageCustomCollectionViewFlowLayout.swift */; };
+		E5E60058298D558800B6E78F /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E60057298D558800B6E78F /* OnboardingCell.swift */; };
 		E5E984B6296ED95300E5DE83 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E984B5296ED95300E5DE83 /* UIColor+.swift */; };
 		E5E984B8296ED95D00E5DE83 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E984B7296ED95D00E5DE83 /* UIFont+.swift */; };
 		E5E984BB296ED9A900E5DE83 /* TempService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E984BA296ED9A900E5DE83 /* TempService.swift */; };
@@ -158,6 +159,7 @@
 		E5E60050298BDC2A00B6E78F /* DetailProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProfileViewController.swift; sourceTree = "<group>"; };
 		E5E60052298C9B7000B6E78F /* PointViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointViewCell.swift; sourceTree = "<group>"; };
 		E5E60055298D1EFE00B6E78F /* MyPageCustomCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCustomCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		E5E60057298D558800B6E78F /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
 		E5E984B5296ED95300E5DE83 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		E5E984B7296ED95D00E5DE83 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		E5E984BA296ED9A900E5DE83 /* TempService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempService.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				E5158DD72981A44E00054322 /* ProgressBarView.swift */,
+				E5E60057298D558800B6E78F /* OnboardingCell.swift */,
 			);
 			path = UserSetting;
 			sourceTree = "<group>";
@@ -782,6 +785,7 @@
 				E5F7F4DA297F9A540004800E /* CommentCell.swift in Sources */,
 				68603AC2298B965900A1DCD8 /* DeleteMakeStudyViewController.swift in Sources */,
 				E51CE8C92971038A00ADB07B /* ClickRecordViewController.swift in Sources */,
+				E5E60058298D558800B6E78F /* OnboardingCell.swift in Sources */,
 				68603AB52982C0E600A1DCD8 /* JoinMSViewController.swift in Sources */,
 				E5E60056298D1EFE00B6E78F /* MyPageCustomCollectionViewFlowLayout.swift in Sources */,
 				E5FD5668297A2A640088DDAF /* PlaylistViewController.swift in Sources */,
