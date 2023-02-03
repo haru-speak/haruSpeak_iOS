@@ -128,8 +128,7 @@ class MyPageViewController: UIViewController{
         $0.showsVerticalScrollIndicator = false
     }
     
-
-
+    
 
 
 
@@ -272,6 +271,7 @@ class MyPageViewController: UIViewController{
         self.scrollContentView.addSubview(self.giverLearnerPointView)
         self.giverLearnerPointView.addSubview(self.giverView)
         self.giverLearnerPointView.addSubview(self.learnerView)
+
         
         self.scrollContentView.addSubview(self.saveButton)
         self.scrollContentView.addSubview(self.interestTopicButton)
@@ -423,7 +423,6 @@ class MyPageViewController: UIViewController{
             $0.top.bottom.trailing.equalToSuperview()
             $0.leading.equalTo(self.learnerView.snp.trailing).offset(12)
         }
-        
         self.saveButton.snp.makeConstraints{
             $0.top.equalTo(self.giverLearnerPointView.snp.bottom).offset(23)
             $0.leading.equalToSuperview().offset(31)
@@ -546,9 +545,67 @@ extension MyPageViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let learnerCell = collectionView.dequeueReusableCell(withReuseIdentifier: PointViewCell.identifier, for: indexPath) as! PointViewCell
-        
-        return learnerCell
+        if collectionView == self.learnerView{
+            let learnerCell = collectionView.dequeueReusableCell(withReuseIdentifier: PointViewCell.identifier, for: indexPath) as! PointViewCell
+            
+            if indexPath.row == 0{
+                learnerCell.page1Dot.alpha = 1
+                learnerCell.page2Dot.alpha = 0.5
+                
+                learnerCell.mainLabel.text = "이번주에 지급받을 \nLearner 포인트"
+                learnerCell.pointLabel.text = "1080P"
+                learnerCell.percentageLabel.isHidden = true
+                
+            }else{
+                learnerCell.page1Dot.alpha = 0.5
+                learnerCell.page2Dot.alpha = 1
+                
+                learnerCell.mainLabel.text = "내가 모은 \n총 Learner 포인트"
+                learnerCell.pointLabel.text = "1080P"
+                learnerCell.percentageLabel.isHidden = false
+                learnerCell.percentageLabel.text = "상위 68%"
+            }
+            
+            let attributedStr = NSMutableAttributedString(string: learnerCell.mainLabel.text!)
+            attributedStr.addAttribute(.foregroundColor, value: learnerCell.changeColor, range: (learnerCell.mainLabel.text! as NSString).range(of: "\(learnerCell.changeColorText)"))
+            learnerCell.mainLabel.attributedText = attributedStr
+            learnerCell.changeColorText = "Learner"
+            learnerCell.changeColor = UIColor.englishTag
+            
+            return learnerCell
+        }else{
+            let giverCell = collectionView.dequeueReusableCell(withReuseIdentifier: PointViewCell.identifier, for: indexPath) as! PointViewCell
+            
+            if indexPath.row == 0{
+                giverCell.page1Dot.alpha = 1
+                giverCell.page2Dot.alpha = 0.5
+                
+                giverCell.mainLabel.text = "이번주에 지급받을 \nGiver 포인트"
+                giverCell.pointLabel.text = "60P"
+                giverCell.percentageLabel.isHidden = true
+            }else{
+                giverCell.page1Dot.alpha = 0.5
+                giverCell.page2Dot.alpha = 1
+                
+                giverCell.mainLabel.text = "내가 모은 \n총 Giver 포인트"
+                giverCell.pointLabel.text = "1080P"
+                giverCell.percentageLabel.isHidden = false
+                giverCell.percentageLabel.text = "상위 68%"
+            }
+            
+            giverCell.page1Dot.backgroundColor = .koreanTag
+            giverCell.page2Dot.backgroundColor = .koreanTag
+            giverCell.rightSideColor.backgroundColor = .koreanTag
+            giverCell.changeColorText = "Giver"
+            giverCell.changeColor = UIColor.koreanTag
+            
+            let attributedStr = NSMutableAttributedString(string: giverCell.mainLabel.text!)
+            attributedStr.addAttribute(.foregroundColor, value: giverCell.changeColor, range: (giverCell.mainLabel.text! as NSString).range(of: "\(giverCell.changeColorText)"))
+            giverCell.mainLabel.attributedText = attributedStr
+            
+            return giverCell
+        }
+
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         

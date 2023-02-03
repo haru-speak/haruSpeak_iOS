@@ -31,6 +31,13 @@ final class PointViewCell: UICollectionViewCell {
     let rightSideColor = UIView().then{
         $0.backgroundColor = .englishTag
     }
+    let percentageLabel = UILabel().then{
+        $0.text = "상위 68%"
+        $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 13)
+        $0.textColor = .lightGray
+        $0.isHidden = true
+    }
+    
     let page1Dot = UIView().then{
         $0.backgroundColor = .englishTag
         $0.roundCorners(cornerRadius: 3, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
@@ -40,14 +47,21 @@ final class PointViewCell: UICollectionViewCell {
         $0.alpha = 0.5
         $0.roundCorners(cornerRadius: 3, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
     }
-
     
+    
+    
+    var changeColorText = "Learner"
+    var changeColor = UIColor.englishTag
 //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupView()
         self.setupLayout()
         self.addTarget()
+        
+        let attributedStr = NSMutableAttributedString(string: mainLabel.text!)
+        attributedStr.addAttribute(.foregroundColor, value: changeColor, range: (mainLabel.text! as NSString).range(of: "\(changeColorText)"))
+        mainLabel.attributedText = attributedStr
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -64,6 +78,7 @@ final class PointViewCell: UICollectionViewCell {
         self.addSubview(self.rightSideColor)
         self.addSubview(self.page1Dot)
         self.addSubview(self.page2Dot)
+        self.addSubview(self.percentageLabel)
         
     }
 //MARK: - layout
@@ -77,8 +92,12 @@ final class PointViewCell: UICollectionViewCell {
             $0.leading.equalToSuperview().offset(14)
         }
         self.detailImageArrow.snp.makeConstraints{
-            $0.top.equalTo(self.mainLabel.snp.bottom).offset(27)
+            $0.top.equalTo(self.mainLabel.snp.bottom).offset(25)
             $0.leading.equalTo(self.pointLabel.snp.trailing).offset(8)
+        }
+        self.percentageLabel.snp.makeConstraints{
+            $0.top.equalTo(self.pointLabel.snp.bottom).offset(1)
+            $0.leading.equalToSuperview().offset(14)
         }
         self.rightSideColor.snp.makeConstraints{
             $0.top.trailing.bottom.equalToSuperview()
