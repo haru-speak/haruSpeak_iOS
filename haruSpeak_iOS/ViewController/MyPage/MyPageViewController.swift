@@ -113,13 +113,19 @@ class MyPageViewController: UIViewController{
     }
     
     
-    let learnerView = UIView().then{
+    lazy var learnerView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+        $0.register(PointViewCell.self, forCellWithReuseIdentifier: PointViewCell.identifier)
         $0.backgroundColor = .white
         $0.roundCorners(cornerRadius: 15, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
+        $0.showsHorizontalScrollIndicator = false
+        $0.showsVerticalScrollIndicator = false
     }
-    let giverView = UIView().then{
+    lazy var giverView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+        $0.register(PointViewCell.self, forCellWithReuseIdentifier: PointViewCell.identifier)
         $0.backgroundColor = .white
         $0.roundCorners(cornerRadius: 15, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
+        $0.showsHorizontalScrollIndicator = false
+        $0.showsVerticalScrollIndicator = false
     }
     
 
@@ -194,7 +200,42 @@ class MyPageViewController: UIViewController{
         self.view.backgroundColor = .systemGray6
         self.navigationController?.navigationBar.isHidden = true;
         
+        self.learnerView.delegate = self
+        self.learnerView.dataSource = self
+        self.giverView.delegate = self
+        self.giverView.dataSource = self
+        
+        collectionViewLayout()
+        
+        learnerView.decelerationRate = .fast
+        learnerView.isPagingEnabled = false
+        giverView.decelerationRate = .fast
+        giverView.isPagingEnabled = false
+        
     }
+    
+//MARK: - CollectionView Layout
+    func collectionViewLayout(){
+        if let layout = learnerView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.scrollDirection = .horizontal
+        }
+        if let layout = giverView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.scrollDirection = .horizontal
+        }
+        
+        let collectionViewLayout: UICollectionViewFlowLayout = {
+            let layout = MyPageCustomCollectionViewFlowLayout()
+            layout.itemSize = CGSize(width: self.view.bounds.width - 40, height: self.view.bounds.height - 80)
+            layout.minimumLineSpacing = 20
+            layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            layout.scrollDirection = .horizontal
+            return layout
+        }()
+
+        learnerView.collectionViewLayout = collectionViewLayout
+        giverView.collectionViewLayout = collectionViewLayout
+    }
+    
 //MARK: - AddSubview
     func setUpView(){
         self.view.addSubview(self.blueView)
@@ -369,7 +410,7 @@ class MyPageViewController: UIViewController{
         }
         self.learnerView.snp.makeConstraints{
             $0.top.bottom.leading.equalToSuperview()
-            $0.width.equalTo(169)
+            $0.width.equalTo(171)
         }
         self.giverView.snp.makeConstraints{
             $0.top.bottom.trailing.equalToSuperview()
@@ -481,6 +522,47 @@ class MyPageViewController: UIViewController{
         let profileLabelBtn = UITapGestureRecognizer(target: self, action: #selector(didClickMoreProfileView))
         profileName.isUserInteractionEnabled = true
         profileName.addGestureRecognizer(profileLabelBtn)
+    }
+    
+}
+
+//MARK: - SetupCollectionView
+
+// CollectionView
+extension MyPageViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let learnerCell = collectionView.dequeueReusableCell(withReuseIdentifier: PointViewCell.identifier, for: indexPath) as! PointViewCell
+        
+        return learnerCell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        
+        return 0
+        
+    }
+    //section 사이의 공간을 제거
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: learnerView.bounds.width , height: learnerView.bounds.height)
+        
     }
     
 }

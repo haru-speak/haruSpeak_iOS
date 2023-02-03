@@ -61,6 +61,7 @@
 		E5E6004F2988D49000B6E78F /* LevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E6004E2988D49000B6E78F /* LevelView.swift */; };
 		E5E60051298BDC2A00B6E78F /* DetailProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E60050298BDC2A00B6E78F /* DetailProfileViewController.swift */; };
 		E5E60053298C9B7000B6E78F /* PointViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E60052298C9B7000B6E78F /* PointViewCell.swift */; };
+		E5E60056298D1EFE00B6E78F /* MyPageCustomCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E60055298D1EFE00B6E78F /* MyPageCustomCollectionViewFlowLayout.swift */; };
 		E5E984B6296ED95300E5DE83 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E984B5296ED95300E5DE83 /* UIColor+.swift */; };
 		E5E984B8296ED95D00E5DE83 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E984B7296ED95D00E5DE83 /* UIFont+.swift */; };
 		E5E984BB296ED9A900E5DE83 /* TempService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E984BA296ED9A900E5DE83 /* TempService.swift */; };
@@ -156,6 +157,7 @@
 		E5E6004E2988D49000B6E78F /* LevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelView.swift; sourceTree = "<group>"; };
 		E5E60050298BDC2A00B6E78F /* DetailProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProfileViewController.swift; sourceTree = "<group>"; };
 		E5E60052298C9B7000B6E78F /* PointViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointViewCell.swift; sourceTree = "<group>"; };
+		E5E60055298D1EFE00B6E78F /* MyPageCustomCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCustomCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		E5E984B5296ED95300E5DE83 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		E5E984B7296ED95D00E5DE83 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		E5E984BA296ED9A900E5DE83 /* TempService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempService.swift; sourceTree = "<group>"; };
@@ -342,6 +344,14 @@
 			path = haruSpeak_iOSUITests;
 			sourceTree = "<group>";
 		};
+		E5E60054298D1EE000B6E78F /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				E5E60055298D1EFE00B6E78F /* MyPageCustomCollectionViewFlowLayout.swift */,
+			);
+			path = MyPage;
+			sourceTree = "<group>";
+		};
 		E5E984B0296ED8DB00E5DE83 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -382,6 +392,7 @@
 		E5E984B9296ED96400E5DE83 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E5E60054298D1EE000B6E78F /* MyPage */,
 				E5E984BC296ED9B500E5DE83 /* TempModel.swift */,
 				68603ABB298A56C800A1DCD8 /* KakaoLoginModel.swift */,
 			);
@@ -772,6 +783,7 @@
 				68603AC2298B965900A1DCD8 /* DeleteMakeStudyViewController.swift in Sources */,
 				E51CE8C92971038A00ADB07B /* ClickRecordViewController.swift in Sources */,
 				68603AB52982C0E600A1DCD8 /* JoinMSViewController.swift in Sources */,
+				E5E60056298D1EFE00B6E78F /* MyPageCustomCollectionViewFlowLayout.swift in Sources */,
 				E5FD5668297A2A640088DDAF /* PlaylistViewController.swift in Sources */,
 				685149C72980FA4D00C1FED2 /* DatePickerViewController.swift in Sources */,
 				E59D362629742C3B00A012C4 /* AssignmentView.swift in Sources */,

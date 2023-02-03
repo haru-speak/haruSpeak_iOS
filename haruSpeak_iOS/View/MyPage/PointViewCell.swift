@@ -18,20 +18,27 @@ final class PointViewCell: UICollectionViewCell {
         $0.text = "이번주에 지급받을 \nLearner 포인트"
         $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size: 15)
         $0.textColor = .black
+        $0.numberOfLines = 2
     }
     let pointLabel = UILabel().then{
         $0.text = "1080P"
-        $0.font = UIFont(name:"appleSDGothicNeo-Regular", size: 13)
-        $0.textColor = .lightGray
+        $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 24)
+        $0.textColor = .black
     }
     let detailImageArrow = UIImageView().then{
         $0.image = UIImage(named: "moreprofile")?.withRenderingMode(.alwaysOriginal)
     }
     let rightSideColor = UIView().then{
-        $0.backgroundColor = .koreanTag
+        $0.backgroundColor = .englishTag
     }
-    let pageController = UIPageControl().then{
-        $0.numberOfPages = 2
+    let page1Dot = UIView().then{
+        $0.backgroundColor = .englishTag
+        $0.roundCorners(cornerRadius: 3, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
+    }
+    let page2Dot = UIView().then{
+        $0.backgroundColor = .englishTag
+        $0.alpha = 0.5
+        $0.roundCorners(cornerRadius: 3, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
     }
 
     
@@ -55,7 +62,8 @@ final class PointViewCell: UICollectionViewCell {
         self.addSubview(self.pointLabel)
         self.addSubview(self.detailImageArrow)
         self.addSubview(self.rightSideColor)
-        self.addSubview(self.pageController)
+        self.addSubview(self.page1Dot)
+        self.addSubview(self.page2Dot)
         
     }
 //MARK: - layout
@@ -69,16 +77,22 @@ final class PointViewCell: UICollectionViewCell {
             $0.leading.equalToSuperview().offset(14)
         }
         self.detailImageArrow.snp.makeConstraints{
-            $0.top.equalTo(self.mainLabel.snp.bottom).offset(16)
-            $0.leading.equalToSuperview().offset(12)
+            $0.top.equalTo(self.mainLabel.snp.bottom).offset(27)
+            $0.leading.equalTo(self.pointLabel.snp.trailing).offset(8)
         }
         self.rightSideColor.snp.makeConstraints{
             $0.top.trailing.bottom.equalToSuperview()
             $0.width.equalTo(12)
         }
-        self.pageController.snp.makeConstraints{
+        self.page1Dot.snp.makeConstraints{
             $0.bottom.equalToSuperview().offset(-8)
-            $0.centerX.equalToSuperview()
+            $0.centerX.equalToSuperview().offset(-8)
+            $0.height.width.equalTo(6)
+        }
+        self.page2Dot.snp.makeConstraints{
+            $0.bottom.equalToSuperview().offset(-8)
+            $0.centerX.equalToSuperview().offset(8)
+            $0.height.width.equalTo(6)
         }
 
     }
