@@ -20,7 +20,7 @@ class SearchStudyViewController: UIViewController{
     let searchView = UISearchBar().then{
         $0.searchBarStyle = .minimal
     }
-    var del: ClickedDelegate?
+    var delegate: ClickedDelegate?
     //filter
     let filterView = UIScrollView().then{
         $0.backgroundColor = .white
@@ -140,7 +140,6 @@ class SearchStudyViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        
         self.searchCollectionView.delegate = self
         self.searchCollectionView.dataSource = self
         self.navigationController?.navigationBar.isHidden = true;
@@ -148,7 +147,6 @@ class SearchStudyViewController: UIViewController{
         setupLayout()
         addTarget()
         checkSearchCellCount()
-        
     }
     
     //MARK: - Check Cell isEmpty
@@ -195,32 +193,32 @@ class SearchStudyViewController: UIViewController{
     
     @objc func langClicked(){
         print("0")
-        del?.sendClicked(clicked: 0)
+        self.delegate?.sendClicked(clicked: 0)
         present(VC1, animated: false)
     }
     @objc func levClicked(){
         print("1")
-        del?.sendClicked(clicked: 1)
+        self.delegate?.sendClicked(clicked: 1)
         present(VC1, animated: false)
     }
     @objc func testClicked(){
         print("2")
-        del?.sendClicked(clicked: 2)
+        self.delegate?.sendClicked(clicked: 2)
         present(VC1, animated: false)
     }
     @objc func memClicked(){
         print("3")
-        del?.sendClicked(clicked: 3)
+        self.delegate?.sendClicked(clicked: 3)
         present(VC1, animated: false)
     }
     @objc func cycleClicked(){
         print("4")
-        del?.sendClicked(clicked: 4)
+        self.delegate?.sendClicked(clicked: 4)
         present(VC1, animated: false)
     }
     @objc func offClicked(){
         print("5")
-        del?.sendClicked(clicked: 5)
+        self.delegate?.sendClicked(clicked: 5)
         present(VC1, animated: false)
     }
     
@@ -242,27 +240,27 @@ class SearchStudyViewController: UIViewController{
         }
         self.levelFilter.snp.makeConstraints{
             $0.top.bottom.equalToSuperview()
-            $0.leading.equalTo(self.languageFilter.snp.trailing).offset(5)
+            $0.leading.equalTo(self.languageFilter.snp.trailing).offset(8)
             $0.width.equalTo(63)
         }
         self.certificateFilter.snp.makeConstraints{
             $0.top.bottom.equalToSuperview()
-            $0.leading.equalTo(self.levelFilter.snp.trailing).offset(5)
+            $0.leading.equalTo(self.levelFilter.snp.trailing).offset(8)
             $0.width.equalTo(74)
         }
         self.peopleFilter.snp.makeConstraints{
             $0.top.bottom.equalToSuperview()
-            $0.leading.equalTo(self.certificateFilter.snp.trailing).offset(5)
+            $0.leading.equalTo(self.certificateFilter.snp.trailing).offset(8)
             $0.width.equalTo(85)
         }
         self.weekFilter.snp.makeConstraints{
             $0.top.bottom.equalToSuperview()
-            $0.leading.equalTo(self.peopleFilter.snp.trailing).offset(5)
+            $0.leading.equalTo(self.peopleFilter.snp.trailing).offset(8)
             $0.width.equalTo(66)
         }
         self.onlineFilter.snp.makeConstraints{
             $0.top.bottom.equalToSuperview()
-            $0.leading.equalTo(self.weekFilter.snp.trailing).offset(5)
+            $0.leading.equalTo(self.weekFilter.snp.trailing).offset(8)
             $0.trailing.equalToSuperview().offset(-20)
             $0.width.equalTo(63)
         }

@@ -235,12 +235,11 @@ class SearchModalViewController: UIViewController{
     //MARK: - LifeCycle
     override func viewDidLoad() {
         let SearchVC = SearchStudyViewController()
-        SearchVC.del = self
+        SearchVC.delegate = self
         self.view.backgroundColor = .black.withAlphaComponent(0.3)
         setUpView()
         layout()
         addTarget()
-        
     }
     
     //MARK: - AddSubview
@@ -265,7 +264,6 @@ class SearchModalViewController: UIViewController{
         self.popView.addSubview(self.checkBoxTxt4)
         self.popView.addSubview(self.checkBox5)
         self.popView.addSubview(self.checkBoxTxt5)
-        self.popView.addSubview(self.checkBox1)
         self.popView.addSubview(self.line1)
         self.popView.addSubview(self.line2)
         self.popView.addSubview(self.line3)
@@ -293,7 +291,7 @@ class SearchModalViewController: UIViewController{
     }
     
     //MARK: - Selector
-    @objc private func didClickBack(_ button: UIButton) {
+    @objc private func didClickBack() {
         dismiss(animated: false)
         print("didClickBack")
     }
@@ -306,6 +304,41 @@ class SearchModalViewController: UIViewController{
         self.memLabel.textColor = .lightGray
         self.cycleLabel.textColor = .lightGray
         self.offLabel.textColor = .lightGray
+        //view isHidden
+        
+        //checkBox
+        self.checkBoxTxt1.text = "영어"
+        self.checkBox2.isHidden = false
+        self.checkBoxTxt2.isHidden = false
+        self.checkBoxTxt2.text = "한국어"
+        
+        self.checkBox3.isHidden = true
+        self.checkBoxTxt3.isHidden = true
+        self.checkBox4.isHidden = true
+        self.checkBoxTxt4.isHidden = true
+        self.checkBox5.isHidden = true
+        self.checkBoxTxt5.isHidden = true
+        self.line1.isHidden = false
+        self.line2.isHidden = true
+        self.line3.isHidden = true
+        self.line4.isHidden = true
+        //slider
+        self.maximum.isHidden = true
+        self.minimum.isHidden = true
+        self.slider.isHidden = true
+        
+        //요일
+        self.mon.isHidden = true
+        self.tue.isHidden = true
+        self.wed.isHidden = true
+        self.thur.isHidden = true
+        self.fri.isHidden = true
+        self.sat.isHidden = true
+        self.sun.isHidden = true
+        self.perWeekLabel.isHidden = true
+        self.dayLabel.isHidden = true
+        self.line5.isHidden = true
+        
     }
     @objc func levClicked(){
         print("11")
@@ -315,6 +348,42 @@ class SearchModalViewController: UIViewController{
         self.memLabel.textColor = .lightGray
         self.cycleLabel.textColor = .lightGray
         self.offLabel.textColor = .lightGray
+        
+        self.checkBoxTxt1.text = "Lv.1"
+        self.checkBox2.isHidden = false
+        self.checkBoxTxt2.isHidden = false
+        self.checkBoxTxt2.text = "Lv.2"
+        self.checkBox3.isHidden = false
+        self.checkBoxTxt3.isHidden = false
+        self.checkBoxTxt3.text = "Lv.3"
+        self.checkBox4.isHidden = false
+        self.checkBoxTxt4.isHidden = false
+        self.checkBoxTxt4.text = "Lv.4"
+        self.checkBox5.isHidden = false
+        self.checkBoxTxt5.isHidden = false
+        self.checkBoxTxt5.text = "Lv.5"
+        
+        self.line1.isHidden = false
+        self.line2.isHidden = false
+        self.line3.isHidden = false
+        self.line4.isHidden = false
+        
+        //slider
+        self.maximum.isHidden = true
+        self.minimum.isHidden = true
+        self.slider.isHidden = true
+
+        //요일
+        self.mon.isHidden = true
+        self.tue.isHidden = true
+        self.wed.isHidden = true
+        self.thur.isHidden = true
+        self.fri.isHidden = true
+        self.sat.isHidden = true
+        self.sun.isHidden = true
+        self.perWeekLabel.isHidden = true
+        self.dayLabel.isHidden = true
+        self.line5.isHidden = true
     }
     @objc func testClicked(){
         print("22")
@@ -324,6 +393,40 @@ class SearchModalViewController: UIViewController{
         self.memLabel.textColor = .lightGray
         self.cycleLabel.textColor = .lightGray
         self.offLabel.textColor = .lightGray
+        
+        self.checkBoxTxt1.text = "OPIc"
+        self.checkBox2.isHidden = false
+        self.checkBoxTxt2.isHidden = false
+        self.checkBoxTxt2.text = "TOFEL"
+        self.checkBox3.isHidden = false
+        self.checkBoxTxt3.isHidden = false
+        self.checkBoxTxt3.text = "TOEIC Speaking"
+        self.checkBox4.isHidden = true
+        self.checkBoxTxt4.isHidden = true
+        self.checkBox5.isHidden = true
+        self.checkBoxTxt5.isHidden = true
+        
+        self.line1.isHidden = false
+        self.line2.isHidden = false
+        self.line3.isHidden = true
+        self.line4.isHidden = true
+        
+        //slider
+        self.maximum.isHidden = true
+        self.minimum.isHidden = true
+        self.slider.isHidden = true
+
+        //요일
+        self.mon.isHidden = true
+        self.tue.isHidden = true
+        self.wed.isHidden = true
+        self.thur.isHidden = true
+        self.fri.isHidden = true
+        self.sat.isHidden = true
+        self.sun.isHidden = true
+        self.perWeekLabel.isHidden = true
+        self.dayLabel.isHidden = true
+        self.line5.isHidden = true
     }
     @objc func memClicked(){
         print("33")
@@ -333,6 +436,37 @@ class SearchModalViewController: UIViewController{
         self.memLabel.textColor = .black
         self.cycleLabel.textColor = .lightGray
         self.offLabel.textColor = .lightGray
+        
+        //checkBox
+        self.checkBoxTxt1.text = "제한없음"
+        self.checkBox2.isHidden = true
+        self.checkBoxTxt2.isHidden = true
+        self.checkBox3.isHidden = true
+        self.checkBoxTxt3.isHidden = true
+        self.checkBox4.isHidden = true
+        self.checkBoxTxt4.isHidden = true
+        self.checkBox5.isHidden = true
+        self.checkBoxTxt5.isHidden = true
+        self.line1.isHidden = true
+        self.line2.isHidden = true
+        self.line3.isHidden = true
+        self.line4.isHidden = true
+        //slider
+        self.maximum.isHidden = false
+        self.minimum.isHidden = false
+        self.slider.isHidden = false
+
+        //요일
+        self.mon.isHidden = true
+        self.tue.isHidden = true
+        self.wed.isHidden = true
+        self.thur.isHidden = true
+        self.fri.isHidden = true
+        self.sat.isHidden = true
+        self.sun.isHidden = true
+        self.perWeekLabel.isHidden = true
+        self.dayLabel.isHidden = true
+        self.line5.isHidden = true
     }
     @objc func cycleClicked(){
         print("44")
@@ -342,6 +476,37 @@ class SearchModalViewController: UIViewController{
         self.memLabel.textColor = .lightGray
         self.cycleLabel.textColor = .black
         self.offLabel.textColor = .lightGray
+        
+        //checkBox
+        self.checkBoxTxt1.text = "매일"
+        self.checkBox2.isHidden = true
+        self.checkBoxTxt2.isHidden = true
+        self.checkBox3.isHidden = true
+        self.checkBoxTxt3.isHidden = true
+        self.checkBox4.isHidden = true
+        self.checkBoxTxt4.isHidden = true
+        self.checkBox5.isHidden = true
+        self.checkBoxTxt5.isHidden = true
+        self.line1.isHidden = true
+        self.line2.isHidden = true
+        self.line3.isHidden = true
+        self.line4.isHidden = true
+        //slider
+        self.maximum.isHidden = true
+        self.minimum.isHidden = true
+        self.slider.isHidden = true
+        
+        //요일
+        self.mon.isHidden = false
+        self.tue.isHidden = false
+        self.wed.isHidden = false
+        self.thur.isHidden = false
+        self.fri.isHidden = false
+        self.sat.isHidden = false
+        self.sun.isHidden = false
+        self.perWeekLabel.isHidden = false
+        self.dayLabel.isHidden = false
+        self.line5.isHidden = false
     }
     @objc func offClicked(){
         print("55")
@@ -351,6 +516,39 @@ class SearchModalViewController: UIViewController{
         self.memLabel.textColor = .lightGray
         self.cycleLabel.textColor = .lightGray
         self.offLabel.textColor = .black
+        
+        //checkBox
+        self.checkBoxTxt1.text = "O (대면병행)"
+        self.checkBox2.isHidden = false
+        self.checkBoxTxt2.isHidden = false
+        self.checkBoxTxt2.text = "X"
+        
+        self.checkBox3.isHidden = true
+        self.checkBoxTxt3.isHidden = true
+        self.checkBox4.isHidden = true
+        self.checkBoxTxt4.isHidden = true
+        self.checkBox5.isHidden = true
+        self.checkBoxTxt5.isHidden = true
+        self.line1.isHidden = false
+        self.line2.isHidden = true
+        self.line3.isHidden = true
+        self.line4.isHidden = true
+        //slider
+        self.maximum.isHidden = true
+        self.minimum.isHidden = true
+        self.slider.isHidden = true
+        
+        //요일
+        self.mon.isHidden = true
+        self.tue.isHidden = true
+        self.wed.isHidden = true
+        self.thur.isHidden = true
+        self.fri.isHidden = true
+        self.sat.isHidden = true
+        self.sun.isHidden = true
+        self.perWeekLabel.isHidden = true
+        self.dayLabel.isHidden = true
+        self.line5.isHidden = true
     }
     
     @objc func checkBox1Clicked(){
@@ -828,6 +1026,10 @@ class SearchModalViewController: UIViewController{
     
     //MARK: - Target
     func addTarget(){
+        let backBtn = UITapGestureRecognizer(target: self, action: #selector(didClickBack))
+        line.isUserInteractionEnabled = true
+        line.addGestureRecognizer(backBtn)
+        
         let checkBox1Btn = UITapGestureRecognizer(target: self, action: #selector(checkBox1Clicked))
         checkBox1.isUserInteractionEnabled = true
         checkBox1.addGestureRecognizer(checkBox1Btn)
@@ -848,10 +1050,10 @@ class SearchModalViewController: UIViewController{
         checkBoxTxt1.addGestureRecognizer(checkBoxTxt1Btn)
         let checkBoxTxt2Btn = UITapGestureRecognizer(target: self, action: #selector(checkBoxTxt2Clicked))
         checkBoxTxt2.isUserInteractionEnabled = true
-        checkBoxTxt2.addGestureRecognizer(checkBox2Btn)
+        checkBoxTxt2.addGestureRecognizer(checkBoxTxt2Btn)
         let checkBoxTxt3Btn = UITapGestureRecognizer(target: self, action: #selector(checkBoxTxt3Clicked))
         checkBoxTxt3.isUserInteractionEnabled = true
-        checkBoxTxt3.addGestureRecognizer(checkBox3Btn)
+        checkBoxTxt3.addGestureRecognizer(checkBoxTxt3Btn)
         let checkBoxTxt4Btn = UITapGestureRecognizer(target: self, action: #selector(checkBoxTxt4Clicked))
         checkBoxTxt4.isUserInteractionEnabled = true
         checkBoxTxt4.addGestureRecognizer(checkBoxTxt4Btn)
@@ -869,7 +1071,7 @@ class SearchModalViewController: UIViewController{
     }
 }
 
-extension SearchModalViewController: ClickedDelegate{
+extension SearchModalViewController: ClickedDelegate {
     func sendClicked(clicked: Int) {
         print(clicked)
         if clicked == 0{
