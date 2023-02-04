@@ -335,7 +335,6 @@ class MakeStudyViewController: UIViewController{
         $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
         $0.roundCorners(cornerRadius: 6, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
         $0.backgroundColor = .mainColor
-        
     }
     let dayLabel = UILabel().then{
         $0.text = ""
@@ -738,6 +737,7 @@ class MakeStudyViewController: UIViewController{
     @objc func setStudyDetailClicked(){
         self.setStudyDetailLabel.isHidden = true
     }
+    
     func printDay(){
         for i in stride(from: 0, to: 7, by: 1){
             if day[i] == 1{
