@@ -1030,6 +1030,25 @@ class SearchModalViewController: UIViewController{
         line.isUserInteractionEnabled = true
         line.addGestureRecognizer(backBtn)
         
+        let langBtn = UITapGestureRecognizer(target: self, action: #selector(langClicked))
+        langLabel.isUserInteractionEnabled = true
+        langLabel.addGestureRecognizer(langBtn)
+        let levBtn = UITapGestureRecognizer(target: self, action: #selector(levClicked))
+        levLabel.isUserInteractionEnabled = true
+        levLabel.addGestureRecognizer(levBtn)
+        let testBtn = UITapGestureRecognizer(target: self, action: #selector(testClicked))
+        testLabel.isUserInteractionEnabled = true
+        testLabel.addGestureRecognizer(testBtn)
+        let memBtn = UITapGestureRecognizer(target: self, action: #selector(memClicked))
+        memLabel.isUserInteractionEnabled = true
+        memLabel.addGestureRecognizer(memBtn)
+        let cycleBtn = UITapGestureRecognizer(target: self, action: #selector(cycleClicked))
+        cycleLabel.isUserInteractionEnabled = true
+        cycleLabel.addGestureRecognizer(cycleBtn)
+        let offBtn = UITapGestureRecognizer(target: self, action: #selector(offClicked))
+        offLabel.isUserInteractionEnabled = true
+        offLabel.addGestureRecognizer(offBtn)
+        
         let checkBox1Btn = UITapGestureRecognizer(target: self, action: #selector(checkBox1Clicked))
         checkBox1.isUserInteractionEnabled = true
         checkBox1.addGestureRecognizer(checkBox1Btn)
