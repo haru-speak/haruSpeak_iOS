@@ -10,12 +10,17 @@ import UIKit
 import SnapKit
 import Then
 
+protocol ClickedDelegate{
+    func sendClicked(clicked: Int)
+}
 class SearchStudyViewController: UIViewController{
     
     //MARK: - Properties
+    
     let searchView = UISearchBar().then{
         $0.searchBarStyle = .minimal
     }
+    var del: ClickedDelegate?
     //filter
     let filterView = UIScrollView().then{
         $0.backgroundColor = .white
@@ -45,13 +50,13 @@ class SearchStudyViewController: UIViewController{
         $0.image = UIImage(named: "checkcircle.empty")?.withRenderingMode(.alwaysOriginal)
     }
     let recruitText = UILabel().then{
-           $0.text = "모집 중"
-           $0.font = UIFont(name:"appleSDGothicNeo-Bold", size:13)
-       }
+        $0.text = "모집 중"
+        $0.font = UIFont(name:"appleSDGothicNeo-Bold", size:13)
+    }
     
     let selectImg2 = UIImageView().then{
-            $0.image = UIImage(named: "checkcircle.empty")?.withRenderingMode(.alwaysOriginal)
-        }
+        $0.image = UIImage(named: "checkcircle.empty")?.withRenderingMode(.alwaysOriginal)
+    }
     let newText = UILabel().then{
         $0.text = "신규"
         $0.font = UIFont(name:"appleSDGothicNeo-Bold", size:13)
@@ -66,8 +71,8 @@ class SearchStudyViewController: UIViewController{
     }
     
     let selectImg3 = UIImageView().then{
-            $0.image = UIImage(named: "checkcircle.empty")?.withRenderingMode(.alwaysOriginal)
-        }
+        $0.image = UIImage(named: "checkcircle.empty")?.withRenderingMode(.alwaysOriginal)
+    }
     let existingText = UILabel().then{
         $0.text = "기존"
         $0.font = UIFont(name:"appleSDGothicNeo-Bold", size:13)
@@ -79,6 +84,7 @@ class SearchStudyViewController: UIViewController{
     let existingTagText = UILabel().then{
         $0.text = "Since"
         $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size:13)
+        $0.textColor = .white
     }
     let line1 = UIView().then{
         $0.backgroundColor = .systemGray6
@@ -90,6 +96,11 @@ class SearchStudyViewController: UIViewController{
         $0.register(SearchCell.self, forCellWithReuseIdentifier: SearchCell.identifier)
         $0.backgroundColor = .white
     }
+    let VC1 = SearchModalViewController().then{
+        $0.modalPresentationStyle = .overCurrentContext
+    }
+    
+    
     var collectionViewindex = 0
     //CollectionView
     var SearchCellRecruitArray = [Bool]()
@@ -100,46 +111,46 @@ class SearchStudyViewController: UIViewController{
     var SearchCellLikeArray = [Bool]()
     
     
-//    func dataSourceSet(){
-//        SearchCellRecruit.append(contentsOf: ["연", "채드", "나단", "무유", "데이"])
-//        SearchCellNew.append(contentsOf: ["mypage", "mypage", "mypage", "mypage", "mypage"])
-//        SearchCellMem.append(contentsOf: ["어제", "어제", "1월 2일", "12월 27일", "12월 13일"])
-//        SearchCellNameArray.append(contentsOf: ["오후 3시 52분", "오후 3시 52분", "오후 3시 52분", "오후 3시 52분", "오후 3시 52분"])
-//        SearchCellContentArray.append(contentsOf: ["과제 늦지않게 제출해주세요~!", "피드백 감사합니다! 다음주에 봬요 :)", "넵 초대 메시지 보내드릴게요!", "이번주에 참여 가능합니다~", "데이님이 스터디룸 초대장을 보냈습니다!"])
-//        SearchCellLike.append(contentsOf: ["3", "1", "1", "3", "2"])
-//
-//        DispatchQueue.main.async {
-//            self.searchCollectionView.reloadData()
-//            self.checkSearchCellCount()
-//        }
-//    }
-
+    //    func dataSourceSet(){
+    //        SearchCellRecruit.append(contentsOf: ["연", "채드", "나단", "무유", "데이"])
+    //        SearchCellNew.append(contentsOf: ["mypage", "mypage", "mypage", "mypage", "mypage"])
+    //        SearchCellMem.append(contentsOf: ["어제", "어제", "1월 2일", "12월 27일", "12월 13일"])
+    //        SearchCellNameArray.append(contentsOf: ["오후 3시 52분", "오후 3시 52분", "오후 3시 52분", "오후 3시 52분", "오후 3시 52분"])
+    //        SearchCellContentArray.append(contentsOf: ["과제 늦지않게 제출해주세요~!", "피드백 감사합니다! 다음주에 봬요 :)", "넵 초대 메시지 보내드릴게요!", "이번주에 참여 가능합니다~", "데이님이 스터디룸 초대장을 보냈습니다!"])
+    //        SearchCellLike.append(contentsOf: ["3", "1", "1", "3", "2"])
+    //
+    //        DispatchQueue.main.async {
+    //            self.searchCollectionView.reloadData()
+    //            self.checkSearchCellCount()
+    //        }
+    //    }
+    
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-
+        
         self.searchCollectionView.delegate = self
         self.searchCollectionView.dataSource = self
         self.navigationController?.navigationBar.isHidden = true;
-        
         setUpView()
         setupLayout()
-//        addTarget()
-//        checkSearchCellCount()
+        addTarget()
+        //        checkSearchCellCount()
         
     }
     
-//MARK: - Check Cell isEmpty
-//    func checkSearchCellCount(){
-//        let countRecordCell = Int(SearchCellNameArray.count)
-//        if countRecordCell == 0{
-//            print("hideImg.isHidden = false")
-//        }else{
-//            print("hideImg.isHidden = true")
-//        }
-//    }
-
+    //MARK: - Check Cell isEmpty
+    //    func checkSearchCellCount(){
+    //        let countRecordCell = Int(SearchCellNameArray.count)
+    //        if countRecordCell == 0{
+    //            print("hideImg.isHidden = false")
+    //        }else{
+    //            print("hideImg.isHidden = true")
+    //        }
+    //    }
+    
+    
     
     func setUpView(){
         self.view.addSubview(self.searchView)
@@ -164,6 +175,40 @@ class SearchStudyViewController: UIViewController{
         self.view.addSubview(self.line2)
         self.view.addSubview(self.searchCollectionView)
     }
+    
+    //MARK: - Selector
+    
+    @objc func langClicked(){
+        print("0")
+        del?.sendClicked(clicked: 0)
+        present(VC1, animated: false)
+    }
+    @objc func levClicked(){
+        print("1")
+        del?.sendClicked(clicked: 1)
+        present(VC1, animated: false)
+    }
+    @objc func testClicked(){
+        print("2")
+        del?.sendClicked(clicked: 2)
+        present(VC1, animated: false)
+    }
+    @objc func memClicked(){
+        print("3")
+        del?.sendClicked(clicked: 3)
+        present(VC1, animated: false)
+    }
+    @objc func cycleClicked(){
+        print("4")
+        del?.sendClicked(clicked: 4)
+        present(VC1, animated: false)
+    }
+    @objc func offClicked(){
+        print("5")
+        del?.sendClicked(clicked: 5)
+        present(VC1, animated: false)
+    }
+    
     func setupLayout(){
         self.searchView.snp.makeConstraints{
             $0.top.equalToSuperview().offset(57)
@@ -224,7 +269,7 @@ class SearchStudyViewController: UIViewController{
         self.newText.snp.makeConstraints{
             $0.top.equalTo(self.weekFilter.snp.bottom).offset(25)
             $0.leading.equalTo(self.selectImg2.snp.trailing).offset(4)
-                }
+        }
         self.newTagView.snp.makeConstraints{
             $0.top.equalTo(self.weekFilter.snp.bottom).offset(20)
             $0.leading.equalTo(self.newText.snp.trailing).offset(3)
@@ -244,7 +289,7 @@ class SearchStudyViewController: UIViewController{
         self.existingText.snp.makeConstraints{
             $0.top.equalTo(self.weekFilter.snp.bottom).offset(25)
             $0.leading.equalTo(self.selectImg3.snp.trailing).offset(4)
-                }
+        }
         self.existingTagView.snp.makeConstraints{
             $0.top.equalTo(self.weekFilter.snp.bottom).offset(20)
             $0.leading.equalTo(self.existingText.snp.trailing).offset(3)
@@ -271,49 +316,71 @@ class SearchStudyViewController: UIViewController{
         }
         
     }
-//    func addTarget(){
-//
-//    }
-
+    
+    func addTarget(){
+        let langBtn = UITapGestureRecognizer(target: self, action: #selector(langClicked))
+        languageFilter.isUserInteractionEnabled = true
+        languageFilter.addGestureRecognizer(langBtn)
+        
+        let levBtn = UITapGestureRecognizer(target: self, action: #selector(levClicked))
+        levelFilter.isUserInteractionEnabled = true
+        levelFilter.addGestureRecognizer(levBtn)
+        
+        let testBtn = UITapGestureRecognizer(target: self, action: #selector(testClicked))
+        certificateFilter.isUserInteractionEnabled = true
+        certificateFilter.addGestureRecognizer(testBtn)
+        
+        let memBtn = UITapGestureRecognizer(target: self, action: #selector(memClicked))
+        peopleFilter.isUserInteractionEnabled = true
+        peopleFilter.addGestureRecognizer(memBtn)
+        
+        let weekBtn = UITapGestureRecognizer(target: self, action: #selector(cycleClicked))
+        weekFilter.isUserInteractionEnabled = true
+        weekFilter.addGestureRecognizer(weekBtn)
+        
+        let offBtn = UITapGestureRecognizer(target: self, action: #selector(offClicked))
+        onlineFilter.isUserInteractionEnabled = true
+        onlineFilter.addGestureRecognizer(offBtn)
+        
+    }
 }
-
-//CollectionVIew
+    
+    //CollectionVIew
 extension SearchStudyViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    
+        
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return SearchCellNameArray.count
+            //        return SearchCellNameArray.count
         return 5
     }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+            
         let Scell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCell.identifier, for: indexPath) as! SearchCell
-//        Ccell.name.text = self.ChattingCellNameArray[indexPath.row]
-//        Ccell.profileimg.image = UIImage(named: self.ChattingCellProfileImgArray[indexPath.row])?.withRenderingMode(.alwaysOriginal)
-//        Ccell.date.text = self.ChattingCellDateArray[indexPath.row]
-//        Ccell.time.text = self.ChattingCellTimeArray[indexPath.row]
-//        Ccell.content.text = self.ChattingCellContentArray[indexPath.row]
-//        Ccell.num.text = self.ChattingCellNumArray[indexPath.row]
+            //        Ccell.name.text = self.ChattingCellNameArray[indexPath.row]
+            //        Ccell.profileimg.image = UIImage(named: self.ChattingCellProfileImgArray[indexPath.row])?.withRenderingMode(.alwaysOriginal)
+            //        Ccell.date.text = self.ChattingCellDateArray[indexPath.row]
+            //        Ccell.time.text = self.ChattingCellTimeArray[indexPath.row]
+            //        Ccell.content.text = self.ChattingCellContentArray[indexPath.row]
+            //        Ccell.num.text = self.ChattingCellNumArray[indexPath.row]
         return Scell
     }
-   
+        
 }
-
+    
 extension SearchStudyViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-            return 5
+        return 5
     }
-    
+        
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-            return 0
+        return 0
     }
-    
+        
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
             return CGSize(width: self.view.frame.width , height: 129)
-        }
-        
     }
-    
+        
+}

@@ -20,6 +20,7 @@
 		68603AC4298BE30300A1DCD8 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603AC3298BE30300A1DCD8 /* MessageViewController.swift */; };
 		68603AC6298C00C300A1DCD8 /* ChattingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603AC5298C00C300A1DCD8 /* ChattingCell.swift */; };
 		68603AC8298D2AFD00A1DCD8 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603AC7298D2AFD00A1DCD8 /* SearchCell.swift */; };
+		68603ACA298D417700A1DCD8 /* SearchModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603AC9298D417700A1DCD8 /* SearchModalViewController.swift */; };
 		68BD8E022971B52C00939DFB /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E012971B52C00939DFB /* AuthenticationViewController.swift */; };
 		68BD8E052971B80400939DFB /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E042971B80400939DFB /* RecordViewController.swift */; };
 		68BD8E0E2972F30B00939DFB /* MembershipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E0D2972F30B00939DFB /* MembershipViewController.swift */; };
@@ -107,6 +108,7 @@
 		68603AC3298BE30300A1DCD8 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		68603AC5298C00C300A1DCD8 /* ChattingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingCell.swift; sourceTree = "<group>"; };
 		68603AC7298D2AFD00A1DCD8 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
+		68603AC9298D417700A1DCD8 /* SearchModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModalViewController.swift; sourceTree = "<group>"; };
 		68BD8E012971B52C00939DFB /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		68BD8E042971B80400939DFB /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		68BD8E0D2972F30B00939DFB /* MembershipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipViewController.swift; sourceTree = "<group>"; };
@@ -433,6 +435,7 @@
 				68603ABD298A9C7000A1DCD8 /* StudyDetailViewController.swift */,
 				68603AC1298B965800A1DCD8 /* DeleteMakeStudyViewController.swift */,
 				68603AC3298BE30300A1DCD8 /* MessageViewController.swift */,
+				68603AC9298D417700A1DCD8 /* SearchModalViewController.swift */,
 			);
 			path = Study;
 			sourceTree = "<group>";
@@ -776,6 +779,7 @@
 				685149C72980FA4D00C1FED2 /* DatePickerViewController.swift in Sources */,
 				E59D362629742C3B00A012C4 /* AssignmentView.swift in Sources */,
 				685149CA298170A800C1FED2 /* FirstViewController.swift in Sources */,
+				68603ACA298D417700A1DCD8 /* SearchModalViewController.swift in Sources */,
 				E59D36242974016E00A012C4 /* MyStudyBottomView.swift in Sources */,
 				E51CE8BF296FBED100ADB07B /* RecordCell.swift in Sources */,
 				E5158DD82981A44E00054322 /* ProgressBarView.swift in Sources */,
