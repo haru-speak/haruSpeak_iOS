@@ -1026,9 +1026,9 @@ class SearchModalViewController: UIViewController{
     
     //MARK: - Target
     func addTarget(){
-        let backBtn = UITapGestureRecognizer(target: self, action: #selector(didClickBack))
+        let backBtn1 = UITapGestureRecognizer(target: self, action: #selector(didClickBack))
         line.isUserInteractionEnabled = true
-        line.addGestureRecognizer(backBtn)
+        line.addGestureRecognizer(backBtn1)
         
         let langBtn = UITapGestureRecognizer(target: self, action: #selector(langClicked))
         langLabel.isUserInteractionEnabled = true
