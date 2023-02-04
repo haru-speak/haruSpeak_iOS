@@ -23,6 +23,7 @@ class SearchStudyViewController: UIViewController{
     }
     var delegate: ClickedDelegate?
     //filter
+    
     let filterView = UIScrollView().then{
         $0.backgroundColor = .white
         $0.showsHorizontalScrollIndicator = false
@@ -236,32 +237,32 @@ class SearchStudyViewController: UIViewController{
     }
     @objc func langClicked(){
         print("0")
-        self.delegate?.sendClicked(clicked: 0)
+        delegate?.sendClicked(clicked: 0)
         present(VC1, animated: false)
     }
     @objc func levClicked(){
         print("1")
-        self.delegate?.sendClicked(clicked: 1)
+        delegate?.sendClicked(clicked: 1)
         present(VC1, animated: false)
     }
     @objc func testClicked(){
         print("2")
-        self.delegate?.sendClicked(clicked: 2)
+        delegate?.sendClicked(clicked: 2)
         present(VC1, animated: false)
     }
     @objc func memClicked(){
         print("3")
-        self.delegate?.sendClicked(clicked: 3)
+        delegate?.sendClicked(clicked: 3)
         present(VC1, animated: false)
     }
     @objc func cycleClicked(){
         print("4")
-        self.delegate?.sendClicked(clicked: 4)
+        delegate?.sendClicked(clicked: 4)
         present(VC1, animated: false)
     }
     @objc func offClicked(){
         print("5")
-        self.delegate?.sendClicked(clicked: 5)
+        delegate?.sendClicked(clicked: 5)
         present(VC1, animated: false)
     }
     

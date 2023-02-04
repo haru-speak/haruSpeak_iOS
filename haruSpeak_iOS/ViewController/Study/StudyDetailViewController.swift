@@ -309,18 +309,18 @@ class StudyDetailViewController: UIViewController{
         self.scrollView.snp.makeConstraints{
             $0.top.equalTo(self.thumbnail.snp.bottom).offset(0)
             $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview().offset(-105)
+            $0.bottom.equalToSuperview()
+            $0.width.equalToSuperview()
         }
         self.mainView.snp.makeConstraints{
             $0.top.equalTo(self.thumbnail.snp.bottom).offset(0)
             $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview().offset(-105)
+            $0.bottom.equalToSuperview()
             $0.width.equalToSuperview()
-            $0.size.height.equalTo(500)
         }
         self.topView.snp.makeConstraints{
             $0.top.equalTo(self.scrollView.snp.top).offset(0)
-            $0.leading.trailing.equalTo(self.mainView)
+            $0.leading.trailing.equalToSuperview()
             $0.size.height.equalTo(380)
         }
         self.recruitTagView.snp.makeConstraints{
@@ -345,7 +345,8 @@ class StudyDetailViewController: UIViewController{
         }
         self.bottomView.snp.makeConstraints{
             $0.top.equalTo(self.topView.snp.bottom).offset(8)
-            $0.leading.trailing.equalTo(self.scrollView)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
             $0.size.height.equalTo(354)
         }
         self.studyNameL.snp.makeConstraints{
