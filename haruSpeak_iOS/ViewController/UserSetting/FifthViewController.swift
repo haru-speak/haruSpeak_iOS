@@ -94,7 +94,7 @@ class FifthViewController: UIViewController{
 //MARK: - Selector
     
     @objc private func didClickNext(_ button: UIButton) {
-        let VC = JoinMSViewController()
+        let VC = HomeViewController()
         VC.modalPresentationStyle = .fullScreen
         present(VC, animated: false)
         print("didClickNext")

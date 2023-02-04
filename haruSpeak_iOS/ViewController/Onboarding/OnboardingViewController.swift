@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+import SnapKit
+import Then
 
 class OnboardingViewController: UIViewController{
     
@@ -30,7 +32,12 @@ class OnboardingViewController: UIViewController{
         $0.roundCorners(cornerRadius: 15, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
         $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size:16)
     }
-    
+    lazy var onboardingImage = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+        $0.register(OnboardingCell.self, forCellWithReuseIdentifier: OnboardingCell.identifier)
+        $0.showsHorizontalScrollIndicator = false
+        $0.showsVerticalScrollIndicator = false
+    }
+  
     //MARK: - LifeCycle
     override func viewDidLoad() {
         setUpView()
@@ -44,7 +51,30 @@ class OnboardingViewController: UIViewController{
         attributedStr.addAttribute(.foregroundColor, value: UIColor.mainColor, range: (login.text! as NSString).range(of: "바로 로그인"))
         login.attributedText = attributedStr
         
+        self.onboardingImage.delegate = self
+        self.onboardingImage.dataSource = self
+        onboardingImage.decelerationRate = .fast
+        onboardingImage.isPagingEnabled = false
+        collectionViewLayout()
         
+        var a = UserDefaults.standard.string(forKey: "KakaoAccessToken")
+    }
+    
+//MARK: - CollectionView Layout
+    func collectionViewLayout(){
+        if let layout = onboardingImage.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.scrollDirection = .horizontal
+        }
+        
+        let collectionViewLayout: UICollectionViewFlowLayout = {
+            let layout = MyPageCustomCollectionViewFlowLayout()
+            layout.itemSize = CGSize(width: self.view.bounds.width, height: self.view.bounds.height)
+            layout.minimumLineSpacing = 0
+            layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            layout.scrollDirection = .horizontal
+            return layout
+        }()
+        onboardingImage.collectionViewLayout = collectionViewLayout
     }
     
     //MARK: - AddSubview
@@ -53,13 +83,14 @@ class OnboardingViewController: UIViewController{
         self.view.addSubview(self.page)
         self.view.addSubview(self.login)
         self.view.addSubview(self.start)
+        self.view.addSubview(self.onboardingImage)
     }
     
     //MARK: - Selector
     @objc private func didClickStart(_ button: UIButton) {
-        let VC = FirstViewController()
+        let VC = AuthenticationViewController()
         VC.modalPresentationStyle = .fullScreen
-        present(VC, animated: false)
+        present(VC, animated: true)
         print("didClickStart")
     }
     
@@ -87,6 +118,11 @@ class OnboardingViewController: UIViewController{
             $0.centerX.equalToSuperview()
             $0.bottom.equalToSuperview().offset(-51)
         }
+        self.onboardingImage.snp.makeConstraints{
+            $0.leading.trailing.top.equalToSuperview()
+            $0.bottom.equalTo(self.start.snp.top).offset(-50)
+        }
+        
     }
     
     //MARK: - AddTarget
@@ -96,4 +132,59 @@ class OnboardingViewController: UIViewController{
         login.isUserInteractionEnabled = true
         login.addGestureRecognizer(loginBtn)
     }
+}
+
+
+
+
+// CollectionView
+extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+            let imageCell = collectionView.dequeueReusableCell(withReuseIdentifier: OnboardingCell.identifier, for: indexPath) as! OnboardingCell
+            
+        if indexPath.row == 0{
+            imageCell.mainImage.image = UIImage(named: "onboarding1")?.withRenderingMode(.alwaysOriginal)
+        }else if indexPath.row == 1{
+            imageCell.mainImage.image = UIImage(named: "onboarding2")?.withRenderingMode(.alwaysOriginal)
+        }else{
+            imageCell.mainImage.image = UIImage(named: "onboarding3")?.withRenderingMode(.alwaysOriginal)
+        }
+        
+        
+            
+            return imageCell
+        
+        }
+
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        
+        return 0
+        
+    }
+    //section 사이의 공간을 제거
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            return CGSize(width: self.view.bounds.width , height: self.view.bounds.height-150)
+
+        
+    }
+    
 }

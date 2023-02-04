@@ -74,6 +74,27 @@ final class FollowingCell: UICollectionViewCell {
     }
     
 //MARK: - Selector
+    @objc func didClickStarButton(sender: UITapGestureRecognizer){
+        print("didClickStarButton")
+        if starImage.image == UIImage(named: "star")?.withRenderingMode(.alwaysOriginal){
+            starImage.image = UIImage(named: "star.fill")?.withRenderingMode(.alwaysOriginal)
+        }else{
+            starImage.image = UIImage(named: "star")?.withRenderingMode(.alwaysOriginal)
+        }
+    }
+    
+    @objc private func didClickFollow(_ button: UIButton) {
+        print("didClickFollow")
+        if followButton.titleLabel?.text == "팔로잉"{
+            followButton.backgroundColor = .mainColor
+            followButton.setTitle("팔로우", for: .normal)
+            followButton.setTitleColor(UIColor.white, for: .normal)
+        }else{
+            followButton.backgroundColor = .systemGray6
+            followButton.setTitle("팔로잉", for: .normal)
+            followButton.setTitleColor(UIColor.black, for: .normal)
+        }
+    }
     
 
 //MARK: - addSubView
@@ -153,6 +174,10 @@ final class FollowingCell: UICollectionViewCell {
     }
 //MARK: - AddTarget
     private func addTarget(){
+        let starBtn = UITapGestureRecognizer(target: self, action: #selector(didClickStarButton))
+        starImage.isUserInteractionEnabled = true
+        starImage.addGestureRecognizer(starBtn)
         
+        self.followButton.addTarget(self, action: #selector(didClickFollow), for: .touchUpInside)
     }
 }

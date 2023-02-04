@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIFileSharingEnabled</key>
-	<true/>
-	<key>LSSupportsOpeningDocumentsInPlace</key>
-	<true/>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -25,7 +21,7 @@
 			<string>kakaoLogin</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>kakao8993fe3ef733e01759a788f5e63200ba</string>
+				<string>kakaodb906e1e54846a4982ba6cc5ca03b11c</string>
 			</array>
 		</dict>
 		<dict>
@@ -36,6 +32,16 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>naverSchemes</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>test</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>kakao8993fe3ef733e01759a788f5e63200ba</string>
 			</array>
 		</dict>
 	</array>
@@ -73,5 +79,7 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UIFileSharingEnabled</key>
+	<true/>
 </dict>
 </plist>

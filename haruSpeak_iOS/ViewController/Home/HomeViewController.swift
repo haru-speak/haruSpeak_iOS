@@ -18,6 +18,14 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
 
 
 //MARK: - DatsSource
+    let haruSpeakAccessToken = UserDefaults.standard.string(forKey: "haruSpeakAccessToken")
+    let haruSpeakRefreshToken = UserDefaults.standard.string(forKey: "haruSpeakRefreshToken")
+    let userEmail = UserDefaults.standard.string(forKey: "userEmail")
+    let userMemberID = UserDefaults.standard.string(forKey: "userMemberID")
+    let newbieBool = UserDefaults.standard.string(forKey: "newbieBool")
+    let userNickname = UserDefaults.standard.string(forKey: "userNickname")
+    let KakaoAccessCode = UserDefaults.standard.string(forKey: "KakaoAccessCode")
+    
     
     //Announcement 영어 문장
     var announcementString = "What's your favorite movie?"
@@ -358,11 +366,48 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         topView.bringSubviewToFront(self.seperateLine)
         self.view.bringSubviewToFront(self.filterButtonView)
         
-        let OnboardingVC = OnboardingViewController()
-        OnboardingVC.modalPresentationStyle = .fullScreen
-        present(OnboardingVC, animated: false)
-
+        //UserDefault 초기값 만들기 START (바로바로 초기화 안되니 1.에러뜨고, 2.삭제되고, 3.주석처리후 다시 실행 == 초기값)
+//        let domain = Bundle.main.bundleIdentifier!
+//        UserDefaults.standard.removePersistentDomain(forName: domain)
+//        UserDefaults.standard.synchronize()
+//        print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
+        //UserDefault 초기값 만들기 END
+        print("asdasd")
+        print(self.haruSpeakAccessToken)
+        print(self.haruSpeakRefreshToken)
+        print(self.userEmail)
+        print(self.userNickname)
+        print(self.userMemberID)
+        
+        
+        if KakaoAccessCode != nil{
+            KakaoLoginRequestFile().getRequestData(self)
+        }else{
+            let OnboardingVC = OnboardingViewController()
+            OnboardingVC.modalPresentationStyle = .fullScreen
+            present(OnboardingVC, animated: false)
+        }
+        
     }
+    override func viewDidAppear(_ animated: Bool) {
+        print("asdasd")
+        print(self.haruSpeakAccessToken)
+        print(self.haruSpeakRefreshToken)
+        print(self.userEmail)
+        print(self.userNickname)
+        print(self.userMemberID)
+        
+        
+        if haruSpeakAccessToken != nil{
+//            KakaoLoginRequestFile().getRequestData(self)
+            message.text = "\(self.userNickname!)님\n어떤 영화가 좋으세요?"
+        }else{
+            
+        }
+    }
+    
+    
+    
     func checkTodayDate(){
         var formatter_year = DateFormatter()
         formatter_year.dateFormat = "MM월 dd일"
@@ -915,4 +960,25 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         
     }
     
+}
+
+extension HomeViewController{
+    func didSuccess(_ response: KakaoLoginResponseFile){
+        print("HomeViewController hello")
+        var haruSpeakAccessToken = response.data?.accessToken
+        var haruSpeakRefreshToken = response.data?.refreshToken
+        var userEmail = response.data?.email
+        var userMemberID = response.data?.memberId
+        var newbieBool = response.data?.newbie
+        var userNickname = response.data?.nickname
+        
+        UserDefaults.standard.setValue("\(haruSpeakAccessToken!)", forKey: "haruSpeakAccessToken")
+        UserDefaults.standard.setValue("\(haruSpeakRefreshToken!)", forKey: "haruSpeakRefreshToken")
+        UserDefaults.standard.setValue("\(userEmail!)", forKey: "userEmail")
+        UserDefaults.standard.setValue("\(userMemberID!)", forKey: "userMemberID")
+        UserDefaults.standard.setValue("\(newbieBool!)", forKey: "newbieBool")
+        UserDefaults.standard.setValue("\(userNickname!)", forKey: "userNickname")
+
+        print("HomeViewController hello")
+    }
 }
