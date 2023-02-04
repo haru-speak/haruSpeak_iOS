@@ -13,7 +13,7 @@
 		68603AB52982C0E600A1DCD8 /* JoinMSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603AB42982C0E600A1DCD8 /* JoinMSViewController.swift */; };
 		68603AB8298567B200A1DCD8 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603AB7298567B200A1DCD8 /* OnboardingViewController.swift */; };
 		68603ABA29882C3900A1DCD8 /* MakeStudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603AB929882C3900A1DCD8 /* MakeStudyViewController.swift */; };
-		68603ABC298A56C800A1DCD8 /* KakaoLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603ABB298A56C800A1DCD8 /* KakaoLoginModel.swift */; };
+		68603ABC298A56C800A1DCD8 /* KakaoLoginResponseFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603ABB298A56C800A1DCD8 /* KakaoLoginResponseFile.swift */; };
 		68603ABE298A9C7000A1DCD8 /* StudyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603ABD298A9C7000A1DCD8 /* StudyDetailViewController.swift */; };
 		68603AC0298B6BB300A1DCD8 /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603ABF298B6BB300A1DCD8 /* Slider.swift */; };
 		68603AC2298B965900A1DCD8 /* DeleteMakeStudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603AC1298B965800A1DCD8 /* DeleteMakeStudyViewController.swift */; };
@@ -63,6 +63,7 @@
 		E5E60053298C9B7000B6E78F /* PointViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E60052298C9B7000B6E78F /* PointViewCell.swift */; };
 		E5E60056298D1EFE00B6E78F /* MyPageCustomCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E60055298D1EFE00B6E78F /* MyPageCustomCollectionViewFlowLayout.swift */; };
 		E5E60058298D558800B6E78F /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E60057298D558800B6E78F /* OnboardingCell.swift */; };
+		E5E6005B298D695600B6E78F /* KakaoLoginRequestFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E6005A298D695600B6E78F /* KakaoLoginRequestFile.swift */; };
 		E5E984B6296ED95300E5DE83 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E984B5296ED95300E5DE83 /* UIColor+.swift */; };
 		E5E984B8296ED95D00E5DE83 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E984B7296ED95D00E5DE83 /* UIFont+.swift */; };
 		E5E984BB296ED9A900E5DE83 /* TempService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E984BA296ED9A900E5DE83 /* TempService.swift */; };
@@ -102,7 +103,7 @@
 		68603AB42982C0E600A1DCD8 /* JoinMSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinMSViewController.swift; sourceTree = "<group>"; };
 		68603AB7298567B200A1DCD8 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		68603AB929882C3900A1DCD8 /* MakeStudyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeStudyViewController.swift; sourceTree = "<group>"; };
-		68603ABB298A56C800A1DCD8 /* KakaoLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginModel.swift; sourceTree = "<group>"; };
+		68603ABB298A56C800A1DCD8 /* KakaoLoginResponseFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginResponseFile.swift; sourceTree = "<group>"; };
 		68603ABD298A9C7000A1DCD8 /* StudyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyDetailViewController.swift; sourceTree = "<group>"; };
 		68603ABF298B6BB300A1DCD8 /* Slider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
 		68603AC1298B965800A1DCD8 /* DeleteMakeStudyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteMakeStudyViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +161,7 @@
 		E5E60052298C9B7000B6E78F /* PointViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointViewCell.swift; sourceTree = "<group>"; };
 		E5E60055298D1EFE00B6E78F /* MyPageCustomCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCustomCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		E5E60057298D558800B6E78F /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
+		E5E6005A298D695600B6E78F /* KakaoLoginRequestFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginRequestFile.swift; sourceTree = "<group>"; };
 		E5E984B5296ED95300E5DE83 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		E5E984B7296ED95D00E5DE83 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		E5E984BA296ED9A900E5DE83 /* TempService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempService.swift; sourceTree = "<group>"; };
@@ -355,6 +357,15 @@
 			path = MyPage;
 			sourceTree = "<group>";
 		};
+		E5E60059298D690400B6E78F /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				68603ABB298A56C800A1DCD8 /* KakaoLoginResponseFile.swift */,
+				E5E6005A298D695600B6E78F /* KakaoLoginRequestFile.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 		E5E984B0296ED8DB00E5DE83 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -395,9 +406,9 @@
 		E5E984B9296ED96400E5DE83 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E5E60059298D690400B6E78F /* Authentication */,
 				E5E60054298D1EE000B6E78F /* MyPage */,
 				E5E984BC296ED9B500E5DE83 /* TempModel.swift */,
-				68603ABB298A56C800A1DCD8 /* KakaoLoginModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -768,7 +779,7 @@
 				E5E984BB296ED9A900E5DE83 /* TempService.swift in Sources */,
 				E5E984B8296ED95D00E5DE83 /* UIFont+.swift in Sources */,
 				68603AC6298C00C300A1DCD8 /* MessageCustomTabbar.swift in Sources */,
-				68603ABC298A56C800A1DCD8 /* KakaoLoginModel.swift in Sources */,
+				68603ABC298A56C800A1DCD8 /* KakaoLoginResponseFile.swift in Sources */,
 				E5E600472987A98100B6E78F /* CustomTabbarMyPage.swift in Sources */,
 				E5158DD32981748200054322 /* ThirdViewController.swift in Sources */,
 				E5FD566629790E0A0088DDAF /* SearchFilterView.swift in Sources */,
@@ -783,6 +794,7 @@
 				E5E60053298C9B7000B6E78F /* PointViewCell.swift in Sources */,
 				E5E984B6296ED95300E5DE83 /* UIColor+.swift in Sources */,
 				E5F7F4DA297F9A540004800E /* CommentCell.swift in Sources */,
+				E5E6005B298D695600B6E78F /* KakaoLoginRequestFile.swift in Sources */,
 				68603AC2298B965900A1DCD8 /* DeleteMakeStudyViewController.swift in Sources */,
 				E51CE8C92971038A00ADB07B /* ClickRecordViewController.swift in Sources */,
 				E5E60058298D558800B6E78F /* OnboardingCell.swift in Sources */,
@@ -976,6 +988,7 @@
 				DEVELOPMENT_TEAM = 6CNX5P6BQG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = haruSpeak_iOS/Info.plist;
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "영어 말하기 발음 확인을 위해 진행합니다";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "영어 말하기 발음 분석을 위해 녹음을 진행합니다";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1008,6 +1021,7 @@
 				DEVELOPMENT_TEAM = 6CNX5P6BQG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = haruSpeak_iOS/Info.plist;
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "영어 말하기 발음 확인을 위해 진행합니다";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "영어 말하기 발음 분석을 위해 녹음을 진행합니다";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

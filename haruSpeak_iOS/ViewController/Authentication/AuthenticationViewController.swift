@@ -9,18 +9,36 @@ import Foundation
 import UIKit
 import SnapKit
 import Then
-import GoogleSignIn
+//import GoogleSignIn
 import KakaoSDKAuth
 import KakaoSDKUser
 import KakaoSDKCommon
 import AuthenticationServices
-import NaverThirdPartyLogin
+//import NaverThirdPartyLogin
 import Alamofire
+
+import SafariServices
 
 class AuthenticationViewController: UIViewController{
     
     
     //MARK: - Properties
+    let testButton = UIButton().then{
+        $0.setTitle("카카오 테스트 버튼", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
+        $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
+        $0.roundCorners(cornerRadius: 6, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
+        $0.backgroundColor = .mainColor
+    }
+    let goToHomeViewControllerButton = UIButton().then{
+        $0.setTitle("홈 바로가기", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
+        $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
+        $0.roundCorners(cornerRadius: 6, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
+        $0.backgroundColor = .mainColor
+    }
+    
+    
     let arrowLeft = UIButton(type: .system).then{
         $0.setTitle("arrowLeft", for: .normal)
         $0.setImage(UIImage(named: "arrowLeft")?.withRenderingMode(.alwaysOriginal), for: .normal)
@@ -31,13 +49,13 @@ class AuthenticationViewController: UIViewController{
         $0.textColor = .black
     }
     
-    let emailLogin = UIButton(type: .system).then{
-        $0.setTitle("이메일 주소로 계속하기", for: .normal)
-        $0.setTitleColor(.white, for: .normal)
-        $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
-        $0.roundCorners(cornerRadius: 6, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
-        $0.backgroundColor = .mainColor
-    }
+//    let emailLogin = UIButton(type: .system).then{
+//        $0.setTitle("이메일 주소로 계속하기", for: .normal)
+//        $0.setTitleColor(.white, for: .normal)
+//        $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
+//        $0.roundCorners(cornerRadius: 6, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
+//        $0.backgroundColor = .mainColor
+//    }
     let KakaoTalkLogin = UIButton(type: .system).then{
         $0.setTitle("카카오톡으로 계속하기", for: .normal)
         $0.setTitleColor(.black, for: .normal)
@@ -52,33 +70,33 @@ class AuthenticationViewController: UIViewController{
         $0.roundCorners(cornerRadius: 6, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
         $0.backgroundColor = .black
     }
-    let NaverLogin = UIButton(type: .system).then{
-        $0.setTitle("Naver로 계속하기", for: .normal)
-        $0.setTitleColor(.white, for: .normal)
-        $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
-        $0.roundCorners(cornerRadius: 6, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
-        $0.backgroundColor = .NaverColor
-    }
-    let GoogleLogin = UIButton(type: .system).then{
-        $0.setTitle("구글 계정으로 계속하기", for: .normal)
-        $0.setTitleColor(.black, for: .normal)
-        $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
-        $0.roundCorners(cornerRadius: 6, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
-        $0.layer.borderWidth = 1
-        $0.layer.borderColor = UIColor.systemGray4.cgColor
-    }
+//    let NaverLogin = UIButton(type: .system).then{
+//        $0.setTitle("Naver로 계속하기", for: .normal)
+//        $0.setTitleColor(.white, for: .normal)
+//        $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
+//        $0.roundCorners(cornerRadius: 6, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
+//        $0.backgroundColor = .NaverColor
+//    }
+//    let GoogleLogin = UIButton(type: .system).then{
+//        $0.setTitle("구글 계정으로 계속하기", for: .normal)
+//        $0.setTitleColor(.black, for: .normal)
+//        $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
+//        $0.roundCorners(cornerRadius: 6, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
+//        $0.layer.borderWidth = 1
+//        $0.layer.borderColor = UIColor.systemGray4.cgColor
+//    }
     let joinMembership = UILabel().then{
         $0.text = "아직 계정이 없나요? 회원가입 하기"
         $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size: 13)
         $0.textColor = .lightGray
     }
-    let naverLoginInstance = NaverThirdPartyLoginConnection.getSharedInstance()
+//    let naverLoginInstance = NaverThirdPartyLoginConnection.getSharedInstance()
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        naverLoginInstance?.delegate = self
+//        naverLoginInstance?.delegate = self
         setupView()
         setupLayout()
         addTarget()
@@ -92,29 +110,29 @@ class AuthenticationViewController: UIViewController{
     @objc func arrowLeftButtonTapped(){
         dismiss(animated: true)
     }
-    
-    @objc func emailLoginButtonTapped(){
-        let VC = EmailLoginViewController()
-        VC.modalPresentationStyle = .fullScreen
-        present(VC, animated: true)
-        }
-    
-    @objc func googleLoginButtonTapped(){
-        GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
-        guard error == nil else { return }
-        guard let signInResult = signInResult else { return }
-
-        let user = signInResult.user
-        let emailAddress = user.profile?.email
-        let fullName = user.profile?.name
-        print(user)
-        print(emailAddress)
-        print(fullName)
-        UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: true, completion: nil)
-        }
-
-        // If sign in succeeded, display the app's main content View.
-    }
+//
+//    @objc func emailLoginButtonTapped(){
+//        let VC = EmailLoginViewController()
+//        VC.modalPresentationStyle = .fullScreen
+//        present(VC, animated: true)
+//        }
+//
+//    @objc func googleLoginButtonTapped(){
+//        GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
+//        guard error == nil else { return }
+//        guard let signInResult = signInResult else { return }
+//
+//        let user = signInResult.user
+//        let emailAddress = user.profile?.email
+//        let fullName = user.profile?.name
+//        print(user)
+//        print(emailAddress)
+//        print(fullName)
+//        UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: true, completion: nil)
+//        }
+//
+//        // If sign in succeeded, display the app's main content View.
+//    }
     
     @objc func kakaoLoginButtonTapped(){
         // isKakaoTalkLoginAvailable() : 카톡 설치 되어있으면 true
@@ -132,10 +150,25 @@ class AuthenticationViewController: UIViewController{
                         }
                         else {
                             print("me() success.")
+                            // 사용자 액세스 토큰 정보 조회
+                            UserApi.shared.accessTokenInfo {(accessTokenInfo, error) in
+                                if let error = error {
+                                    print(error)
+                                }
+                                else {
+                                    print(accessTokenInfo)
+
+                                    //do something
+                                    _ = accessTokenInfo
+                                }
+                            }
                             UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: true, completion: nil)
                             
                             //do something
                             _ = user
+                            
+                            
+                            
                         }
                     }
 
@@ -183,67 +216,67 @@ class AuthenticationViewController: UIViewController{
         authorizationController.presentationContextProvider = self
         authorizationController.performRequests()
     }
-    
-    @objc func naverLoginButtonTapped(){
-        naverLoginInstance?.requestThirdPartyLogin()
-        naverLoginPaser()
-    }
-    
-    func naverLoginPaser() {
-        guard let accessToken = naverLoginInstance?.isValidAccessTokenExpireTimeNow() else { return }
-        
-        if !accessToken {
-            return
-        }
-        guard let tokenType = naverLoginInstance?.tokenType else { return }
-        guard let accessToken = naverLoginInstance?.accessToken else { return }
-        
-        let requestUrl = "https://openapi.naver.com/v1/nid/me"
-        let url = URL(string: requestUrl)!
-        
-        let authorization = "\(tokenType) \(accessToken)"
-        
-        let req = AF.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization": authorization])
-        
-        req.responseJSON { response in
-            guard let body = response.value as? [String: Any] else { return }
-            
-            if let resultCode = body["message"] as? String{
-                if resultCode.trimmingCharacters(in: .whitespaces) == "success"{
-                    let resultJson = body["response"] as! [String: Any]
-                    
-                    let name = resultJson["name"] as? String ?? ""
-                    let id = resultJson["id"] as? String ?? ""
-                    //                          let phone = resultJson["mobile"] as! String
-                    //                          let gender = resultJson["gender"] as? String ?? ""
-                    //                          let birthyear = resultJson["birthyear"] as? String ?? ""
-                    //                          let birthday = resultJson["birthday"] as? String ?? ""
-                    //                          let profile = resultJson["profile_image"] as? String ?? ""
-                    let email = resultJson["email"] as? String ?? ""
-                    //                          let nickName = resultJson["nickname"] as? String ?? ""
-                    
-                    print("네이버 로그인 이름 ",name)
-                    print("네이버 로그인 아이디 ",id)
-                    //                          print("네이버 로그인 핸드폰 ",phone)
-                    //                          print("네이버 로그인 성별 ",gender)
-                    //                          print("네이버 로그인 생년 ",birthyear)
-                    //                          print("네이버 로그인 생일 ",birthday)
-                    //                          print("네이버 로그인 프로필사진 ",profile)
-                    print("네이버 로그인 이메일 ",email)
-                    //                          print("네이버 로그인 닉네임 ",nickName)
-                    
-                }
-                else{
-                    //실패
-                }
-                
-            }
-        }
-        UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: true, completion: nil)
-        
-    }
-    
-    
+//
+//    @objc func naverLoginButtonTapped(){
+//        naverLoginInstance?.requestThirdPartyLogin()
+//        naverLoginPaser()
+//    }
+//
+//    func naverLoginPaser() {
+//        guard let accessToken = naverLoginInstance?.isValidAccessTokenExpireTimeNow() else { return }
+//
+//        if !accessToken {
+//            return
+//        }
+//        guard let tokenType = naverLoginInstance?.tokenType else { return }
+//        guard let accessToken = naverLoginInstance?.accessToken else { return }
+//
+//        let requestUrl = "https://openapi.naver.com/v1/nid/me"
+//        let url = URL(string: requestUrl)!
+//
+//        let authorization = "\(tokenType) \(accessToken)"
+//
+//        let req = AF.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization": authorization])
+//
+//        req.responseJSON { response in
+//            guard let body = response.value as? [String: Any] else { return }
+//
+//            if let resultCode = body["message"] as? String{
+//                if resultCode.trimmingCharacters(in: .whitespaces) == "success"{
+//                    let resultJson = body["response"] as! [String: Any]
+//
+//                    let name = resultJson["name"] as? String ?? ""
+//                    let id = resultJson["id"] as? String ?? ""
+//                    //                          let phone = resultJson["mobile"] as! String
+//                    //                          let gender = resultJson["gender"] as? String ?? ""
+//                    //                          let birthyear = resultJson["birthyear"] as? String ?? ""
+//                    //                          let birthday = resultJson["birthday"] as? String ?? ""
+//                    //                          let profile = resultJson["profile_image"] as? String ?? ""
+//                    let email = resultJson["email"] as? String ?? ""
+//                    //                          let nickName = resultJson["nickname"] as? String ?? ""
+//
+//                    print("네이버 로그인 이름 ",name)
+//                    print("네이버 로그인 아이디 ",id)
+//                    //                          print("네이버 로그인 핸드폰 ",phone)
+//                    //                          print("네이버 로그인 성별 ",gender)
+//                    //                          print("네이버 로그인 생년 ",birthyear)
+//                    //                          print("네이버 로그인 생일 ",birthday)
+//                    //                          print("네이버 로그인 프로필사진 ",profile)
+//                    print("네이버 로그인 이메일 ",email)
+//                    //                          print("네이버 로그인 닉네임 ",nickName)
+//
+//                }
+//                else{
+//                    //실패
+//                }
+//
+//            }
+//        }
+//        UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: true, completion: nil)
+//
+//    }
+//
+//
     
     @objc func joinMembershipButtonTapped(){
         let VC = MembershipViewController()
@@ -251,17 +284,39 @@ class AuthenticationViewController: UIViewController{
         present(VC, animated: true)
     }
         
+    @objc func didClickGoHome(){
+        UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func didClickTestButton(){
+        print("didClickTestButton")
+        
+        if let url = URL(string: "https://kauth.kakao.com/oauth/authorize?client_id=9a859088c85984edc80c3356ed0a41f3&redirect_uri=https://api.haru-speak.site/login/kakao&response_type=code") {
+            UIApplication.shared.open(url)
+        }
+        
+//        guard let url = URL(string: "https://kauth.kakao.com/oauth/authorize?client_id=9a859088c85984edc80c3356ed0a41f3") else { return }
+//        let safariViewController = SFSafariViewController(url: url)
+//        present(safariViewController, animated: true, completion: nil)
+
+
+        KakaoLoginRequestFile().getRequestData(self)
+    }
+    
     
     //MARK: - addSubView
         private func setupView(){
             self.view.addSubview(self.arrowLeft)
             self.view.addSubview(self.loginText)
-            self.view.addSubview(self.emailLogin)
+//            self.view.addSubview(self.emailLogin)
             self.view.addSubview(self.KakaoTalkLogin)
             self.view.addSubview(self.AppleLogin)
-            self.view.addSubview(self.NaverLogin)
-            self.view.addSubview(self.GoogleLogin)
+//            self.view.addSubview(self.NaverLogin)
+//            self.view.addSubview(self.GoogleLogin)
             self.view.addSubview(self.joinMembership)
+            
+            self.view.addSubview(self.goToHomeViewControllerButton)
+            self.view.addSubview(self.testButton)
 
 
         }
@@ -281,16 +336,16 @@ class AuthenticationViewController: UIViewController{
         }
             
         
-        self.emailLogin.snp.makeConstraints{
-            $0.centerX.equalToSuperview()
-            $0.top.equalTo(self.view.snp.top).offset(255)
-            $0.width.equalTo(333)
-            $0.height.equalTo(45)
-        }
-        
+//        self.emailLogin.snp.makeConstraints{
+//            $0.centerX.equalToSuperview()
+//            $0.top.equalTo(self.view.snp.top).offset(255)
+//            $0.width.equalTo(333)
+//            $0.height.equalTo(45)
+//        }
+//
         self.KakaoTalkLogin.snp.makeConstraints{
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(self.emailLogin.snp.bottom).offset(15)
+            $0.top.equalTo(self.loginText.snp.bottom).offset(255)
             $0.width.equalTo(333)
             $0.height.equalTo(45)
         }
@@ -302,22 +357,31 @@ class AuthenticationViewController: UIViewController{
             $0.height.equalTo(45)
         }
         
-        self.NaverLogin.snp.makeConstraints{
-            $0.centerX.equalToSuperview()
-            $0.top.equalTo(self.AppleLogin.snp.bottom).offset(15)
-            $0.width.equalTo(333)
-            $0.height.equalTo(45)
-        }
-        self.GoogleLogin.snp.makeConstraints{
-            $0.centerX.equalToSuperview()
-            $0.top.equalTo(self.NaverLogin.snp.bottom).offset(15)
-            $0.width.equalTo(333)
-            $0.height.equalTo(45)
-        }
+//        self.NaverLogin.snp.makeConstraints{
+//            $0.centerX.equalToSuperview()
+//            $0.top.equalTo(self.AppleLogin.snp.bottom).offset(15)
+//            $0.width.equalTo(333)
+//            $0.height.equalTo(45)
+//        }
+//        self.GoogleLogin.snp.makeConstraints{
+//            $0.centerX.equalToSuperview()
+//            $0.top.equalTo(self.NaverLogin.snp.bottom).offset(15)
+//            $0.width.equalTo(333)
+//            $0.height.equalTo(45)
+//        }
         
         self.joinMembership.snp.makeConstraints{
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(self.GoogleLogin.snp.bottom).offset(19)
+            $0.top.equalTo(self.AppleLogin.snp.bottom).offset(19)
+        }
+        
+        self.testButton.snp.makeConstraints{
+            $0.centerX.equalToSuperview()
+            $0.top.equalToSuperview().offset(80)
+        }
+        self.goToHomeViewControllerButton.snp.makeConstraints{
+            $0.centerX.equalToSuperview()
+            $0.top.equalToSuperview().offset(130)
         }
         
     }
@@ -325,14 +389,19 @@ class AuthenticationViewController: UIViewController{
 //MARK: - AddTarget
     private func addTarget(){
         self.arrowLeft.addTarget(self, action: #selector(self.arrowLeftButtonTapped), for: .touchUpInside)
-        self.emailLogin.addTarget(self, action: #selector(self.emailLoginButtonTapped), for: .touchUpInside)
-        self.GoogleLogin.addTarget(self, action: #selector(self.googleLoginButtonTapped), for: .touchUpInside)
+//        self.emailLogin.addTarget(self, action: #selector(self.emailLoginButtonTapped), for: .touchUpInside)
+//        self.GoogleLogin.addTarget(self, action: #selector(self.googleLoginButtonTapped), for: .touchUpInside)
         self.KakaoTalkLogin.addTarget(self, action: #selector(self.kakaoLoginButtonTapped), for: .touchUpInside)
         self.AppleLogin.addTarget(self, action: #selector(self.appleLoginButtonTapped), for: .touchUpInside)
-        self.NaverLogin.addTarget(self, action: #selector(self.naverLoginButtonTapped), for: .touchUpInside)
+//        self.NaverLogin.addTarget(self, action: #selector(self.naverLoginButtonTapped), for: .touchUpInside)
         let joinMSBtn = UITapGestureRecognizer(target: self, action: #selector(joinMembershipButtonTapped))
         joinMembership.isUserInteractionEnabled = true
         joinMembership.addGestureRecognizer(joinMSBtn)
+        
+        
+        self.goToHomeViewControllerButton.addTarget(self, action: #selector(self.didClickGoHome), for: .touchUpInside)
+        self.testButton.addTarget(self, action: #selector(self.didClickTestButton), for: .touchUpInside)
+        
     }
     
 }
@@ -373,22 +442,29 @@ extension AuthenticationViewController: ASAuthorizationControllerPresentationCon
     }
 }
 
-//MARK: - Extension Naver
-extension AuthenticationViewController : NaverThirdPartyLoginConnectionDelegate{
-    func oauth20ConnectionDidFinishRequestACTokenWithAuthCode() {
-        print("네이버 로그인 성공")
-        self.naverLoginPaser()
-    }
-    
-    func oauth20ConnectionDidFinishRequestACTokenWithRefreshToken() {
-        print("네이버 토큰\(naverLoginInstance?.accessToken)")
-    }
-    
-    func oauth20ConnectionDidFinishDeleteToken() {
-        print("네이버 로그아웃")
-    }
-    
-    func oauth20Connection(_ oauthConnection: NaverThirdPartyLoginConnection!, didFailWithError error: Error!) {
-        print("에러 = \(error.localizedDescription)")
+////MARK: - Extension Naver
+//extension AuthenticationViewController : NaverThirdPartyLoginConnectionDelegate{
+//    func oauth20ConnectionDidFinishRequestACTokenWithAuthCode() {
+//        print("네이버 로그인 성공")
+//        self.naverLoginPaser()
+//    }
+//
+//    func oauth20ConnectionDidFinishRequestACTokenWithRefreshToken() {
+//        print("네이버 토큰\(naverLoginInstance?.accessToken)")
+//    }
+//
+//    func oauth20ConnectionDidFinishDeleteToken() {
+//        print("네이버 로그아웃")
+//    }
+//
+//    func oauth20Connection(_ oauthConnection: NaverThirdPartyLoginConnection!, didFailWithError error: Error!) {
+//        print("에러 = \(error.localizedDescription)")
+//    }
+//}
+
+extension AuthenticationViewController{
+    func didSuccess(_ response: KakaoLoginResponseFile){
+        print("hello")
+        
     }
 }
