@@ -57,6 +57,7 @@ class OnboardingViewController: UIViewController{
         onboardingImage.isPagingEnabled = false
         collectionViewLayout()
         
+        var a = UserDefaults.standard.string(forKey: "KakaoAccessToken")
     }
     
 //MARK: - CollectionView Layout
@@ -87,9 +88,9 @@ class OnboardingViewController: UIViewController{
     
     //MARK: - Selector
     @objc private func didClickStart(_ button: UIButton) {
-        let VC = FirstViewController()
+        let VC = AuthenticationViewController()
         VC.modalPresentationStyle = .fullScreen
-        present(VC, animated: false)
+        present(VC, animated: true)
         print("didClickStart")
     }
     

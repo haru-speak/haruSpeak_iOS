@@ -21,7 +21,7 @@
 			<string>kakaoLogin</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>kakao8993fe3ef733e01759a788f5e63200ba</string>
+				<string>kakaodb906e1e54846a4982ba6cc5ca03b11c</string>
 			</array>
 		</dict>
 		<dict>
@@ -38,9 +38,11 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string></string>
+			<string>test</string>
 			<key>CFBundleURLSchemes</key>
-			<array/>
+			<array>
+				<string>kakao8993fe3ef733e01759a788f5e63200ba</string>
+			</array>
 		</dict>
 	</array>
 	<key>GIDClientID</key>

@@ -11,27 +11,62 @@ import UIKit
 
 class KakaoLoginRequestFile{
     func getRequestData(_ viewController: AuthenticationViewController){
+        var KakaoAccessCode = UserDefaults.standard.string(forKey: "KakaoAccessCode")
         let url =
-        "https://kauth.kakao.com/oauth/authorize?client_id=9a859088c85984edc80c3356ed0a41f3&redirect_uri=https://api.haru-speak.site/login/kakao&response_type=code"
+        "https://api.haru-speak.site:443/app/login/kakao"
 
+        let params = [
+            "accessToken": "\(KakaoAccessCode!)"
+        ]
 
         //HTTP Method GET
         AF.request(url,
                    method: .post,
-                   headers: nil)
+                   parameters: params,
+                   encoding: JSONEncoding.default)
         .responseDecodable(of: KakaoLoginResponseFile.self) {response in
 
             switch response.result{
             case .success(let response):
-                print("DEBUG>> Kakao Response \\(response)")
+                print("DEBUG>> Kakao Response \(response)")
                 viewController.didSuccess(response)
 
             case .failure(let error):
-                print("DEBUG>> Kakao Get Error : \\(error.localizedDescription)")
+                print("DEBUG>> Kakao Get Error : \(error.localizedDescription)")
                 print(error.localizedDescription)
             }
         }
     }
+    
+    func getRequestData(_ viewController: HomeViewController){
+        var KakaoAccessCode = UserDefaults.standard.string(forKey: "KakaoAccessCode")
+        let url =
+        "https://api.haru-speak.site:443/app/login/kakao"
+
+        let params = [
+            "accessToken": "\(KakaoAccessCode!)"
+        ]
+
+        //HTTP Method GET
+        AF.request(url,
+                   method: .post,
+                   parameters: params,
+                   encoding: JSONEncoding.default)
+        .responseDecodable(of: KakaoLoginResponseFile.self) {response in
+
+            switch response.result{
+            case .success(let response):
+                print("DEBUG>> Kakao Response \(response)")
+                viewController.didSuccess(response)
+
+            case .failure(let error):
+                print("DEBUG>> Kakao Get Error : \(error.localizedDescription)")
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    
 }
 
 public enum MyError: Error {

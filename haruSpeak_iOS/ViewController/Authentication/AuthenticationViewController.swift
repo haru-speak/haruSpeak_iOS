@@ -21,24 +21,14 @@ import SafariServices
 
 class AuthenticationViewController: UIViewController{
     
+    //MARK: - DATASOURCE
+    
+    var KakaoAccessCode : String = ""
+    var KakaoRefreshCode : String = ""
+    
+    
     
     //MARK: - Properties
-    let testButton = UIButton().then{
-        $0.setTitle("카카오 테스트 버튼", for: .normal)
-        $0.setTitleColor(.white, for: .normal)
-        $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
-        $0.roundCorners(cornerRadius: 6, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
-        $0.backgroundColor = .mainColor
-    }
-    let goToHomeViewControllerButton = UIButton().then{
-        $0.setTitle("홈 바로가기", for: .normal)
-        $0.setTitleColor(.white, for: .normal)
-        $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
-        $0.roundCorners(cornerRadius: 6, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
-        $0.backgroundColor = .mainColor
-    }
-    
-    
     let arrowLeft = UIButton(type: .system).then{
         $0.setTitle("arrowLeft", for: .normal)
         $0.setImage(UIImage(named: "arrowLeft")?.withRenderingMode(.alwaysOriginal), for: .normal)
@@ -85,11 +75,11 @@ class AuthenticationViewController: UIViewController{
 //        $0.layer.borderWidth = 1
 //        $0.layer.borderColor = UIColor.systemGray4.cgColor
 //    }
-    let joinMembership = UILabel().then{
-        $0.text = "아직 계정이 없나요? 회원가입 하기"
-        $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size: 13)
-        $0.textColor = .lightGray
-    }
+//    let joinMembership = UILabel().then{
+//        $0.text = "아직 계정이 없나요? 회원가입 하기"
+//        $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size: 13)
+//        $0.textColor = .lightGray
+//    }
 //    let naverLoginInstance = NaverThirdPartyLoginConnection.getSharedInstance()
     
     //MARK: - LifeCycle
@@ -100,9 +90,9 @@ class AuthenticationViewController: UIViewController{
         setupView()
         setupLayout()
         addTarget()
-        let attributedStr = NSMutableAttributedString(string: joinMembership.text!)
-        attributedStr.addAttribute(.foregroundColor, value: UIColor.gray, range: (joinMembership.text! as NSString).range(of: "회원가입 하기"))
-        joinMembership.attributedText = attributedStr
+//        let attributedStr = NSMutableAttributedString(string: joinMembership.text!)
+//        attributedStr.addAttribute(.foregroundColor, value: UIColor.gray, range: (joinMembership.text! as NSString).range(of: "회원가입 하기"))
+//        joinMembership.attributedText = attributedStr
         
     }
     
@@ -139,10 +129,12 @@ class AuthenticationViewController: UIViewController{
         // 카카오톡 실행 가능 여부 확인
         if (UserApi.isKakaoTalkLoginAvailable()) {
             UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
+              
                 if let error = error {
                     print(error)
                 }
                 else {
+                    
                     print("loginWithKakaoTalk() success.")
                     UserApi.shared.me() {(user, error) in
                         if let error = error {
@@ -162,7 +154,11 @@ class AuthenticationViewController: UIViewController{
                                     _ = accessTokenInfo
                                 }
                             }
+                            //로그인 기록이 있으면
                             UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: true, completion: nil)
+                            //새로운 유저라면
+                            // --> UserSetting 나오게 해야함 (쟨 dismiss하고 Home에서 구현해야할듯)
+                            
                             
                             //do something
                             _ = user
@@ -180,6 +176,7 @@ class AuthenticationViewController: UIViewController{
         } else {
 
             // 카톡 없으면 -> 계정으로 로그인
+
             UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
                 if let error = error {
                         print(error)
@@ -191,8 +188,20 @@ class AuthenticationViewController: UIViewController{
                                 print(error)
                             }
                             else {
+                                let accessToken = oauthToken?.accessToken
+                                let refreshToken = oauthToken?.refreshToken
+                                
+                                self.KakaoAccessCode = accessToken!
+                                self.KakaoRefreshCode = refreshToken!
+                                
+                                UserDefaults.standard.setValue(self.KakaoAccessCode, forKey: "KakaoAccessCode")
+                                
+                                KakaoLoginRequestFile().getRequestData(self)
+                                
                                 print("me() success.")
-                                UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: true, completion: nil)
+                                let OnboardingVC = FirstViewController()
+                                OnboardingVC.modalPresentationStyle = .fullScreen
+                                self.present(OnboardingVC, animated: false)
                                 
                                 //do something
                                 _ = user
@@ -206,6 +215,24 @@ class AuthenticationViewController: UIViewController{
         }
     }
     
+    
+//    // 카카오톡 로그인. api 호출 결과를 클로저로 전달.
+//      UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
+//        if let error = error {
+//            // 예외 처리 (로그인 취소 등)
+//            print(error)
+//        }
+//        else {
+//            print("loginWithKakaoTalk() success.")
+//           // do something
+//            _ = oauthToken
+//           // 어세스토큰
+//           let accessToken = oauthToken?.accessToken
+//            print("accessToken")
+//            print(accessToken)
+//            print("accessToken")
+//        }
+//    }
     @objc func appleLoginButtonTapped(){
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let request = appleIDProvider.createRequest()
@@ -278,11 +305,11 @@ class AuthenticationViewController: UIViewController{
 //
 //
     
-    @objc func joinMembershipButtonTapped(){
-        let VC = MembershipViewController()
-        VC.modalPresentationStyle = .fullScreen
-        present(VC, animated: true)
-    }
+//    @objc func joinMembershipButtonTapped(){
+//        let VC = MembershipViewController()
+//        VC.modalPresentationStyle = .fullScreen
+//        present(VC, animated: true)
+//    }
         
     @objc func didClickGoHome(){
         UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: true, completion: nil)
@@ -300,7 +327,7 @@ class AuthenticationViewController: UIViewController{
 //        present(safariViewController, animated: true, completion: nil)
 
 
-        KakaoLoginRequestFile().getRequestData(self)
+        
     }
     
     
@@ -313,12 +340,7 @@ class AuthenticationViewController: UIViewController{
             self.view.addSubview(self.AppleLogin)
 //            self.view.addSubview(self.NaverLogin)
 //            self.view.addSubview(self.GoogleLogin)
-            self.view.addSubview(self.joinMembership)
-            
-            self.view.addSubview(self.goToHomeViewControllerButton)
-            self.view.addSubview(self.testButton)
-
-
+//            self.view.addSubview(self.joinMembership)
         }
     
     //MARK: - Layout
@@ -370,19 +392,11 @@ class AuthenticationViewController: UIViewController{
 //            $0.height.equalTo(45)
 //        }
         
-        self.joinMembership.snp.makeConstraints{
-            $0.centerX.equalToSuperview()
-            $0.top.equalTo(self.AppleLogin.snp.bottom).offset(19)
-        }
-        
-        self.testButton.snp.makeConstraints{
-            $0.centerX.equalToSuperview()
-            $0.top.equalToSuperview().offset(80)
-        }
-        self.goToHomeViewControllerButton.snp.makeConstraints{
-            $0.centerX.equalToSuperview()
-            $0.top.equalToSuperview().offset(130)
-        }
+//        self.joinMembership.snp.makeConstraints{
+//            $0.centerX.equalToSuperview()
+//            $0.top.equalTo(self.AppleLogin.snp.bottom).offset(19)
+//        }
+
         
     }
     
@@ -394,14 +408,10 @@ class AuthenticationViewController: UIViewController{
         self.KakaoTalkLogin.addTarget(self, action: #selector(self.kakaoLoginButtonTapped), for: .touchUpInside)
         self.AppleLogin.addTarget(self, action: #selector(self.appleLoginButtonTapped), for: .touchUpInside)
 //        self.NaverLogin.addTarget(self, action: #selector(self.naverLoginButtonTapped), for: .touchUpInside)
-        let joinMSBtn = UITapGestureRecognizer(target: self, action: #selector(joinMembershipButtonTapped))
-        joinMembership.isUserInteractionEnabled = true
-        joinMembership.addGestureRecognizer(joinMSBtn)
-        
-        
-        self.goToHomeViewControllerButton.addTarget(self, action: #selector(self.didClickGoHome), for: .touchUpInside)
-        self.testButton.addTarget(self, action: #selector(self.didClickTestButton), for: .touchUpInside)
-        
+//        let joinMSBtn = UITapGestureRecognizer(target: self, action: #selector(joinMembershipButtonTapped))
+//        joinMembership.isUserInteractionEnabled = true
+//        joinMembership.addGestureRecognizer(joinMSBtn)
+
     }
     
 }
@@ -464,7 +474,21 @@ extension AuthenticationViewController: ASAuthorizationControllerPresentationCon
 
 extension AuthenticationViewController{
     func didSuccess(_ response: KakaoLoginResponseFile){
-        print("hello")
+        print("AuthenticationViewController hello")
+        var haruSpeakAccessToken = response.data?.accessToken
+        var haruSpeakRefreshToken = response.data?.refreshToken
+        var userEmail = response.data?.email
+        var userMemberID = response.data?.memberId
+        var newbieBool = response.data?.newbie
+        var userNickname = response.data?.nickname
         
+        UserDefaults.standard.setValue("\(haruSpeakAccessToken!)", forKey: "haruSpeakAccessToken")
+        UserDefaults.standard.setValue("\(haruSpeakRefreshToken!)", forKey: "haruSpeakRefreshToken")
+        UserDefaults.standard.setValue("\(userEmail!)", forKey: "userEmail")
+        UserDefaults.standard.setValue("\(userMemberID!)", forKey: "userMemberID")
+        UserDefaults.standard.setValue("\(newbieBool!)", forKey: "newbieBool")
+        UserDefaults.standard.setValue("\(userNickname!)", forKey: "userNickname")
+
+        print("AuthenticationViewController hello")
     }
 }
