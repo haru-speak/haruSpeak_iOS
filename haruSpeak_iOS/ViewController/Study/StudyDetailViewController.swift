@@ -31,7 +31,7 @@ class StudyDetailViewController: UIViewController{
         $0.image = UIImage(named: "share")?.withRenderingMode(.alwaysOriginal)
     }
     let base = UIView().then{
-        $0.backgroundColor = .systemGray4
+        $0.backgroundColor = .white.withAlphaComponent(0.2)
         $0.roundCorners(cornerRadius: 4, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
     }
     let heartWhite = UIImageView().then{
