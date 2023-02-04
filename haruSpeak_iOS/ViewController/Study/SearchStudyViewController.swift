@@ -90,7 +90,7 @@ class SearchStudyViewController: UIViewController{
         $0.backgroundColor = .systemGray6
     }
     let line2 = UIView().then{
-        $0.backgroundColor = .lightGray
+        $0.backgroundColor = .systemGray4
     }
     var searchCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         $0.register(SearchCell.self, forCellWithReuseIdentifier: SearchCell.identifier)
@@ -98,6 +98,17 @@ class SearchStudyViewController: UIViewController{
     }
     let VC1 = SearchModalViewController().then{
         $0.modalPresentationStyle = .overCurrentContext
+    }
+    let hiddenTxt = UILabel().then{
+        $0.text = "필터 검색 결과가 없어요"
+        $0.font = UIFont(name:"appleSDGothicNeo-Bold", size:16)
+        $0.isHidden = true
+    }
+    let hiddenTxt2 = UILabel().then{
+        $0.text = "다시 검색해 보세요."
+        $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size:15)
+        $0.textColor = .lightGray
+        $0.isHidden = true
     }
     
     
@@ -136,19 +147,21 @@ class SearchStudyViewController: UIViewController{
         setUpView()
         setupLayout()
         addTarget()
-        //        checkSearchCellCount()
+        checkSearchCellCount()
         
     }
     
     //MARK: - Check Cell isEmpty
-    //    func checkSearchCellCount(){
-    //        let countRecordCell = Int(SearchCellNameArray.count)
-    //        if countRecordCell == 0{
-    //            print("hideImg.isHidden = false")
-    //        }else{
-    //            print("hideImg.isHidden = true")
-    //        }
-    //    }
+        func checkSearchCellCount(){
+            let countRecordCell = Int(SearchCellNameArray.count)
+            if countRecordCell == 0{
+                hiddenTxt.isHidden = false
+                hiddenTxt2.isHidden = false
+            }else{
+                hiddenTxt.isHidden = true
+                hiddenTxt2.isHidden = true
+            }
+        }
     
     
     
@@ -174,6 +187,8 @@ class SearchStudyViewController: UIViewController{
         self.view.addSubview(self.line1)
         self.view.addSubview(self.line2)
         self.view.addSubview(self.searchCollectionView)
+        self.view.addSubview(self.hiddenTxt)
+        self.view.addSubview(self.hiddenTxt2)
     }
     
     //MARK: - Selector
@@ -313,6 +328,14 @@ class SearchStudyViewController: UIViewController{
         self.searchCollectionView.snp.makeConstraints{
             $0.leading.trailing.bottom.equalToSuperview()
             $0.top.equalTo(self.line1.snp.bottom).offset(0)
+        }
+        self.hiddenTxt.snp.makeConstraints{
+            $0.top.equalTo(self.line1.snp.bottom).offset(246)
+            $0.centerX.equalToSuperview()
+        }
+        self.hiddenTxt2.snp.makeConstraints{
+            $0.top.equalTo(self.hiddenTxt.snp.bottom).offset(11)
+            $0.centerX.equalToSuperview()
         }
         
     }
