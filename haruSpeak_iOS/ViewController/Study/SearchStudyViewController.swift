@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import SnapKit
 import Then
+import DropDown
 
 protocol ClickedDelegate{
     func sendClicked(clicked: Int)
@@ -20,7 +21,7 @@ class SearchStudyViewController: UIViewController{
     let searchView = UISearchBar().then{
         $0.searchBarStyle = .minimal
     }
-    var del: ClickedDelegate?
+    var delegate: ClickedDelegate?
     //filter
     let filterView = UIScrollView().then{
         $0.backgroundColor = .white
@@ -111,6 +112,18 @@ class SearchStudyViewController: UIViewController{
         $0.isHidden = true
     }
     
+    var filterDropView = UIButton().then{
+        $0.setTitle("최신 순", for: .normal)
+        $0.setTitleColor(.lightGray, for: .normal)
+        $0.backgroundColor = .white
+        $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Regular", size:13)
+    }
+    let filterDropDown = DropDown()
+    let setfilter = ["최신 순", "인기 순"]
+    let ivIcon1 = UIImageView().then{
+        $0.image = UIImage(named: "dropDownVector")?.withRenderingMode(.alwaysOriginal)
+    }
+    
     
     var collectionViewindex = 0
     //CollectionView
@@ -140,7 +153,6 @@ class SearchStudyViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        
         self.searchCollectionView.delegate = self
         self.searchCollectionView.dataSource = self
         self.navigationController?.navigationBar.isHidden = true;
@@ -148,7 +160,7 @@ class SearchStudyViewController: UIViewController{
         setupLayout()
         addTarget()
         checkSearchCellCount()
-        
+        setDropdown()
     }
     
     //MARK: - Check Cell isEmpty
@@ -189,38 +201,67 @@ class SearchStudyViewController: UIViewController{
         self.view.addSubview(self.searchCollectionView)
         self.view.addSubview(self.hiddenTxt)
         self.view.addSubview(self.hiddenTxt2)
+        self.view.addSubview(self.filterDropView)
+        self.view.addSubview(self.filterDropDown)
+        self.filterDropView.addSubview(self.ivIcon1)
+    }
+    
+    func setDropdown() {
+        // DropDown View의 배경
+        filterDropDown.backgroundColor = .white
+        filterDropDown.layer.cornerRadius = 5
+        
+        DropDown.appearance().backgroundColor = UIColor.white// 아이템 팝업 배경 색상
+        DropDown.appearance().setupCornerRadius(5)
+        filterDropDown.dismissMode = .automatic // 팝업을 닫을 모드 설정
+        
+        // dataSource로 ItemList를 연결
+        filterDropDown.dataSource = setfilter
+        
+        // anchorView를 통해 UI와 연결
+        filterDropDown.anchorView = self.filterDropView
+        
+        // View를 가리지 않고 View아래에 Item 팝업이 붙도록 설정
+        filterDropDown.bottomOffset = CGPoint(x: 0, y: 23)
+        
+        // Item 선택 시 처리
+        filterDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+            self.filterDropView.setTitle(item, for: .normal)
+        }
     }
     
     //MARK: - Selector
-    
+    @objc func filterDropViewClicked(_ button: UIButton) {
+        filterDropDown.show()
+    }
     @objc func langClicked(){
         print("0")
-        del?.sendClicked(clicked: 0)
+        self.delegate?.sendClicked(clicked: 0)
         present(VC1, animated: false)
     }
     @objc func levClicked(){
         print("1")
-        del?.sendClicked(clicked: 1)
+        self.delegate?.sendClicked(clicked: 1)
         present(VC1, animated: false)
     }
     @objc func testClicked(){
         print("2")
-        del?.sendClicked(clicked: 2)
+        self.delegate?.sendClicked(clicked: 2)
         present(VC1, animated: false)
     }
     @objc func memClicked(){
         print("3")
-        del?.sendClicked(clicked: 3)
+        self.delegate?.sendClicked(clicked: 3)
         present(VC1, animated: false)
     }
     @objc func cycleClicked(){
         print("4")
-        del?.sendClicked(clicked: 4)
+        self.delegate?.sendClicked(clicked: 4)
         present(VC1, animated: false)
     }
     @objc func offClicked(){
         print("5")
-        del?.sendClicked(clicked: 5)
+        self.delegate?.sendClicked(clicked: 5)
         present(VC1, animated: false)
     }
     
@@ -242,27 +283,27 @@ class SearchStudyViewController: UIViewController{
         }
         self.levelFilter.snp.makeConstraints{
             $0.top.bottom.equalToSuperview()
-            $0.leading.equalTo(self.languageFilter.snp.trailing).offset(5)
+            $0.leading.equalTo(self.languageFilter.snp.trailing).offset(8)
             $0.width.equalTo(63)
         }
         self.certificateFilter.snp.makeConstraints{
             $0.top.bottom.equalToSuperview()
-            $0.leading.equalTo(self.levelFilter.snp.trailing).offset(5)
+            $0.leading.equalTo(self.levelFilter.snp.trailing).offset(8)
             $0.width.equalTo(74)
         }
         self.peopleFilter.snp.makeConstraints{
             $0.top.bottom.equalToSuperview()
-            $0.leading.equalTo(self.certificateFilter.snp.trailing).offset(5)
+            $0.leading.equalTo(self.certificateFilter.snp.trailing).offset(8)
             $0.width.equalTo(85)
         }
         self.weekFilter.snp.makeConstraints{
             $0.top.bottom.equalToSuperview()
-            $0.leading.equalTo(self.peopleFilter.snp.trailing).offset(5)
+            $0.leading.equalTo(self.peopleFilter.snp.trailing).offset(8)
             $0.width.equalTo(66)
         }
         self.onlineFilter.snp.makeConstraints{
             $0.top.bottom.equalToSuperview()
-            $0.leading.equalTo(self.weekFilter.snp.trailing).offset(5)
+            $0.leading.equalTo(self.weekFilter.snp.trailing).offset(8)
             $0.trailing.equalToSuperview().offset(-20)
             $0.width.equalTo(63)
         }
@@ -337,10 +378,23 @@ class SearchStudyViewController: UIViewController{
             $0.top.equalTo(self.hiddenTxt.snp.bottom).offset(11)
             $0.centerX.equalToSuperview()
         }
+        self.filterDropView.snp.makeConstraints{
+            $0.top.equalTo(self.onlineFilter.snp.bottom).offset(20)
+            $0.leading.equalTo(self.existingTagView.snp.trailing).offset(23)
+            $0.width.equalTo(60)
+            $0.height.equalTo(22)
+        }
+        self.ivIcon1.snp.makeConstraints{
+            $0.top.equalTo(self.filterDropView.snp.top).offset(8.5)
+            $0.trailing.equalTo(self.filterDropView.snp.trailing).offset(-4)
+            $0.width.equalTo(6)
+            $0.height.equalTo(3)
+        }
         
     }
     
     func addTarget(){
+        self.filterDropView.addTarget(self, action: #selector(self.filterDropViewClicked(_:)), for: .touchUpInside)
         let langBtn = UITapGestureRecognizer(target: self, action: #selector(langClicked))
         languageFilter.isUserInteractionEnabled = true
         languageFilter.addGestureRecognizer(langBtn)
