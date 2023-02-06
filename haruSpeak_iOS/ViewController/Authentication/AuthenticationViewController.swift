@@ -25,7 +25,7 @@ class AuthenticationViewController: UIViewController{
     
     var KakaoAccessCode : String = ""
     var KakaoRefreshCode : String = ""
-    
+    var checkNewbie : Bool = true
     
     
     //MARK: - Properties
@@ -196,9 +196,8 @@ class AuthenticationViewController: UIViewController{
                                 KakaoLoginRequestFile().getRequestData(self)
                                 
                                 print("me() success.")
-                                let OnboardingVC = FirstViewController()
-                                OnboardingVC.modalPresentationStyle = .fullScreen
-                                self.present(OnboardingVC, animated: false)
+
+
                                 
                                 //do something
                                 _ = user
@@ -478,6 +477,7 @@ extension AuthenticationViewController{
         var userMemberID = response.data?.memberId
         var newbieBool = response.data?.newbie
         var userNickname = response.data?.nickname
+        self.checkNewbie = (response.data?.newbie)!
         
         UserDefaults.standard.setValue("\(haruSpeakAccessToken!)", forKey: "haruSpeakAccessToken")
         UserDefaults.standard.setValue("\(haruSpeakRefreshToken!)", forKey: "haruSpeakRefreshToken")
@@ -486,6 +486,20 @@ extension AuthenticationViewController{
         UserDefaults.standard.setValue("\(newbieBool!)", forKey: "newbieBool")
         UserDefaults.standard.setValue("\(userNickname!)", forKey: "userNickname")
 
-        print("AuthenticationViewController hello")
+        
+            if self.checkNewbie == true{
+                print("Is Newbie")
+                print(self.checkNewbie)
+                let OnboardingVC = FirstViewController()
+                OnboardingVC.modalPresentationStyle = .fullScreen
+                self.present(OnboardingVC, animated: false)
+            }
+            else{
+                print("Not Newbie")
+                print(self.checkNewbie)
+                self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
+            }
+        
+        print("AuthenticationViewController Bye")
     }
 }

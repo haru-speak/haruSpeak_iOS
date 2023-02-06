@@ -94,7 +94,7 @@ class FifthViewController: UIViewController{
 //MARK: - Selector
     
     @objc private func didClickNext(_ button: UIButton) {
-        
+        //전체 dismiss
         self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
         
 //        let VC = HomeViewController()

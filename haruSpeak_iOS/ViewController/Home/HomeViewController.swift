@@ -364,7 +364,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         self.view.bringSubviewToFront(self.filterButtonView)
         
 
-        QuestionControllerRequest().getRequestData(self)
+        
         
         //UserDefault 초기값 만들기 START (바로바로 초기화 안되니 1.에러뜨고, 2.삭제되고, 3.주석처리후 다시 실행 == 초기값)
 //        let domain = Bundle.main.bundleIdentifier!
@@ -372,16 +372,12 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
 //        UserDefaults.standard.synchronize()
 //        print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
         //UserDefault 초기값 만들기 END
-        print("asdasd")
-        print(self.haruSpeakAccessToken)
-        print(self.haruSpeakRefreshToken)
-        print(self.userEmail)
-        print(self.userNickname)
-        print(self.userMemberID)
         
-        
+
+//실행창
         if KakaoAccessCode != nil{
             KakaoLoginRequestFile().getRequestData(self)
+            QuestionControllerRequest().getRequestData(self)
         }else{
             let OnboardingVC = OnboardingViewController()
             OnboardingVC.modalPresentationStyle = .fullScreen
