@@ -47,6 +47,12 @@ final class CommentCell: UICollectionViewCell {
     let clickThumbsup = UIImageView().then{
         $0.image = UIImage(named: "thumbsup")?.withRenderingMode(.alwaysOriginal)
     }
+    let divideView2 = UIView().then{
+        $0.backgroundColor = .lightGray
+    }
+    let commentEllipsis = UIImageView().then{
+        $0.image = UIImage(named: "commentellipsis")?.withRenderingMode(.alwaysOriginal)
+    }
     let line = UIView().then{
         $0.backgroundColor = UIColor.systemGray5
     }
@@ -90,6 +96,8 @@ final class CommentCell: UICollectionViewCell {
         self.addSubview(self.divideView)
         self.addSubview(self.clickThumbsup)
         self.addSubview(self.line)
+        self.addSubview(self.divideView2)
+        self.addSubview(self.commentEllipsis)
         
     }
     
@@ -116,9 +124,21 @@ final class CommentCell: UICollectionViewCell {
             $0.leading.equalTo(self.thumbsupImage.snp.trailing).offset(5)
             $0.top.equalTo(self.comment.snp.bottom).offset(5)
         }
-        self.clickThumbsup.snp.makeConstraints{
+        self.commentEllipsis.snp.makeConstraints{
             $0.centerY.equalToSuperview()
-            $0.trailing.equalToSuperview().offset(-14)
+            $0.trailing.equalToSuperview().offset(-25.5)
+            $0.width.equalTo(1.5)
+            $0.height.equalTo(9)
+        }
+        self.divideView2.snp.makeConstraints{
+            $0.width.equalTo(1)
+            $0.height.equalTo(5)
+            $0.trailing.equalTo(self.commentEllipsis.snp.leading).offset(-14)
+            $0.centerY.equalToSuperview()
+        }
+        self.clickThumbsup.snp.makeConstraints{
+            $0.trailing.equalTo(self.divideView2.snp.leading).offset(-8)
+            $0.centerY.equalToSuperview()
             $0.width.equalTo(12)
             $0.height.equalTo(11.11)
         }
