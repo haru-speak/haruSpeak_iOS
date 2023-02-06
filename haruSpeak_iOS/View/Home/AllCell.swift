@@ -56,7 +56,6 @@ final class AllCell: UICollectionViewCell {
     var heartindex = 0
     
     
-    
 //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)

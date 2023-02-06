@@ -648,6 +648,13 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         VC.modalPresentationStyle = .fullScreen
         present(VC, animated: true)
     }
+    @objc func didClickProfile(sender: UITapGestureRecognizer){
+        print("didClickProfile")
+        let VC = AllClickProfileViewController()
+        VC.modalPresentationStyle = .fullScreen
+        present(VC, animated: true)
+    }
+    
 
     
 //MARK: - addSubView
@@ -928,6 +935,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             Acell.title.text = self.RecordCellTitleArray[indexPath.row]
             Acell.likeLabel.text = self.RecordCellHeartCountArray[indexPath.row]
             Acell.commentLabel.text = self.RecordCellCommentCountArray[indexPath.row]
+//            Acell.profileImage.image = UIImage(named: ~[indexPath.row])
+            
+            let profileBtn = UITapGestureRecognizer(target: self, action: #selector(didClickProfile))
+            Acell.profileImage.isUserInteractionEnabled = true
+            Acell.profileImage.addGestureRecognizer(profileBtn)
+            
             if self.RecordCellHeartImgArray[indexPath.row] == true{
                 Acell.heart.image = UIImage(named: "heart.fill")?.withRenderingMode(.alwaysOriginal)
             }else{
@@ -936,6 +949,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return Acell
         }
     }
+    
+    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == self.recordCollectionView{
 //            let Rcell = collectionView.dequeueReusableCell(withReuseIdentifier: RecordCell.identifier, for: indexPath) as! RecordCell

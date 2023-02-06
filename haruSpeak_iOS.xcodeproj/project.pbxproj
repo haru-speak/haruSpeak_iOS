@@ -44,6 +44,7 @@
 		E56E0E5C2990DF36009FD906 /* QuestionControllerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56E0E5B2990DF36009FD906 /* QuestionControllerResponse.swift */; };
 		E56E0E5E2990DF8B009FD906 /* QuestionControllerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56E0E5D2990DF8B009FD906 /* QuestionControllerRequest.swift */; };
 		E56E0E602991964D009FD906 /* AllCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56E0E5F2991964D009FD906 /* AllCell.swift */; };
+		E56E0E622991A3E6009FD906 /* AllClickProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56E0E612991A3E6009FD906 /* AllClickProfileViewController.swift */; };
 		E5862C5D296ED0C900095439 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5862C5C296ED0C900095439 /* AppDelegate.swift */; };
 		E5862C5F296ED0C900095439 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5862C5E296ED0C900095439 /* SceneDelegate.swift */; };
 		E5862C61296ED0C900095439 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5862C60296ED0C900095439 /* ViewController.swift */; };
@@ -143,6 +144,7 @@
 		E56E0E5B2990DF36009FD906 /* QuestionControllerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionControllerResponse.swift; sourceTree = "<group>"; };
 		E56E0E5D2990DF8B009FD906 /* QuestionControllerRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionControllerRequest.swift; sourceTree = "<group>"; };
 		E56E0E5F2991964D009FD906 /* AllCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCell.swift; sourceTree = "<group>"; };
+		E56E0E612991A3E6009FD906 /* AllClickProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllClickProfileViewController.swift; sourceTree = "<group>"; };
 		E5862C59296ED0C900095439 /* haruSpeak_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = haruSpeak_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5862C5C296ED0C900095439 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5862C5E296ED0C900095439 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -465,6 +467,7 @@
 				E5E984D9296EE2A300E5DE83 /* HomeViewController.swift */,
 				E51CE8C82971038A00ADB07B /* ClickRecordViewController.swift */,
 				E5FD5667297A2A640088DDAF /* PlaylistViewController.swift */,
+				E56E0E612991A3E6009FD906 /* AllClickProfileViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -789,6 +792,7 @@
 				68603AC0298B6BB300A1DCD8 /* Slider.swift in Sources */,
 				E5E600492987D99500B6E78F /* FollowerCell.swift in Sources */,
 				E59D3628297583D200A012C4 /* SearchStudyViewController.swift in Sources */,
+				E56E0E622991A3E6009FD906 /* AllClickProfileViewController.swift in Sources */,
 				E5158DD52981764D00054322 /* SecondGiverViewController.swift in Sources */,
 				E56E0E602991964D009FD906 /* AllCell.swift in Sources */,
 				68603ABE298A9C7000A1DCD8 /* StudyDetailViewController.swift in Sources */,
