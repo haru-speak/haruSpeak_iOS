@@ -989,7 +989,7 @@ extension HomeViewController{
         print("getTodaySentence")
         if response.data == nil{
             print(response.message)
-            self.announcementString = "현재 nil"
+            self.announcementString = "\(response.message!) 백 데이터X"
         }else{
             self.announcementString = (response.data?.title)!
         }
