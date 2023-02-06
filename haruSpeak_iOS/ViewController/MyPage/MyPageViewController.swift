@@ -12,7 +12,13 @@ import Then
 
 class MyPageViewController: UIViewController{
 //MARK: - Datasource
-  
+    let haruSpeakAccessToken = UserDefaults.standard.string(forKey: "haruSpeakAccessToken")
+    let haruSpeakRefreshToken = UserDefaults.standard.string(forKey: "haruSpeakRefreshToken")
+    let userEmail = UserDefaults.standard.string(forKey: "userEmail")
+    let userMemberID = UserDefaults.standard.string(forKey: "userMemberID")
+    let newbieBool = UserDefaults.standard.string(forKey: "newbieBool")
+    let userNickname = UserDefaults.standard.string(forKey: "userNickname")
+    let KakaoAccessCode = UserDefaults.standard.string(forKey: "KakaoAccessCode")
     
 //MARK: - Properties
     let blueView = UIView().then{

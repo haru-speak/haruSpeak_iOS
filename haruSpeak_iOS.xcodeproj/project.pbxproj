@@ -43,6 +43,7 @@
 		E537186B2972926F00CD95F5 /* TopViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E537186A2972926F00CD95F5 /* TopViewCollectionViewCell.swift */; };
 		E56E0E5C2990DF36009FD906 /* QuestionControllerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56E0E5B2990DF36009FD906 /* QuestionControllerResponse.swift */; };
 		E56E0E5E2990DF8B009FD906 /* QuestionControllerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56E0E5D2990DF8B009FD906 /* QuestionControllerRequest.swift */; };
+		E56E0E602991964D009FD906 /* AllCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56E0E5F2991964D009FD906 /* AllCell.swift */; };
 		E5862C5D296ED0C900095439 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5862C5C296ED0C900095439 /* AppDelegate.swift */; };
 		E5862C5F296ED0C900095439 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5862C5E296ED0C900095439 /* SceneDelegate.swift */; };
 		E5862C61296ED0C900095439 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5862C60296ED0C900095439 /* ViewController.swift */; };
@@ -141,6 +142,7 @@
 		E537186A2972926F00CD95F5 /* TopViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewCollectionViewCell.swift; sourceTree = "<group>"; };
 		E56E0E5B2990DF36009FD906 /* QuestionControllerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionControllerResponse.swift; sourceTree = "<group>"; };
 		E56E0E5D2990DF8B009FD906 /* QuestionControllerRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionControllerRequest.swift; sourceTree = "<group>"; };
+		E56E0E5F2991964D009FD906 /* AllCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCell.swift; sourceTree = "<group>"; };
 		E5862C59296ED0C900095439 /* haruSpeak_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = haruSpeak_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5862C5C296ED0C900095439 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5862C5E296ED0C900095439 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -526,6 +528,7 @@
 				E51CE8BE296FBED100ADB07B /* RecordCell.swift */,
 				E5F7F4D9297F9A540004800E /* CommentCell.swift */,
 				E5E60040298415DC00B6E78F /* MyMateFriendCell.swift */,
+				E56E0E5F2991964D009FD906 /* AllCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -787,6 +790,7 @@
 				E5E600492987D99500B6E78F /* FollowerCell.swift in Sources */,
 				E59D3628297583D200A012C4 /* SearchStudyViewController.swift in Sources */,
 				E5158DD52981764D00054322 /* SecondGiverViewController.swift in Sources */,
+				E56E0E602991964D009FD906 /* AllCell.swift in Sources */,
 				68603ABE298A9C7000A1DCD8 /* StudyDetailViewController.swift in Sources */,
 				685149CF298256C400C1FED2 /* FourthViewController.swift in Sources */,
 				E5862C61296ED0C900095439 /* ViewController.swift in Sources */,
