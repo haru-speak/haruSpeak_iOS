@@ -375,6 +375,7 @@ class PlaylistViewController: UIViewController{
         self.submitButton.snp.makeConstraints{
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview().offset(-10)
+            $0.size.height.width.equalTo(25)
         }
         
         
