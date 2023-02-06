@@ -972,7 +972,7 @@ extension HomeViewController{
         var newbieBool = response.data?.newbie
         var userNickname = response.data?.nickname
         
-        UserDefaults.standard.setValue("\(haruSpeakAccessToken!)", forKey: "haruSpeakAccessToken")
+        UserDefaults.standard.setValue("Bearer \(haruSpeakAccessToken!)", forKey: "haruSpeakAccessToken")
         UserDefaults.standard.setValue("\(haruSpeakRefreshToken!)", forKey: "haruSpeakRefreshToken")
         UserDefaults.standard.setValue("\(userEmail!)", forKey: "userEmail")
         UserDefaults.standard.setValue("\(userMemberID!)", forKey: "userMemberID")
