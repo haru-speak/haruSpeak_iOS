@@ -162,9 +162,6 @@ class AuthenticationViewController: UIViewController{
                             
                             //do something
                             _ = user
-                            
-                            
-                            
                         }
                     }
 

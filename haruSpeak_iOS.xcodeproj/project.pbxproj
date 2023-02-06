@@ -41,6 +41,8 @@
 		E51CE8C92971038A00ADB07B /* ClickRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51CE8C82971038A00ADB07B /* ClickRecordViewController.swift */; };
 		E537182A297151DB00CD95F5 /* StudyCustomTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5371829297151DB00CD95F5 /* StudyCustomTabbar.swift */; };
 		E537186B2972926F00CD95F5 /* TopViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E537186A2972926F00CD95F5 /* TopViewCollectionViewCell.swift */; };
+		E56E0E5C2990DF36009FD906 /* QuestionControllerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56E0E5B2990DF36009FD906 /* QuestionControllerResponse.swift */; };
+		E56E0E5E2990DF8B009FD906 /* QuestionControllerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56E0E5D2990DF8B009FD906 /* QuestionControllerRequest.swift */; };
 		E5862C5D296ED0C900095439 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5862C5C296ED0C900095439 /* AppDelegate.swift */; };
 		E5862C5F296ED0C900095439 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5862C5E296ED0C900095439 /* SceneDelegate.swift */; };
 		E5862C61296ED0C900095439 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5862C60296ED0C900095439 /* ViewController.swift */; };
@@ -137,6 +139,8 @@
 		E51CE8C82971038A00ADB07B /* ClickRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickRecordViewController.swift; sourceTree = "<group>"; };
 		E5371829297151DB00CD95F5 /* StudyCustomTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyCustomTabbar.swift; sourceTree = "<group>"; };
 		E537186A2972926F00CD95F5 /* TopViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewCollectionViewCell.swift; sourceTree = "<group>"; };
+		E56E0E5B2990DF36009FD906 /* QuestionControllerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionControllerResponse.swift; sourceTree = "<group>"; };
+		E56E0E5D2990DF8B009FD906 /* QuestionControllerRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionControllerRequest.swift; sourceTree = "<group>"; };
 		E5862C59296ED0C900095439 /* haruSpeak_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = haruSpeak_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5862C5C296ED0C900095439 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5862C5E296ED0C900095439 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -293,6 +297,15 @@
 			path = UserSetting;
 			sourceTree = "<group>";
 		};
+		E56E0E5A2990DF21009FD906 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				E56E0E5B2990DF36009FD906 /* QuestionControllerResponse.swift */,
+				E56E0E5D2990DF8B009FD906 /* QuestionControllerRequest.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		E5862C50296ED0C900095439 = {
 			isa = PBXGroup;
 			children = (
@@ -410,6 +423,7 @@
 		E5E984B9296ED96400E5DE83 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E56E0E5A2990DF21009FD906 /* Home */,
 				E5E60059298D690400B6E78F /* Authentication */,
 				E5E60054298D1EE000B6E78F /* MyPage */,
 				E5E984BC296ED9B500E5DE83 /* TempModel.swift */,
@@ -768,6 +782,7 @@
 				68BD8E0E2972F30B00939DFB /* MembershipViewController.swift in Sources */,
 				68BD8E102972F33800939DFB /* EmailLoginViewController.swift in Sources */,
 				E5E984BD296ED9B500E5DE83 /* TempModel.swift in Sources */,
+				E56E0E5C2990DF36009FD906 /* QuestionControllerResponse.swift in Sources */,
 				68603AC0298B6BB300A1DCD8 /* Slider.swift in Sources */,
 				E5E600492987D99500B6E78F /* FollowerCell.swift in Sources */,
 				E59D3628297583D200A012C4 /* SearchStudyViewController.swift in Sources */,
@@ -785,10 +800,11 @@
 				E5158DD12981746800054322 /* SecondLearnerViewController.swift in Sources */,
 				E5E984BB296ED9A900E5DE83 /* TempService.swift in Sources */,
 				E5E984B8296ED95D00E5DE83 /* UIFont+.swift in Sources */,
-				68603AC6298C00C300A1DCD8 /* MessageCustomTabbar.swift in Sources */,
+				E56E0E5E2990DF8B009FD906 /* QuestionControllerRequest.swift in Sources */,
+				68603AC6298C00C300A1DCD8 /* ChattingCell.swift in Sources */,
 				68603ABC298A56C800A1DCD8 /* KakaoLoginResponseFile.swift in Sources */,
 				68603AC6298C00C300A1DCD8 /* ChattingCell.swift in Sources */,
-				68603ABC298A56C800A1DCD8 /* KakaoLoginModel.swift in Sources */,
+				68603ABC298A56C800A1DCD8 /* KakaoLoginResponseFile.swift in Sources */,
 				E5E600472987A98100B6E78F /* CustomTabbarMyPage.swift in Sources */,
 				E5158DD32981748200054322 /* ThirdViewController.swift in Sources */,
 				E5FD566629790E0A0088DDAF /* SearchFilterView.swift in Sources */,

@@ -25,8 +25,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     let newbieBool = UserDefaults.standard.string(forKey: "newbieBool")
     let userNickname = UserDefaults.standard.string(forKey: "userNickname")
     let KakaoAccessCode = UserDefaults.standard.string(forKey: "KakaoAccessCode")
-    
-    
+
     //Announcement 영어 문장
     var announcementString = "What's your favorite movie?"
     
@@ -359,12 +358,13 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         checkTodayDate()
         
         
-        self.englishMessage.text = announcementString
-        
         self.view.translatesAutoresizingMaskIntoConstraints = true
         topView.bringSubviewToFront(self.tabbar)
         topView.bringSubviewToFront(self.seperateLine)
         self.view.bringSubviewToFront(self.filterButtonView)
+        
+
+        QuestionControllerRequest().getRequestData(self)
         
         //UserDefault 초기값 만들기 START (바로바로 초기화 안되니 1.에러뜨고, 2.삭제되고, 3.주석처리후 다시 실행 == 초기값)
 //        let domain = Bundle.main.bundleIdentifier!
@@ -399,8 +399,12 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         
         
         if haruSpeakAccessToken != nil{
-//            KakaoLoginRequestFile().getRequestData(self)
             message.text = "\(self.userNickname!)님\n어떤 영화가 좋으세요?"
+            DispatchQueue.main.async {
+                self.englishMessage.text = self.announcementString
+                print("Dispatch")
+            }
+//            KakaoLoginRequestFile().getRequestData(self)
         }else{
             
         }
@@ -972,7 +976,7 @@ extension HomeViewController{
         var newbieBool = response.data?.newbie
         var userNickname = response.data?.nickname
         
-        UserDefaults.standard.setValue("Bearer \(haruSpeakAccessToken!)", forKey: "haruSpeakAccessToken")
+        UserDefaults.standard.setValue("\(haruSpeakAccessToken!)", forKey: "haruSpeakAccessToken")
         UserDefaults.standard.setValue("\(haruSpeakRefreshToken!)", forKey: "haruSpeakRefreshToken")
         UserDefaults.standard.setValue("\(userEmail!)", forKey: "userEmail")
         UserDefaults.standard.setValue("\(userMemberID!)", forKey: "userMemberID")
@@ -980,5 +984,14 @@ extension HomeViewController{
         UserDefaults.standard.setValue("\(userNickname!)", forKey: "userNickname")
 
         print("HomeViewController hello")
+    }
+    func getTodaySentence(_ response: QuestionControllerResponse){
+        print("getTodaySentence")
+        if response.data == nil{
+            print(response.message)
+            self.announcementString = "현재 nil"
+        }else{
+            self.announcementString = (response.data?.title)!
+        }
     }
 }
