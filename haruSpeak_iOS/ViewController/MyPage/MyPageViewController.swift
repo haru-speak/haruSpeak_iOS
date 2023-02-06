@@ -305,7 +305,17 @@ class MyPageViewController: UIViewController{
         VC.modalPresentationStyle = .fullScreen
         present(VC, animated: true)
     }
-    
+    @objc func didClickLogOut(sender: UITapGestureRecognizer){
+        let domain = Bundle.main.bundleIdentifier!
+        UserDefaults.standard.removePersistentDomain(forName: domain)
+        UserDefaults.standard.synchronize()
+        print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
+        
+        
+        let VC = OnboardingViewController()
+        VC.modalPresentationStyle = .fullScreen
+        present(VC, animated: true)
+    }
     
    
     
@@ -528,6 +538,10 @@ class MyPageViewController: UIViewController{
         let profileLabelBtn = UITapGestureRecognizer(target: self, action: #selector(didClickMoreProfileView))
         profileName.isUserInteractionEnabled = true
         profileName.addGestureRecognizer(profileLabelBtn)
+        
+        let LogOutBtn = UITapGestureRecognizer(target: self, action: #selector(didClickLogOut))
+        logoutButton.isUserInteractionEnabled = true
+        logoutButton.addGestureRecognizer(LogOutBtn)
     }
     
 }
