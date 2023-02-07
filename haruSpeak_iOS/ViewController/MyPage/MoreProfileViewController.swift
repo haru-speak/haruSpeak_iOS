@@ -83,12 +83,34 @@ class MoreProfileViewController: UIViewController{
         $0.textColor = .black
         $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size: 16)
     }
-    var dropView1 = UIButton().then{
+    var dropView1Button = UIButton().then{
         $0.setTitle("언어 선택", for: .normal)
         $0.setTitleColor(.lightGray, for: .normal)
         $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Regular", size:13)
         $0.titleLabel?.textAlignment = .left
     }
+    
+//    var learnerDropView = UIView().then{
+//        $0.layer.borderColor = UIColor.black.cgColor
+//        $0.layer.borderWidth = 1
+//        $0.roundCorners(cornerRadius: 10, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
+//    }
+//    var learnerDropViewEngLabel = UILabel().then{
+//        $0.text = "영어"
+//        $0.textColor = .black
+//        $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size: 12)
+//    }
+//    var learnerDropViewLine = UILabel().then{
+//        $0.backgroundColor = UIColor.lightGray
+//    }
+//    var learnerDropViewKorLabel = UILabel().then{
+//        $0.text = "한국어"
+//        $0.textColor = .black
+//        $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size: 12)
+//    }
+//
+    
+    
     let ivIcon2 = UIImageView().then{
         $0.image = UIImage(named: "dropDownVector")?.withRenderingMode(.alwaysOriginal)
     }
@@ -153,7 +175,7 @@ class MoreProfileViewController: UIViewController{
         $0.textColor = .black
         $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size: 16)
     }
-    var giverdropView1 = UIButton().then{
+    var giverdropView1Button = UIButton().then{
         $0.setTitle("언어 선택", for: .normal)
         $0.setTitleColor(.lightGray, for: .normal)
         $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Regular", size:13)
@@ -261,7 +283,13 @@ class MoreProfileViewController: UIViewController{
         self.view.addSubview(self.learnerLevelView)
         self.learnerLevelView.addSubview(self.circle)
         self.learnerLevelView.addSubview(self.learnerGiverLabel)
-        self.learnerLevelView.addSubview(self.dropView1)
+        self.learnerLevelView.addSubview(self.dropView1Button)
+        //
+//        self.learnerLevelView.addSubview(self.learnerDropView)
+//        self.learnerLevelView.addSubview(self.learnerDropViewEngLabel)
+//        self.learnerLevelView.addSubview(self.learnerDropViewKorLabel)
+//        self.learnerLevelView.addSubview(self.learnerDropViewLine)
+        //
         self.learnerLevelView.addSubview(self.ivIcon2)
         self.learnerLevelView.addSubview(self.line3)
         self.learnerLevelView.addSubview(self.levelLabel)
@@ -276,7 +304,7 @@ class MoreProfileViewController: UIViewController{
         self.view.addSubview(self.giverLevelView)
         self.giverLevelView.addSubview(self.giverCircle)
         self.giverLevelView.addSubview(self.giverLabel)
-        self.giverLevelView.addSubview(self.giverdropView1)
+        self.giverLevelView.addSubview(self.giverdropView1Button)
         self.giverLevelView.addSubview(self.giverivIcon2)
         self.giverLevelView.addSubview(self.line5)
         self.giverLevelView.addSubview(self.giverlevelLabel)
@@ -578,12 +606,20 @@ class MoreProfileViewController: UIViewController{
             $0.leading.equalTo(self.circle.snp.trailing).offset(1)
             $0.top.equalToSuperview().offset(6)
         }
-        self.dropView1.snp.makeConstraints{
+        self.dropView1Button.snp.makeConstraints{
             $0.leading.equalTo(self.learnerGiverLabel.snp.trailing).offset(20)
             $0.top.equalToSuperview().offset(2)
         }
+//        self.learnerDropView.snp.makeConstraints{
+//            $0.top.equalTo(self.line3.snp.bottom)
+//            $0.leading.equalToSuperview().offset(85)
+//            $0.height.equalTo(70)
+//            $0.width.equalTo(60)
+//        }
+        
+        
         self.ivIcon2.snp.makeConstraints{
-            $0.leading.equalTo(self.dropView1.snp.trailing).offset(10)
+            $0.leading.equalTo(self.dropView1Button.snp.trailing).offset(10)
             $0.width.equalTo(8)
             $0.height.equalTo(4)
             $0.top.equalToSuperview().offset(12)
@@ -650,12 +686,12 @@ class MoreProfileViewController: UIViewController{
             $0.leading.equalTo(self.giverCircle.snp.trailing).offset(1)
             $0.top.equalToSuperview().offset(6)
         }
-        self.giverdropView1.snp.makeConstraints{
+        self.giverdropView1Button.snp.makeConstraints{
             $0.leading.equalTo(self.giverLabel.snp.trailing).offset(33)
             $0.top.equalToSuperview().offset(2)
         }
         self.giverivIcon2.snp.makeConstraints{
-            $0.leading.equalTo(self.giverdropView1.snp.trailing).offset(10)
+            $0.leading.equalTo(self.giverdropView1Button.snp.trailing).offset(10)
             $0.width.equalTo(8)
             $0.height.equalTo(4)
             $0.top.equalToSuperview().offset(12)
@@ -746,8 +782,8 @@ class MoreProfileViewController: UIViewController{
         profilePicture.addGestureRecognizer(profilephotoBtn)
         
         
-        self.dropView1.addTarget(self, action: #selector(self.didClickDropView1(_:)), for: .touchUpInside)
-        self.giverdropView1.addTarget(self, action: #selector(self.didClickGiverdropView1(_:)), for: .touchUpInside)
+        self.dropView1Button.addTarget(self, action: #selector(self.didClickDropView1(_:)), for: .touchUpInside)
+        self.giverdropView1Button.addTarget(self, action: #selector(self.didClickGiverdropView1(_:)), for: .touchUpInside)
         
         
         

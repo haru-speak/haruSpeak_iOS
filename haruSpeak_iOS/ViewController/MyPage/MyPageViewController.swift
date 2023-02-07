@@ -113,17 +113,22 @@ class MyPageViewController: UIViewController{
     }
     
     
-    let learnerView = UIView().then{
+    lazy var learnerView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+        $0.register(PointViewCell.self, forCellWithReuseIdentifier: PointViewCell.identifier)
         $0.backgroundColor = .white
         $0.roundCorners(cornerRadius: 15, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
+        $0.showsHorizontalScrollIndicator = false
+        $0.showsVerticalScrollIndicator = false
     }
-    let giverView = UIView().then{
+    lazy var giverView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+        $0.register(PointViewCell.self, forCellWithReuseIdentifier: PointViewCell.identifier)
         $0.backgroundColor = .white
         $0.roundCorners(cornerRadius: 15, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
+        $0.showsHorizontalScrollIndicator = false
+        $0.showsVerticalScrollIndicator = false
     }
     
-
-
+    
 
 
 
@@ -194,7 +199,49 @@ class MyPageViewController: UIViewController{
         self.view.backgroundColor = .systemGray6
         self.navigationController?.navigationBar.isHidden = true;
         
+        self.learnerView.delegate = self
+        self.learnerView.dataSource = self
+        self.giverView.delegate = self
+        self.giverView.dataSource = self
+        
+        collectionViewLayout()
+        
+        learnerView.decelerationRate = .fast
+        learnerView.isPagingEnabled = false
+        giverView.decelerationRate = .fast
+        giverView.isPagingEnabled = false
+        
     }
+    
+//MARK: - CollectionView Layout
+    func collectionViewLayout(){
+        if let layout = learnerView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.scrollDirection = .horizontal
+        }
+        if let layout = giverView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.scrollDirection = .horizontal
+        }
+        
+        let collectionViewLayout: UICollectionViewFlowLayout = {
+            let layout = MyPageCustomCollectionViewFlowLayout()
+            layout.itemSize = CGSize(width: self.view.bounds.width - 40, height: self.view.bounds.height - 80)
+            layout.minimumLineSpacing = 20
+            layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            layout.scrollDirection = .horizontal
+            return layout
+        }()
+        let giverCollectionViewLayout: UICollectionViewFlowLayout = {
+            let layout = MyPageCustomCollectionViewFlowLayout()
+            layout.itemSize = CGSize(width: self.view.bounds.width - 40, height: self.view.bounds.height - 80)
+            layout.minimumLineSpacing = 20
+            layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            layout.scrollDirection = .horizontal
+            return layout
+        }()
+        learnerView.collectionViewLayout = collectionViewLayout
+        giverView.collectionViewLayout = giverCollectionViewLayout
+    }
+    
 //MARK: - AddSubview
     func setUpView(){
         self.view.addSubview(self.blueView)
@@ -224,6 +271,7 @@ class MyPageViewController: UIViewController{
         self.scrollContentView.addSubview(self.giverLearnerPointView)
         self.giverLearnerPointView.addSubview(self.giverView)
         self.giverLearnerPointView.addSubview(self.learnerView)
+
         
         self.scrollContentView.addSubview(self.saveButton)
         self.scrollContentView.addSubview(self.interestTopicButton)
@@ -369,13 +417,12 @@ class MyPageViewController: UIViewController{
         }
         self.learnerView.snp.makeConstraints{
             $0.top.bottom.leading.equalToSuperview()
-            $0.width.equalTo(169)
+            $0.width.equalTo(171)
         }
         self.giverView.snp.makeConstraints{
             $0.top.bottom.trailing.equalToSuperview()
             $0.leading.equalTo(self.learnerView.snp.trailing).offset(12)
         }
-        
         self.saveButton.snp.makeConstraints{
             $0.top.equalTo(self.giverLearnerPointView.snp.bottom).offset(23)
             $0.leading.equalToSuperview().offset(31)
@@ -481,6 +528,105 @@ class MyPageViewController: UIViewController{
         let profileLabelBtn = UITapGestureRecognizer(target: self, action: #selector(didClickMoreProfileView))
         profileName.isUserInteractionEnabled = true
         profileName.addGestureRecognizer(profileLabelBtn)
+    }
+    
+}
+
+//MARK: - SetupCollectionView
+
+// CollectionView
+extension MyPageViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if collectionView == self.learnerView{
+            let learnerCell = collectionView.dequeueReusableCell(withReuseIdentifier: PointViewCell.identifier, for: indexPath) as! PointViewCell
+            
+            if indexPath.row == 0{
+                learnerCell.page1Dot.alpha = 1
+                learnerCell.page2Dot.alpha = 0.5
+                
+                learnerCell.mainLabel.text = "이번주에 지급받을 \nLearner 포인트"
+                learnerCell.pointLabel.text = "1080P"
+                learnerCell.percentageLabel.isHidden = true
+                
+            }else{
+                learnerCell.page1Dot.alpha = 0.5
+                learnerCell.page2Dot.alpha = 1
+                
+                learnerCell.mainLabel.text = "내가 모은 \n총 Learner 포인트"
+                learnerCell.pointLabel.text = "1080P"
+                learnerCell.percentageLabel.isHidden = false
+                learnerCell.percentageLabel.text = "상위 68%"
+            }
+            
+            let attributedStr = NSMutableAttributedString(string: learnerCell.mainLabel.text!)
+            attributedStr.addAttribute(.foregroundColor, value: learnerCell.changeColor, range: (learnerCell.mainLabel.text! as NSString).range(of: "\(learnerCell.changeColorText)"))
+            learnerCell.mainLabel.attributedText = attributedStr
+            learnerCell.changeColorText = "Learner"
+            learnerCell.changeColor = UIColor.englishTag
+            
+            return learnerCell
+        }else{
+            let giverCell = collectionView.dequeueReusableCell(withReuseIdentifier: PointViewCell.identifier, for: indexPath) as! PointViewCell
+            
+            if indexPath.row == 0{
+                giverCell.page1Dot.alpha = 1
+                giverCell.page2Dot.alpha = 0.5
+                
+                giverCell.mainLabel.text = "이번주에 지급받을 \nGiver 포인트"
+                giverCell.pointLabel.text = "60P"
+                giverCell.percentageLabel.isHidden = true
+            }else{
+                giverCell.page1Dot.alpha = 0.5
+                giverCell.page2Dot.alpha = 1
+                
+                giverCell.mainLabel.text = "내가 모은 \n총 Giver 포인트"
+                giverCell.pointLabel.text = "1080P"
+                giverCell.percentageLabel.isHidden = false
+                giverCell.percentageLabel.text = "상위 68%"
+            }
+            
+            giverCell.page1Dot.backgroundColor = .koreanTag
+            giverCell.page2Dot.backgroundColor = .koreanTag
+            giverCell.rightSideColor.backgroundColor = .koreanTag
+            giverCell.changeColorText = "Giver"
+            giverCell.changeColor = UIColor.koreanTag
+            
+            let attributedStr = NSMutableAttributedString(string: giverCell.mainLabel.text!)
+            attributedStr.addAttribute(.foregroundColor, value: giverCell.changeColor, range: (giverCell.mainLabel.text! as NSString).range(of: "\(giverCell.changeColorText)"))
+            giverCell.mainLabel.attributedText = attributedStr
+            
+            return giverCell
+        }
+
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        
+        return 0
+        
+    }
+    //section 사이의 공간을 제거
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: learnerView.bounds.width , height: learnerView.bounds.height)
+        
     }
     
 }
