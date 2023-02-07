@@ -19,7 +19,7 @@ class AllClickProfileViewController: UIViewController{
     
     //MARK: - Properties
     let fullView = UIView().then{
-        $0.backgroundColor = .black
+        $0.backgroundColor = .white
         $0.alpha = 0.5
     }
     let mainView = UIView().then{
@@ -93,25 +93,23 @@ class AllClickProfileViewController: UIViewController{
         $0.font = UIFont(name:"appleSDGothicNeo-Regular", size: 13)
         $0.textAlignment = .center
     }
-    let line = UIView().then{
-        $0.backgroundColor = UIColor.systemGray4
+    let followButton = UIButton().then{
+        $0.setTitle(" 팔로우 ", for: .normal)
+        $0.setTitleColor(.mainColor, for: .normal)
+        $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
+        $0.layer.cornerRadius = 15
+        $0.layer.borderColor = UIColor.mainColor.cgColor
+        $0.layer.borderWidth = 1
     }
-    let uploadLabel = UILabel().then{
-        $0.text = "업로드 알림"
-        $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 18)
-        $0.textAlignment = .center
+    let viewSpeakinglogButton = UIButton().then{
+        $0.setTitle(" 채드님의 스피킹log 보기 ", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
+        $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
+        $0.backgroundColor = UIColor.mainColor
+        $0.layer.cornerRadius = 15
+        $0.layer.borderColor = UIColor.mainColor.cgColor
+        $0.layer.borderWidth = 1
     }
-    let uploadDescriptionLabel = UILabel().then{
-        $0.text = "채드 님이 스피킹을 업로드하면 알림을 받습니다."
-        $0.font = UIFont(name:"appleSDGothicNeo-Regular", size: 13)
-        $0.textColor = .lightGray
-        $0.textAlignment = .center
-    }
-    let uploadSwitch = UISwitch().then{
-        $0.tintColor = .mainColor
-        $0.onTintColor = .mainColor
-    }
-    
     
     
     
@@ -122,7 +120,7 @@ class AllClickProfileViewController: UIViewController{
         layout()
         addTarget()
         
-        self.view.backgroundColor = .clear
+        self.view.backgroundColor = .black
         self.navigationController?.navigationBar.isHidden = true;
         
         self.profileImage.bringSubviewToFront(self.mainView)
@@ -148,16 +146,47 @@ class AllClickProfileViewController: UIViewController{
         self.tagViewEng.addSubview(self.tagViewEngLabel)
         self.tagViewKor.addSubview(self.tagViewKorLabel)
         self.tagViewObjective.addSubview(self.tagViewObjectiveLabel)
-        self.mainView.addSubview(self.line)
-        self.mainView.addSubview(self.uploadLabel)
-        self.mainView.addSubview(self.uploadDescriptionLabel)
-        self.mainView.addSubview(self.uploadSwitch)
+        self.mainView.addSubview(self.followButton)
+        self.mainView.addSubview(self.viewSpeakinglogButton)
+
         
     }
+    var followIndex = 0
     
     //MARK: - Selector
     @objc func didClickBackground(sender: UITapGestureRecognizer){
         dismiss(animated: false)
+    }
+    @objc func didClickfollowButton(_ button: UIButton) {
+        if followIndex == 0{
+            followButton.setTitle(" 팔로잉 ", for: .normal)
+            followButton.setTitleColor(.white, for: .normal)
+            followButton.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
+            followButton.backgroundColor = UIColor.mainColor
+            followButton.layer.cornerRadius = 15
+            followButton.layer.borderColor = UIColor.mainColor.cgColor
+            followButton.layer.borderWidth = 1
+            followButton.layoutIfNeeded()
+            
+            followIndex = 1
+        }else{
+            followButton.setTitle(" 팔로우 ", for: .normal)
+            followButton.setTitleColor(.mainColor, for: .normal)
+            followButton.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 16)
+            followButton.backgroundColor = UIColor.white
+            followButton.layer.cornerRadius = 15
+            followButton.layer.borderColor = UIColor.mainColor.cgColor
+            followButton.layer.borderWidth = 1
+            followButton.layoutIfNeeded()
+            
+            followIndex = 0
+        }
+        
+    }
+    
+    
+    @objc func didClickviewSpeakinglogButton(_ button: UIButton) {
+        print("didClickviewSpeakinglogButton")
     }
     
     //MARK: - Layout
@@ -169,12 +198,12 @@ class AllClickProfileViewController: UIViewController{
         self.mainView.snp.makeConstraints{
             $0.centerX.equalToSuperview()
             $0.leading.equalToSuperview().offset(16)
-            $0.bottom.equalToSuperview().offset(-43)
-            $0.height.equalTo(298)
+            $0.top.equalToSuperview().offset(295)
+            $0.height.equalTo(223)
         }
         self.profileImage.snp.makeConstraints{
             $0.height.width.equalTo(44)
-            $0.top.equalToSuperview().offset(490.68)
+            $0.top.equalToSuperview().offset(270)
             $0.centerX.equalToSuperview()
         }
         self.profileName.snp.makeConstraints{
@@ -238,24 +267,19 @@ class AllClickProfileViewController: UIViewController{
         self.tagViewObjectiveLabel.snp.makeConstraints{
             $0.top.bottom.leading.trailing.equalToSuperview()
         }
-        self.line.snp.makeConstraints{
-            $0.top.equalTo(self.tagViewKor.snp.bottom).offset(22)
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview()
-            $0.height.equalTo(1)
+        self.followButton.snp.makeConstraints{
+            $0.leading.equalToSuperview().offset(10)
+            $0.bottom.equalToSuperview().offset(-10)
+            $0.height.equalTo(45)
+            $0.width.equalTo(124)
         }
-        self.uploadLabel.snp.makeConstraints{
-            $0.centerX.equalToSuperview()
-            $0.top.equalTo(self.line.snp.bottom).offset(15)
+        self.viewSpeakinglogButton.snp.makeConstraints{
+            $0.trailing.equalToSuperview().offset(-10)
+            $0.bottom.equalToSuperview().offset(-10)
+            $0.height.equalTo(45)
+            $0.width.equalTo(202)
         }
-        self.uploadDescriptionLabel.snp.makeConstraints{
-            $0.centerX.equalToSuperview()
-            $0.top.equalTo(self.uploadLabel.snp.bottom).offset(3)
-        }
-        self.uploadSwitch.snp.makeConstraints{
-            $0.centerX.equalToSuperview()
-            $0.top.equalTo(self.uploadDescriptionLabel.snp.bottom).offset(17)
-        }
+
         
     }
     
@@ -264,5 +288,8 @@ class AllClickProfileViewController: UIViewController{
         let backgroundBtn = UITapGestureRecognizer(target: self, action: #selector(didClickBackground))
         fullView.isUserInteractionEnabled = true
         fullView.addGestureRecognizer(backgroundBtn)
+        
+        self.followButton.addTarget(self, action: #selector(self.didClickfollowButton(_:)), for: .touchUpInside)
+        self.viewSpeakinglogButton.addTarget(self, action: #selector(self.didClickviewSpeakinglogButton(_:)), for: .touchUpInside)
     }
 }

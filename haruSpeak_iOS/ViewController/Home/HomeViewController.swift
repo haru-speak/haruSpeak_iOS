@@ -652,7 +652,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         print("didClickProfile")
         let VC = AllClickProfileViewController()
         VC.modalPresentationStyle = .fullScreen
-        present(VC, animated: true)
+        present(VC, animated: false)
     }
     
 
