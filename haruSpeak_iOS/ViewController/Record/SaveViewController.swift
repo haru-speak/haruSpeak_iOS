@@ -77,8 +77,7 @@ class SaveViewController: UIViewController, UITextFieldDelegate{
         $0.setTitle("올리기", for: .normal)
     }
     let backButton = UIButton().then{
-        $0.backgroundColor = .mainColor
-        $0.setImage(UIImage(systemName:"backBlue")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        $0.setImage(UIImage(named: "backBlue"), for: .normal)
     }
     var privacyBound = 0
     var Recordingtitle : String?
