@@ -94,10 +94,13 @@ class FifthViewController: UIViewController{
 //MARK: - Selector
     
     @objc private func didClickNext(_ button: UIButton) {
-        let VC = HomeViewController()
-        VC.modalPresentationStyle = .fullScreen
-        present(VC, animated: false)
-        print("didClickNext")
+        //전체 dismiss
+        self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
+        
+//        let VC = HomeViewController()
+//        VC.modalPresentationStyle = .fullScreen
+//        present(VC, animated: false)
+//        print("didClickNext")
     }
     
     @objc private func didClickBack(_ button: UIButton) {

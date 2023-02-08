@@ -25,8 +25,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     let newbieBool = UserDefaults.standard.string(forKey: "newbieBool")
     let userNickname = UserDefaults.standard.string(forKey: "userNickname")
     let KakaoAccessCode = UserDefaults.standard.string(forKey: "KakaoAccessCode")
-    
-    
+
     //Announcement 영어 문장
     var announcementString = "What's your favorite movie?"
     
@@ -64,6 +63,9 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         self.checkdata = data
         if data == "MyLog"{
             print("clickMyLog")
+            self.allCollectionView.isHidden = true
+            self.recordCollectionView.isHidden = false
+            
             RecordCellTitleArray = ["MyLog1", "MyLog2", "MyLog3", "MyLog4", "MyLog5", "MyLog6"]
             RecordCellHeartCountArray = ["4", "3", "1", "6", "13", "21"]
             RecordCellCommentCountArray = ["9", "1", "7", "6", "4", "2"]
@@ -71,6 +73,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             DispatchQueue.main.async {
                 self.checkRecordCellCount()
                 self.recordCollectionView.reloadData()
+                self.allCollectionView.reloadData()
             }
             //change layout
             if self.calendar.scope == .week{
@@ -103,6 +106,9 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         }else if data == "MyMate"{
             print("clickMyMate")
             
+            self.allCollectionView.isHidden = true
+            self.recordCollectionView.isHidden = false
+            
             RecordCellTitleArray = ["MyMate", "MyMate2", "MyMate3", "MyMate4", "MyMate5", "MyMate6"]
             RecordCellHeartCountArray = ["4", "3", "1", "6", "13", "21"]
             RecordCellCommentCountArray = ["9", "1", "7", "6", "4", "2"]
@@ -110,6 +116,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             DispatchQueue.main.async {
                 self.checkRecordCellCount()
                 self.recordCollectionView.reloadData()
+                self.allCollectionView.reloadData()
             }
             //change layout
             if self.calendar.scope == .week{
@@ -141,6 +148,9 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             }
         }else{
             print("clickAll")
+            self.allCollectionView.isHidden = false
+            self.recordCollectionView.isHidden = true
+            
             RecordCellTitleArray = ["All1", "All2", "All3", "All4", "All5", "All6"]
             RecordCellHeartCountArray = ["4", "3", "1", "6", "13", "21"]
             RecordCellCommentCountArray = ["9", "1", "7", "6", "4", "2"]
@@ -148,6 +158,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             DispatchQueue.main.async {
                 self.checkRecordCellCount()
                 self.recordCollectionView.reloadData()
+                self.allCollectionView.reloadData()
             }
             //change layout
             if self.calendar.scope == .week{
@@ -288,6 +299,12 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         $0.register(RecordCell.self, forCellWithReuseIdentifier: RecordCell.identifier)
         $0.backgroundColor = .systemGray6
     }
+    var allCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+        $0.register(AllCell.self, forCellWithReuseIdentifier: AllCell.identifier)
+        $0.backgroundColor = .systemGray6
+        $0.isHidden = true
+    }
+    
     var collectionViewindex = 0
     
     let hideRecordView = UIView().then{
@@ -346,6 +363,9 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         self.recordCollectionView.dataSource = self
         self.myMateFriendCollectionView.delegate = self
         self.myMateFriendCollectionView.dataSource = self
+        self.allCollectionView.delegate = self
+        self.allCollectionView.dataSource = self
+        
         
         tabbar.delegate = self
         
@@ -359,29 +379,16 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         checkTodayDate()
         
         
-        self.englishMessage.text = announcementString
-        
         self.view.translatesAutoresizingMaskIntoConstraints = true
         topView.bringSubviewToFront(self.tabbar)
         topView.bringSubviewToFront(self.seperateLine)
         self.view.bringSubviewToFront(self.filterButtonView)
         
-        //UserDefault 초기값 만들기 START (바로바로 초기화 안되니 1.에러뜨고, 2.삭제되고, 3.주석처리후 다시 실행 == 초기값)
-//        let domain = Bundle.main.bundleIdentifier!
-//        UserDefaults.standard.removePersistentDomain(forName: domain)
-//        UserDefaults.standard.synchronize()
-//        print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
-        //UserDefault 초기값 만들기 END
-        print("asdasd")
-        print(self.haruSpeakAccessToken)
-        print(self.haruSpeakRefreshToken)
-        print(self.userEmail)
-        print(self.userNickname)
-        print(self.userMemberID)
-        
-        
+
+//실행창
         if KakaoAccessCode != nil{
             KakaoLoginRequestFile().getRequestData(self)
+            QuestionControllerRequest().getRequestData(self)
         }else{
             let OnboardingVC = OnboardingViewController()
             OnboardingVC.modalPresentationStyle = .fullScreen
@@ -399,8 +406,12 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         
         
         if haruSpeakAccessToken != nil{
-//            KakaoLoginRequestFile().getRequestData(self)
             message.text = "\(self.userNickname!)님\n어떤 영화가 좋으세요?"
+            DispatchQueue.main.async {
+                self.englishMessage.text = self.announcementString
+                print("Dispatch")
+            }
+//            KakaoLoginRequestFile().getRequestData(self)
         }else{
             
         }
@@ -637,6 +648,13 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         VC.modalPresentationStyle = .fullScreen
         present(VC, animated: true)
     }
+    @objc func didClickProfile(sender: UITapGestureRecognizer){
+        print("didClickProfile")
+        let VC = AllClickProfileViewController()
+        VC.modalPresentationStyle = .fullScreen
+        present(VC, animated: false)
+    }
+    
 
     
 //MARK: - addSubView
@@ -661,6 +679,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         self.filterButtonView.addSubview(self.filterText)
         self.filterButtonView.addSubview(self.filterButton)
         self.view.addSubview(self.recordCollectionView)
+        self.view.addSubview(self.allCollectionView)
         self.view.addSubview(self.hideRecordView)
         self.hideRecordView.addSubview(self.hideRecordViewLabel)
         self.view.addSubview(self.blueView)
@@ -755,6 +774,11 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             $0.height.equalTo(7.13)
         }
         self.recordCollectionView.snp.makeConstraints {
+            self.bottomViewConstraint = $0.top.equalTo(self.topView.snp.bottom).offset(10).constraint
+            $0.trailing.leading.equalToSuperview()
+            $0.bottom.equalTo(self.blueView.snp.top)
+        }
+        self.allCollectionView.snp.makeConstraints{
             self.bottomViewConstraint = $0.top.equalTo(self.topView.snp.bottom).offset(10).constraint
             $0.trailing.leading.equalToSuperview()
             $0.bottom.equalTo(self.blueView.snp.top)
@@ -870,8 +894,10 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.recordCollectionView{
             return RecordCellTitleArray.count
-        }else{
+        }else if collectionView == self.myMateFriendCollectionView{
             return myMateFriends.count
+        }else{
+            return RecordCellTitleArray.count
         }
     }
     
@@ -890,7 +916,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             }
             return Rcell
         }
-        else{
+        else if collectionView == self.myMateFriendCollectionView{
             let Mcell = collectionView.dequeueReusableCell(withReuseIdentifier: MyMateFriendCell.identifier, for: indexPath) as! MyMateFriendCell
             Mcell.profileName.text = self.myMateFriends[indexPath.row]
                 if indexPath == selectedIndex{
@@ -903,12 +929,43 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                     self.myMateFriendCollectionView.layoutIfNeeded()
                 }
                 return Mcell
+        }else{
+            let Acell = collectionView.dequeueReusableCell(withReuseIdentifier: AllCell.identifier, for: indexPath) as! AllCell
+            //image 추가해야됨
+            Acell.title.text = self.RecordCellTitleArray[indexPath.row]
+            Acell.likeLabel.text = self.RecordCellHeartCountArray[indexPath.row]
+            Acell.commentLabel.text = self.RecordCellCommentCountArray[indexPath.row]
+//            Acell.profileImage.image = UIImage(named: ~[indexPath.row])
             
+            let profileBtn = UITapGestureRecognizer(target: self, action: #selector(didClickProfile))
+            Acell.profileImage.isUserInteractionEnabled = true
+            Acell.profileImage.addGestureRecognizer(profileBtn)
+            
+            if self.RecordCellHeartImgArray[indexPath.row] == true{
+                Acell.heart.image = UIImage(named: "heart.fill")?.withRenderingMode(.alwaysOriginal)
+            }else{
+                Acell.heart.image = UIImage(named: "heart")?.withRenderingMode(.alwaysOriginal)
+            }
+            return Acell
         }
     }
+    
+    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == self.recordCollectionView{
 //            let Rcell = collectionView.dequeueReusableCell(withReuseIdentifier: RecordCell.identifier, for: indexPath) as! RecordCell
+            self.blueViewConstraint?.update(offset: 70)
+            self.playTitle.text = self.RecordCellTitleArray[indexPath.row]
+            self.playTitle.isHidden = false
+            self.blueViewHeartButton.isHidden = false
+            self.closeButton.isHidden = false
+            self.playButton.isHidden = false
+            
+            UIView.animate(withDuration: 0.3){
+                self.view.layoutIfNeeded()
+            }
+        }else if collectionView == self.allCollectionView{
             self.blueViewConstraint?.update(offset: 70)
             self.playTitle.text = self.RecordCellTitleArray[indexPath.row]
             self.playTitle.isHidden = false
@@ -954,10 +1011,11 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == self.recordCollectionView{
             return CGSize(width: self.view.frame.width , height: 70)
+        }else if collectionView == self.allCollectionView{
+            return CGSize(width: self.view.frame.width , height: 70)
         }else{
             return CGSize(width: 50 , height: 60)
         }
-        
     }
     
 }
@@ -978,7 +1036,16 @@ extension HomeViewController{
         UserDefaults.standard.setValue("\(userMemberID!)", forKey: "userMemberID")
         UserDefaults.standard.setValue("\(newbieBool!)", forKey: "newbieBool")
         UserDefaults.standard.setValue("\(userNickname!)", forKey: "userNickname")
-
+        
         print("HomeViewController hello")
+    }
+    func getTodaySentence(_ response: QuestionControllerResponse){
+        print("getTodaySentence")
+        if response.data == nil{
+            print(response.message)
+            self.announcementString = "\(response.message!) 백 데이터X"
+        }else{
+            self.announcementString = (response.data?.title)!
+        }
     }
 }
