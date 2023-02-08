@@ -126,7 +126,6 @@ class SearchStudyViewController: UIViewController{
     }
     
     
-    var collectionViewindex = 0
     //CollectionView
     var SearchCellRecruitArray = [Bool]()
     var SearchCellNewArray = [Bool]()

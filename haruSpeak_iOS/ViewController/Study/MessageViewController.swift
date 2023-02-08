@@ -36,7 +36,6 @@ class MessageViewController: UIViewController{
     let line = UIView().then{
         $0.backgroundColor = .systemGray4
     }
-    var collectionViewindex = 0
     
     
     //CollectionView
