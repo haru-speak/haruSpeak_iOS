@@ -24,6 +24,9 @@
 		68603ACC298EAE7D00A1DCD8 /* StudyRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603ACB298EAE7D00A1DCD8 /* StudyRoomViewController.swift */; };
 		68603ACE298EB0A700A1DCD8 /* AssignmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603ACD298EB0A700A1DCD8 /* AssignmentCell.swift */; };
 		68603AD029925D0800A1DCD8 /* MemberAssignmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603ACF29925D0800A1DCD8 /* MemberAssignmentCell.swift */; };
+		68603AD22992AF0C00A1DCD8 /* RecommendTopViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603AD12992AF0C00A1DCD8 /* RecommendTopViewCell.swift */; };
+		68603AD42992AF9800A1DCD8 /* RecommandMidViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603AD32992AF9800A1DCD8 /* RecommandMidViewCell.swift */; };
+		68603AD62992B02A00A1DCD8 /* RecommandBottomViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68603AD52992B02A00A1DCD8 /* RecommandBottomViewCell.swift */; };
 		68BD8E022971B52C00939DFB /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E012971B52C00939DFB /* AuthenticationViewController.swift */; };
 		68BD8E052971B80400939DFB /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E042971B80400939DFB /* RecordViewController.swift */; };
 		68BD8E0E2972F30B00939DFB /* MembershipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD8E0D2972F30B00939DFB /* MembershipViewController.swift */; };
@@ -119,6 +122,9 @@
 		68603ACB298EAE7D00A1DCD8 /* StudyRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomViewController.swift; sourceTree = "<group>"; };
 		68603ACD298EB0A700A1DCD8 /* AssignmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentCell.swift; sourceTree = "<group>"; };
 		68603ACF29925D0800A1DCD8 /* MemberAssignmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAssignmentCell.swift; sourceTree = "<group>"; };
+		68603AD12992AF0C00A1DCD8 /* RecommendTopViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendTopViewCell.swift; sourceTree = "<group>"; };
+		68603AD32992AF9800A1DCD8 /* RecommandMidViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommandMidViewCell.swift; sourceTree = "<group>"; };
+		68603AD52992B02A00A1DCD8 /* RecommandBottomViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommandBottomViewCell.swift; sourceTree = "<group>"; };
 		68BD8E012971B52C00939DFB /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		68BD8E042971B80400939DFB /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		68BD8E0D2972F30B00939DFB /* MembershipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipViewController.swift; sourceTree = "<group>"; };
@@ -510,6 +516,9 @@
 				68603AC7298D2AFD00A1DCD8 /* SearchCell.swift */,
 				68603ACD298EB0A700A1DCD8 /* AssignmentCell.swift */,
 				68603ACF29925D0800A1DCD8 /* MemberAssignmentCell.swift */,
+				68603AD12992AF0C00A1DCD8 /* RecommendTopViewCell.swift */,
+				68603AD32992AF9800A1DCD8 /* RecommandMidViewCell.swift */,
+				68603AD52992B02A00A1DCD8 /* RecommandBottomViewCell.swift */,
 			);
 			path = Study;
 			sourceTree = "<group>";
@@ -766,6 +775,7 @@
 			files = (
 				E5158DDA2981B76300054322 /* FifthViewController.swift in Sources */,
 				68603AC8298D2AFD00A1DCD8 /* SearchCell.swift in Sources */,
+				68603AD62992B02A00A1DCD8 /* RecommandBottomViewCell.swift in Sources */,
 				E5E60051298BDC2A00B6E78F /* DetailProfileViewController.swift in Sources */,
 				E51CE8BD296F77B500ADB07B /* CustomTabbar.swift in Sources */,
 				68BD8E1C297C22E900939DFB /* SaveViewController.swift in Sources */,
@@ -779,10 +789,12 @@
 				68BD8E102972F33800939DFB /* EmailLoginViewController.swift in Sources */,
 				E5E984BD296ED9B500E5DE83 /* TempModel.swift in Sources */,
 				68603AC0298B6BB300A1DCD8 /* Slider.swift in Sources */,
+				68603AD42992AF9800A1DCD8 /* RecommandMidViewCell.swift in Sources */,
 				E5E600492987D99500B6E78F /* FollowerCell.swift in Sources */,
 				E59D3628297583D200A012C4 /* SearchStudyViewController.swift in Sources */,
 				E5158DD52981764D00054322 /* SecondGiverViewController.swift in Sources */,
 				68603ABE298A9C7000A1DCD8 /* StudyDetailViewController.swift in Sources */,
+				68603AD22992AF0C00A1DCD8 /* RecommendTopViewCell.swift in Sources */,
 				685149CF298256C400C1FED2 /* FourthViewController.swift in Sources */,
 				E5862C61296ED0C900095439 /* ViewController.swift in Sources */,
 				E5862C5D296ED0C900095439 /* AppDelegate.swift in Sources */,
@@ -795,11 +807,11 @@
 				E5158DD12981746800054322 /* SecondLearnerViewController.swift in Sources */,
 				E5E984BB296ED9A900E5DE83 /* TempService.swift in Sources */,
 				E5E984B8296ED95D00E5DE83 /* UIFont+.swift in Sources */,
-				68603AC6298C00C300A1DCD8 /* MessageCustomTabbar.swift in Sources */,
+				68603AC6298C00C300A1DCD8 /* ChattingCell.swift in Sources */,
 				68603ABC298A56C800A1DCD8 /* KakaoLoginResponseFile.swift in Sources */,
 				68603AC6298C00C300A1DCD8 /* ChattingCell.swift in Sources */,
 				68603AD029925D0800A1DCD8 /* MemberAssignmentCell.swift in Sources */,
-				68603ABC298A56C800A1DCD8 /* KakaoLoginModel.swift in Sources */,
+				68603ABC298A56C800A1DCD8 /* KakaoLoginResponseFile.swift in Sources */,
 				E5E600472987A98100B6E78F /* CustomTabbarMyPage.swift in Sources */,
 				68603ACE298EB0A700A1DCD8 /* AssignmentCell.swift in Sources */,
 				E5158DD32981748200054322 /* ThirdViewController.swift in Sources */,

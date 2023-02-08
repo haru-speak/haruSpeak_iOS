@@ -1,8 +1,8 @@
 //
-//  TopViewCollectionView.swift
+//  RecommendTopViewCell.swift
 //  haruSpeak_iOS
 //
-//  Created by 077tech on 2023/01/14.
+//  Created by 강예은 on 2023/02/08.
 //
 
 import Foundation
@@ -10,8 +10,8 @@ import UIKit
 import Then
 import SnapKit
 
-final class TopViewCollectionViewCell: UICollectionViewCell{
-    static let identifier = "TopViewCollectionViewCell"
+final class RecommandTopViewCell: UICollectionViewCell{
+    static let identifier = "RecommandTopViewCell"
     
     let backView = UIView().then{
         $0.backgroundColor = .white
@@ -35,8 +35,9 @@ final class TopViewCollectionViewCell: UICollectionViewCell{
     }
     let sublabel = UILabel().then{
         $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size: 13)
-        $0.text = "데이님이 ~12월 10일 과제를 제출했어요"
+        $0.text = "겨울방학 2달동안 오픽 끝내실분 같이 공부해요~\n주 1회 대면 병행. 장소는 홍대 or 사당. 주제 정해서..."
         $0.textColor = .gray
+        $0.numberOfLines = 2
         
         //줄 간격
         let attrString = NSMutableAttributedString(string: $0.text!)
@@ -71,15 +72,49 @@ final class TopViewCollectionViewCell: UICollectionViewCell{
         $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size: 18)
     }
     
-    let entranceBtn = UIButton(type: .system).then{
-            $0.setTitle("스터디룸 입장", for: .normal)
-            $0.setTitleColor(.white, for: .normal)
-            $0.titleLabel?.font = UIFont(name:"appleSDGothicNeo-Bold", size: 15)
-            $0.roundCorners(cornerRadius: 13, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
-            $0.backgroundColor = .mainColor
-        }
-    let line = UIView().then{
+    let likeImg = UIImageView().then{
+        $0.image = UIImage(named: "heart")?.withRenderingMode(.alwaysOriginal)
+    }
+    
+    //tags
+    let recruitTagView = UIView().then{
+        $0.roundCorners(cornerRadius: 10, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
         $0.backgroundColor = .systemGray6
+    }
+    let recruitTagText = UILabel().then{
+           $0.text = "모집 중"
+           $0.textColor = .red
+           $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size:13)
+       }
+    
+    let newTagView = UIView().then{
+        $0.roundCorners(cornerRadius: 10, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
+        $0.backgroundColor = .koreanTag
+    }
+    let newTagText = UILabel().then{
+        $0.text = "New"
+        $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size:13)
+    }
+    let existingTagView = UIView().then{
+        $0.roundCorners(cornerRadius: 10, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
+        $0.backgroundColor = .mainColor
+    }
+    let existingTagText = UILabel().then{
+        $0.text = "Since 2022.11.25"
+        $0.textColor = .white
+        $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size:13)
+    }
+    let memTagView = UIView().then{
+        $0.roundCorners(cornerRadius: 10, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
+        $0.backgroundColor = .systemGray6
+    }
+    let memTagImg = UIImageView().then{
+        $0.image = UIImage(named: "human")?.withRenderingMode(.alwaysOriginal)
+    }
+    let memTagLabel = UILabel().then{
+        $0.text = "4~7명"
+        $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size:13)
+        $0.textColor = .lightGray
     }
     
     
@@ -95,9 +130,15 @@ final class TopViewCollectionViewCell: UICollectionViewCell{
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     //MARK: - Selector
-    
+    @objc func likeClicked(){
+        if likeImg.image == UIImage(named: "heart")?.withRenderingMode(.alwaysOriginal){
+            likeImg.image = UIImage(named: "heart.fill")?.withRenderingMode(.alwaysOriginal)
+        }
+        else{
+            likeImg.image = UIImage(named: "heart")?.withRenderingMode(.alwaysOriginal)
+        }
+    }
     
     
     
@@ -107,7 +148,7 @@ final class TopViewCollectionViewCell: UICollectionViewCell{
         backView.addSubview(self.photo)
         backView.addSubview(self.mainlabel)
         backView.addSubview(self.sublabel)
-        backView.addSubview(self.entranceBtn)
+        backView.addSubview(self.likeImg)
         backView.addSubview(self.profileImgView)
         profileImgView.addSubview(self.memImg1)
         profileImgView.addSubview(self.memImg2)
@@ -115,7 +156,16 @@ final class TopViewCollectionViewCell: UICollectionViewCell{
         profileImgView.addSubview(self.memImg4)
         profileImgView.addSubview(self.memImg5)
         profileImgView.addSubview(self.moreTxt)
-        backView.addSubview(self.line)
+        
+//        self.backView.addSubview(self.recruitTagView)
+//        self.recruitTagView.addSubview(self.recruitTagText)
+        self.backView.addSubview(self.newTagView)
+        self.newTagView.addSubview(self.newTagText)
+//        self.backView.addSubview(self.existingTagView)
+//        self.existingTagView.addSubview(self.existingTagText)
+        self.backView.addSubview(self.memTagView)
+        self.memTagView.addSubview(self.memTagImg)
+        self.memTagView.addSubview(self.memTagLabel)
     }
     
     //MARK: - layout
@@ -128,7 +178,7 @@ final class TopViewCollectionViewCell: UICollectionViewCell{
             $0.height.equalTo(103)
         }
         self.mainlabel.snp.makeConstraints{
-            $0.top.equalTo(self.photo.snp.bottom).offset(15)
+            $0.top.equalToSuperview().offset(145)
             $0.leading.equalTo(self.backView.snp.leading).offset(18)
             $0.trailing.equalTo(self.backView.snp.trailing).offset(-18)
         }
@@ -137,18 +187,10 @@ final class TopViewCollectionViewCell: UICollectionViewCell{
             $0.leading.equalTo(self.backView.snp.leading).offset(18)
             $0.trailing.equalTo(self.backView.snp.trailing).offset(0)
         }
-        self.line.snp.makeConstraints{
-            $0.top.equalTo(self.sublabel.snp.bottom).offset(6)
-            $0.centerX.equalToSuperview()
-            $0.leading.equalTo(self.backView.snp.leading).offset(18)
-            $0.trailing.equalTo(self.backView.snp.trailing).offset(-18)
-            $0.height.equalTo(1)
-        }
-        self.entranceBtn.snp.makeConstraints{
-            $0.top.equalTo(self.line.snp.bottom).offset(14)
-            $0.centerX.equalToSuperview()
-            $0.width.equalTo(122)
-            $0.height.equalTo(30)
+        self.likeImg.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(16.75)
+            $0.trailing.equalToSuperview().offset(-15.62)
+            $0.width.height.equalTo(25)
         }
         self.profileImgView.snp.makeConstraints{
             $0.top.leading.equalToSuperview().offset(7)
@@ -189,6 +231,52 @@ final class TopViewCollectionViewCell: UICollectionViewCell{
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview().offset(-13)
         }
+        
+//        self.recruitTagView.snp.makeConstraints{
+//            $0.top.equalTo(self.photo.snp.bottom).offset(15)
+//            $0.leading.equalToSuperview().offset(20)
+//            $0.width.equalTo(58)
+//            $0.height.equalTo(22)
+//        }
+//        self.recruitTagText.snp.makeConstraints{
+//            $0.centerY.equalTo(self.recruitTagView)
+//            $0.centerX.equalTo(self.recruitTagView)
+//        }
+        self.memTagView.snp.makeConstraints{
+            $0.top.equalTo(self.photo.snp.bottom).offset(15)
+            $0.leading.equalToSuperview().offset(19)
+            $0.width.equalTo(71)
+            $0.height.equalTo(22)
+        }
+        self.memTagLabel.snp.makeConstraints{
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview().offset(-10)
+        }
+        self.memTagImg.snp.makeConstraints{
+            $0.centerY.equalToSuperview()
+            $0.leading.equalToSuperview().offset(10)
+            $0.width.height.equalTo(13)
+        }
+        self.newTagView.snp.makeConstraints{
+            $0.top.equalTo(self.photo.snp.bottom).offset(15)
+            $0.leading.equalTo(self.memTagView.snp.trailing).offset(8)
+            $0.width.equalTo(46)
+            $0.height.equalTo(22)
+        }
+        self.newTagText.snp.makeConstraints{
+            $0.centerY.equalTo(self.newTagView)
+            $0.centerX.equalTo(self.newTagView)
+        }
+//        self.existingTagView.snp.makeConstraints{
+//            $0.top.equalTo(self.photo.snp.bottom).offset(15)
+//            $0.leading.equalTo(self.recruitTagView.snp.trailing).offset(6)
+//            $0.width.equalTo(50)
+//            $0.height.equalTo(22)
+//        }
+//        self.existingTagText.snp.makeConstraints{
+//            $0.centerY.equalTo(self.existingTagView)
+//            $0.centerX.equalTo(self.existingTagView)
+//        }
     }
         
         
@@ -197,6 +285,8 @@ final class TopViewCollectionViewCell: UICollectionViewCell{
     
     //MARK: - AddTarget
     private func addTarget(){
-        
+        let likeBtn = UITapGestureRecognizer(target: self, action: #selector(likeClicked))
+        likeImg.isUserInteractionEnabled = true
+        likeImg.addGestureRecognizer(likeBtn)
     }
 }
