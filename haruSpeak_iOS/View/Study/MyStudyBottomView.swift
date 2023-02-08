@@ -12,122 +12,139 @@ import SnapKit
 final class MyStudyBottomView: UIView{
     //MARK: - Properties
     let titleLabel = UILabel().then{
-        $0.text = "승연님, 해야할 과제가 있어요!"
+        $0.text = "승연님, 해야 할 과제가 있어요! 🔥"
         $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 20)
         $0.numberOfLines = 2
     }
-    
-    
-    var assignmentView1 = AssignmentView().then{
-        $0.dateLabel.text = "~12.27일"
-
-    }
-    var assignmentView2 = AssignmentView().then{
-        $0.dateLabel.text = "~12.29일"
-        $0.assignmentColorView.backgroundColor = .red
-        $0.assignmentDateView.layer.borderColor = UIColor.red.cgColor
-    }
-    var assignmentView3 = AssignmentView().then{
-        $0.dateLabel.text = "~12.31일"
-        $0.assignmentColorView.backgroundColor = .green
-        $0.assignmentDateView.layer.borderColor = UIColor.green.cgColor
-    }
-    
-    let assignmentMoreButtonLabel = UILabel().then{
-        $0.text = "과제 더보기"
-        $0.font = UIFont(name:"appleSDGothicNeo-Regular", size: 13)
-        $0.numberOfLines = 1
-        $0.textAlignment = .center
-        
-        $0.backgroundColor = .clear
-        $0.roundCorners(cornerRadius: 20, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
-        
-        $0.layer.borderColor = UIColor.lightGray.cgColor
-        $0.layer.borderWidth = 0.3
-        $0.layer.masksToBounds = false
-        $0.layer.shadowColor = UIColor.lightGray.cgColor
-        $0.layer.shadowOffset = CGSize(width: 0, height: 1)
-        $0.layer.shadowOpacity = 0.3
-        $0.layer.shadowRadius = 1.0
-    }
-    
-    let thisWeekObjectiveLabel = UILabel().then{
-        $0.text = "승연님의 이번주 목표 달성량"
-        $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 20)
-    }
-    let thisWeekObjectiveView = UIView().then{
+    var assignmentCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+        $0.register(AssignmentView.self, forCellWithReuseIdentifier: AssignmentView.identifier)
         $0.backgroundColor = .white
-        $0.layer.borderColor = UIColor.mainColor.cgColor
-        $0.layer.borderWidth = 1
-        $0.roundCorners(cornerRadius: 20, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
     }
-    let thisWeekResultLabel = UILabel().then{
-        $0.text = "참여 중인 스터디의 모든 과제를 완료했습니다!"
-        $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 13)
+    //CollectionView
+    var DeadlineArray = [String]()
+    var MainLabelArray = [String]()
+    var SubLabelArray = [String]()
+    
+    
+    func dataSourceSet(){
+        DeadlineArray.append(contentsOf: ["~12월 10일", "~12월 16일", "~12월 25일", "~1월 1일", "~4월 11일"])
+        MainLabelArray.append(contentsOf: ["Explain the details about what you recently", "Describe the surroundings of your house in", "오늘 뭐 먹었는지 30초 동안 말하기", "Explain the details about what you recently", "오늘 뭐 먹었는지 30초 동안 말하기"])
+        SubLabelArray.append(contentsOf: ["오픽 AL 목표로 달려봅시다!!!", "오픽 AL 목표로 달려봅시다!!!", "영어회화 재미로 공부하기", "오픽 AL 목표로 달려봅시다!!!", "오픽 AL 목표로 달려봅시다!!!"])
+
+        DispatchQueue.main.async {
+            self.assignmentCollectionView.reloadData()
+        }
     }
-    let monLabel = UILabel().then{
-        $0.text = "월"
-        $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size: 11)
-        $0.textColor = .lightGray
-    }
-    let tueLabel = UILabel().then{
-        $0.text = "화"
-        $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size: 11)
-        $0.textColor = .lightGray
-    }
-    let wedLabel = UILabel().then{
-        $0.text = "수"
-        $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size: 11)
-        $0.textColor = .lightGray
-    }
-    let thurLabel = UILabel().then{
-        $0.text = "목"
-        $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size: 11)
-        $0.textColor = .lightGray
-    }
-    let friLabel = UILabel().then{
-        $0.text = "금"
-        $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size: 11)
-        $0.textColor = .lightGray
-    }
-    let satLabel = UILabel().then{
-        $0.text = "토"
-        $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size: 11)
-        $0.textColor = .lightGray
-    }
-    let sunLabel = UILabel().then{
-        $0.text = "일"
-        $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size: 11)
-        $0.textColor = .lightGray
-    }
-    let monGraph = UIView().then{
-        $0.backgroundColor = .mainColor
-        $0.roundCorners(cornerRadius: 3, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
-    }
-    let tueGraph = UIView().then{
-        $0.backgroundColor = .mainColor
-        $0.roundCorners(cornerRadius: 3, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
-    }
-    let wedGraph = UIView().then{
-        $0.backgroundColor = .mainColor
-        $0.roundCorners(cornerRadius: 3, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
-    }
-    let thurGraph = UIView().then{
-        $0.backgroundColor = .mainColor
-        $0.roundCorners(cornerRadius: 3, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
-    }
-    let friGraph = UIView().then{
-        $0.backgroundColor = .mainColor
-        $0.roundCorners(cornerRadius: 3, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
-    }
-    let satGraph = UIView().then{
-        $0.backgroundColor = .mainColor
-        $0.roundCorners(cornerRadius: 3, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
-    }
-    let sunGraph = UIView().then{
-        $0.backgroundColor = .mainColor
-        $0.roundCorners(cornerRadius: 3, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
-    }
+//    var assignmentView1 = AssignmentView().then{
+//        $0.dateLabel.text = "~12.27일"
+//
+//    }
+//    var assignmentView2 = AssignmentView().then{
+//        $0.dateLabel.text = "~12.29일"
+////        $0.assignmentColorView.backgroundColor = .red
+////        $0.assignmentDateView.layer.borderColor = UIColor.red.cgColor
+//    }
+//    var assignmentView3 = AssignmentView().then{
+//        $0.dateLabel.text = "~12.31일"
+////        $0.assignmentColorView.backgroundColor = .green
+////        $0.assignmentDateView.layer.borderColor = UIColor.green.cgColor
+//    }
+//    
+//    let assignmentMoreButtonLabel = UILabel().then{
+//        $0.text = "과제 더보기"
+//        $0.font = UIFont(name:"appleSDGothicNeo-Regular", size: 13)
+//        $0.numberOfLines = 1
+//        $0.textAlignment = .center
+//        
+//        $0.backgroundColor = .clear
+//        $0.roundCorners(cornerRadius: 20, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
+//        
+//        $0.layer.borderColor = UIColor.lightGray.cgColor
+//        $0.layer.borderWidth = 0.3
+//        $0.layer.masksToBounds = false
+//        $0.layer.shadowColor = UIColor.lightGray.cgColor
+//        $0.layer.shadowOffset = CGSize(width: 0, height: 1)
+//        $0.layer.shadowOpacity = 0.3
+//        $0.layer.shadowRadius = 1.0
+//    }
+    
+//    let thisWeekObjectiveLabel = UILabel().then{
+//        $0.text = "승연님의 이번주 목표 달성량"
+//        $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 20)
+//    }
+//    let thisWeekObjectiveView = UIView().then{
+//        $0.backgroundColor = .white
+//        $0.layer.borderColor = UIColor.mainColor.cgColor
+//        $0.layer.borderWidth = 1
+//        $0.roundCorners(cornerRadius: 20, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
+//    }
+//    let thisWeekResultLabel = UILabel().then{
+//        $0.text = "참여 중인 스터디의 모든 과제를 완료했습니다!"
+//        $0.font = UIFont(name:"appleSDGothicNeo-Bold", size: 13)
+//    }
+//    let monLabel = UILabel().then{
+//        $0.text = "월"
+//        $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size: 11)
+//        $0.textColor = .lightGray
+//    }
+//    let tueLabel = UILabel().then{
+//        $0.text = "화"
+//        $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size: 11)
+//        $0.textColor = .lightGray
+//    }
+//    let wedLabel = UILabel().then{
+//        $0.text = "수"
+//        $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size: 11)
+//        $0.textColor = .lightGray
+//    }
+//    let thurLabel = UILabel().then{
+//        $0.text = "목"
+//        $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size: 11)
+//        $0.textColor = .lightGray
+//    }
+//    let friLabel = UILabel().then{
+//        $0.text = "금"
+//        $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size: 11)
+//        $0.textColor = .lightGray
+//    }
+//    let satLabel = UILabel().then{
+//        $0.text = "토"
+//        $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size: 11)
+//        $0.textColor = .lightGray
+//    }
+//    let sunLabel = UILabel().then{
+//        $0.text = "일"
+//        $0.font = UIFont(name:"appleSDGothicNeo-Semibold", size: 11)
+//        $0.textColor = .lightGray
+//    }
+//    let monGraph = UIView().then{
+//        $0.backgroundColor = .mainColor
+//        $0.roundCorners(cornerRadius: 3, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
+//    }
+//    let tueGraph = UIView().then{
+//        $0.backgroundColor = .mainColor
+//        $0.roundCorners(cornerRadius: 3, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
+//    }
+//    let wedGraph = UIView().then{
+//        $0.backgroundColor = .mainColor
+//        $0.roundCorners(cornerRadius: 3, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
+//    }
+//    let thurGraph = UIView().then{
+//        $0.backgroundColor = .mainColor
+//        $0.roundCorners(cornerRadius: 3, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
+//    }
+//    let friGraph = UIView().then{
+//        $0.backgroundColor = .mainColor
+//        $0.roundCorners(cornerRadius: 3, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
+//    }
+//    let satGraph = UIView().then{
+//        $0.backgroundColor = .mainColor
+//        $0.roundCorners(cornerRadius: 3, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
+//    }
+//    let sunGraph = UIView().then{
+//        $0.backgroundColor = .mainColor
+//        $0.roundCorners(cornerRadius: 3, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner])
+//    }
 
     //MARK: - Init
     override init(frame: CGRect) {
@@ -135,17 +152,20 @@ final class MyStudyBottomView: UIView{
         self.addSubView()
         self.layout()
         self.addTarget()
+        dataSourceSet()
         
+        self.assignmentCollectionView.delegate = self
+        self.assignmentCollectionView.dataSource = self
         
         let attributedStr = NSMutableAttributedString(string: titleLabel.text!)
-        attributedStr.addAttribute(.foregroundColor, value: UIColor.mainColor, range: (titleLabel.text! as NSString).range(of: "해야할 과제가"))
+        attributedStr.addAttribute(.foregroundColor, value: UIColor.mainColor, range: (titleLabel.text! as NSString).range(of: "해야 할 과제가"))
         titleLabel.attributedText = attributedStr
         
-        let attributedStr1 = NSMutableAttributedString(string: thisWeekObjectiveLabel.text!)
-        attributedStr1.addAttribute(.foregroundColor, value: UIColor.mainColor, range: (thisWeekObjectiveLabel.text! as NSString).range(of: "이번주 목표 달성량"))
-        thisWeekObjectiveLabel.attributedText = attributedStr1
+//        let attributedStr1 = NSMutableAttributedString(string: thisWeekObjectiveLabel.text!)
+//        attributedStr1.addAttribute(.foregroundColor, value: UIColor.mainColor, range: (thisWeekObjectiveLabel.text! as NSString).range(of: "이번주 목표 달성량"))
+//        thisWeekObjectiveLabel.attributedText = attributedStr1
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -159,27 +179,28 @@ final class MyStudyBottomView: UIView{
     //MARK: - addSubView
     private func addSubView() {
         self.addSubview(self.titleLabel)
-        self.addSubview(self.assignmentView1)
-        self.addSubview(self.assignmentView2)
-        self.addSubview(self.assignmentView3)
-        self.addSubview(self.assignmentMoreButtonLabel)
-        self.addSubview(self.thisWeekObjectiveLabel)
-        self.addSubview(self.thisWeekObjectiveView)
-        self.addSubview(self.thisWeekResultLabel)
-        self.thisWeekObjectiveView.addSubview(self.monLabel)
-        self.thisWeekObjectiveView.addSubview(self.tueLabel)
-        self.thisWeekObjectiveView.addSubview(self.wedLabel)
-        self.thisWeekObjectiveView.addSubview(self.thurLabel)
-        self.thisWeekObjectiveView.addSubview(self.friLabel)
-        self.thisWeekObjectiveView.addSubview(self.satLabel)
-        self.thisWeekObjectiveView.addSubview(self.sunLabel)
-        self.thisWeekObjectiveView.addSubview(self.monGraph)
-        self.thisWeekObjectiveView.addSubview(self.tueGraph)
-        self.thisWeekObjectiveView.addSubview(self.wedGraph)
-        self.thisWeekObjectiveView.addSubview(self.thurGraph)
-        self.thisWeekObjectiveView.addSubview(self.friGraph)
-        self.thisWeekObjectiveView.addSubview(self.satGraph)
-        self.thisWeekObjectiveView.addSubview(self.sunGraph)
+        self.addSubview(self.assignmentCollectionView)
+//        self.addSubview(self.assignmentView1)
+//        self.addSubview(self.assignmentView2)
+//        self.addSubview(self.assignmentView3)
+//        self.addSubview(self.assignmentMoreButtonLabel)
+//        self.addSubview(self.thisWeekObjectiveLabel)
+//        self.addSubview(self.thisWeekObjectiveView)
+//        self.addSubview(self.thisWeekResultLabel)
+//        self.thisWeekObjectiveView.addSubview(self.monLabel)
+//        self.thisWeekObjectiveView.addSubview(self.tueLabel)
+//        self.thisWeekObjectiveView.addSubview(self.wedLabel)
+//        self.thisWeekObjectiveView.addSubview(self.thurLabel)
+//        self.thisWeekObjectiveView.addSubview(self.friLabel)
+//        self.thisWeekObjectiveView.addSubview(self.satLabel)
+//        self.thisWeekObjectiveView.addSubview(self.sunLabel)
+//        self.thisWeekObjectiveView.addSubview(self.monGraph)
+//        self.thisWeekObjectiveView.addSubview(self.tueGraph)
+//        self.thisWeekObjectiveView.addSubview(self.wedGraph)
+//        self.thisWeekObjectiveView.addSubview(self.thurGraph)
+//        self.thisWeekObjectiveView.addSubview(self.friGraph)
+//        self.thisWeekObjectiveView.addSubview(self.satGraph)
+//        self.thisWeekObjectiveView.addSubview(self.sunGraph)
     }
     
     //MARK: - Layout
@@ -188,116 +209,121 @@ final class MyStudyBottomView: UIView{
             $0.top.equalToSuperview().offset(14)
             $0.leading.equalToSuperview().offset(30)
         }
-        self.assignmentView1.snp.makeConstraints{
-            $0.top.equalTo(self.titleLabel.snp.bottom).offset(21)
-            $0.leading.equalToSuperview().offset(60)
-            $0.trailing.equalToSuperview().offset(-30)
+        self.assignmentCollectionView.snp.makeConstraints{
+            $0.trailing.leading.bottom.equalToSuperview()
+            $0.top.equalTo(self.titleLabel.snp.bottom).offset(16)
         }
-        self.assignmentView2.snp.makeConstraints{
-            $0.top.equalTo(self.assignmentView1.snp.bottom).offset(21)
-            $0.leading.equalToSuperview().offset(60)
-            $0.trailing.equalToSuperview().offset(-30)
-        }
-        self.assignmentView3.snp.makeConstraints{
-            $0.top.equalTo(self.assignmentView2.snp.bottom).offset(21)
-            $0.leading.equalToSuperview().offset(60)
-            $0.trailing.equalToSuperview().offset(-30)
-        }
-        self.assignmentMoreButtonLabel.snp.makeConstraints{
-            $0.top.equalTo(self.assignmentView3.snp.bottom).offset(23)
-            $0.centerX.equalToSuperview()
-            $0.leading.equalToSuperview().offset(109)
-            $0.size.height.equalTo(42)
-        }
-        self.thisWeekObjectiveLabel.snp.makeConstraints{
-            $0.top.equalTo(self.assignmentMoreButtonLabel.snp.bottom).offset(46)
-            $0.leading.equalToSuperview().offset(34)
-        }
-        self.thisWeekObjectiveView.snp.makeConstraints{
-            $0.top.equalTo(self.thisWeekObjectiveLabel.snp.bottom).offset(10)
-            $0.centerX.equalToSuperview()
-            $0.leading.equalToSuperview().offset(30)
-            $0.trailing.equalToSuperview().offset(-30)
-            $0.size.height.equalTo(209)
-        }
-        self.thisWeekResultLabel.snp.makeConstraints{
-            $0.top.equalTo(self.thisWeekObjectiveView.snp.top).offset(8)
-            $0.leading.equalTo(self.thisWeekObjectiveView.snp.leading).offset(17)
-        }
-//        let heightfactor: CGFloat = 2 / 6
+//        self.assignmentView1.snp.makeConstraints{
+//            $0.top.equalTo(self.titleLabel.snp.bottom).offset(21)
+//            $0.leading.equalToSuperview().offset(30)
+//            $0.trailing.equalToSuperview().offset(-30)
+//        }
+//        self.assignmentView2.snp.makeConstraints{
+//            $0.top.equalTo(self.assignmentView1.snp.bottom).offset(21)
+//            $0.leading.equalToSuperview().offset(30)
+//            $0.trailing.equalToSuperview().offset(-30)
+//        }
+//        self.assignmentView3.snp.makeConstraints{
+//            $0.top.equalTo(self.assignmentView2.snp.bottom).offset(21)
+//            $0.leading.equalToSuperview().offset(30)
+//            $0.trailing.equalToSuperview().offset(-30)
+//        }
+//        self.assignmentMoreButtonLabel.snp.makeConstraints{
+//            $0.top.equalTo(self.assignmentView3.snp.bottom).offset(23)
+//            $0.centerX.equalToSuperview()
+//            $0.leading.equalToSuperview().offset(109)
+//            $0.size.height.equalTo(42)
+//        }
         
-        self.monLabel.snp.makeConstraints{
-            $0.leading.equalToSuperview().offset(33)
-            $0.bottom.equalToSuperview().offset(-16)
-        }
-        self.tueLabel.snp.makeConstraints{
-            $0.leading.equalTo(self.monLabel.snp.trailing).offset(32)
-            $0.bottom.equalToSuperview().offset(-16)
-        }
-        self.wedLabel.snp.makeConstraints{
-            $0.leading.equalTo(self.tueLabel.snp.trailing).offset(32)
-            $0.bottom.equalToSuperview().offset(-16)
-        }
-        self.thurLabel.snp.makeConstraints{
-            $0.leading.equalTo(self.wedLabel.snp.trailing).offset(32)
-            $0.bottom.equalToSuperview().offset(-16)
-        }
-        self.friLabel.snp.makeConstraints{
-            $0.leading.equalTo(self.thurLabel.snp.trailing).offset(32)
-            $0.bottom.equalToSuperview().offset(-16)
-        }
-        self.satLabel.snp.makeConstraints{
-            $0.leading.equalTo(self.friLabel.snp.trailing).offset(32)
-            $0.bottom.equalToSuperview().offset(-16)
-        }
-        self.sunLabel.snp.makeConstraints{
-            $0.leading.equalTo(self.satLabel.snp.trailing).offset(32)
-            $0.bottom.equalToSuperview().offset(-16)
-        }
-        self.monGraph.snp.makeConstraints{
-            $0.leading.equalToSuperview().offset(35)
-            $0.bottom.equalToSuperview().offset(-39)
-            $0.width.equalTo(6)
-            $0.height.equalTo(32)
-
-        }
-        self.tueGraph.snp.makeConstraints{
-            $0.leading.equalTo(self.monLabel.snp.trailing).offset(33)
-            $0.bottom.equalToSuperview().offset(-39)
-            $0.width.equalTo(6)
-            $0.height.equalTo(113)
-        }
-        self.wedGraph.snp.makeConstraints{
-            $0.leading.equalTo(self.tueLabel.snp.trailing).offset(33)
-            $0.bottom.equalToSuperview().offset(-39)
-            $0.width.equalTo(6)
-            $0.height.equalTo(32)
-        }
-        self.thurGraph.snp.makeConstraints{
-            $0.leading.equalTo(self.wedLabel.snp.trailing).offset(33)
-            $0.bottom.equalToSuperview().offset(-39)
-            $0.width.equalTo(6)
-            $0.height.equalTo(74)
-        }
-        self.friGraph.snp.makeConstraints{
-            $0.leading.equalTo(self.thurLabel.snp.trailing).offset(33)
-            $0.bottom.equalToSuperview().offset(-39)
-            $0.width.equalTo(6)
-            $0.height.equalTo(113)
-        }
-        self.satGraph.snp.makeConstraints{
-            $0.leading.equalTo(self.friLabel.snp.trailing).offset(33)
-            $0.bottom.equalToSuperview().offset(-39)
-            $0.width.equalTo(6)
-            $0.height.equalTo(113)
-        }
-        self.sunGraph.snp.makeConstraints{
-            $0.leading.equalTo(self.satLabel.snp.trailing).offset(33)
-            $0.bottom.equalToSuperview().offset(-39)
-            $0.width.equalTo(6)
-            $0.height.equalTo(113)
-        }
-        
+//        self.thisWeekObjectiveLabel.snp.makeConstraints{
+//            $0.top.equalTo(self.assignmentMoreButtonLabel.snp.bottom).offset(46)
+//            $0.leading.equalToSuperview().offset(34)
+//        }
+//        self.thisWeekObjectiveView.snp.makeConstraints{
+//            $0.top.equalTo(self.thisWeekObjectiveLabel.snp.bottom).offset(10)
+//            $0.centerX.equalToSuperview()
+//            $0.leading.equalToSuperview().offset(30)
+//            $0.trailing.equalToSuperview().offset(-30)
+//            $0.size.height.equalTo(209)
+//        }
+//        self.thisWeekResultLabel.snp.makeConstraints{
+//            $0.top.equalTo(self.thisWeekObjectiveView.snp.top).offset(8)
+//            $0.leading.equalTo(self.thisWeekObjectiveView.snp.leading).offset(17)
+//        }
+////        let heightfactor: CGFloat = 2 / 6
+//
+//        self.monLabel.snp.makeConstraints{
+//            $0.leading.equalToSuperview().offset(33)
+//            $0.bottom.equalToSuperview().offset(-16)
+//        }
+//        self.tueLabel.snp.makeConstraints{
+//            $0.leading.equalTo(self.monLabel.snp.trailing).offset(32)
+//            $0.bottom.equalToSuperview().offset(-16)
+//        }
+//        self.wedLabel.snp.makeConstraints{
+//            $0.leading.equalTo(self.tueLabel.snp.trailing).offset(32)
+//            $0.bottom.equalToSuperview().offset(-16)
+//        }
+//        self.thurLabel.snp.makeConstraints{
+//            $0.leading.equalTo(self.wedLabel.snp.trailing).offset(32)
+//            $0.bottom.equalToSuperview().offset(-16)
+//        }
+//        self.friLabel.snp.makeConstraints{
+//            $0.leading.equalTo(self.thurLabel.snp.trailing).offset(32)
+//            $0.bottom.equalToSuperview().offset(-16)
+//        }
+//        self.satLabel.snp.makeConstraints{
+//            $0.leading.equalTo(self.friLabel.snp.trailing).offset(32)
+//            $0.bottom.equalToSuperview().offset(-16)
+//        }
+//        self.sunLabel.snp.makeConstraints{
+//            $0.leading.equalTo(self.satLabel.snp.trailing).offset(32)
+//            $0.bottom.equalToSuperview().offset(-16)
+//        }
+//        self.monGraph.snp.makeConstraints{
+//            $0.leading.equalToSuperview().offset(35)
+//            $0.bottom.equalToSuperview().offset(-39)
+//            $0.width.equalTo(6)
+//            $0.height.equalTo(32)
+//
+//        }
+//        self.tueGraph.snp.makeConstraints{
+//            $0.leading.equalTo(self.monLabel.snp.trailing).offset(33)
+//            $0.bottom.equalToSuperview().offset(-39)
+//            $0.width.equalTo(6)
+//            $0.height.equalTo(113)
+//        }
+//        self.wedGraph.snp.makeConstraints{
+//            $0.leading.equalTo(self.tueLabel.snp.trailing).offset(33)
+//            $0.bottom.equalToSuperview().offset(-39)
+//            $0.width.equalTo(6)
+//            $0.height.equalTo(32)
+//        }
+//        self.thurGraph.snp.makeConstraints{
+//            $0.leading.equalTo(self.wedLabel.snp.trailing).offset(33)
+//            $0.bottom.equalToSuperview().offset(-39)
+//            $0.width.equalTo(6)
+//            $0.height.equalTo(74)
+//        }
+//        self.friGraph.snp.makeConstraints{
+//            $0.leading.equalTo(self.thurLabel.snp.trailing).offset(33)
+//            $0.bottom.equalToSuperview().offset(-39)
+//            $0.width.equalTo(6)
+//            $0.height.equalTo(113)
+//        }
+//        self.satGraph.snp.makeConstraints{
+//            $0.leading.equalTo(self.friLabel.snp.trailing).offset(33)
+//            $0.bottom.equalToSuperview().offset(-39)
+//            $0.width.equalTo(6)
+//            $0.height.equalTo(113)
+//        }
+//        self.sunGraph.snp.makeConstraints{
+//            $0.leading.equalTo(self.satLabel.snp.trailing).offset(33)
+//            $0.bottom.equalToSuperview().offset(-39)
+//            $0.width.equalTo(6)
+//            $0.height.equalTo(113)
+//        }
+//
     }
     
     
@@ -307,3 +333,39 @@ final class MyStudyBottomView: UIView{
     }
     
 }
+//CollectionVIew
+extension MyStudyBottomView: UICollectionViewDelegate, UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return DeadlineArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AssignmentView.identifier, for: indexPath) as! AssignmentView
+        cell.dateLabel.text = self.DeadlineArray[indexPath.row]
+        cell.assignmentTitle.text = self.MainLabelArray[indexPath.row]
+        cell.assignmentSubTitle.text = self.SubLabelArray[indexPath.row]
+        
+        return cell
+    }
+   
+}
+
+extension MyStudyBottomView: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+            return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+            return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            return CGSize(width: 330 , height: 88)
+        }
+        
+    }

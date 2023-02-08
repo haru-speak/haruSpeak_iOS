@@ -41,10 +41,10 @@ class StudyViewController: UIViewController{
     private var currentPage: Int = 0
     
     //Bottom View
-    let scrollView = UIScrollView().then{
-        $0.backgroundColor = .mainColor
-    }
-    
+//    let scrollView = UIScrollView().then{
+//        $0.backgroundColor = .mainColor
+//    }
+//
     private let blueView = UIView().then{
         $0.backgroundColor = .mainColor
     }
@@ -111,8 +111,8 @@ class StudyViewController: UIViewController{
         topView.addSubview(self.chatButton)
         topView.addSubview(self.searchButton)
         topView.addSubview(self.tabbar)
-        self.view.addSubview(self.scrollView)
-        scrollView.addSubview(self.bottomView)
+//        self.view.addSubview(self.scrollView)
+        self.view.addSubview(self.bottomView)
         bottomView.addSubview(self.blueView)
         bottomView.addSubview(self.studyCollectionView)
         bottomView.addSubview(self.testView)
@@ -148,13 +148,13 @@ class StudyViewController: UIViewController{
             $0.width.equalToSuperview().dividedBy(2)
             $0.leading.equalTo(self.topView.snp.leading).offset(30)
         }
-        self.scrollView.snp.makeConstraints{
+//        self.scrollView.snp.makeConstraints{
+//            $0.leading.trailing.bottom.equalToSuperview().offset(0)
+//            $0.top.equalTo(self.topView.snp.bottom).offset(0)
+//        }
+        self.bottomView.snp.makeConstraints{
             $0.leading.trailing.bottom.equalToSuperview().offset(0)
             $0.top.equalTo(self.topView.snp.bottom).offset(0)
-        }
-        self.bottomView.snp.makeConstraints{
-            $0.width.equalToSuperview()
-            $0.centerX.top.bottom.equalToSuperview()
         }
         self.blueView.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(self.bottomView)
@@ -164,10 +164,10 @@ class StudyViewController: UIViewController{
             $0.top.equalTo(self.bottomView.snp.top).offset(0)
             $0.leading.equalTo(self.bottomView.snp.leading).offset(0)
             $0.trailing.equalTo(self.bottomView.snp.trailing).offset(-16)
-            $0.size.height.equalTo(227)
+            $0.size.height.equalTo(229)
         }
         self.testView.snp.makeConstraints{
-            $0.size.height.equalTo(700)
+            $0.size.height.equalTo(450)
             $0.bottom.equalToSuperview()
             $0.top.equalTo(self.studyCollectionView.snp.bottom).offset(10)
             $0.leading.trailing.equalToSuperview()
